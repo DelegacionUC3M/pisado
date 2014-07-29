@@ -20,9 +20,9 @@ class Controller {
 			extract($data);
 		}
 
-		include '../views/header.php';
-		include '../views/' . $views . '.php';
-		include '../views/footer.php';
+		include ABSPATH . 'app/views/header.php';
+		include ABSPATH . 'app/views/' . $view . '.php';
+		include ABSPATH . 'app/views/footer.php';
 	}
 
 	public function sendmail($destinatario) {
