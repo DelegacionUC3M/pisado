@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 29-07-2014 a las 11:51:05
+-- Tiempo de generación: 29-07-2014 a las 12:08:15
 -- Versión del servidor: 5.5.37-0ubuntu0.13.10.1
 -- Versión de PHP: 5.5.3-1ubuntu2.6
 
@@ -19,6 +19,22 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `pisado`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comentario`
+--
+
+CREATE TABLE IF NOT EXISTS `comentario` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_pisado` int(11) NOT NULL,
+  `nia` int(9) NOT NULL,
+  `nombre` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `date` datetime NOT NULL,
+  `text` text COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
