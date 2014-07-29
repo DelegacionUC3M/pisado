@@ -1,0 +1,24 @@
+<?php
+
+function __autoload($class) {
+
+	if(file_exists('app/controllers/'.$class.'.php')) {
+		include ('app/controllers/'.$class.'.php');
+	}
+	else if (file_exists('app/models/'.$class.'.php')) {
+		include ('app/models/'.$class.'.php');
+	}
+	else if (file_exists('app/views/'.$class.'.php')) {
+		include ('app/views/'.$class.'.php');
+	}
+
+	if(!class_exists($class)) {
+		errorController::index();
+	}
+}
+
+$controller = (isset($_GET['c']) && !empty($_GET['c'])) ? $_GET['c'].'Controller' : 'inicioController';
+$action = (isset($_GET['a']) && !empty($_GET['a'])) ? $_GET['a'] : 'index';
+
+$load = new $controller();
+$load->$action();
