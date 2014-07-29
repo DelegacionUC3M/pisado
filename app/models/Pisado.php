@@ -43,11 +43,15 @@ class Pisado {
 		        	$pisados[] = $pisado;
 		        }
 	    	}
-
-	    	return $pisados;
-		} else if ($db->count() > 1) {
-			return NULL;
+		} else if ($db->count() == 1) {
+			foreach($db->data() $key => $value){
+				$pisado = new Pisado;
+	        	$pisado->{$key} = $value;
+	        	$pisados[] = $pisado;
+	    	}
 		}
+
+		return $pisados;
 	}
 
 }
