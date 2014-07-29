@@ -17,6 +17,7 @@ function __autoload($class) {
 	if(!class_exists($class)) {
 		errorController::index();
 	}
+	
 }
 
 $controller = (isset($_GET['c']) && !empty($_GET['c'])) ? $_GET['c'].'Controller' : 'inicioController';
