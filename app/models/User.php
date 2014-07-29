@@ -28,4 +28,21 @@ class User {
         $this->titulacion = ucwords(strtolower($titulacion));
 	}
 
+		public static findDestinatarios($curso,$id_titulacion) {
+		$db = new DB;
+		$db->run("SELECT nia FROM /*DBdelegados.Personas*/ WHERE curso=? AND id_titulacion=?", array($curso,$id_titulacion));
+
+		$destinatarios = array();
+		foreach($db->data() as $nia){
+	        $destinatarios[] = $nia;
+		}
+		$db->run("SELECT nia FROM /*DBdelegados.Personas*/ INNER JOIN /*DBdelegados.Delegados*/ ON id_titulacion=?
+			AND del_titulacion NOT NULL AND (cargo='delegado' OR cargo='subdelegado')"
+			, array($id_titulacion));
+		foreach ($db->data() as $nia) {
+			$destinatarios[] = $nia;
+		}
+
+		return $destinatarios;
+	}
 }
