@@ -12,9 +12,8 @@
  * @package Includes
  */
 // REQUIRES
-require_once dirname(__FILE__) . '/../config.php';
-require_once ABSPATH . '/lib/ldap/ldap_api.php';
-include_once ABSPATH . '/lib/ldap/ldap_exception.php';
+require_once 'ldap/ldap_api.php';
+include_once 'ldap/ldap_exception.php';
 /**
  * LDAP_Gateway
  * Provides a gateway for LDAP operations.
