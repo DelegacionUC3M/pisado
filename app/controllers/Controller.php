@@ -2,7 +2,7 @@
 
 class Controller {
 	
-	public security($redirect = true) {
+	public function security($redirect = true) {
 		session_start();
 
 		if(!isset($_SESSION['user']) && $redirect==false) {
@@ -15,7 +15,7 @@ class Controller {
 		return true;
 	}
 
-	public render($view, $data = array()) {
+	public function render($view, $data = array()) {
 		if(!empty($data)) {
 			extract($data);
 		}
@@ -25,7 +25,7 @@ class Controller {
 		include '../views/footer.php';
 	}
 
-	public sendmail($destinatario) {
+	public function sendmail($destinatario) {
 		$titulo = 'Confirmacion de envio de P.I.S.A.D.O.';
 		$cuerpo = '<html><body>
 		<p style="font-size: 1.5em;">Su solicitud de P.I.S.A.D.O. se ha realizado con &eacute;xito</p>
@@ -47,7 +47,7 @@ class Controller {
 		mail($destinatario, $titulo, $cuerpo, $cabeceras);
 	}
 
-	public sendmailComentario($destinatario, $pisado) {
+	public function sendmailComentario($destinatario, $pisado) {
 		$titulo = '¡Tienes un nuevo comentario en un P.I.S.A.D.O.';
 		$cuerpo = '<html><body>
 		<p style="font-size: 1.5em;">Tienes un comentario sin leer en uno de tus pisados. Revisa cuando puedas la aplicacion
@@ -79,7 +79,7 @@ class Controller {
 		mail($destinatario, $titulo, $cuerpo, $cabeceras);
 	}
 
-	public sendmailPisado($destinatario, $pisado) {
+	public function sendmailPisado($destinatario, $pisado) {
 		$titulo = '¡Hay un nuevo P.I.S.A.D.O. para ti';
 		$cuerpo = '<html><body>
 		<p style="font-size: 1.5em;">Tienes un P.I.S.A.D.O. sin leer. Revisa cuando puedas la aplicacion para ver de que se
