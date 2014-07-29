@@ -36,5 +36,4 @@ class Comentario {
 		return $db->run('INSERT INTO comentario (id_pisado, nia, nombre, date, text) VALUES (?, ?, ?, NOW(), ?)'
 						, array($id_pidado, $nia, $nombre, $text));
 	}
-
 }
