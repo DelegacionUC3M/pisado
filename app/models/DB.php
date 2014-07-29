@@ -28,17 +28,8 @@ class DB {
 	}
 
 	// Counts the number of rows of the data returned
-	public function rowCount() {
+	public function count() {
 		return $this->stmt->rowCount();
 	}
 
-	// Returns the ID of the last inserted row
-	public function lastInsertId() {
-		return $this->lastInsertId();
-	}
-
-	// Liberates the statement produced by run()
-	public function free() {
-		$this->stmt->closeCursor();
-	}
 }
