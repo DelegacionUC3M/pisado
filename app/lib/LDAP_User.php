@@ -12,7 +12,7 @@
  * @package Includes
  */
 // REQUIRES
-include_once ABSPATH . '/app/lib/ldap/ldap_exception.php';
+include_once 'ldap/ldap_exception.php';
 /**
  * LDAP_User
  * Represents an LDAP user. This class cannot be directly instantiated, a child
@@ -115,12 +115,5 @@ class LDAP_User
     public function setRol ($rol)
     {
         $this->rol = $rol;
-    }
-
-    public function getTitulacion() {
-        $ldap = explode(',', $this->dn);
-        $titulacion = str_replace("ou=",'',$ldap[1]);
-        return ucwords (strtolower($titulacion));
-    }
-    
+    }    
 }
