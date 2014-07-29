@@ -47,7 +47,7 @@ class Controller {
 		mail($destinatario, $titulo, $cuerpo, $cabeceras);
 	}
 
-	public function sendmailComentario($destinatario, $pisado) {
+	public function sendmailComentario($destinatarios, $pisado) {
 		$titulo = '¡Tienes un nuevo comentario en un P.I.S.A.D.O.';
 		$cuerpo = '<html><body>
 		<p style="font-size: 1.5em;">Tienes un comentario sin leer en uno de tus pisados. Revisa cuando puedas la aplicacion
@@ -75,11 +75,19 @@ class Controller {
 	    $cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 	    $cabeceras .= 'From: delegest@gmail.com' . "\r\n" . 
 	      	'Reply-To: delegest@gmail.com' . "\r\n";
+	    $destinatario = '';
+	    foreach ($destinatarios as $mail) {
+	    	if($mail==end($destinatarios)) {
+	    		$destinatario .= $mail;
+	    	} else {
+	    		$destinatario .= $mail.', ';
+	    	}
+	    }
 
 		mail($destinatario, $titulo, $cuerpo, $cabeceras);
 	}
 
-	public function sendmailPisado($destinatario, $pisado) {
+	public function sendmailPisado($destinatarios, $pisado) {
 		$titulo = '¡Hay un nuevo P.I.S.A.D.O. para ti';
 		$cuerpo = '<html><body>
 		<p style="font-size: 1.5em;">Tienes un P.I.S.A.D.O. sin leer. Revisa cuando puedas la aplicacion para ver de que se
@@ -107,6 +115,14 @@ class Controller {
 	    $cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 	    $cabeceras .= 'From: delegest@gmail.com' . "\r\n" . 
 	      	'Reply-To: delegest@gmail.com' . "\r\n";
+	    $destinatario = '';
+	    foreach ($destinatarios as $mail) {
+	    	if($mail==end($destinatarios)) {
+	    		$destinatario .= $mail;
+	    	} else {
+	    		$destinatario .= $mail.', ';
+	    	}
+	    }
 
 		mail($destinatario, $titulo, $cuerpo, $cabeceras);
 	}
