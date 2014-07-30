@@ -28,7 +28,7 @@ class User {
         $this->titulacion = ucwords(strtolower($titulacion));
 	}
 
-		public static findDestinatarios($curso,$id_titulacion) {
+	public static function findDestinatarios($curso,$id_titulacion) {
 		$db = new DB;
 		$db->run("SELECT nia FROM /*DBdelegados.Personas*/ WHERE curso=? AND id_titulacion=?", array($curso,$id_titulacion));
 
