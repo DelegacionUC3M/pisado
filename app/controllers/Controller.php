@@ -4,13 +4,13 @@ class Controller {
 	
 	public function security($redirect = true) {
 		session_start();
-		
+
 		if (isset($_SESSION['user']) && isset($_SESSION['user']->nia) && !empty($_SESSION['user']->nia)) {
 			return true;
 		}
 
 		if ($redirect) {
-			header('Location: inicio/login');
+			header('Location: inicio/login?url='.urlencode($_SERVER['REQUEST_URI']));
 		}
 
 		return false;
