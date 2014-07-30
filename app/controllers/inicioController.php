@@ -23,7 +23,11 @@ class inicioController extends Controller {
 						$user = new User($ldap->getUserId(),$ldap->getUserNameFormatted(),$ldap->getUserMail(),$ldap->getDn());
 						$_SESSION['user'] = $user;
 
-						$this->panel();
+						if (isset($_GET['url'])) {
+							header('Location: '.$_GET['url']);
+						} else {
+							header('Location: inicio');
+						}
 					} else {
 						$error = 'Usuario o contraseña incorrecto.';
 						$this->render('login', array('error'=>$error));
@@ -48,25 +52,25 @@ class inicioController extends Controller {
 	}
 
 	function panel() {
-		if ($this->security()) {
-			$user = $_SESSION['user'];
-			$pisados = Pisado::findByNia($user->nia);
-			$delegacion = array();
-			
-			if ($user->isDelegado) {
+		$this->security();
+		
+		$user = $_SESSION['user'];
+		$pisados = Pisado::findByNia($user->nia);
+		$delegacion = array();
+		
+		if ($user->isDelegado) {
 
-				if ($user->isDelegadoEscuela) {
-					$delegacion = Pisado::findAll();
-				} else if ($user->isDelegadoTitulacion) {
-					$delegacion = Pisado::findByTitulacion($user->id_titulacion);
-				} else {
-					$delegacion = Pisado::findByCurso($user->curso,$user->id_titulacion);
-				}
-
+			if ($user->isDelegadoEscuela) {
+				$delegacion = Pisado::findAll();
+			} else if ($user->isDelegadoTitulacion) {
+				$delegacion = Pisado::findByTitulacion($user->id_titulacion);
+			} else {
+				$delegacion = Pisado::findByCurso($user->curso,$user->id_titulacion);
 			}
 
-			$this->render('panel', array($pisados,$delegacion));
 		}
+
+		$this->render('panel', array($pisados,$delegacion));
 	}
 	
 }
