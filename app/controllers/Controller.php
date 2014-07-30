@@ -4,15 +4,16 @@ class Controller {
 	
 	public function security($redirect = true) {
 		session_start();
-
-		if(!isset($_SESSION['user']) && $redirect==false) {
-			return false;
-		} else if( !isset($_SESSION['user']) || empty($_SESSION['user']->nia) ) {
-			header('Location: inicio/login');
-			return false;
+		
+		if (isset($_SESSION['user']) && isset($_SESSION['user']->nia) && !empty($_SESSION['user']->nia)) {
+			return true;
 		}
 
-		return true;
+		if ($redirect) {
+			header('Location: inicio/login');
+		}
+
+		return false;
 	}
 
 	public function render($view, $data = array()) {
