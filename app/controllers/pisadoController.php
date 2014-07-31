@@ -43,8 +43,11 @@ class pisadoController extends Controller {
 
 	function view() {
 		$this->security();
-		// $id = $_GET['id'];
-	
+		$id = (int) $_GET['id'];
+
+
+
+		$this->render('view', $data);
 	}
 
 	function comment() {

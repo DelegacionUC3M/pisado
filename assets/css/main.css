@@ -59,6 +59,10 @@ header a {
   width: 150px;
   display: inline-block;
 }
+.main #login p.error {
+  color: red;
+  font-weight: bold;
+}
 .main #panel a#rellenar {
   float: right;
   display: block;
