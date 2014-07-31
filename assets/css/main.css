@@ -82,6 +82,10 @@ header a {
 .main #panel .pisados h2 {
   border-bottom: 1px solid #006191;
 }
+.main #panel .pisados ul {
+  margin: 0;
+  padding: 0;
+}
 footer {
   margin: 40px 0 0;
   font-size: 0.8em;

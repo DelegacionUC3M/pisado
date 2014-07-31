@@ -29,9 +29,9 @@
                     <div id="user">
                         <?php if ($user) { ?>
                             <span>Hola, <?= $user->name; ?> |</span>
-                            <a href="inicio/logout">Salir</a>
+                            <a href="/pisado/inicio/logout">Salir</a>
                         <?php } else { ?>
-                            <a href="inicio/login">Entrar</a>
+                            <a href="/pisado/inicio/login">Entrar</a>
                         <?php } ?>
                     </div>
                 </div>
