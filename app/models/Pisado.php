@@ -66,23 +66,16 @@ class Pisado {
 	public static function findByCurso($curso,$id_titulacion) {
 		$db = new DB;
 		$db->run('SELECT * FROM pisado WHERE curso=? AND id_titulacion=? ORDER BY date', array($curso,$id_titulacion));
+		$data = $db->data();
 
 		$pisados = array();
-		if ($db->count() > 1) {
-			foreach($db->data() as $row){
-				foreach($row as $key => $value){
-					$pisado = new Pisado;
-		        	$pisado->{$key} = $value;
-		        	$pisados[] = $pisado;
-		        }
-	    	}
-		} else if ($db->count() == 1) {
-			foreach($db->data() as $key => $value){
-				$pisado = new Pisado;
+		foreach($data as $row){
+			$pisado = new Pisado;
+			foreach($row as $key => $value){
 	        	$pisado->{$key} = $value;
-	        	$pisados[] = $pisado;
-	    	}
-		}
+	        }
+	        $pisados[] = $pisado;
+    	}
 
 		return $pisados;
 	}
@@ -90,23 +83,16 @@ class Pisado {
 	public static function findAll() {
 		$db = new DB;
 		$db->run('SELECT * FROM pisado ORDER BY id_titulacion,date');
+		$data = $db->data();
 
 		$pisados = array();
-		if ($db->count() > 1) {
-			foreach($db->data() as $row){
-				foreach($row as $key => $value){
-					$pisado = new Pisado;
-		        	$pisado->{$key} = $value;
-		        	$pisados[] = $pisado;
-		        }
-	    	}
-		} else if ($db->count() == 1) {
-			foreach($db->data() as $key => $value){
-				$pisado = new Pisado;
+		foreach($data as $row){
+			$pisado = new Pisado;
+			foreach($row as $key => $value){
 	        	$pisado->{$key} = $value;
-	        	$pisados[] = $pisado;
-	    	}
-		}
+	        }
+	        $pisados[] = $pisado;
+    	}
 
 		return $pisados;
 	}

@@ -13,11 +13,11 @@
 			foreach ($pisados as $pisado) {
 				?>
 					<a href="/pisado/pisado/view/<?= $pisado->id ?>"><li>
-						<p><?= $pisado->getNameTitulacion() ?></p>
-						<p><?= $pisado->asignatura ?></p>
-						<p><?= $pisado->curso ?></p><p><?= $pisado->grupo ?></p>
-						<p><?= $pisado->date ?></p>
-					</li></a>
+							<p class="titulacion"><?= $pisado->getNameTitulacion() ?></p>
+							<p class="asignatura"><?= $pisado->asignatura ?></p>
+							<p class="curso"> <span>Curso</span> <?= $pisado->curso ?></p>
+							<p class="date"> <span>Fecha</span> <?= date('j/m/y' ,strtotime($pisado->date)) ?></p>
+						</li></a>
 				<?php
 			}
 		} else {
@@ -44,35 +44,10 @@
 				foreach ($otros as $pisado) {
 					?>
 						<a href="/pisado/pisado/view/<?= $pisado->id ?>"><li>
-							<p><?= $pisado->getNameTitulacion() ?></p>
-							<p><?= $pisado->asignatura ?></p>
-							<p><?= $pisado->curso ?></p><p><?= $pisado->grupo ?></p>
-							<p><?= $pisado->date ?></p>
-						</li></a>
-					<?php
-				}
-			}
-			?>
-
-			</ul>
-
-		<?php } else { ?>
-
-			<h2>PISADOS de <?= $user->titulacion ?></h2>
-
-			<p class="info">Puedes suscribirte a un PISADO para recibir información</p>
-
-			<ul>
-			<?php
-
-			if (count($otros) > 0) {
-				foreach ($otros as $pisado) {
-					?>
-						<a href="/pisado/pisado/view/<?= $pisado->id ?>"><li>
-							<p><?= $pisado->getNameTitulacion() ?></p>
-							<p><?= $pisado->asignatura ?></p>
-							<p><?= $pisado->curso ?></p><p><?= $pisado->grupo ?></p>
-							<p><?= $pisado->date ?></p>
+							<p class="titulacion"><?= $pisado->getNameTitulacion() ?></p>
+							<p class="asignatura"><?= $pisado->asignatura ?></p>
+							<p class="curso"> <span>Curso</span> <?= $pisado->curso ?></p>
+							<p class="date"> <span>Fecha</span> <?= date('j/m/y' ,strtotime($pisado->date)) ?></p>
 						</li></a>
 					<?php
 				}
@@ -82,6 +57,7 @@
 			</ul>
 
 		<?php } ?>
+
 	</article>
 
 </section>
