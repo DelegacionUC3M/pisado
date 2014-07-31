@@ -65,10 +65,10 @@ class pisadoController extends Controller {
 				}
 
 				if($comentario->save()) {
-					$data['verify'] = 'Su comentario ha sido guardado con exito.'
+					$data['verify'] = 'Su comentario ha sido guardado con exito.';
 				} else {
 					$data['error'] = 'Ha ocurrido un error con la base de datos. Por favor, pongase en contacto con el
-									 administrador de la aplicacion.'
+									 administrador de la aplicacion.';
 				}
 			}
 

@@ -70,7 +70,7 @@ class inicioController extends Controller {
 
 		}
 
-		$this->render('panel', array($pisados,$delegacion));
+		$this->render('panel', array('pisados'=>$pisados,'delegacion'=>$delegacion));
 	}
 	
 }

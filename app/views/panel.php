@@ -29,7 +29,7 @@ if ($user->isDelegado) { ?>
 
 	<h2>PISADOS que controlas</h2>
 
-	<?php if ($user->isDelegadoCurso()) { echo '<p>Para ver el autor del PISADO has de contactar con el delegado de titulación</p>'}?>
+	<?php if ($user->isDelegadoCurso()) { echo '<p>Para ver el autor del PISADO has de contactar con el delegado de titulación</p>';} ?>
 
 	<ul>
 	<?php

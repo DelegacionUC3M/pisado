@@ -11,4 +11,4 @@
 
 </ul>
 
-<a href="inicio/login">Entrar</a>
+<a href="/pisado/inicio/login">Entrar</a>
