@@ -85,9 +85,24 @@ header a {
 .main #panel .pisados ul {
   margin: 0;
   padding: 0;
+  list-style: none;
+}
+.main #panel .pisados ul li {
+  display: inline-block;
+  width: 20%;
+  border-radius: 4px;
+  margin: 5px;
+  box-sizing: border-box;
+  padding: 10px;
+  background: #97BDF6;
+  border: 2px solid #006191;
+  color: #000;
+}
+.main #panel .pisados ul li p {
+  margin: 0;
 }
 footer {
-  margin: 40px 0 0;
+  margin: 40px 0;
   font-size: 0.8em;
 }
 footer .wrapper {

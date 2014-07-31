@@ -32,23 +32,16 @@ class Pisado {
 	public static function findByNia($nia) {
 		$db = new DB;
 		$db->run('SELECT * FROM pisado WHERE nia=? ORDER BY date', array($nia));
+		$data = $db->data();
 
 		$pisados = array();
-		if ($db->count() > 1) {
-			foreach($db->data() as $row){
-				foreach($row as $key => $value){
-					$pisado = new Pisado;
-		        	$pisado->{$key} = $value;
-		        	$pisados[] = $pisado;
-		        }
-	    	}
-		} else if ($db->count() == 1) {
-			foreach($db->data() as $key => $value){
-				$pisado = new Pisado;
+		foreach($data as $row){
+			$pisado = new Pisado;
+			foreach($row as $key => $value){
 	        	$pisado->{$key} = $value;
-	        	$pisados[] = $pisado;
-	    	}
-		}
+	        }
+	        $pisados[] = $pisado;
+    	}
 
 		return $pisados;
 	}
@@ -56,23 +49,16 @@ class Pisado {
 	public static function findByIdTitulacion($id_titulacion) {
 		$db = new DB;
 		$db->run('SELECT * FROM pisado WHERE id_titulacion=? ORDER BY date', array($id_titulacion));
+		$data = $db->data();
 
 		$pisados = array();
-		if ($db->count() > 1) {
-			foreach($db->data() as $row){
-				foreach($row as $key => $value){
-					$pisado = new Pisado;
-		        	$pisado->{$key} = $value;
-		        	$pisados[] = $pisado;
-		        }
-	    	}
-		} else if ($db->count() == 1) {
-			foreach($db->data() as $key => $value){
-				$pisado = new Pisado;
+		foreach($data as $row){
+			$pisado = new Pisado;
+			foreach($row as $key => $value){
 	        	$pisado->{$key} = $value;
-	        	$pisados[] = $pisado;
-	    	}
-		}
+	        }
+	        $pisados[] = $pisado;
+    	}
 
 		return $pisados;
 	}
@@ -128,6 +114,11 @@ class Pisado {
 	public function save() {
 		$db = new DB;
 		return $db->run('INSERT INTO pisado (nia,correo,date,id_titulacion,curso,asignatura,grupo,profesor,texto) VALUES (?,?,NOW(),?,?,?,?,?,?)', array($this->nia,$this->email,$this->id_titulacion,$this->curso,$this->asignatura,$this->grupo,$this->profesor,$this->texto));
+	}
+
+	public function getNameTitulacion() {
+		// get titulacion from id titulacion
+		return 'Grado en Ingenieria Informática';
 	}
 
 }
