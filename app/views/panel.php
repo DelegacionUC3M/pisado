@@ -12,12 +12,12 @@
 		if (count($pisados) > 0) {
 			foreach ($pisados as $pisado) {
 				?>
-					<li>
+					<a href="/pisado/pisado/view/<?= $pisado->id ?>"><li>
 						<p><?= $pisado->getNameTitulacion() ?></p>
 						<p><?= $pisado->asignatura ?></p>
 						<p><?= $pisado->curso ?></p><p><?= $pisado->grupo ?></p>
 						<p><?= $pisado->date ?></p>
-					</li>
+					</li></a>
 				<?php
 			}
 		} else {
@@ -43,12 +43,12 @@
 			if (count($otros) > 0) {
 				foreach ($otros as $pisado) {
 					?>
-						<li>
+						<a href="/pisado/pisado/view/<?= $pisado->id ?>"><li>
 							<p><?= $pisado->getNameTitulacion() ?></p>
 							<p><?= $pisado->asignatura ?></p>
 							<p><?= $pisado->curso ?></p><p><?= $pisado->grupo ?></p>
 							<p><?= $pisado->date ?></p>
-						</li>
+						</li></a>
 					<?php
 				}
 			}
@@ -68,12 +68,12 @@
 			if (count($otros) > 0) {
 				foreach ($otros as $pisado) {
 					?>
-						<li>
+						<a href="/pisado/pisado/view/<?= $pisado->id ?>"><li>
 							<p><?= $pisado->getNameTitulacion() ?></p>
 							<p><?= $pisado->asignatura ?></p>
 							<p><?= $pisado->curso ?></p><p><?= $pisado->grupo ?></p>
 							<p><?= $pisado->date ?></p>
-						</li>
+						</li></a>
 					<?php
 				}
 			}
