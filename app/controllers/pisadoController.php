@@ -27,7 +27,7 @@ class pisadoController extends Controller {
 					$destinatarios = User::findDestinatarios($pisado->curso, $pisado->id_titulacion);
 					$this->sendmailPisado($destinatarios, $pisado);
 				} else {
-					$data['error'] => 'Ha ocurrido un erro con la base de datos, por favor pongase en contacto con el
+					$data['error'] => 'Ha ocurrido un error con la base de datos, por favor pongase en contacto con el
 					 administrador del sistema.';
 				}
 
@@ -42,12 +42,19 @@ class pisadoController extends Controller {
 	}
 
 	function view() {
+		$this->security();
 		// $id = $_GET['id'];
 	
 	}
 
 	function comment() {
+		$this->security();
 
+		if(isset($_POST['id_pisado']) && isset($_POST['nia']) && isset($_POST['nombre']) && isset($_POST['text'])) {
+
+		} else {
+			$this->render('view');
+		}
 		// send mail 
 	}
 
