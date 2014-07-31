@@ -19,12 +19,18 @@
         <![endif]-->
 
         <header>
-            <h1>PISADO</h1>
+            <div class="wrapper">
 
-            <?php if ($user) { ?>
-                <span>Hola, <?= $user->name; ?></span>
-                <a href="inicio/logout">Salir</a>
-            <?php } ?>
+                <a href="http://delegacion.uc3m.es"> <img src="/pisado/assets/img/delegacion.png" /> </a>
+                <h1>PISADO</h1>
+
+                div
+                <?php if ($user) { ?>
+                    <span>Hola, <?= $user->name; ?></span>
+                    <a href="inicio/logout">Salir</a>
+                <?php } ?>
+
+            </div>
         </header>
 
-        <div class="main">
+        <div class="main wrapper">
