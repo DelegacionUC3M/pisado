@@ -22,17 +22,17 @@ class pisadoController extends Controller {
 				$pisado->texto = $_POST['texto'];
 
 				if($pisado->save()) {
-					$data['verify'] => 'El registro del pisado se ha realizado con exito.';
+					$data['verify'] = 'El registro del pisado se ha realizado con exito.';
 					$this->sendmail($pisado->nia);
 					$destinatarios = User::findDestinatarios($pisado->curso, $pisado->id_titulacion);
 					$this->sendmailPisado($destinatarios, $pisado);
 				} else {
-					$data['error'] => 'Ha ocurrido un error con la base de datos, por favor pongase en contacto con el
+					$data['error'] = 'Ha ocurrido un error con la base de datos, por favor pongase en contacto con el
 					 administrador del sistema.';
 				}
 
 			} else {
-				$data['error'] => 'Debes rellenar todos los campos.';
+				$data['error'] = 'Debes rellenar todos los campos.';
 			}
 
 			$this->render('create', $data);
@@ -50,8 +50,29 @@ class pisadoController extends Controller {
 	function comment() {
 		$this->security();
 
-		if(isset($_POST['id_pisado']) && isset($_POST['nia']) && isset($_POST['nombre']) && isset($_POST['text'])) {
+		if(isset($_POST['id_pisado']) && isset($_POST['text'])) {
+			$data = array();
+			if(empty($_POST['text'])) {
+				$data['error'] = 'Debes introducir texto en tu comentario';
+			} else {
+				$comentario = new Comentario;
 
+				$comentario->id_pisado = $_POST['id_pisado'];
+				$comentario->nia = $_SESSION['user']->nia;
+				$comentario->text = $_POST['text'];
+				if($user->isDelegado == true) {
+					$comentario->nombre = $_SESSION['user']->name;
+				}
+
+				if($comentario->save()) {
+					$data['verify'] = 'Su comentario ha sido guardado con exito.'
+				} else {
+					$data['error'] = 'Ha ocurrido un error con la base de datos. Por favor, pongase en contacto con el
+									 administrador de la aplicacion.'
+				}
+			}
+
+			$this->render('view', $data);
 		} else {
 			$this->render('view');
 		}
