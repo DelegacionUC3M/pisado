@@ -93,13 +93,32 @@ header a {
   border-radius: 4px;
   margin: 5px;
   box-sizing: border-box;
-  padding: 10px;
   background: #97BDF6;
   border: 2px solid #006191;
   color: #000;
 }
 .main #panel .pisados ul li p {
   margin: 0;
+  padding: 4px;
+}
+.main #panel .pisados ul li p.titulacion {
+  font-size: 0.7em;
+  text-align: center;
+}
+.main #panel .pisados ul li p.asignatura {
+  font-weight: bold;
+  background: #006191;
+  color: #EDEFF2;
+  height: 2em;
+}
+.main #panel .pisados ul li p.curso,
+.main #panel .pisados ul li p.date {
+  text-align: right;
+}
+.main #panel .pisados ul li p.curso span,
+.main #panel .pisados ul li p.date span {
+  float: left;
+  font-weight: bold;
 }
 footer {
   margin: 40px 0;

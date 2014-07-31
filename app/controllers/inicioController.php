@@ -60,8 +60,10 @@ class inicioController extends Controller {
 		
 		if ($user->isDelegadoEscuela()) {
 			$otros = Pisado::findAll();
-		} else {
+		} else if ($user->isDelegadoTitulacion()) {
 			$otros = Pisado::findByIdTitulacion($user->id_titulacion);
+		} else if ($user->isDelegadoCurso()) {
+			$otros = Pisado::findByCurso($user->curso,$user->id_titulacion);
 		}
 
 		$this->render('panel', array('pisados'=>$pisados,'otros'=>$otros));

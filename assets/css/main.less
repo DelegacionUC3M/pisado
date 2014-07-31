@@ -110,13 +110,34 @@ header {
 					border-radius: 4px;
 					margin: 5px;
 					box-sizing: border-box;
-					padding: 10px;
 					background: #97BDF6;
 					border: 2px solid #006191;
 					color: #000;
 
 					p {
 						margin: 0;
+						padding: 4px;
+
+						&.titulacion {
+							font-size: 0.7em;
+							text-align: center;
+						}
+
+						&.asignatura {
+							font-weight: bold;
+							background: #006191;
+							color: #EDEFF2;
+							height: 2em;
+						}
+
+						&.curso, &.date {
+							text-align: right;
+
+							span {
+								float: left;
+								font-weight: bold;
+							}
+						}
 					}
 				}
 			}
