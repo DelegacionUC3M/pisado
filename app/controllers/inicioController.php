@@ -29,7 +29,7 @@ class inicioController extends Controller {
 							header('Location: /pisado/inicio');
 						}
 					} else {
-						$error = 'Usuario o contraseña incorrecto.';
+						$error = 'Usuario o contraseña incorrecto';
 						$this->render('login', array('error'=>$error));
 					}
 
