@@ -43,7 +43,7 @@ class Pisado {
 		        }
 	    	}
 		} else if ($db->count() == 1) {
-			foreach($db->data() $key => $value){
+			foreach($db->data() as $key => $value){
 				$pisado = new Pisado;
 	        	$pisado->{$key} = $value;
 	        	$pisados[] = $pisado;

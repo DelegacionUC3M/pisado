@@ -9,7 +9,7 @@ class Controller {
 		}
 
 		if ($redirect) {
-			header('Location: inicio/login?url='.urlencode($_SERVER['REQUEST_URI']));
+			header('Location: /pisado/inicio/login?url='.urlencode($_SERVER['REQUEST_URI']));
 		}
 
 		return false;
@@ -21,6 +21,7 @@ class Controller {
 		}
 
 		$title = isset($title) ? $title : 'PISADO - Delegación UC3M';
+		$user = isset($_SESSION['user']) ? $_SESSION['user'] : NULL;
 
 		include ABSPATH . 'app/views/header.php';
 		include ABSPATH . 'app/views/' . $view . '.php';
