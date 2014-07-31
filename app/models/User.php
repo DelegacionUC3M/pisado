@@ -11,7 +11,7 @@ class User {
 	// id_titulacion (DB of delegados) differs from titulacion (LDAP)
 	public $id_titulacion;
 	public $curso;
-	private $role;
+	public $role;
 
 	public function __construct($nia,$name,$email,$dn) {
 		$this->nia = $nia;
@@ -37,8 +37,7 @@ class User {
 	        $destinatarios[] = $nia;
 		}
 		$db->run("SELECT nia FROM /*DBdelegados.Personas*/ INNER JOIN /*DBdelegados.Delegados*/ ON id_titulacion=?
-			AND del_titulacion NOT NULL AND (cargo='delegado' OR cargo='subdelegado')"
-			, array($id_titulacion));
+			AND del_titulacio", array($id_titulacion)); //Convertir a correo
 		foreach ($db->data() as $nia) {
 			$destinatarios[] = $nia;
 		}
