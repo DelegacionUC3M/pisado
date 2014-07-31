@@ -27,15 +27,15 @@ if (count($pisados) > 0) {
 
 if ($user->isDelegado) { ?>
 
-	<h2>PISADOS que controlas</h2>
+	<h2>Delegación</h2>
 
 	<?php if ($user->isDelegadoCurso()) { echo '<p>Para ver el autor del PISADO has de contactar con el delegado de titulación</p>';} ?>
 
 	<ul>
 	<?php
 
-	if (count($delegacion) > 0) {
-		foreach ($delegacion as $pisado) {
+	if (count($otros) > 0) {
+		foreach ($otros as $pisado) {
 			?>
 				<li>
 					<p><?= $pisado->getNameTitulacion() ?></p>
@@ -47,6 +47,31 @@ if ($user->isDelegado) { ?>
 		}
 	} else {
 		echo 'No controlas ningún PISADO...';
+	}
+	?>
+
+	</ul>
+
+<?php } else { ?>
+
+	<h2>PISADOS de <?= $user->titulacion ?></h2>
+
+	<p>Puedes suscribirte para recibir información del estado del PISADO</p>
+
+	<ul>
+	<?php
+
+	if (count($otros) > 0) {
+		foreach ($otros as $pisado) {
+			?>
+				<li>
+					<p><?= $pisado->getNameTitulacion() ?></p>
+					<p><?= $pisado->asignatura ?></p>
+					<p><?= $pisado->curso ?></p><p><?= $pisado->grupo ?></p>
+					<p><?= $pisado->date ?></p>
+				</li>
+			<?php
+		}
 	}
 	?>
 

@@ -11,7 +11,7 @@ class User {
 	// id_titulacion (DB of delegados) differs from titulacion (LDAP)
 	public $id_titulacion;
 	public $curso;
-	public $role;
+	public $rol = 0;
 
 	public function __construct($nia,$name,$email,$dn) {
 		$this->nia = $nia;
@@ -19,9 +19,11 @@ class User {
 		$this->email = $email;
 
 		// Check in the database of delegados
-		// Get role.
+		// Get rol.
 		// Get id of titulacion
 		// Get curso
+			$this->id_titulacion = 1;
+		// 
 
 		$ldap = explode(',', $dn);
         $titulacion = str_replace("ou=",'',$ldap[1]);
@@ -44,4 +46,17 @@ class User {
 
 		return $destinatarios;
 	}
+
+	public function isDelegadoEscuela() {
+		return $this->rol == ROL_DELEGADO_ESCUELA;
+	}
+
+	public function isDelegadoTitulacion() {
+		return $this->rol == ROL_DELEGADO_TITULACION;
+	}
+
+	public function isDelegadoCurso() {
+		return $this->rol == ROL_DELEGADO_CURSO;
+	}
+
 }

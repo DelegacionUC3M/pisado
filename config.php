@@ -4,9 +4,9 @@
 define( 'ABSPATH', dirname(__FILE__) . '/' );
 
 /* Roles mas privilegios = un numero mas grande. */
-define('ROL_DELEGADO', 10);
-define('ROL_DELE_TITULACION', 50);
-define('ROL_DELE_ESCUELA', 100);
+define('ROL_DELEGADO_CURSO', 10);
+define('ROL_DELEGADO_TITULACION', 50);
+define('ROL_DELEGADO_ESCUELA', 100);
 
 // LDAP Parameters
 define('LDAP_HOST', 'ldaps://ldap.uc3m.es');

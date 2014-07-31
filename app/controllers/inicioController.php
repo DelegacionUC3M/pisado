@@ -56,21 +56,15 @@ class inicioController extends Controller {
 		
 		$user = $_SESSION['user'];
 		$pisados = Pisado::findByNia($user->nia);
-		$delegacion = array();
+		$otros = array();
 		
-		if ($user->isDelegado) {
-
-			if ($user->isDelegadoEscuela) {
-				$delegacion = Pisado::findAll();
-			} else if ($user->isDelegadoTitulacion) {
-				$delegacion = Pisado::findByTitulacion($user->id_titulacion);
-			} else {
-				$delegacion = Pisado::findByCurso($user->curso,$user->id_titulacion);
-			}
-
+		if ($user->isDelegadoEscuela()) {
+			$otros = Pisado::findAll();
+		} else {
+			$otros = Pisado::findByIdTitulacion($user->id_titulacion);
 		}
 
-		$this->render('panel', array('pisados'=>$pisados,'delegacion'=>$delegacion));
+		$this->render('panel', array('pisados'=>$pisados,'otros'=>$otros));
 	}
 	
 }
