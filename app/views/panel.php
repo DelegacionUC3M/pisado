@@ -1,80 +1,87 @@
-<h2>Mis pisados</h2>
+<section id="panel">
 
-<a href="pisado/create">Rellenar un PISADO</a>
+	<article class="pisados">
+		<h2 class="clear">Mis PISADOS
+			<a href="pisado/create" id="rellenar">Rellenar un PISADO</a>
+		</h2>
 
-<ul>
-<?php
 
-if (count($pisados) > 0) {
-	foreach ($pisados as $pisado) {
-		?>
-			<li>
-				<p><?= $pisado->getNameTitulacion() ?></p>
-				<p><?= $pisado->asignatura ?></p>
-				<p><?= $pisado->curso ?></p><p><?= $pisado->grupo ?></p>
-				<p><?= $pisado->date ?></p>
-			</li>
+		<ul>
 		<?php
-	}
-} else {
-	echo 'Aun no has rellenado ningún pisado...';
-}
-?>
 
-</ul>
-
-<?php
-
-if ($user->isDelegado) { ?>
-
-	<h2>Delegación</h2>
-
-	<?php if ($user->isDelegadoCurso()) { echo '<p>Para ver el autor del PISADO has de contactar con el delegado de titulación</p>';} ?>
-
-	<ul>
-	<?php
-
-	if (count($otros) > 0) {
-		foreach ($otros as $pisado) {
-			?>
-				<li>
-					<p><?= $pisado->getNameTitulacion() ?></p>
-					<p><?= $pisado->asignatura ?></p>
-					<p><?= $pisado->curso ?></p><p><?= $pisado->grupo ?></p>
-					<p><?= $pisado->date ?></p>
-				</li>
-			<?php
+		if (count($pisados) > 0) {
+			foreach ($pisados as $pisado) {
+				?>
+					<li>
+						<p><?= $pisado->getNameTitulacion() ?></p>
+						<p><?= $pisado->asignatura ?></p>
+						<p><?= $pisado->curso ?></p><p><?= $pisado->grupo ?></p>
+						<p><?= $pisado->date ?></p>
+					</li>
+				<?php
+			}
+		} else {
+			echo '<p class="info">Aun no has rellenado ningún pisado...</p>';
 		}
-	} else {
-		echo 'No controlas ningún PISADO...';
-	}
-	?>
+		?>
 
-	</ul>
+		</ul>
+	</article>
 
-<?php } else { ?>
+	<article class="pisados">
+		<?php
 
-	<h2>PISADOS de <?= $user->titulacion ?></h2>
+		if ($user->isDelegado) { ?>
 
-	<p>Puedes suscribirte para recibir información del estado del PISADO</p>
+			<h2>Delegación</h2>
 
-	<ul>
-	<?php
+			<?php if ($user->isDelegadoCurso()) { echo '<p class="info">Para ver el autor del PISADO has de contactar con el delegado de titulación</p>';} ?>
 
-	if (count($otros) > 0) {
-		foreach ($otros as $pisado) {
-			?>
-				<li>
-					<p><?= $pisado->getNameTitulacion() ?></p>
-					<p><?= $pisado->asignatura ?></p>
-					<p><?= $pisado->curso ?></p><p><?= $pisado->grupo ?></p>
-					<p><?= $pisado->date ?></p>
-				</li>
+			<ul>
 			<?php
-		}
-	}
-	?>
 
-	</ul>
+			if (count($otros) > 0) {
+				foreach ($otros as $pisado) {
+					?>
+						<li>
+							<p><?= $pisado->getNameTitulacion() ?></p>
+							<p><?= $pisado->asignatura ?></p>
+							<p><?= $pisado->curso ?></p><p><?= $pisado->grupo ?></p>
+							<p><?= $pisado->date ?></p>
+						</li>
+					<?php
+				}
+			}
+			?>
 
-<?php } ?>
+			</ul>
+
+		<?php } else { ?>
+
+			<h2>PISADOS de <?= $user->titulacion ?></h2>
+
+			<p class="info">Puedes suscribirte a un PISADO para recibir información</p>
+
+			<ul>
+			<?php
+
+			if (count($otros) > 0) {
+				foreach ($otros as $pisado) {
+					?>
+						<li>
+							<p><?= $pisado->getNameTitulacion() ?></p>
+							<p><?= $pisado->asignatura ?></p>
+							<p><?= $pisado->curso ?></p><p><?= $pisado->grupo ?></p>
+							<p><?= $pisado->date ?></p>
+						</li>
+					<?php
+				}
+			}
+			?>
+
+			</ul>
+
+		<?php } ?>
+	</article>
+
+</section>

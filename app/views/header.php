@@ -19,16 +19,22 @@
         <![endif]-->
 
         <header>
-            <div class="wrapper">
+            <div class="wrapper clear">
 
-                <a href="http://delegacion.uc3m.es"> <img src="/pisado/assets/img/delegacion.png" /> </a>
-                <h1>PISADO</h1>
+                <a href="http://delegacion.uc3m.es" target="_blank"> <img src="/pisado/assets/img/delegacion.png" /> </a>
 
-                div
-                <?php if ($user) { ?>
-                    <span>Hola, <?= $user->name; ?></span>
-                    <a href="inicio/logout">Salir</a>
-                <?php } ?>
+                <div id="right">
+                    <a href="/pisado/inicio"> <h1>PISADO</h1> </a>
+
+                    <div id="user">
+                        <?php if ($user) { ?>
+                            <span>Hola, <?= $user->name; ?> |</span>
+                            <a href="inicio/logout">Salir</a>
+                        <?php } else { ?>
+                            <a href="inicio/login">Entrar</a>
+                        <?php } ?>
+                    </div>
+                </div>
 
             </div>
         </header>

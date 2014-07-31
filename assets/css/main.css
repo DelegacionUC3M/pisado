@@ -1,16 +1,89 @@
 html {
-  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-family: "Trebuchet MS", Helvetica, Arial, Sans-serif;
   background: #EDEFF2;
 }
 .wrapper {
   max-width: 960px;
   margin: 0 auto;
 }
+input[type="text"],
+input[type="password"],
+textarea {
+  border: 1px solid #a0a0a0;
+  padding: 4px 6px;
+  border-radius: 3px;
+  outline: 0;
+}
+input[type="text"]:hover,
+input[type="password"]:hover,
+textarea:hover,
+input[type="text"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+  border: 1px solid #006191;
+}
 header {
   background: #97bdf6;
+  padding: 15px 0;
+  border-bottom: 5px solid #006191;
+}
+header h1 {
+  margin: 5px 0 0;
+  font-size: 2.7em;
+  color: #006191;
+}
+header img {
+  margin: 5px 0;
+}
+header #right {
+  float: right;
+  text-align: right;
+}
+header #user {
+  font-size: 0.95em;
+}
+header #user a {
+  color: #006191;
+}
+header #user a:hover {
+  text-decoration: underline;
+}
+header a {
+  outline: none;
+  text-decoration: none;
+}
+.main h2 {
+  color: #006191;
+}
+.main #login label {
+  width: 150px;
+  display: inline-block;
+}
+.main #panel a#rellenar {
+  float: right;
+  display: block;
+  background: #006191;
+  color: #EDEFF2;
+  font-weight: bold;
+  padding: 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+.main #panel p.info {
+  font-style: italic;
+  font-size: 0.8em;
+  margin: 2px 0;
+}
+.main #panel .pisados {
+  margin-bottom: 50px;
+}
+.main #panel .pisados h2 {
+  border-bottom: 1px solid #006191;
 }
 footer {
-  margin: 20px 0 0;
+  margin: 40px 0 0;
   font-size: 0.8em;
 }
 footer .wrapper {
