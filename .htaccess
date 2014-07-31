@@ -4,17 +4,34 @@ RewriteEngine on
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{QUERY_STRING} (.*)
 
-RewriteRule ^(.*)/(.*)/$ /?c=$1&a=$2 
-
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-
-RewriteRule ^(.*)/(.*)$ /?c=$1&a=$2 
+RewriteRule ^(.*)/(.*)/([0-9]+)/$ ?c=$1&a=$2&id=$3&%1
 
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{QUERY_STRING} (.*)
 
-RewriteRule ^(.*)$ /?c=$1
+RewriteRule ^(.*)/(.*)/([0-9]+)$ ?c=$1&a=$2&id=$3&%1
+
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{QUERY_STRING} (.*)
+
+RewriteRule ^(.*)/(.*)/$ ?c=$1&a=$2&%1
+
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{QUERY_STRING} (.*)
+
+RewriteRule ^(.*)/(.*)$ ?c=$1&a=$2&%1
+
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{QUERY_STRING} (.*)
+
+RewriteRule ^(.*)$ ?c=$1&%1

@@ -13,7 +13,7 @@ class Pisado {
 	public $profesor;
 	public $texto;
 
-	public static findById($id) {
+	public static function findById($id) {
 		$db = new DB;
 		$db->run('SELECT * FROM pisado WHERE id=?', array($id));
 
@@ -29,7 +29,7 @@ class Pisado {
 		}
 	}
 
-	public static findByNia($nia) {
+	public static function findByNia($nia) {
 		$db = new DB;
 		$db->run('SELECT * FROM pisado WHERE nia=? ORDER BY date', array($nia));
 
@@ -53,7 +53,7 @@ class Pisado {
 		return $pisados;
 	}
 
-	public static findByIdTitulacion($id_titulacion) {
+	public static function findByIdTitulacion($id_titulacion) {
 		$db = new DB;
 		$db->run('SELECT * FROM pisado WHERE id_titulacion=? ORDER BY date', array($id_titulacion));
 
@@ -77,7 +77,7 @@ class Pisado {
 		return $pisados;
 	}
 
-	public static findByCurso($curso,$id_titulacion) {
+	public static function findByCurso($curso,$id_titulacion) {
 		$db = new DB;
 		$db->run('SELECT * FROM pisado WHERE curso=? AND id_titulacion=? ORDER BY date', array($curso,$id_titulacion));
 
@@ -101,7 +101,7 @@ class Pisado {
 		return $pisados;
 	}
 
-	public static findAll() {
+	public static function findAll() {
 		$db = new DB;
 		$db->run('SELECT * FROM pisado ORDER BY id_titulacion,date');
 
@@ -125,7 +125,7 @@ class Pisado {
 		return $pisados;
 	}
 
-	public save() {
+	public function save() {
 		$db = new DB;
 		return $db->run('INSERT INTO pisado (nia,correo,date,id_titulacion,curso,asignatura,grupo,profesor,texto) VALUES (?,?,NOW(),?,?,?,?,?,?)', array($this->nia,$this->email,$this->id_titulacion,$this->curso,$this->asignatura,$this->grupo,$this->profesor,$this->texto));
 	}

@@ -15,8 +15,8 @@
  */
 
 // REQUIRES AND INCLUDES
-require_once ABSPATH . '/includes/ldap_user.php';
-include_once ABSPATH . '/lib/ldap/ldap_exception.php';
+require_once ABSPATH . 'app/lib/ldap_user.php';
+include_once ABSPATH . 'app/lib/ldap/ldap_exception.php';
 
 /**
  * LDAP_Api
@@ -140,8 +140,6 @@ class LDAP_Api {
 		// Searches for LDAP user.
 		$results = $this->search ( $this->ldap_idfield . '=' . $userid, $this->ldap_fields );
 
-		print_r($results);
-		
 		// The user is not found in the directory.
 		if ($results == NULL) {
 			return false;

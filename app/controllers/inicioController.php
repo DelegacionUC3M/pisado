@@ -12,12 +12,12 @@ class inicioController extends Controller {
 
 	function login() {
 		if ($this->security(false)) {
-			$this->panel();
+			header('Location: /pisado/inicio');
 		} else {
 
 			if (isset($_POST['nia']) && isset($_POST['password'])) {
 				try {
-					$ldap = LDAP_Gateway::login($user_name, $user_password);
+					$ldap = LDAP_Gateway::login($_POST['nia'], $_POST['password']);
 
 					if ($ldap) {
 						$user = new User($ldap->getUserId(),$ldap->getUserNameFormatted(),$ldap->getUserMail(),$ldap->getDn());
@@ -26,7 +26,7 @@ class inicioController extends Controller {
 						if (isset($_GET['url'])) {
 							header('Location: '.$_GET['url']);
 						} else {
-							header('Location: inicio');
+							header('Location: /pisado/inicio');
 						}
 					} else {
 						$error = 'Usuario o contraseña incorrecto.';
@@ -48,7 +48,7 @@ class inicioController extends Controller {
 		session_start();
 		session_destroy();
    		session_regenerate_id(true);
-		header('Location: inicio');
+		header('Location: /pisado/inicio');
 	}
 
 	function panel() {

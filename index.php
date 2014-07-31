@@ -2,7 +2,11 @@
 
 require_once('config.php');
 
+session_start();
+
 function __autoload($class) {
+
+	str_replace(array('.', '/'), '' , $class);
 
 	if (file_exists('app/controllers/'.$class.'.php')) {
 		include ('app/controllers/'.$class.'.php');

@@ -3,7 +3,6 @@
 class Controller {
 	
 	public function security($redirect = true) {
-		session_start();
 
 		if (isset($_SESSION['user']) && isset($_SESSION['user']->nia) && !empty($_SESSION['user']->nia)) {
 			return true;
@@ -20,6 +19,8 @@ class Controller {
 		if(!empty($data)) {
 			extract($data);
 		}
+
+		$title = isset($title) ? $title : 'PISADO - Delegación UC3M';
 
 		include ABSPATH . 'app/views/header.php';
 		include ABSPATH . 'app/views/' . $view . '.php';
