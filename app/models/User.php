@@ -48,15 +48,15 @@ class User {
 	}
 
 	public function isDelegadoEscuela() {
-		return $this->rol == ROL_DELEGADO_ESCUELA;
+		return $this->rol >= ROL_DELEGADO_ESCUELA;
 	}
 
 	public function isDelegadoTitulacion() {
-		return $this->rol == ROL_DELEGADO_TITULACION;
+		return $this->rol >= ROL_DELEGADO_TITULACION;
 	}
 
 	public function isDelegadoCurso() {
-		return $this->rol == ROL_DELEGADO_CURSO;
+		return $this->rol >= ROL_DELEGADO_CURSO;
 	}
 
 }
