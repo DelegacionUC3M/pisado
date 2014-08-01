@@ -21,17 +21,3 @@
         <script src="/pisado/assets/js/main.js"></script>
     </body>
 </html>
-
-<div style="float:left;"><a href="http://delegacion.uc3m.es/"
-            title="Ir al portal de Delegación de Estudiantes" target="_blank"><img
-            src="<?php echo URL_BASE?>images/logoHorizontal.png"
-            alt="Delegación de Estudiantes UC3M"></a></div>
-    <div style="float:right;padding-top:5px;"><b>¡Encuentranos!</b></br>
-            <b>En Twitter: </b><a href="https://twitter.com/DelegacionEPS" target="_blank">EPS</a> 
-            <a href="https://twitter.com/delegageuc3m" target="_blank">CCSSJJ</a> 
-            <a href="https://twitter.com/delegahcd" target="_blank">HHDC</a> 
-            <a href="https://twitter.com/DelePostUC3M" target="_blank">Postgrado</a> </br>
-            <b>En Facebook: </b><a href="https://www.facebook.com/delegacioneps?fref=ts" target="_blank">EPS</a> 
-            <a href="https://www.facebook.com/delegacion.estudiantesccssjj" target="_blank">CCSSJJ</a></br>
-            <b>En nuestro despacho:</b> 1.0.H01 (Leganes)    2.0.01 (Getafe, CCSSJJ)</br>    
-                17.1.03-B (Getafe, HHDC)    2.1.20 (Colmenarejo)     11.0.15 (Getafe, Postgrado)</div>

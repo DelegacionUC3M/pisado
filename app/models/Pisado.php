@@ -99,12 +99,17 @@ class Pisado {
 
 	public function save() {
 		$db = new DB;
-		return $db->run('INSERT INTO pisado (nia,correo,date,id_titulacion,curso,asignatura,grupo,profesor,texto) VALUES (?,?,NOW(),?,?,?,?,?,?)', array($this->nia,$this->email,$this->id_titulacion,$this->curso,$this->asignatura,$this->grupo,$this->profesor,$this->texto));
+		return $db->run('INSERT INTO pisado (nia,email,date,id_titulacion,curso,asignatura,grupo,profesor,texto) VALUES (?,?,NOW(),?,?,?,?,?,?)', array($this->nia,$this->email,$this->id_titulacion,$this->curso,$this->asignatura,$this->grupo,$this->profesor,$this->texto));
 	}
 
 	public function getNameTitulacion() {
 		// get titulacion from id titulacion
-		return 'Grado en Ingenieria Informática';
+		$tit = '';
+		switch($this->id_titulacion) {
+			case 1: $tit = 'Grado en Ingenieria Informatica'; break;
+			default: $tit = 'No se ha encontrado esa titulacion'; break;
+		}
+		return $tit;
 	}
 
 }
