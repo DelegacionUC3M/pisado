@@ -10,27 +10,31 @@ class pisadoController extends Controller {
 			$data = array();
 			if(!empty($_POST['titulacion']) && !empty($_POST['asignatura']) && !empty($_POST['curso'])
 				&& !empty($_POST['grupo']) && !empty($_POST['profesor']) && !empty($_POST['texto'])) {
-				$pisado = new Pisado;
+				if(is_numeric($_POST['grupo'])) {	
+					$pisado = new Pisado;
 
-				$pisado->nia = $_SESSION['user']->nia;
-				$pisado->email = $_SESSION['user']->email;
-				$pisado->id_titulacion = $_POST['titulacion'];
-				$pisado->asignatura = $_POST['asignatura'];
-				$pisado->curso = $_POST['curso'];
-				$pisado->grupo = $_POST['grupo'];
-				$pisado->profesor = $_POST['profesor'];
-				$pisado->texto = $_POST['texto'];
+					$pisado->nia = $_SESSION['user']->nia;
+					$pisado->email = $_SESSION['user']->email;
+					$pisado->id_titulacion = $_POST['titulacion'];
+					$pisado->asignatura = $_POST['asignatura'];
+					$pisado->curso = $_POST['curso'];
+					$pisado->grupo = $_POST['grupo'];
+					$pisado->profesor = $_POST['profesor'];
+					$pisado->texto = $_POST['texto'];
 
-				if($pisado->save()) {
-					$data['verify'] = 'El registro del pisado se ha realizado con exito.';
-					$this->sendmail($pisado->nia);
-					$destinatarios = User::findDestinatarios($pisado->curso, $pisado->id_titulacion);
-					$this->sendmailPisado($destinatarios, $pisado);
+					$pisado->save(); //Lo comentado no se pone porque hay un problema al capturar la excepcion en DB
+					//if($pisado->save()) {
+						$data['verify'] = 'El registro del pisado se ha realizado con exito.';
+						$this->sendmail($pisado->nia);
+						$destinatarios = User::findDestinatarios($pisado->curso, $pisado->id_titulacion);
+						$this->sendmailPisado($destinatarios, $pisado);
+					/*} else {
+						$data['error'] = 'Ha ocurrido un error con la base de datos, por favor pongase en contacto con el
+						 administrador del sistema.';
+					}*/
 				} else {
-					$data['error'] = 'Ha ocurrido un error con la base de datos, por favor pongase en contacto con el
-					 administrador del sistema.';
+					$data['error'] = 'El grupo debe ser un numero.';
 				}
-
 			} else {
 				$data['error'] = 'Debes rellenar todos los campos.';
 			}
