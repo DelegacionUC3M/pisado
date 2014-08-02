@@ -19,7 +19,12 @@ class DB {
 	// Prepares and executes the queries
 	public function run($sql,$data = array()) {
 		$this->stmt = $this->db->prepare($sql);
-		$this->stmt->execute($data);
+		try {
+			$this->stmt->execute($data);
+			return true;
+		} catch {
+			return false;
+		}
 	}
 
 	// Returns an array with the data of the query
