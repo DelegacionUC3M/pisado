@@ -50,16 +50,16 @@ class pisadoController extends Controller {
 		$pisado = Pisado::findById($id);
 		$data = array();
 
-		if (($pisado->nia == $_SESSION['user']->nia) || (($pisado->id_titulacion == $_SESSION['user']->id_titulacion) 
+		if ($pisado && ($pisado->nia == $_SESSION['user']->nia) || (($pisado->id_titulacion == $_SESSION['user']->id_titulacion) 
 				&& $_SESSION['user']->isDelegadoCurso())) {//dentro de view hay que controlar que no muestre los datos.
 			$comentario = Comentario::findByIdpisado($id);
 			$data['pisado'] = $pisado;
 			$data['comment'] = $comentario;
-		} else {
-			$data['error'] = 'No tienes permiso para ver esto';
-		}
 
-		$this->render('view', $data);
+			$this->render('view', $data);
+		} else {
+			$this->render_error(401);
+		}
 	}
 
 	function comment() {
