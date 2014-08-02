@@ -20,7 +20,7 @@ class DB {
 	public function run($sql,$data = array()) {
 		$this->stmt = $this->db->prepare($sql);
 		//try { No captura bien la excepcion, revisar mas tarde, ahora es inestable.
-			$this->stmt->execute($data);
+		return $this->stmt->execute($data);
 			/*return true;
 		} catch(PDOException $e) {
 			return $e->getMessage();

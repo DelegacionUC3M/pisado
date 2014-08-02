@@ -19,7 +19,8 @@ class Pisado {
 
 		if ($db->count() > 0) {
 			$pisado = new Pisado;
-			foreach($db->data() as $key => $value){
+			$data = $db->data();
+			foreach ($data[0] as $key => $value){
 	        	$pisado->{$key} = $value;
 	    	}
 

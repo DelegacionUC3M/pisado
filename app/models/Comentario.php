@@ -11,13 +11,17 @@ class Comentario {
 		$db = new DB;
 		$db->run('SELECT * FROM comentario WHERE id_pisado=?',array($id_pis));
 
+		$data = $db->data();
+
 		$comentarios = array();
-		foreach ($db->data() as $row) {
+		foreach ($data as $row) {
+			$comentario = new Comentario;
+			
 			foreach ($row as $key => $value) {
-				$comentario = new Comentario;
 				$comentarios->{$key} = $value;
-				$comentarios[] = $comentarios;
 			}
+			
+			$comentarios[] = $comentarios;
 		}
 
 		return $comentarios;
@@ -25,7 +29,6 @@ class Comentario {
 
 	public function save() {
 		$db = new DB;
-		return $db->run('INSERT INTO comentario (id_pisado, nia, nombre, date, text) VALUES (?, ?, ?, NOW(), ?)'
-						, array($id_pidado, $nia, $nombre, $text));
+		return $db->run('INSERT INTO comentario (id_pisado, nia, nombre, date, text) VALUES (?, ?, ?, NOW(), ?)', array($id_pidado, $nia, $nombre, $text));
 	}
 }
