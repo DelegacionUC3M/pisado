@@ -59,4 +59,11 @@ class User {
 		return $this->rol >= ROL_DELEGADO_CURSO;
 	}
 
+	public function getDelegado() {
+		// get delegado titulacion from id_titulacion
+		$nombre = 'Axel Blanco';
+		$email = '100318104@alumnos.uc3m.es';
+		return array('nombre' => $nombre, 'email' => $email);
+	}
+
 }

@@ -16,7 +16,7 @@
 			ni por el destinatario de esta queja, solo por el/los delegados encargados.</p>
 		<ul>
 		<?php } else { ?>
-			<p class="info">El PISADO es anónimo. Los datos personales solo son accesibles por el delegado encargado como metodo de contacto.</p>
+			<p class="info">El PISADO es anónimo. Los datos personales solo son accesibles por el delegado encargado como metodo de contacto. Si necesitas más información ponte en contacto con <b><?= $user->getDelegado()['nombre'] ?> (<a href="mailto:<?= $user->getDelegado()['email'] ?>"><?= $user->getDelegado()['email'] ?></a>)</b> </p>
 		<?php } ?>
 
 	</article>
