@@ -1,7 +1,7 @@
 <section id="create">
 	<article class="cpisado">
 		<h2 class="clear">Crea un PISADO
-			<a href="pisado/" id="return">Volver a mis PISADO</a>
+			<a href="/pisado/" id="return">Volver a mis PISADO</a>
 		</h2>
 
 		<ul>
