@@ -25,8 +25,8 @@ class pisadoController extends Controller {
 					if($pisado->save()) {
 						$data['verify'] = 'El registro del pisado se ha realizado con exito.';
 						$this->sendmail($pisado->nia);
-						$destinatarios = User::findDestinatarios($pisado->curso, $pisado->id_titulacion);
-						$this->sendmailPisado($destinatarios, $pisado);
+					//	$destinatarios = User::findDestinatarios($pisado->curso, $pisado->id_titulacion);
+					//	$this->sendmailPisado($destinatarios, $pisado);
 					} else {
 						$data['error'] = 'Ha ocurrido un error con la base de datos, por favor pongase en contacto con el
 						 administrador del sistema.';
