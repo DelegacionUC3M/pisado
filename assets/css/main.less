@@ -57,6 +57,8 @@ header {
 }
 
 .main {
+	margin: 50px auto;
+
 	h2 {
 		color: #006191;
 		border-bottom: 1px solid #006191;
@@ -72,6 +74,7 @@ header {
 			text-decoration: none;
 			font-size: 12px;
 			margin-bottom: 5px;
+			margin-left: 5px;
 		}
 	}
 
@@ -184,67 +187,45 @@ header {
 
 	#create {
 
-		.cpisado {
-			margin-bottom: 50px;
-
-			h2 {
-				border-bottom: 1px solid #006191;
-			}
-			h1 {
-				text-align: center;
-				color: #006191;
-			}
-			p {
-				&.br {
-					text-align: center;
-					color: #C0C0C0;
-  					font-weight: bold;
-				}
-			}
-			ul {
-				margin: 0;
-				padding: 20px;
-				list-style: none;
-
-				span {
-					&.titulacion, &.asignatura, &.profesor {
-						float: left;
-					}
-					&.curso, &.grupo {
-						float: right;
-					}
-				}
-			}
-			input#submit {
-				margin-bottom: 50px;
-				text-align: center;
-			}
-
-		}
 	}
 
-	#view {
-
+	#view, #create {
 		
 		article {
+			margin-bottom: 15px;
+
+			&#informe, &#comentarios {
+				border-top: 1px dashed #a6b0be;
+			}
 
 			ul {
-				margin: 0;
-				padding: 20px;
+				padding: 0;
 				list-style: none;
 
-				span {
-					&.titulacion, &.asignatura, &.profesor {
-						float: left;
-					}
-					&.curso, &.grupo {
-						float: right;
+				li {
+					margin: 5px 0;
+					box-sizing: border-box;
+					display: inline-block;
+					vertical-align: top;
+					width: 50%;
+
+					&#texto {
+						width: 100%;
 					}
 				}
-			}
-			input#submit {
-				margin-bottom: 50px;
-				text-align: center;
+
+				span {
+					font-weight: bold;
+					text-transform: uppercase;
+					min-width: 130px;
+					display: inline-block;
+				}
+
+				p, textarea {
+					margin: 10px auto;
+					width: 90%;
+					resize: vertical;
+				}
 			}
 
 		}
@@ -253,12 +234,11 @@ header {
 }
 
 footer {
-	margin: 40px 0;
 	font-size: 0.8em;
 
 	.wrapper {
 		border-top: 1px solid #a6b0be;
-		padding: 20px 0 0;
+		padding: 20px 0;
 	}
 
 	p {
@@ -267,3 +247,11 @@ footer {
 }
 
 
+@media print {
+	body {
+		font-size: 12px;
+	}
+	header #user, h2, p.info, footer {
+		display: none;
+	}
+}

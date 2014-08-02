@@ -52,6 +52,9 @@ header a {
   outline: none;
   text-decoration: none;
 }
+.main {
+  margin: 50px auto;
+}
 .main h2 {
   color: #006191;
   border-bottom: 1px solid #006191;
@@ -67,6 +70,7 @@ header a {
   text-decoration: none;
   font-size: 12px;
   margin-bottom: 5px;
+  margin-left: 5px;
 }
 .main h3 {
   text-align: center;
@@ -150,65 +154,66 @@ header a {
   float: left;
   font-weight: bold;
 }
-.main #create .cpisado {
-  margin-bottom: 50px;
+.main #view article,
+.main #create article {
+  margin-bottom: 15px;
 }
-.main #create .cpisado h2 {
-  border-bottom: 1px solid #006191;
+.main #view article#informe,
+.main #create article#informe,
+.main #view article#comentarios,
+.main #create article#comentarios {
+  border-top: 1px dashed #a6b0be;
 }
-.main #create .cpisado h1 {
-  text-align: center;
-  color: #006191;
+.main #view article ul,
+.main #create article ul {
+  padding: 0;
+  list-style: none;
 }
-.main #create .cpisado p.br {
-  text-align: center;
-  color: #C0C0C0;
+.main #view article ul li,
+.main #create article ul li {
+  margin: 5px 0;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: top;
+  width: 50%;
+}
+.main #view article ul li#texto,
+.main #create article ul li#texto {
+  width: 100%;
+}
+.main #view article ul span,
+.main #create article ul span {
   font-weight: bold;
+  text-transform: uppercase;
+  min-width: 130px;
+  display: inline-block;
 }
-.main #create .cpisado ul {
-  margin: 0;
-  padding: 20px;
-  list-style: none;
-}
-.main #create .cpisado ul span.titulacion,
-.main #create .cpisado ul span.asignatura,
-.main #create .cpisado ul span.profesor {
-  float: left;
-}
-.main #create .cpisado ul span.curso,
-.main #create .cpisado ul span.grupo {
-  float: right;
-}
-.main #create .cpisado input#submit {
-  margin-bottom: 50px;
-  text-align: center;
-}
-.main #view article ul {
-  margin: 0;
-  padding: 20px;
-  list-style: none;
-}
-.main #view article ul span.titulacion,
-.main #view article ul span.asignatura,
-.main #view article ul span.profesor {
-  float: left;
-}
-.main #view article ul span.curso,
-.main #view article ul span.grupo {
-  float: right;
-}
-.main #view article input#submit {
-  margin-bottom: 50px;
-  text-align: center;
+.main #view article ul p,
+.main #create article ul p,
+.main #view article ul textarea,
+.main #create article ul textarea {
+  margin: 10px auto;
+  width: 90%;
+  resize: vertical;
 }
 footer {
-  margin: 40px 0;
   font-size: 0.8em;
 }
 footer .wrapper {
   border-top: 1px solid #a6b0be;
-  padding: 20px 0 0;
+  padding: 20px 0;
 }
 footer p {
   margin: 3px 0;
+}
+@media print {
+  body {
+    font-size: 12px;
+  }
+  header #user,
+  h2,
+  p.info,
+  footer {
+    display: none;
+  }
 }

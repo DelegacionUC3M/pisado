@@ -15,7 +15,7 @@
 					<a href="/pisado/pisado/view/<?= $pisado->id ?>"><li>
 							<p class="titulacion"><?= $pisado->getNameTitulacion() ?></p>
 							<p class="asignatura"><?= $pisado->asignatura ?></p>
-							<p class="curso"> <span>Curso</span> <?= $pisado->curso ?></p>
+							<p class="curso"> <span>Curso</span> <?= $pisado->curso.'º' ?></p>
 							<p class="date"> <span>Fecha</span> <?= date('j/m/y' ,strtotime($pisado->date)) ?></p>
 						</li></a>
 				<?php
@@ -34,9 +34,7 @@
 		if ($user->isDelegado) { ?>
 
 			<h2>Delegación</h2>
-
-			<?php if ($user->isDelegadoCurso()) { echo '<p class="info">Para ver el autor del PISADO has de contactar con el delegado de titulación</p>';} ?>
-
+			
 			<ul>
 			<?php
 

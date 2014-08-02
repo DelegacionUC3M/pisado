@@ -2,7 +2,7 @@
 
         <footer>
         	<div class="wrapper">
-        		<p>© Delegación de Estudiantes - Universidad Carlos III de Madrid</p>
+        		<p>© <b>Delegación de Estudiantes</b> - Universidad Carlos III de Madrid</p>
 
 
 				<p>En Twitter: <a href="https://twitter.com/DelegacionEPS" target="_blank">EPS</a> 
