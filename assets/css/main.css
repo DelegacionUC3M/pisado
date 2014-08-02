@@ -54,6 +54,19 @@ header a {
 }
 .main h2 {
   color: #006191;
+  border-bottom: 1px solid #006191;
+}
+.main h2 a {
+  float: right;
+  display: block;
+  background: #006191;
+  color: #EDEFF2;
+  font-weight: bold;
+  padding: 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 12px;
+  margin-bottom: 5px;
 }
 .main #aviso {
   text-align: center;
@@ -80,18 +93,6 @@ header a {
   color: red;
   font-weight: bold;
 }
-.main #panel a#rellenar {
-  float: right;
-  display: block;
-  background: #006191;
-  color: #EDEFF2;
-  font-weight: bold;
-  padding: 8px;
-  border-radius: 4px;
-  text-decoration: none;
-  font-size: 12px;
-  margin-bottom: 5px;
-}
 .main #panel p.info {
   font-style: italic;
   font-size: 0.8em;
@@ -99,9 +100,6 @@ header a {
 }
 .main #panel .pisados {
   margin-bottom: 50px;
-}
-.main #panel .pisados h2 {
-  border-bottom: 1px solid #006191;
 }
 .main #panel .pisados ul {
   margin: 0;
@@ -140,18 +138,6 @@ header a {
 .main #panel .pisados ul li p.date span {
   float: left;
   font-weight: bold;
-}
-.main #create a#return {
-  float: right;
-  display: block;
-  background: #006191;
-  color: #EDEFF2;
-  font-weight: bold;
-  padding: 8px;
-  border-radius: 4px;
-  text-decoration: none;
-  font-size: 12px;
-  margin-bottom: 5px;
 }
 .main #create p.info {
   font-style: italic;

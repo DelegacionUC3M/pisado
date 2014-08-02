@@ -51,11 +51,10 @@ class pisadoController extends Controller {
 		$data = array();
 
 		if ($pisado) {
-			if (($pisado->nia == $_SESSION['user']->nia) || (($pisado->id_titulacion == $_SESSION['user']->id_titulacion) 
-					&& $_SESSION['user']->isDelegadoCurso())) {//dentro de view hay que controlar que no muestre los datos.
-				$comentario = Comentario::findByIdpisado($id);
+			if (($pisado->nia == $_SESSION['user']->nia) || (($pisado->id_titulacion == $_SESSION['user']->id_titulacion) && $_SESSION['user']->isDelegadoCurso()) || ($_SESSION['user']->isDelegadoEscuela()) ) {//dentro de view hay que controlar que no muestre los datos.
+				$comentarios = Comentario::findByIdpisado($id);
 				$data['pisado'] = $pisado;
-				$data['comment'] = $comentario;
+				$data['comments'] = $comentarios;
 
 				$this->render('view', $data);
 			} else {

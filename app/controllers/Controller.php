@@ -10,6 +10,7 @@ class Controller {
 
 		if ($redirect) {
 			header('Location: /pisado/inicio/login?url='.urlencode($_SERVER['REQUEST_URI']));
+			die();
 		}
 
 		return false;
