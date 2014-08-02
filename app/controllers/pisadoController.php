@@ -50,7 +50,8 @@ class pisadoController extends Controller {
 		$id = (int) $_GET['id'];
 		$pisado = Pisado::findById($id);
 		$data = array();
-		if(($pisado->nia == $_SESSION['user']->nia) || (($pisado->id_titulacion == $_SESSION['user']->id_titulacion) 
+
+		if (($pisado->nia == $_SESSION['user']->nia) || (($pisado['id_titulacion'] == $_SESSION['id_titulacion']) 
 				&& $_SESSION['user']->isDelegadoCurso())) {//dentro de view hay que controlar que no muestre los datos.
 			$comentario = Comentario::findByIdpisado($id);
 			$data['pisado'] = $pisado;
