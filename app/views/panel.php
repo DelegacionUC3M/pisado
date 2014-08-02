@@ -2,7 +2,7 @@
 
 	<article class="pisados">
 		<h2 class="clear">Mis PISADOS
-			<a href="pisado/create" id="rellenar">Rellenar un PISADO</a>
+			<a href="pisado/create">Rellenar un PISADO</a>
 		</h2>
 
 
