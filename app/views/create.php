@@ -4,6 +4,18 @@
 			<a href="/pisado/" id="return">Volver a mis PISADO</a>
 		</h2>
 
+		<?php if(isset($data['error']) || isset($data['verify']))  { ?>
+		<article id="aviso">
+			<?php if(isset($data['error'])) { ?>
+				<span class="error"> <?php echo $data['error']; ?> </span>
+			<?php } ?>
+			<?php if(isset($data['verify'])) { ?>
+				<span class="verify"> <?php echo $data['verify']; ?> </span>
+			<?php } ?>
+		</article>
+		<?php } ?>
+	
+
 		<ul>
 			<h1>Datos personales</h1>
 			<li><b>NIA</b>: <?php echo $_SESSION['user']->nia ?></li>
