@@ -73,7 +73,20 @@ header {
 			font-size: 12px;
 			margin-bottom: 5px;
 		}
+	}
 
+	p {
+		&.info {
+			font-style: italic;
+			font-size: 0.8em;
+			margin: 2px 0;
+		}
+		&.text {
+			border: 1px solid #a0a0a0;
+			padding: 4px 6px;
+			border-radius: 3px;
+			outline: 0;
+		}
 	}
 
 	#aviso {
@@ -114,12 +127,6 @@ header {
 	}
 
 	#panel {
-
-		p.info {
-			font-style: italic;
-			font-size: 0.8em;
-			margin: 2px 0;
-		}
 
 		.pisados {
 			margin-bottom: 50px;
@@ -170,13 +177,7 @@ header {
 	}
 
 	#create {
-		
 
-		p.info {
-			font-style: italic;
-			font-size: 0.8em;
-			margin: 2px 0;
-		}
 		.cpisado {
 			margin-bottom: 50px;
 
@@ -217,32 +218,8 @@ header {
 	}
 
 	#view {
-		a#return {
-			float: right;
-			display: block;
-			background: #006191;
-			color: #EDEFF2;
-			font-weight: bold;
-			padding: 8px;
-			border-radius: 4px;
-			text-decoration: none;
-			font-size: 12px;
-			margin-bottom: 5px;
-		}
 
-		p {
-			&.info {
-				font-style: italic;
-				font-size: 0.8em;
-				margin: 2px 0;
-			}
-			&.text {
-				border: 1px solid #a0a0a0;
-				padding: 4px 6px;
-				border-radius: 3px;
-				outline: 0;
-			}
-		}
+		
 		.vpisado {
 			margin-bottom: 50px;
 
