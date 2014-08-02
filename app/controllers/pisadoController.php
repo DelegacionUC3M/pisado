@@ -22,16 +22,15 @@ class pisadoController extends Controller {
 					$pisado->profesor = $_POST['profesor'];
 					$pisado->texto = $_POST['texto'];
 
-					$pisado->save(); //Lo comentado no se pone porque hay un problema al capturar la excepcion en DB
-					//if($pisado->save()) {
+					if($pisado->save()) {
 						$data['verify'] = 'El registro del pisado se ha realizado con exito.';
 						$this->sendmail($pisado->nia);
 						$destinatarios = User::findDestinatarios($pisado->curso, $pisado->id_titulacion);
 						$this->sendmailPisado($destinatarios, $pisado);
-					/*} else {
+					} else {
 						$data['error'] = 'Ha ocurrido un error con la base de datos, por favor pongase en contacto con el
 						 administrador del sistema.';
-					}*/
+					}
 				} else {
 					$data['error'] = 'El grupo debe ser un numero.';
 				}
