@@ -19,12 +19,11 @@ class DB {
 	// Prepares and executes the queries
 	public function run($sql,$data = array()) {
 		$this->stmt = $this->db->prepare($sql);
-		//try { No captura bien la excepcion, revisar mas tarde, ahora es inestable.
-		return $this->stmt->execute($data);
-			/*return true;
+		try { 
+			return $this->stmt->execute($data);
 		} catch(PDOException $e) {
-			return $e->getMessage();
-		}*/
+			return false;
+		}
 	}
 
 	// Returns an array with the data of the query
