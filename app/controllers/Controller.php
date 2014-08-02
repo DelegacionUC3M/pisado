@@ -28,6 +28,22 @@ class Controller {
 		include ABSPATH . 'app/views/footer.php';
 	}
 
+	public function render_error($code = 404) {
+		if ($code == 404) {
+			header("HTTP/1.0 404 Not Found");
+			$error = 'La página solicitada no existe :(';
+		} else if ($code == 401) {
+			header('HTTP/1.0 401 Unauthorized')
+			$error = 'No tienes permiso para acceder aquí :(';
+		}
+
+		$title = isset($title) ? $title : 'PISADO - Delegación UC3M | Error';
+
+		include ABSPATH . 'app/views/header.php';
+		include ABSPATH . 'app/views/error.php';
+		include ABSPATH . 'app/views/footer.php';
+	}
+
 	public function sendmail($destinatario) {
 		$titulo = 'Confirmacion de envio de P.I.S.A.D.O.';
 		$cuerpo = '<html><body>
