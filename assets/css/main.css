@@ -68,6 +68,17 @@ header a {
   font-size: 12px;
   margin-bottom: 5px;
 }
+.main p.info {
+  font-style: italic;
+  font-size: 0.8em;
+  margin: 2px 0;
+}
+.main p.text {
+  border: 1px solid #a0a0a0;
+  padding: 4px 6px;
+  border-radius: 3px;
+  outline: 0;
+}
 .main #aviso {
   text-align: center;
   display: block;
@@ -92,11 +103,6 @@ header a {
 .main #login p.error {
   color: red;
   font-weight: bold;
-}
-.main #panel p.info {
-  font-style: italic;
-  font-size: 0.8em;
-  margin: 2px 0;
 }
 .main #panel .pisados {
   margin-bottom: 50px;
@@ -139,11 +145,6 @@ header a {
   float: left;
   font-weight: bold;
 }
-.main #create p.info {
-  font-style: italic;
-  font-size: 0.8em;
-  margin: 2px 0;
-}
 .main #create .cpisado {
   margin-bottom: 50px;
 }
@@ -176,29 +177,6 @@ header a {
 .main #create .cpisado input#submit {
   margin-bottom: 50px;
   text-align: center;
-}
-.main #view a#return {
-  float: right;
-  display: block;
-  background: #006191;
-  color: #EDEFF2;
-  font-weight: bold;
-  padding: 8px;
-  border-radius: 4px;
-  text-decoration: none;
-  font-size: 12px;
-  margin-bottom: 5px;
-}
-.main #view p.info {
-  font-style: italic;
-  font-size: 0.8em;
-  margin: 2px 0;
-}
-.main #view p.text {
-  border: 1px solid #a0a0a0;
-  padding: 4px 6px;
-  border-radius: 3px;
-  outline: 0;
 }
 .main #view .vpisado {
   margin-bottom: 50px;

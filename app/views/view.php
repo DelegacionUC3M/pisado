@@ -24,19 +24,17 @@
 	<article id="informe">
 		<h3>Informe del alumno</h3>
 
-
-	</article>
-
-			<h1>Informe del alumno</h1>
+		<ul>
 			<li><span class="titulacion"><b>Titulacion</b>: <?php echo $pisado->getNameTitulacion() ?></span>
 				<span class="curso"><b>Curso</b>: <?php echo $pisado->getCourse() ?></span> </br>
 			<li><span class="asignatura"><b>Asignatura</b>: <?php echo $pisado->asignatura ?></span>
 				<span class="grupo"><b>Grupo</b>: <?php echo $pisado->grupo ?></span></li> </br>
 			<li><span class="profesor"><b>Profesor</b>: <?php echo $pisado->profesor ?></span>
-				</br>
+		</ul>
+
 			El alumno expone:
 			<p class="texto"><?php echo $pisado->texto ?></p>
-		</ul>
+	</article>			
 
 	<article id="comentarios">
 		<h3>Comentarios</h3>
