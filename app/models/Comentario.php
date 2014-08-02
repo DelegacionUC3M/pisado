@@ -18,7 +18,7 @@ class Comentario {
 			$comentario = new Comentario;
 			
 			foreach ($row as $key => $value) {
-				$comentarios->{$key} = $value;
+				$comentario->{$key} = $value;
 			}
 			
 			$comentarios[] = $comentarios;
