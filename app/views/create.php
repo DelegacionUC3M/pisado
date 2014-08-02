@@ -46,7 +46,7 @@
 				<li id="asignatura"> <span>Asignatura</span> <input name="asignatura" value="<?= $pisado->asignatura ?>" type="text" maxlength="40"> </li><li id="grupo"> <span>Grupo</span> <input name="grupo" type="text" value="<?= $pisado->grupo ?>" maxlength="2"> </li>
 				<li id="profesor"> <span>Profesor</span> <input name="profesor" value="<?= $pisado->profesor ?>" type="text" maxlength="40"> </li>
 
-				<li id="texto"> <span>El alumno expone</span> <textarea name="texto" rows="15"><?= $pisado->texto ?></textarea> </li>
+				<li id="texto"> <span>El alumno expone</span> <textarea name="texto" rows="10"><?= $pisado->texto ?></textarea> </li>
 			</ul>
 
 			<input type="submit" value="Enviar" />

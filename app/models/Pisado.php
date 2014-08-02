@@ -122,32 +122,5 @@ class Pisado {
 		}
 		return $tit;
 	}
-	public function getCourse() {
-		$curso = '';
-		switch ($this->curso) {
-			case '1':
-				$curso = '1º';
-				break;
-
-			case '2':
-			$curso = '2º';
-			break;
-
-			case '3':
-			$curso = '3º';
-			break;
-
-			case '4':
-			$curso = '4º';
-			break;
-
-
-			default:
-				$curso = 'No he encontrado ese curso. Por favor, contacte con el administrador.';
-				break;
-		}
-
-		return $curso;
-	}
 
 }
