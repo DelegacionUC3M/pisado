@@ -8,7 +8,7 @@ html {
 	margin: 0 auto;
 }
 
-input[type="text"], input[type="password"], textarea {
+input[type="text"], input[type="password"], textarea, select {
 	border: 1px solid #a0a0a0;
 	padding: 4px 6px;
 	border-radius: 3px;
@@ -120,7 +120,9 @@ header {
 	}
 
 	#inicio {
-
+		h2, h3 {
+			border-bottom: none;
+		}
 	}
 
 	#login {
@@ -211,6 +213,7 @@ header {
 
 					&#texto {
 						width: 100%;
+						margin-top: 20px;
 					}
 				}
 
@@ -225,6 +228,11 @@ header {
 					margin: 10px auto;
 					width: 90%;
 					resize: vertical;
+					line-height: 1.45em;
+				}
+
+				p {
+					text-align: justify;
 				}
 			}
 
@@ -251,7 +259,7 @@ footer {
 	body {
 		font-size: 12px;
 	}
-	header #user, h2, p.info, footer {
+	header #user, h2, p.no-print, footer {
 		display: none;
 	}
 }

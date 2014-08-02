@@ -18,11 +18,11 @@ class pisadoController extends Controller {
 			$pisado->email = $_SESSION['user']->email;
 			$pisado->autor = $_SESSION['user']->name;
 			$pisado->id_titulacion = (int) $_POST['titulacion'];
-			$pisado->asignatura = $_POST['asignatura'];
-			$pisado->curso = $_POST['curso'];
+			$pisado->asignatura = htmlspecialchars($_POST['asignatura']);
+			$pisado->curso = htmlspecialchars($_POST['curso']);
 			$pisado->grupo = (int) $_POST['grupo'];
-			$pisado->profesor = $_POST['profesor'];
-			$pisado->texto = $_POST['texto'];
+			$pisado->profesor = htmlspecialchars($_POST['profesor']);
+			$pisado->texto = htmlspecialchars($_POST['texto']);
 
 			if(!empty($_POST['titulacion']) && !empty($_POST['asignatura']) && !empty($_POST['curso'])
 				&& !empty($_POST['grupo']) && !empty($_POST['texto'])) {

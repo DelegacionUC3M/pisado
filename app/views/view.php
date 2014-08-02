@@ -13,10 +13,10 @@
 			<li id="nombre"> <span>Nombre</span> <?= $pisado->autor ?>  </li><li id="nia"><span>NIA</span> <?= $pisado->nia ?></li>
 			<li id="email"><span>Correo</span> <?= $pisado->email ?></li>
 		</ul>
-		<p class="info">Estos datos se guardan como metodo de contacto unicamente y no serán accesibles por el profesor
+		<p class="info no-print">Estos datos se guardan como metodo de contacto unicamente y no serán accesibles por el profesor
 			ni por el destinatario de esta queja, solo por el/los delegados encargados.</p>
 		<?php } else { ?>
-			<p class="info">El PISADO es anónimo. Los datos personales solo son accesibles por el delegado encargado como metodo de contacto. Si necesitas más información ponte en contacto con <b><?= $user->getDelegado()['nombre'] ?> (<a href="mailto:<?= $user->getDelegado()['email'] ?>"><?= $user->getDelegado()['email'] ?></a>)</b> </p>
+			<p class="info">El PISADO es anónimo. Los datos personales solo son accesibles por el delegado encargado como metodo de contacto. Si necesitas más información ponte en contacto con <b><?= $user->getDelegado()['nombre'] ?> (<a href="mailto:<?= $user->getDelegado()['email'] ?>"><?= $user->getDelegado()['email'] ?></a>)</b>. </p>
 		<?php } ?>
 
 	</article>

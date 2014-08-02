@@ -8,7 +8,8 @@ html {
 }
 input[type="text"],
 input[type="password"],
-textarea {
+textarea,
+select {
   border: 1px solid #a0a0a0;
   padding: 4px 6px;
   border-radius: 3px;
@@ -17,9 +18,11 @@ textarea {
 input[type="text"]:hover,
 input[type="password"]:hover,
 textarea:hover,
+select:hover,
 input[type="text"]:focus,
 input[type="password"]:focus,
-textarea:focus {
+textarea:focus,
+select:focus {
   border: 1px solid #006191;
 }
 header {
@@ -105,6 +108,10 @@ header a {
 .main #aviso span.verify {
   color: #088A08;
 }
+.main #inicio h2,
+.main #inicio h3 {
+  border-bottom: none;
+}
 .main #login label {
   width: 150px;
   display: inline-block;
@@ -180,6 +187,7 @@ header a {
 .main #view article ul li#texto,
 .main #create article ul li#texto {
   width: 100%;
+  margin-top: 20px;
 }
 .main #view article ul span,
 .main #create article ul span {
@@ -195,6 +203,11 @@ header a {
   margin: 10px auto;
   width: 90%;
   resize: vertical;
+  line-height: 1.45em;
+}
+.main #view article ul p,
+.main #create article ul p {
+  text-align: justify;
 }
 footer {
   font-size: 0.8em;
@@ -212,7 +225,7 @@ footer p {
   }
   header #user,
   h2,
-  p.info,
+  p.no-print,
   footer {
     display: none;
   }
