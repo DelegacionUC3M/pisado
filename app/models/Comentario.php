@@ -6,11 +6,11 @@ class Comentario {
 	public $nombre;
 	public $date;
 	public $text;
+	public $delegado;
 
 	public static function findByIdpisado($id_pis) {
 		$db = new DB;
-		$db->run('SELECT * FROM comentario WHERE id_pisado=?',array($id_pis));
-
+		$db->run('SELECT * FROM comentario WHERE id_pisado=? ORDER BY date',array($id_pis));
 		$data = $db->data();
 
 		$comentarios = array();
@@ -29,6 +29,6 @@ class Comentario {
 
 	public function save() {
 		$db = new DB;
-		return $db->run('INSERT INTO comentario (id_pisado, nia, nombre, date, text) VALUES (?, ?, ?, NOW(), ?)', array($id_pidado, $nia, $nombre, $text));
+		return $db->run('INSERT INTO comentario (id_pisado, nia, nombre, date, text, delegado) VALUES (?, ?, ?, NOW(), ?, ?)', array($id_pidado, $nia, $nombre, $text, $delegado));
 	}
 }
