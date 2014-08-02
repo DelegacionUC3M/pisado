@@ -7,10 +7,10 @@
 		<?php if(isset($data['error']) || isset($data['verify']))  { ?>
 		<article id="aviso">
 			<?php if(isset($data['error'])) { ?>
-				<span class="error"> <?php echo $data['error']; ?> </span>
+				<span class="error"> <?php echo $data['error'] ?> </span>
 			<?php } ?>
 			<?php if(isset($data['verify'])) { ?>
-				<span class="verify"> <?php echo $data['verify']; ?> </span>
+				<span class="verify"> <?php echo $data['verify'] ?> </span>
 			<?php } ?>
 		</article>
 		<?php } ?>
@@ -32,7 +32,7 @@
 				<li><span class="titulacion"><b>Titulacion</b>: 
 						<select name="titulacion">
 							<option value="1">Grado en Ingenieria Informatica</option>
-							<option value="1">Grado en Ingenieria Biomedica</option>
+							<option value="2">Grado en Ingenieria Biomedica</option>
 						</select>
 					</span>
 					<span class="curso"><b>Curso</b>: 
