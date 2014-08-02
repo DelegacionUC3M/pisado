@@ -7,31 +7,23 @@ class Comentario {
 	public $date;
 	public $text;
 
-	public static findByIdpisado($id_pis) {
+	public static function findByIdpisado($id_pis) {
 		$db = new DB;
-		$db->run('SELECT * FROM pisado WHERE id_pisado=?',array($id_pis));
+		$db->run('SELECT * FROM comentario WHERE id_pisado=?',array($id_pis));
 
 		$comentarios = array();
-		if($db->count == 1) {
-			foreach ($db->data() as $key => $value) {
+		foreach ($db->data() as $row) {
+			foreach ($row as $key => $value) {
 				$comentario = new Comentario;
-				$comentario->{$key} = $value;
-				$comentarios[] = $comentario;
-			}
-		} else if($db->data() > 1) {
-			foreach ($db->data() as $row) {
-				foreach ($row as $key => $value) {
-					$comentario = new Comentario;
-					$comentarios->{$key} = $value;
-					$comentarios[] = $comentarios;
-				}
+				$comentarios->{$key} = $value;
+				$comentarios[] = $comentarios;
 			}
 		}
 
 		return $comentarios;
 	}
 
-	public save() {
+	public function save() {
 		$db = new DB;
 		return $db->run('INSERT INTO comentario (id_pisado, nia, nombre, date, text) VALUES (?, ?, ?, NOW(), ?)'
 						, array($id_pidado, $nia, $nombre, $text));
