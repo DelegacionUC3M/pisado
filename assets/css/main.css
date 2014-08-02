@@ -68,6 +68,11 @@ header a {
   font-size: 12px;
   margin-bottom: 5px;
 }
+.main h3 {
+  text-align: center;
+  color: #006191;
+  font-size: 1.6em;
+}
 .main p.info {
   font-style: italic;
   font-size: 0.8em;
@@ -177,10 +182,6 @@ header a {
 .main #create .cpisado input#submit {
   margin-bottom: 50px;
   text-align: center;
-}
-.main #view article h3 {
-  text-align: center;
-  color: #006191;
 }
 .main #view article ul {
   margin: 0;
