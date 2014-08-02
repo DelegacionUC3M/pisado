@@ -178,36 +178,25 @@ header a {
   margin-bottom: 50px;
   text-align: center;
 }
-.main #view .vpisado {
-  margin-bottom: 50px;
-}
-.main #view .vpisado h2 {
-  border-bottom: 1px solid #006191;
-}
-.main #view .vpisado h1 {
+.main #view article h2 {
   text-align: center;
   color: #006191;
 }
-.main #view .vpisado p.br {
-  text-align: center;
-  color: #C0C0C0;
-  font-weight: bold;
-}
-.main #view .vpisado ul {
+.main #view article ul {
   margin: 0;
   padding: 20px;
   list-style: none;
 }
-.main #view .vpisado ul span.titulacion,
-.main #view .vpisado ul span.asignatura,
-.main #view .vpisado ul span.profesor {
+.main #view article ul span.titulacion,
+.main #view article ul span.asignatura,
+.main #view article ul span.profesor {
   float: left;
 }
-.main #view .vpisado ul span.curso,
-.main #view .vpisado ul span.grupo {
+.main #view article ul span.curso,
+.main #view article ul span.grupo {
   float: right;
 }
-.main #view .vpisado input#submit {
+.main #view article input#submit {
   margin-bottom: 50px;
   text-align: center;
 }
