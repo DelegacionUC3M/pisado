@@ -28,6 +28,7 @@ class User {
 		$ldap = explode(',', $dn);
         $titulacion = str_replace("ou=",'',$ldap[1]);
         $this->titulacion = ucwords(strtolower($titulacion));
+        // si no es delegado get id of titulacion from titulacion de LDAP
 	}
 
 	public static function findDestinatarios($curso,$id_titulacion) {

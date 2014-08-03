@@ -6,6 +6,9 @@ html {
   max-width: 960px;
   margin: 0 auto;
 }
+.print {
+  display: none;
+}
 input[type="text"],
 input[type="password"],
 textarea,
@@ -91,10 +94,141 @@ header a {
   border-radius: 3px;
   outline: 0;
 }
+.main ul#pisados {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.main ul#pisados li {
+  display: inline-block;
+  width: 20%;
+  border-radius: 4px;
+  margin: 5px;
+  box-sizing: border-box;
+  background: #97BDF6;
+  border: 2px solid #006191;
+  color: #000;
+}
+.main ul#pisados li p {
+  margin: 0;
+  padding: 4px;
+}
+.main ul#pisados li p.id-titulacion {
+  font-size: 0.7em;
+  padding: 0 ;
+}
+.main ul#pisados li p.id-titulacion span {
+  display: inline-block;
+  vertical-align: top;
+  padding: 4px;
+  box-sizing: border-box;
+  height: 20px;
+}
+.main ul#pisados li p.id-titulacion span.id {
+  font-weight: bold;
+  background: #006191;
+  color: #EDEFF2;
+  width: 10%;
+}
+.main ul#pisados li p.id-titulacion span.titulacion {
+  width: 90%;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.main ul#pisados li p.asignatura {
+  font-weight: bold;
+  background: #006191;
+  color: #EDEFF2;
+  height: 2.1em;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.main ul#pisados li p.curso,
+.main ul#pisados li p.date {
+  text-align: right;
+}
+.main ul#pisados li p.curso span,
+.main ul#pisados li p.date span {
+  float: left;
+  font-weight: bold;
+}
+.main ul#comentarios {
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  width: 85%;
+}
+.main ul#comentarios li {
+  display: block;
+  background: #e1e4e9;
+  border: 1px solid #006191;
+  width: 75%;
+  margin: 0 auto 15px;
+  border-radius: 4px;
+  margin-right: 1%;
+}
+.main ul#comentarios li.you {
+  margin-left: 1%;
+}
+.main ul#comentarios li.delegacion div {
+  background: #f09937;
+}
+.main ul#comentarios li.compose {
+  margin-top: 50px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+  transition: all 0.4s;
+}
+.main ul#comentarios li.compose:hover {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.7);
+}
+.main ul#comentarios li.compose textarea {
+  padding: 10px 6px;
+  margin: 0;
+  text-align: justify;
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+  resize: none;
+  background: transparent;
+  border: none;
+}
+.main ul#comentarios li.compose input[type="submit"] {
+  float: right;
+  background: #006191;
+  color: #fff;
+  border: none;
+  font-weight: bold;
+  padding: 6px;
+  border-radius: 4px 0 0 0;
+}
+.main ul#comentarios li div {
+  background: #006191;
+  color: #fff;
+  padding: 6px;
+}
+.main ul#comentarios li div span {
+  display: inline-block;
+  width: 50%;
+  vertical-align: top;
+}
+.main ul#comentarios li div span.autor {
+  font-weight: bold;
+}
+.main ul#comentarios li div span.date {
+  text-align: right;
+}
+.main ul#comentarios li p {
+  padding: 10px 6px;
+  margin: 0;
+  text-align: justify;
+}
 .main #aviso {
   text-align: center;
   display: block;
-  background: #819FF7;
+  background: #97bdf6;
   font-weight: bold;
   padding: 8px;
   border-radius: 4px;
@@ -123,90 +257,69 @@ header a {
 .main #panel .pisados {
   margin-bottom: 50px;
 }
-.main #panel .pisados ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.main #panel .pisados ul li {
-  display: inline-block;
-  width: 20%;
-  border-radius: 4px;
-  margin: 5px;
-  box-sizing: border-box;
-  background: #97BDF6;
-  border: 2px solid #006191;
-  color: #000;
-}
-.main #panel .pisados ul li p {
-  margin: 0;
-  padding: 4px;
-}
-.main #panel .pisados ul li p.titulacion {
-  font-size: 0.7em;
-  text-align: center;
-}
-.main #panel .pisados ul li p.asignatura {
-  font-weight: bold;
-  background: #006191;
-  color: #EDEFF2;
-  height: 2em;
-}
-.main #panel .pisados ul li p.curso,
-.main #panel .pisados ul li p.date {
-  text-align: right;
-}
-.main #panel .pisados ul li p.curso span,
-.main #panel .pisados ul li p.date span {
-  float: left;
-  font-weight: bold;
-}
-.main #view article,
-.main #create article {
-  margin-bottom: 15px;
-}
 .main #view article#informe,
 .main #create article#informe,
 .main #view article#comentarios,
 .main #create article#comentarios {
   border-top: 1px dashed #a6b0be;
 }
-.main #view article ul,
-.main #create article ul {
+.main #view article#informe,
+.main #create article#informe,
+.main #view article#dpersonales,
+.main #create article#dpersonales {
+  margin-bottom: 15px;
+}
+.main #view article#informe ul,
+.main #create article#informe ul,
+.main #view article#dpersonales ul,
+.main #create article#dpersonales ul {
   padding: 0;
   list-style: none;
 }
-.main #view article ul li,
-.main #create article ul li {
+.main #view article#informe ul li,
+.main #create article#informe ul li,
+.main #view article#dpersonales ul li,
+.main #create article#dpersonales ul li {
   margin: 5px 0;
   box-sizing: border-box;
   display: inline-block;
   vertical-align: top;
   width: 50%;
 }
-.main #view article ul li#texto,
-.main #create article ul li#texto {
+.main #view article#informe ul li#texto,
+.main #create article#informe ul li#texto,
+.main #view article#dpersonales ul li#texto,
+.main #create article#dpersonales ul li#texto {
   width: 100%;
   margin-top: 20px;
 }
-.main #view article ul span,
-.main #create article ul span {
+.main #view article#informe ul span,
+.main #create article#informe ul span,
+.main #view article#dpersonales ul span,
+.main #create article#dpersonales ul span {
   font-weight: bold;
   text-transform: uppercase;
   min-width: 130px;
   display: inline-block;
 }
-.main #view article ul p,
-.main #create article ul p,
-.main #view article ul textarea,
-.main #create article ul textarea {
+.main #view article#informe ul p,
+.main #create article#informe ul p,
+.main #view article#dpersonales ul p,
+.main #create article#dpersonales ul p,
+.main #view article#informe ul textarea,
+.main #create article#informe ul textarea,
+.main #view article#dpersonales ul textarea,
+.main #create article#dpersonales ul textarea {
   margin: 10px auto;
   width: 90%;
   resize: vertical;
   line-height: 1.45em;
+  display: block;
 }
-.main #view article ul p,
-.main #create article ul p {
+.main #view article#informe ul p,
+.main #create article#informe ul p,
+.main #view article#dpersonales ul p,
+.main #create article#dpersonales ul p {
   text-align: justify;
 }
 footer {
@@ -223,10 +336,28 @@ footer p {
   body {
     font-size: 12px;
   }
+  .print {
+    display: inline-block;
+  }
   header #user,
   h2,
   p.no-print,
   footer {
+    display: none;
+  }
+  ul#comentarios li {
+    margin: 4px auto !important;
+    width: 100%;
+    border-top: 1px solid #a6b0be !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: none !important;
+    border-radius: 0 !important;
+  }
+  ul#comentarios li div {
+    border-bottom: 1px dashed #a6b0be !important;
+  }
+  ul#comentarios li.compose {
     display: none;
   }
 }

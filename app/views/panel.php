@@ -6,14 +6,14 @@
 		</h2>
 
 
-		<ul>
+		<ul id="pisados">
 		<?php
 
 		if (count($pisados) > 0) {
 			foreach ($pisados as $pisado) {
 				?>
 					<a href="/pisado/pisado/view/<?= $pisado->id ?>"><li>
-							<p class="titulacion"><?= $pisado->getNameTitulacion() ?></p>
+							<p class="id-titulacion"><span class="id">#<?= $pisado->id ?></span><span class="titulacion"><?= $pisado->getNameTitulacion() ?></span> </p>
 							<p class="asignatura"><?= $pisado->asignatura ?></p>
 							<p class="curso"> <span>Curso</span> <?= $pisado->curso.'º' ?></p>
 							<p class="date"> <span>Fecha</span> <?= date('j/m/y' ,strtotime($pisado->date)) ?></p>
@@ -35,16 +35,16 @@
 
 			<h2>Delegación</h2>
 			
-			<ul>
+			<ul id="pisados">
 			<?php
 
 			if (count($otros) > 0) {
 				foreach ($otros as $pisado) {
 					?>
 						<a href="/pisado/pisado/view/<?= $pisado->id ?>"><li>
-							<p class="titulacion"><?= $pisado->getNameTitulacion() ?></p>
+							<p class="id-titulacion"><span class="id">#<?= $pisado->id ?></span><span class="titulacion"><?= $pisado->getNameTitulacion() ?></span> </p>
 							<p class="asignatura"><?= $pisado->asignatura ?></p>
-							<p class="curso"> <span>Curso</span> <?= $pisado->curso ?></p>
+							<p class="curso"> <span>Curso</span> <?= $pisado->curso.'º' ?></p>
 							<p class="date"> <span>Fecha</span> <?= date('j/m/y' ,strtotime($pisado->date)) ?></p>
 						</li></a>
 					<?php

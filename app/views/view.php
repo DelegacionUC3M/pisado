@@ -1,8 +1,8 @@
 <section id="view">
 
-	<h2 class="clear">Ver PISADO #<?= $pisado->id ?>
+	<h2 class="clear">PISADO #<?= $pisado->id ?>
 			<a href="/pisado/">Volver a mis PISADO</a>
-			<a href="#" onclick="window.print()">Imprimir</a>
+			<a href="#" id="print">Imprimir</a>
 		</h2>
 
 	<article id="dpersonales">
@@ -14,7 +14,7 @@
 			<li id="email"><span>Correo</span> <?= $pisado->email ?></li>
 		</ul>
 		<p class="info no-print">Estos datos se guardan como metodo de contacto unicamente y no serán accesibles por el profesor
-			ni por el destinatario de esta queja, solo por el/los delegados encargados.</p>
+			ni por el destinatario de esta queja, solo por el/los delegados encargados: <b><?= $user->getDelegado()['nombre'] ?> (<a href="mailto:<?= $user->getDelegado()['email'] ?>"><?= $user->getDelegado()['email'] ?></a>)</b>.</p>
 		<?php } else { ?>
 			<p class="info">El PISADO es anónimo. Los datos personales solo son accesibles por el delegado encargado como metodo de contacto. Si necesitas más información ponte en contacto con <b><?= $user->getDelegado()['nombre'] ?> (<a href="mailto:<?= $user->getDelegado()['email'] ?>"><?= $user->getDelegado()['email'] ?></a>)</b>. </p>
 		<?php } ?>
@@ -36,6 +36,53 @@
 	<article id="comentarios">
 		<h3>Comentarios</h3>
 
+		<?php if(isset($data['error']))  { ?>
+			<article id="aviso">
+				<span class="error"> <?= $data['error'] ?> </span>
+			</article>
+		<?php } ?>
+
+		<ul id="comentarios">
+			<?php
+
+				foreach ($comentarios as $comentario) { 
+					$class = '';
+					if ($comentario->nia == $user->nia) {
+						$class .= 'you ';
+						$autor = 'Yo';
+					} else if ($comentario->nia == $pisado->nia) {
+						$class .= 'author ';
+						$autor = 'Autor del PISADO';
+					} else if (!empty($comentario->nombre)) {
+						$class .= 'delegacion ';
+						$autor = $comentario->nombre;
+					} else if ($user->isDelegadoEscuela() || $user->isDelegadoTitulacion()) {
+						$autor = $pisado->nia;
+					} else {
+						$autor = 'Alumno';
+					}
+
+				?> <li class="<?= $class ?>">
+						<div>
+							<span class="autor">
+								<?= $autor ?>
+							</span><span class="date"><?= date('j/m/y H:i' ,strtotime($comentario->date)) ?></span>
+						</div>
+						<p><?= $comentario->text ?></p>
+					</li>
+				<?php }
+			?>
+
+			<form action="?#comentarios" method="post">
+				<li class="you compose clear">
+					<div>
+						<span class="author">Escribe un comentario</span>
+					</div>
+					<textarea name="comment" placeholder="Escribe aquí..."></textarea>
+					<input type="submit" value="Enviar" />
+				</li>
+			</form>
+		</ul>
 
 	</article>
 </section>
