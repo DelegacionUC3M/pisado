@@ -29,6 +29,16 @@ class pisadoController extends Controller {
 				if(is_numeric($_POST['grupo'])) {	
 
 					if($pisado->save()) {
+						$cuerpo = $this->render_email('CreateU', array('pisado' => $pisado));
+						$destinatarios = array($pisado->email);
+						$this->send('¡Has creado un nuevo PISADO!', $destinatarios, $cuerpo);
+
+					/*	$cuerpo = $this->render_email('Pisado', array('pisado' => $pisado));
+						$destinatarios = getDelegados();
+						$this->send('¡Hay un nuevo P.I.S.A.D.O. para ti!', $destinatarios, $cuerpo);
+					//No implementar hasta la base de datos de delegados.
+					*/
+
 					//	$data['verify'] = 'El registro del pisado se ha realizado con exito';
 					//	$this->sendmail($pisado->nia);
 					//	$destinatarios = User::findDestinatarios($pisado->curso, $pisado->id_titulacion);
@@ -103,6 +113,10 @@ class pisadoController extends Controller {
 		} else {
 			$this->render_error(404);
 		}
+	}
+
+	private function getDelegados() {
+
 	}
 
 }
