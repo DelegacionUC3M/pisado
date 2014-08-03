@@ -1,5 +1,5 @@
 <?php
-class Comentario {
+class ComentarioPisado {
 	public $id;
 	public $id_pisado;
 	public $nia;
@@ -9,19 +9,19 @@ class Comentario {
 
 	public static function findByIdpisado($id_pis) {
 		$db = new DB;
-		$db->run('SELECT * FROM comentario WHERE id_pisado=?',array($id_pis));
-
+		$db->run('SELECT * FROM comentario_pisado WHERE id_pisado=? ORDER BY date',array($id_pis));
 		$data = $db->data();
 
 		$comentarios = array();
+
 		foreach ($data as $row) {
-			$comentario = new Comentario;
+			$comentario = new ComentarioPisado;
 			
 			foreach ($row as $key => $value) {
 				$comentario->{$key} = $value;
 			}
 			
-			$comentarios[] = $comentarios;
+			$comentarios[] = $comentario;
 		}
 
 		return $comentarios;
@@ -29,6 +29,6 @@ class Comentario {
 
 	public function save() {
 		$db = new DB;
-		return $db->run('INSERT INTO comentario (id_pisado, nia, nombre, date, text) VALUES (?, ?, ?, NOW(), ?)', array($id_pidado, $nia, $nombre, $text));
+		return $db->run('INSERT INTO comentario_pisado (id_pisado, nia, nombre, date, text) VALUES (?, ?, ?, NOW(), ?)', array($this->id_pisado, $this->nia, $this->nombre, $this->text));
 	}
 }

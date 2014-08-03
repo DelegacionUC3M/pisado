@@ -1,48 +1,95 @@
 <section id="view">
 
-	<h2>PISADO#<?= $pisado->id ?></h2>
-
-	<article class="vpisado">
-		<h2 class="clear">Revisa un PISADO
-			<a href="/pisado/" id="return">Volver a mis PISADO</a>
+	<h2 class="clear">PISADO #<?= $pisado->id ?>
+			<a href="/pisado/">Volver a mis PISADO</a>
+			<a href="#" id="print">Imprimir</a>
 		</h2>
 
-		<?php if(isset($data['error']))  { ?>
-		<article id="aviso">
-			<span class="error"> <?php echo $data['error'] ?> </span>
-		</article>
-		<?php } else {?>
+	<article id="dpersonales">
+		<h3>Datos personales</h3>
 	
-		<?php if(($user->nia == $pisado->nia) || ($user->isDelegadoEscuela())) { ?>
+		<?php if (($user->nia == $pisado->nia) || ($user->isDelegadoEscuela()) || ($user->isDelegadoTitulacion()) ) { ?>
 		<ul>
-			<h1>Datos personales</h1>
-			<li><b>NIA</b>: <?php echo $pisado->nia ?></li>
-			<li><b>Correo</b>: <?php echo $pisado->email ?></li>
+			<li id="nombre"> <span>Nombre</span> <?= $pisado->autor ?>  </li><li id="nia"><span>NIA</span> <?= $pisado->nia ?></li>
+			<li id="email"><span>Correo</span> <?= $pisado->email ?></li>
 		</ul>
-		<p class="info">Estos datos se guardan como metodo de contacto unicamente y no serán accesibles por el profesor
-			ni por el destinatario de esta queja, solo por el/los delegados encargados.</p>
-		
-		<p class="br">-------------------------------------------------------------------------------------------------</p>
+		<p class="info no-print">Estos datos se guardan como metodo de contacto unicamente y no serán accesibles por el profesor
+			ni por el destinatario de esta queja, solo por el/los delegados encargados: <b><?= $user->getDelegado()['nombre'] ?> (<a href="mailto:<?= $user->getDelegado()['email'] ?>"><?= $user->getDelegado()['email'] ?></a>)</b>.</p>
+		<?php } else { ?>
+			<p class="info">El PISADO es anónimo. Los datos personales solo son accesibles por el delegado encargado como metodo de contacto. Si necesitas más información ponte en contacto con <b><?= $user->getDelegado()['nombre'] ?> (<a href="mailto:<?= $user->getDelegado()['email'] ?>"><?= $user->getDelegado()['email'] ?></a>)</b>. </p>
 		<?php } ?>
 
-		<ul>
-			<h1>Informe del alumno</h1>
-			<li><span class="titulacion"><b>Titulacion</b>: <?php echo $pisado->getNameTitulacion() ?></span>
-				<span class="curso"><b>Curso</b>: <?php echo $pisado->getCourse() ?></span> </br>
-			<li><span class="asignatura"><b>Asignatura</b>: <?php echo $pisado->asignatura ?></span>
-				<span class="grupo"><b>Grupo</b>: <?php echo $pisado->grupo ?></span></li> </br>
-			<li><span class="profesor"><b>Profesor</b>: <?php echo $pisado->profesor ?></span>
-				</br>
-			El alumno expone:
-			<p class="texto"><?php echo $pisado->texto ?></p>
-		</ul>
+	</article>
 
-		<p class="br">-------------------------------------------------------------------------------------------------</p>
+	<article id="informe">
+		<h3>Informe del Alumno</h3>
 
 		<ul>
-			<h1>Comentarios</h1>
-		</ul>
+			<li id="titulacion"> <span>Titulacion</span> <?= $pisado->getNameTitulacion() ?> </li><li id="curso"> <span>Curso</span> <?= $pisado->curso.'º' ?> </li>
+			<li id="asignatura"> <span>Asignatura</span> <?= $pisado->asignatura ?> </li><li id="grupo"> <span>Grupo</span> <?= $pisado->grupo ?> </li>
+			<li id="profesor"> <span>Profesor</span> <?= $pisado->profesor ?> </li><li id="date"> <span>Fecha</span> <?= date('j/m/y' ,strtotime($pisado->date)) ?> </li>
 
+			<li id="texto"> <span>El alumno expone</span> <p><?= $pisado->texto ?></p> </li>
+		</ul>
+	</article>			
+
+	<article id="comentarios" <?php if (count($comentarios) == 0) {echo 'class="no-print"';} ?> >
+		<h3>Comentarios</h3>
+
+		<?php if(isset($data['error']))  { ?>
+			<article id="aviso">
+				<span class="error"> <?= $data['error'] ?> </span>
+			</article>
 		<?php } ?>
+
+		<ul id="comentarios">
+			<?php
+
+				foreach ($comentarios as $comentario) { 
+					$class = '';
+					if ($comentario->nia == $user->nia) {
+						$class .= 'you ';
+						$autor = 'Yo';
+					} else if ($comentario->nia == $pisado->nia) {
+						$class .= 'author ';
+						$autor = 'Autor del PISADO';
+					} else if (!empty($comentario->nombre)) {
+						$class .= 'delegacion ';
+						$autor = $comentario->nombre;
+					} else if ($user->isDelegadoEscuela() || $user->isDelegadoTitulacion()) {
+						$autor = $comentario->nia;
+					} else {
+						$autor = 'Alumno';
+					}
+
+				?> <li class="<?= $class ?>">
+						<div>
+							<span class="autor">
+								<?= $autor ?>
+							</span><span class="date"><?= date('j/m/y H:i' ,strtotime($comentario->date)) ?></span>
+						</div>
+						<p><?= $comentario->text ?></p>
+					</li>
+				<?php }
+			?>
+
+			<form action="?#comentarios" method="post">
+				<li class="you compose clear">
+					<div>
+						<span class="autor">Escribe un comentario</span>
+					</div>
+					<textarea name="comment" placeholder="Escribe aquí..."></textarea>
+					<input type="submit" value="Enviar" />
+					
+					<?php if ($user->isDelegado) { ?>
+						<p class="info no-print">Los comentarios de los delegados NO son anónimos.</p>
+					<?php } else { ?>
+						<p class="info no-print">El autor del comentario es anónimo. Solo lo verá el delegado encargado.</p>
+					<?php } ?>
+				</li>
+			</form>
+
+		</ul>
+
 	</article>
 </section>

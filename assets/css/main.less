@@ -8,7 +8,11 @@ html {
 	margin: 0 auto;
 }
 
-input[type="text"], input[type="password"], textarea {
+.print {
+	display: none;
+}
+
+input[type="text"], input[type="password"], textarea, select {
 	border: 1px solid #a0a0a0;
 	padding: 4px 6px;
 	border-radius: 3px;
@@ -57,15 +61,208 @@ header {
 }
 
 .main {
+	margin: 50px auto;
+
 	h2 {
 		color: #006191;
+		border-bottom: 1px solid #006191;
 
+		a {
+			float: right;
+			display: block;
+			background: #006191;
+			color: #EDEFF2;
+			font-weight: bold;
+			padding: 8px;
+			border-radius: 4px;
+			text-decoration: none;
+			font-size: 12px;
+			margin-bottom: 5px;
+			margin-left: 5px;
+		}
+	}
+
+	h3 {
+		text-align: center;
+		color: #006191;
+		font-size: 1.6em;
+	}
+
+	p {
+		&.info {
+			font-style: italic;
+			font-size: 0.8em;
+			margin: 2px 0;
+		}
+		&.text {
+			border: 1px solid #a0a0a0;
+			padding: 4px 6px;
+			border-radius: 3px;
+			outline: 0;
+		}
+	}
+
+	ul#pisados {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		li {
+			display: inline-block;
+			width: 20%;
+			border-radius: 4px;
+			margin: 5px;
+			box-sizing: border-box;
+			background: #97BDF6;
+			border: 2px solid #006191;
+			color: #000;
+
+			p {
+				margin: 0;
+				padding: 4px;
+
+				&.id-titulacion {
+					font-size: 0.7em;
+					padding: 0 ;
+
+					span {
+						display: inline-block;
+						vertical-align: top;
+						padding: 4px;
+						box-sizing: border-box;
+						height: 20px;
+
+						&.id {
+							font-weight: bold;
+							background: #006191;
+							color: #EDEFF2;
+							width: 10%;
+						}
+
+						&.titulacion {
+							width: 90%;
+							text-align: center;
+							overflow: hidden;
+							white-space: nowrap;
+							text-overflow: ellipsis;
+						}
+
+					}
+				}
+
+				&.asignatura {
+					font-weight: bold;
+					background: #006191;
+					color: #EDEFF2;
+					height: 2.1em;
+					overflow: hidden;
+					white-space: nowrap;
+					text-overflow: ellipsis;
+				}
+
+				&.curso, &.date {
+					text-align: right;
+
+					span {
+						float: left;
+						font-weight: bold;
+					}
+				}
+			}
+		}
+	}
+
+	ul#comentarios {
+		margin: 0 auto;
+		padding: 0;
+		list-style: none;
+		width: 85%;
+
+		li {
+			display: block;
+			background: #e1e4e9;
+			border: 1px solid #006191;
+			width: 75%;
+			margin: 0 auto 15px;
+			border-radius: 4px;
+			margin-right: 1%;
+
+			&.you {
+				margin-left: 1%; 
+			}
+
+			&.delegacion {
+			//	border: 1px solid #f09937;
+
+				div {
+					background: #f09937;
+				}
+			}
+
+			&.compose {
+				margin-top: 50px;
+				box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
+				transition: all 0.4s;
+
+				&:hover {
+					box-shadow: 0 0 10px 0 rgba(0,0,0,0.7);
+				}
+
+				textarea {
+					padding: 10px 6px;
+					margin: 0;
+					text-align: justify;
+					width: 100%;
+					display: block;
+					box-sizing: border-box;
+					resize: none;
+					background: transparent;
+					border: none;
+				}
+
+				input[type="submit"] {
+					float: right;
+					background: #006191;
+					color: #fff;
+					border: none;
+					font-weight: bold;
+					padding: 6px;
+					border-radius: 4px 0 0 0;
+				}
+			}
+
+			div {
+				background: #006191;
+				color: #fff;
+				padding: 6px;
+
+				span {
+					display: inline-block;
+					width: 50%;
+					vertical-align: top;
+
+					&.autor {
+						font-weight: bold;
+					}
+
+					&.date {
+						text-align: right;
+					}
+				}
+			}
+
+			p {
+				padding: 10px 6px;
+				margin: 0;
+				text-align: justify;
+			}
+		}
 	}
 
 	#aviso {
 		text-align: center;
 		display: block;
-		background: #819FF7;
+		background: #97bdf6;
 		font-weight: bold;
 		padding: 8px;
 		border-radius: 4px;
@@ -84,7 +281,9 @@ header {
 	}
 
 	#inicio {
-
+		h2, h3 {
+			border-bottom: none;
+		}
 	}
 
 	#login {
@@ -100,196 +299,72 @@ header {
 	}
 
 	#panel {
-		a#rellenar {
-			float: right;
-			display: block;
-			background: #006191;
-			color: #EDEFF2;
-			font-weight: bold;
-			padding: 8px;
-			border-radius: 4px;
-			text-decoration: none;
-			font-size: 12px;
-			margin-bottom: 5px;
-		}
-
-		p.info {
-			font-style: italic;
-			font-size: 0.8em;
-			margin: 2px 0;
-		}
 
 		.pisados {
 			margin-bottom: 50px;
 
-			h2 {
-				border-bottom: 1px solid #006191;
-			}
-
-			ul {
-				margin: 0;
-				padding: 0;
-				list-style: none;
-
-				li {
-					display: inline-block;
-					width: 20%;
-					border-radius: 4px;
-					margin: 5px;
-					box-sizing: border-box;
-					background: #97BDF6;
-					border: 2px solid #006191;
-					color: #000;
-
-					p {
-						margin: 0;
-						padding: 4px;
-
-						&.titulacion {
-							font-size: 0.7em;
-							text-align: center;
-						}
-
-						&.asignatura {
-							font-weight: bold;
-							background: #006191;
-							color: #EDEFF2;
-							height: 2em;
-						}
-
-						&.curso, &.date {
-							text-align: right;
-
-							span {
-								float: left;
-								font-weight: bold;
-							}
-						}
-					}
-				}
-			}
+			
 		}
 	}
 
 	#create {
-		a#return {
-			float: right;
-			display: block;
-			background: #006191;
-			color: #EDEFF2;
-			font-weight: bold;
-			padding: 8px;
-			border-radius: 4px;
-			text-decoration: none;
-			font-size: 12px;
-			margin-bottom: 5px;
-		}
 
-		p.info {
-			font-style: italic;
-			font-size: 0.8em;
-			margin: 2px 0;
-		}
-		.cpisado {
-			margin-bottom: 50px;
-
-			h2 {
-				border-bottom: 1px solid #006191;
-			}
-			h1 {
-				text-align: center;
-				color: #006191;
-			}
-			p {
-				&.br {
-					text-align: center;
-					color: #C0C0C0;
-  					font-weight: bold;
-				}
-			}
-			ul {
-				margin: 0;
-				padding: 20px;
-				list-style: none;
-
-				span {
-					&.titulacion, &.asignatura, &.profesor {
-						float: left;
-					}
-					&.curso, &.grupo {
-						float: right;
-					}
-				}
-			}
-			input#submit {
-				margin-bottom: 50px;
-				text-align: center;
-			}
-
-		}
 	}
 
 	#view {
-		a#return {
-			float: right;
-			display: block;
-			background: #006191;
-			color: #EDEFF2;
-			font-weight: bold;
-			padding: 8px;
-			border-radius: 4px;
-			text-decoration: none;
-			font-size: 12px;
-			margin-bottom: 5px;
-		}
 
-		p {
-			&.info {
-				font-style: italic;
-				font-size: 0.8em;
-				margin: 2px 0;
-			}
-			&.text {
-				border: 1px solid #a0a0a0;
-				padding: 4px 6px;
-				border-radius: 3px;
-				outline: 0;
-			}
-		}
-		.vpisado {
-			margin-bottom: 50px;
-
-			h2 {
-				border-bottom: 1px solid #006191;
-			}
-			h1 {
-				text-align: center;
-				color: #006191;
-			}
-			p {
-				&.br {
-					text-align: center;
-					color: #C0C0C0;
-  					font-weight: bold;
-				}
-			}
+		article#comentarios {
 			ul {
-				margin: 0;
-				padding: 20px;
+
+			}
+		}
+
+	}
+
+	#view, #create {
+
+		article#informe, article#comentarios {
+			border-top: 1px dashed #a6b0be;
+		}
+		
+		article#informe, article#dpersonales {
+			margin-bottom: 15px;
+
+			ul {
+				padding: 0;
 				list-style: none;
 
-				span {
-					&.titulacion, &.asignatura, &.profesor {
-						float: left;
-					}
-					&.curso, &.grupo {
-						float: right;
+				li {
+					margin: 5px 0;
+					box-sizing: border-box;
+					display: inline-block;
+					vertical-align: top;
+					width: 50%;
+
+					&#texto {
+						width: 100%;
+						margin-top: 20px;
 					}
 				}
-			}
-			input#submit {
-				margin-bottom: 50px;
-				text-align: center;
+
+				span {
+					font-weight: bold;
+					text-transform: uppercase;
+					min-width: 130px;
+					display: inline-block;
+				}
+
+				p, textarea {
+					margin: 10px auto;
+					width: 90%;
+					resize: vertical;
+					line-height: 1.45em;
+					display: block;
+				}
+
+				p {
+					text-align: justify;
+				}
 			}
 
 		}
@@ -298,12 +373,11 @@ header {
 }
 
 footer {
-	margin: 40px 0;
 	font-size: 0.8em;
 
 	.wrapper {
 		border-top: 1px solid #a6b0be;
-		padding: 20px 0 0;
+		padding: 20px 0;
 	}
 
 	p {
@@ -312,3 +386,37 @@ footer {
 }
 
 
+@media print {
+	body {
+		font-size: 12px;
+	}
+	.print {
+		display: inline-block;
+	}
+	.no-print {
+		display: none;
+	}
+	header #user, h2, footer {
+		display: none;
+	}
+
+	ul#comentarios {
+		li {
+			margin: 4px auto !important;
+			width: 100%;
+			border-top: 1px solid #a6b0be !important;
+			border-left: none !important;
+			border-right: none !important;
+			border-bottom: none !important;
+			border-radius: 0 !important;
+
+			div {
+				border-bottom: 1px dashed #a6b0be !important;
+			}
+
+			&.compose {
+				display: none;
+			}
+		}
+	}
+}

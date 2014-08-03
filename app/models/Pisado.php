@@ -5,6 +5,7 @@ class Pisado {
 	public $id;
 	public $nia;
 	public $email;
+	public $autor;
 	public $date;
 	public $id_titulacion;
 	public $asignatura;
@@ -98,9 +99,18 @@ class Pisado {
 		return $pisados;
 	}
 
+	public static function findTitulaciones() {
+		// get titulaciones from db of delegados
+		return array(
+			array('id'=>1, 'nombre'=>'Ingenieria Informática'),
+			array('id'=>2, 'nombre'=>'Ingenieria Biomédica'),
+			array('id'=>3, 'nombre'=>'Ingenieria Telemática'),
+		);
+	}
+
 	public function save() {
 		$db = new DB;
-		return $db->run('INSERT INTO pisado (nia,email,date,id_titulacion,curso,asignatura,grupo,profesor,texto) VALUES (?,?,NOW(),?,?,?,?,?,?)', array($this->nia,$this->email,$this->id_titulacion,$this->curso,$this->asignatura,$this->grupo,$this->profesor,$this->texto));
+		return $db->run('INSERT INTO pisado (nia,email,date,autor,id_titulacion,curso,asignatura,grupo,profesor,texto) VALUES (?,?,NOW(),?,?,?,?,?,?,?)', array($this->nia,$this->email,$this->autor,$this->id_titulacion,$this->curso,$this->asignatura,$this->grupo,$this->profesor,$this->texto));
 	}
 
 	public function getNameTitulacion() {
@@ -111,33 +121,6 @@ class Pisado {
 			default: $tit = 'No se ha encontrado esa titulacion'; break;
 		}
 		return $tit;
-	}
-	public function getCourse() {
-		$curso = '';
-		switch ($this->curso) {
-			case '1':
-				$curso = '1º';
-				break;
-
-				case '2':
-				$curso = '2º';
-				break;
-
-				case '3':
-				$curso = '3º';
-				break;
-
-				case '4':
-				$curso = '4º';
-				break;
-
-
-			default:
-				$curso = 'No he encontrado ese curso. Por favor, contacte con el administrador.';
-				break;
-		}
-
-		return $curso;
 	}
 
 }
