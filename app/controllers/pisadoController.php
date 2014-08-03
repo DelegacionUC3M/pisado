@@ -71,7 +71,14 @@ class pisadoController extends Controller {
 						$comentario->nia = $_SESSION['user']->nia;
 						$comentario->text = htmlspecialchars($_POST['comment']);
 						if ($_SESSION['user']->isDelegado && $pisado->nia != $_SESSION['user']->nia) {
-							$comentario->nombre = $_SESSION['user']->name;
+							if ($_SESSION['user']->isDelegadoCurso()) {
+								$cargo = 'Delegado de Curso';
+							} else if ($_SESSION['user']->isDelegadoTitulacion()) {
+								$cargo = 'Delegado de Titulación';
+							} else {
+								$cargo = 'Delegado de Escuela';
+							}
+							$comentario->nombre = $_SESSION['user']->name.' ('.$cargo.')';
 						} else {
 							$comentario->nombre = '';
 						}

@@ -339,6 +339,9 @@ footer p {
   .print {
     display: inline-block;
   }
+  .no-print {
+    display: none;
+  }
   header #user,
   h2,
   p.no-print,
