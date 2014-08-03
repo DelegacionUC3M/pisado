@@ -33,7 +33,7 @@
 		</ul>
 	</article>			
 
-	<article id="comentarios">
+	<article id="comentarios" <?php if (count($comentarios) == 0) {echo 'class="no-print"';} ?> >
 		<h3>Comentarios</h3>
 
 		<?php if(isset($data['error']))  { ?>
@@ -57,7 +57,7 @@
 						$class .= 'delegacion ';
 						$autor = $comentario->nombre;
 					} else if ($user->isDelegadoEscuela() || $user->isDelegadoTitulacion()) {
-						$autor = $pisado->nia;
+						$autor = $comentario->nia;
 					} else {
 						$autor = 'Alumno';
 					}
@@ -76,12 +76,19 @@
 			<form action="?#comentarios" method="post">
 				<li class="you compose clear">
 					<div>
-						<span class="author">Escribe un comentario</span>
+						<span class="autor">Escribe un comentario</span>
 					</div>
 					<textarea name="comment" placeholder="Escribe aquí..."></textarea>
 					<input type="submit" value="Enviar" />
+					
+					<?php if ($user->isDelegado) { ?>
+						<p class="info no-print">Los comentarios de los delegados NO son anónimos.</p>
+					<?php } else { ?>
+						<p class="info no-print">El autor del comentario es anónimo. Solo lo verá el delegado encargado.</p>
+					<?php } ?>
 				</li>
 			</form>
+
 		</ul>
 
 	</article>
