@@ -34,7 +34,7 @@ class pisadoController extends Controller {
 						$this->send('¡Has creado un nuevo PISADO!', $destinatarios, $cuerpo);
 
 					/*	$cuerpo = $this->render_email('Pisado', array('pisado' => $pisado));
-						$destinatarios = getDelegados();
+						$destinatarios = $this->getDelegados();
 						$this->send('¡Hay un nuevo P.I.S.A.D.O. para ti!', $destinatarios, $cuerpo);
 					//No implementar hasta la base de datos de delegados.
 					*/
@@ -96,7 +96,11 @@ class pisadoController extends Controller {
 						if (!$comentario->save()) {
 							$data['error'] = 'Ha ocurrido un error al guardar el comentario. Inténtelo de nuevo.';
 						} else {
-							// send mail with new comments
+							$cuerpo = $this->render_email('Comentario',array('pisado' => "pisado"));
+							$destinatarios = array();
+							//$destinatarios = $this->getDelegados();
+							$destinatarios[] = $pisado->nia;
+							$this->send('¡Tienes un nuevo comentario en un P.I.S.A.D.O.!',$destinatarios,$cuerpo);
 						}
 					}
 				}
