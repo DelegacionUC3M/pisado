@@ -22,12 +22,13 @@ class User {
 		// Get rol.
 		// Get id of titulacion
 		// Get curso
-			$this->id_titulacion = 1; $this->rol = 10; $this->curso = 1; $this->isDelegado = true;
+			$this->id_titulacion = 1; $this->rol = 100; $this->curso = 1; $this->isDelegado = true;
 		// 
 
 		$ldap = explode(',', $dn);
         $titulacion = str_replace("ou=",'',$ldap[1]);
         $this->titulacion = ucwords(strtolower($titulacion));
+        // si no es delegado get id of titulacion from titulacion de LDAP
 	}
 
 	public static function findDestinatarios($curso,$id_titulacion) {
@@ -57,6 +58,13 @@ class User {
 
 	public function isDelegadoCurso() {
 		return $this->rol >= ROL_DELEGADO_CURSO;
+	}
+
+	public function getDelegado() {
+		// get delegado titulacion from id_titulacion
+		$nombre = 'Axel Blanco';
+		$email = '100318104@alumnos.uc3m.es';
+		return array('nombre' => $nombre, 'email' => $email);
 	}
 
 }
