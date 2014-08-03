@@ -60,9 +60,34 @@ class pisadoController extends Controller {
 
 		if ($pisado) {
 			if (($pisado->nia == $_SESSION['user']->nia) || (($pisado->id_titulacion == $_SESSION['user']->id_titulacion) && $_SESSION['user']->isDelegadoCurso()) || ($_SESSION['user']->isDelegadoEscuela()) ) {//dentro de view hay que controlar que no muestre los datos.
-				$comentarios = Comentario::findByIdpisado($id);
+
+				if (isset($_POST['comment'])) {
+					if (empty($_POST['comment'])) {
+						$data['error'] = 'Debes introducir texto en tu comentario';
+					} else {
+						$comentario = new ComentarioPisado;
+
+						$comentario->id_pisado = $pisado->id;
+						$comentario->nia = $_SESSION['user']->nia;
+						$comentario->text = htmlspecialchars($_POST['comment']);
+						if ($_SESSION['user']->isDelegado && $pisado->nia != $_SESSION['user']->nia) {
+							$comentario->nombre = $_SESSION['user']->name;
+						} else {
+							$comentario->nombre = '';
+						}
+
+						if (!$comentario->save()) {
+							$data['error'] = 'Ha ocurrido un error al guardar el comentario. Inténtelo de nuevo.';
+						} else {
+							// send mail with new comments
+						}
+					}
+				}
+
+				$comentarios = ComentarioPisado::findByIdpisado($pisado->id);
 				$data['pisado'] = $pisado;
-				$data['comments'] = $comentarios;
+				$data['comentarios'] = $comentarios;
+				$data['id'] = $pisado->id;
 
 				$this->render('view', $data);
 			} else {
@@ -71,38 +96,6 @@ class pisadoController extends Controller {
 		} else {
 			$this->render_error(404);
 		}
-	}
-
-	function comment() {
-		$this->security();
-
-		if(isset($_POST['id_pisado']) && isset($_POST['text'])) {
-			$data = array();
-			if(empty($_POST['text'])) {
-				$data['error'] = 'Debes introducir texto en tu comentario';
-			} else {
-				$comentario = new Comentario;
-
-				$comentario->id_pisado = $_POST['id_pisado'];
-				$comentario->nia = $_SESSION['user']->nia;
-				$comentario->text = $_POST['text'];
-				if($user->isDelegado == true) {
-					$comentario->nombre = $_SESSION['user']->name;
-				}
-
-				if($comentario->save()) {
-					$data['verify'] = 'Su comentario ha sido guardado con exito.';
-				} else {
-					$data['error'] = 'Ha ocurrido un error con la base de datos. Por favor, pongase en contacto con el
-									 administrador de la aplicacion.';
-				}
-			}
-
-			$this->render('view', $data);
-		} else {
-			$this->render('view');
-		}
-		// send mail 
 	}
 
 }
