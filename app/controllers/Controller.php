@@ -2,7 +2,7 @@
 
 class Controller {
 	
-	protected public function security($redirect = true) {
+	protected function security($redirect = true) {
 
 		if (isset($_SESSION['user']) && isset($_SESSION['user']->nia) && !empty($_SESSION['user']->nia)) {
 			return true;
@@ -16,7 +16,7 @@ class Controller {
 		return false;
 	}
 
-	protected public function render($view, $data = array()) {
+	protected function render($view, $data = array()) {
 		if(!empty($data)) {
 			extract($data);
 		}
@@ -29,7 +29,7 @@ class Controller {
 		include ABSPATH . 'app/views/footer.php';
 	}
 
-	protected public function render_error($code = 404) {
+	protected function render_error($code = 404) {
 		if ($code == 404) {
 			header("HTTP/1.0 404 Not Found");
 			$error = 'La página solicitada no existe :(';
@@ -46,7 +46,7 @@ class Controller {
 		include ABSPATH . 'app/views/footer.php';
 	}
 
-	protected public function render_email($view, $data) {
+	protected function render_email($view, $data) {
 		if(!empty($data)) {
 			extract($data);
 		}
@@ -59,7 +59,7 @@ class Controller {
 		return ob_get_clean();
 	}
 
-	protected public function send($titulo,$destinatarios,$cuerpo) {
+	protected function send($titulo,$destinatarios,$cuerpo) {
 		$titulo = $titulo;
 		$cuerpo = $cuerpo;
 	    $cabeceras  = 'MIME-Version: 1.0' . "\r\n";

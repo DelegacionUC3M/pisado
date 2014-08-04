@@ -22,7 +22,7 @@ class User {
 		// Get rol.
 		// Get id of titulacion
 		// Get curso
-			$this->id_titulacion = 1; $this->rol = 100; $this->curso = 1; $this->isDelegado = 0;
+			$this->id_titulacion = 1; $this->rol = 50; $this->curso = 1; $this->isDelegado = 1;
 		// 
 
 		$ldap = explode(',', $dn);
