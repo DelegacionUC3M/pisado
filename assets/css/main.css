@@ -204,6 +204,9 @@ header a {
   padding: 6px;
   border-radius: 4px 0 0 0;
 }
+.main ul#comentarios li.compose p.info {
+  padding-bottom: 0;
+}
 .main ul#comentarios li div {
   background: #006191;
   color: #fff;
@@ -344,7 +347,6 @@ footer p {
   }
   header #user,
   h2,
-  p.no-print,
   footer {
     display: none;
   }
