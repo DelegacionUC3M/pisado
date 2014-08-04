@@ -34,7 +34,7 @@
 			<ul>
 				<li id="titulacion"> <span>Titulacion</span> <select name="titulacion" >
 					<?php
-						foreach ($titulaciones as $titulacion) {$selected = ''; if ($pisado->id_titulacion == $titulacion['id']) {$selected = 'selected';} echo '<option '.$selected.' value="'.$titulacion['id'].'">'.$titulacion['nombre'].'</option>';}
+						foreach ($titulaciones as $titulacion) {$selected = ''; if (/*$user*/$pisado->id_titulacion == $titulacion['id']) {$selected = 'selected';} echo '<option '.$selected.' value="'.$titulacion['id'].'">'.$titulacion['nombre'].'</option>';}
 					?></select></li><li id="curso"> <span>Curso</span>
 						<select name="curso">
 							<option <?php if ($pisado->curso == '1') {echo 'selected';}?> value="1">1º</option>

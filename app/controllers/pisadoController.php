@@ -29,6 +29,16 @@ class pisadoController extends Controller {
 				if(is_numeric($_POST['grupo'])) {	
 
 					if($pisado->save()) {
+						$cuerpo = $this->render_email('CreateU', array('pisado' => $pisado));
+						$destinatarios = array($pisado->email);
+						$this->send('¡Has creado un nuevo PISADO!', $destinatarios, $cuerpo);
+
+					/*	$cuerpo = $this->render_email('Pisado', array('pisado' => $pisado));
+						$destinatarios = $this->getDelegados();
+						$this->send('¡Hay un nuevo P.I.S.A.D.O. para ti!', $destinatarios, $cuerpo);
+					//No implementar hasta la base de datos de delegados.
+					*/
+
 					//	$data['verify'] = 'El registro del pisado se ha realizado con exito';
 					//	$this->sendmail($pisado->nia);
 					//	$destinatarios = User::findDestinatarios($pisado->curso, $pisado->id_titulacion);
@@ -86,7 +96,11 @@ class pisadoController extends Controller {
 						if (!$comentario->save()) {
 							$data['error'] = 'Ha ocurrido un error al guardar el comentario. Inténtelo de nuevo.';
 						} else {
-							// send mail with new comments
+							$cuerpo = $this->render_email('Comentario',array('pisado' => "pisado"));
+							$destinatarios = array();
+							//$destinatarios = $this->getDelegados();
+							$destinatarios[] = $pisado->nia;
+							$this->send('¡Tienes un nuevo comentario en un P.I.S.A.D.O.!',$destinatarios,$cuerpo);
 						}
 					}
 				}
@@ -103,6 +117,10 @@ class pisadoController extends Controller {
 		} else {
 			$this->render_error(404);
 		}
+	}
+
+	private function getDelegados() {
+
 	}
 
 }

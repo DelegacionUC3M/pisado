@@ -58,6 +58,11 @@ header a {
   outline: none;
   text-decoration: none;
 }
+mail p.first {
+  font-size: 1.5em;
+  color: #006191;
+  text-align: center;
+}
 .main {
   margin: 50px auto;
 }
