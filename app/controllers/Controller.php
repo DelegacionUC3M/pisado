@@ -30,6 +30,10 @@ class Controller {
 	}
 
 	protected function render_error($code = 404) {
+		self::error($code);
+	}
+
+	static function error($code = 404) {
 		if ($code == 404) {
 			header("HTTP/1.0 404 Not Found");
 			$error = 'La página solicitada no existe :(';
@@ -60,8 +64,6 @@ class Controller {
 	}
 
 	protected function send($titulo,$destinatarios,$cuerpo) {
-		$titulo = $titulo;
-		$cuerpo = $cuerpo;
 	    $cabeceras  = 'MIME-Version: 1.0' . "\r\n";
 	    $cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 	    $cabeceras .= 'From: delegest@gmail.com' . "\r\n" . 
