@@ -99,28 +99,13 @@ class Pisado {
 		return $pisados;
 	}
 
-	public static function findTitulaciones() {
-		// get titulaciones from db of delegados
-		return array(
-			array('id'=>1, 'nombre'=>'Ingenieria Informática'),
-			array('id'=>2, 'nombre'=>'Ingenieria Biomédica'),
-			array('id'=>3, 'nombre'=>'Ingenieria Telemática'),
-		);
-	}
-
 	public function save() {
 		$db = new DB;
 		return $db->run('INSERT INTO pisado (nia,email,date,autor,id_titulacion,curso,asignatura,grupo,profesor,texto) VALUES (?,?,NOW(),?,?,?,?,?,?,?)', array($this->nia,$this->email,$this->autor,$this->id_titulacion,$this->curso,$this->asignatura,$this->grupo,$this->profesor,$this->texto));
 	}
 
 	public function getNameTitulacion() {
-		// get titulacion from id titulacion
-		$tit = '';
-		switch($this->id_titulacion) {
-			case 1: $tit = 'Grado en Ingenieria Informatica'; break;
-			default: $tit = 'No se ha encontrado esa titulacion'; break;
-		}
-		return $tit;
+		return DBDelegados::findByIdTitulacion($this->id_titulacion);
 	}
 
 }

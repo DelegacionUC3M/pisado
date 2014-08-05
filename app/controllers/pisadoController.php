@@ -6,7 +6,7 @@ class pisadoController extends Controller {
 		$this->security();
 		$data = array();
 
-		$data['titulaciones'] = Pisado::findTitulaciones();
+		$data['titulaciones'] = DBDelegados::getTitulaciones();
 		$pisado = new Pisado;
 		$pisado->id_titulacion = $_SESSION['user']->id_titulacion;
 		$data['pisado'] = $pisado;
@@ -45,8 +45,7 @@ class pisadoController extends Controller {
 					//	$this->sendmailPisado($destinatarios, $pisado);
 						header('Location: /pisado/inicio'); die();
 					} else {
-						$data['error'] = 'Ha ocurrido un error con la base de datos, por favor pongase en contacto con el
-						 administrador del sistema.';
+						$data['error'] = 'Ha ocurrido un error con la base de datos. Inténtelo de nuevo.';
 					}
 				} else {
 					$data['error'] = 'El grupo debe ser un numero.';
@@ -98,7 +97,6 @@ class pisadoController extends Controller {
 						} else {
 							$cuerpo = $this->render_email('Comentario',array('pisado' => "pisado"));
 							$destinatarios = array();
-							//$destinatarios = $this->getDelegados();
 							$destinatarios[] = $pisado->nia;
 							$this->send('¡Tienes un nuevo comentario en un P.I.S.A.D.O.!',$destinatarios,$cuerpo);
 						}
@@ -109,6 +107,7 @@ class pisadoController extends Controller {
 				$data['pisado'] = $pisado;
 				$data['comentarios'] = $comentarios;
 				$data['id'] = $pisado->id;
+				$data['delegado'] = DBDelegados::findDelegadosTitulacion($pisado->id_titulacion)[0];
 
 				$this->render('view', $data);
 			} else {
@@ -117,10 +116,6 @@ class pisadoController extends Controller {
 		} else {
 			$this->render_error(404);
 		}
-	}
-
-	private function getDelegados() {
-
 	}
 
 }
