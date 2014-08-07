@@ -1,5 +1,11 @@
+<!DOCTYPE html>
 <html>
-	<body>
+    <head>
+        <meta charset="utf-8">
+        
+        <link rel="stylesheet" href="/pisado/assets/css/main.css">
+    </head>
+    <body>
 		<p class="first">Tienes un P.I.S.A.D.O. sin leer. Revisa cuando puedas la aplicacion para ver de que se
 		 trata. Los datos previos del pisado se muestran a continuacion:</p>
 

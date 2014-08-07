@@ -1,4 +1,10 @@
+<!DOCTYPE html>
 <html>
+    <head>
+        <meta charset="utf-8">
+        
+        <link rel="stylesheet" href="/pisado/assets/css/main.css">
+    </head>
 	<body>
 		<p class="first">Su solicitud de P.I.S.A.D.O. se ha realizado con &eacute;xito</p>
 
