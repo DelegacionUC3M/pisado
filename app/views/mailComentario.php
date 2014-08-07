@@ -1,4 +1,10 @@
+<!DOCTYPE html>
 <html>
+    <head>
+        <meta charset="utf-8">
+        
+        <link rel="stylesheet" href="/pisado/assets/css/main.css">
+    </head>
 	<body>
 		<p class="first">Tienes un comentario sin leer en uno de tus pisados. Revisa cuando puedas la aplicacion
 		 para ver de que se trata. Los datos del pisado en el cual se ha comentado se muestran a continuacion:</p>
