@@ -42,9 +42,9 @@ class DBDelegados {
 	//	$db->run();
 
 	//	if ($db->count() == 1) {
-			return array('id_titulacion' => 1, 'rol' => 50, 'curso' => 50);
+	//		return array('id_titulacion' => 1, 'rol' => 50, 'curso' => 50);
 	//	} else {
-	//		return null;
+			return null;
 	//	}
 	}
 

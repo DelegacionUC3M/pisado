@@ -19,7 +19,7 @@ function __autoload($class) {
 	} 
 
 	if(!class_exists($class)) {
-		Controller::render_error(404);
+		Controller::error(404);
 	}
 	
 }

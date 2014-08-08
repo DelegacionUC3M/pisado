@@ -33,7 +33,7 @@ class Pisado {
 
 	public static function findByNia($nia) {
 		$db = new DB;
-		$db->run('SELECT * FROM pisado WHERE nia=? ORDER BY date', array($nia));
+		$db->run('SELECT * FROM pisado WHERE nia=? AND id_group=0 ORDER BY date', array($nia));
 		$data = $db->data();
 
 		$pisados = array();
@@ -50,7 +50,24 @@ class Pisado {
 
 	public static function findByIdTitulacion($id_titulacion) {
 		$db = new DB;
-		$db->run('SELECT * FROM pisado WHERE id_titulacion=? ORDER BY date', array($id_titulacion));
+		$db->run('SELECT * FROM pisado WHERE id_titulacion=? AND id_group=0 ORDER BY date', array($id_titulacion));
+		$data = $db->data();
+
+		$pisados = array();
+		foreach($data as $row){
+			$pisado = new Pisado;
+			foreach($row as $key => $value){
+	        	$pisado->{$key} = $value;
+	        }
+	        $pisados[] = $pisado;
+    	}
+
+		return $pisados;
+	}
+
+	public static function findByIdGroup($id_group) {
+		$db = new DB;
+		$db->run('SELECT * FROM pisado WHERE id_group=? ORDER BY date', array($id_group));
 		$data = $db->data();
 
 		$pisados = array();
@@ -67,7 +84,7 @@ class Pisado {
 
 	public static function findByCurso($curso,$id_titulacion) {
 		$db = new DB;
-		$db->run('SELECT * FROM pisado WHERE curso=? AND id_titulacion=? ORDER BY date', array($curso,$id_titulacion));
+		$db->run('SELECT * FROM pisado WHERE curso=? AND id_titulacion=? AND id_group=0 ORDER BY date', array($curso,$id_titulacion));
 		$data = $db->data();
 
 		$pisados = array();
@@ -84,7 +101,7 @@ class Pisado {
 
 	public static function findAll() {
 		$db = new DB;
-		$db->run('SELECT * FROM pisado ORDER BY id_titulacion,date');
+		$db->run('SELECT * FROM pisado WHERE id_group=0 ORDER BY id_titulacion,date');
 		$data = $db->data();
 
 		$pisados = array();
