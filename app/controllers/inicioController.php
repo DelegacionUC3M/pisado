@@ -55,15 +55,19 @@ class inicioController extends Controller {
 		$this->security();
 		
 		$user = $_SESSION['user'];
-		$pisados = Pisado::findByNia($user->nia);
+		$pisados = array_merge(Pisado::findByNia($user->nia), Group::findByNia($user->nia)); 
+		usort( $pisados, function($a, $b) {return strtotime($a->date) - strtotime($b->date);} );
 		$otros = array();
 		
 		if ($user->isDelegadoEscuela()) {
-			$otros = Pisado::findAll();
+			$otros = array_merge(Pisado::findAll(), Group::findAll());
+			usort( $otros, function($a, $b) {return strtotime($a['date']) - strtotime($b['date']);});
 		} else if ($user->isDelegadoTitulacion()) {
-			$otros = Pisado::findByIdTitulacion($user->id_titulacion);
+			$otros = array_merge(Pisado::findByIdTitulacion($user->id_titulacion), Group::findByIdTitulacion($user->id_titulacion));
+			usort( $otros, function($a, $b) {return strtotime($a->date) - strtotime($b->date);} );
 		} else if ($user->isDelegadoCurso()) {
-			$otros = Pisado::findByCurso($user->curso,$user->id_titulacion);
+			$otros = array_merge(Pisado::findByCurso($user->curso,$user->id_titulacion), Group::findByCurso($user->curso,$user->id_titulacion));
+			usort( $otros, function($a, $b) {return strtotime($a->date) - strtotime($b->date);} );
 		}
 
 		$this->render('panel', array('pisados'=>$pisados,'otros'=>$otros));

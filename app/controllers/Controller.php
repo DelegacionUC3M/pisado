@@ -33,7 +33,7 @@ class Controller {
 		self::error($code);
 	}
 
-	static function error($code = 404) {
+	public static function error($code = 404) {
 		if ($code == 404) {
 			header("HTTP/1.0 404 Not Found");
 			$error = 'La página solicitada no existe :(';

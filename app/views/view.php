@@ -1,7 +1,11 @@
 <section id="view">
 
 	<h2 class="clear">PISADO #<?= $pisado->id ?>
-			<a href="/pisado/">Volver a mis PISADO</a>
+			<?php if ($pisado->id_group != 0) { ?>
+				<a href="/pisado/group/view/<?= $pisado->id_group ?>">Volver al grupo</a>
+			<?php } else { ?>
+				<a href="/pisado/">Volver a mis PISADO</a>
+			<?php } ?>
 			<a href="#" id="print">Imprimir</a>
 		</h2>
 
@@ -71,23 +75,29 @@
 						<p><?= $comentario->text ?></p>
 					</li>
 				<?php }
+
+				if ($pisado->id_group != 0) { 
 			?>
 
-			<form action="?#comentarios" method="post">
-				<li class="you compose clear">
-					<div>
-						<span class="autor">Escribe un comentario</span>
-					</div>
-					<textarea name="comment" placeholder="Escribe aquí..."></textarea>
-					<input type="submit" value="Enviar" />
-					
-					<?php if ($user->isDelegado) { ?>
-						<p class="info no-print">Los comentarios de los delegados NO son anónimos.</p>
-					<?php } else { ?>
-						<p class="info no-print">El autor del comentario es anónimo. Solo lo verá el delegado encargado.</p>
-					<?php } ?>
-				</li>
-			</form>
+				<p class="info">El PISADO pertenece a un grupo, solo puedes comentar en el grupo.</p>
+
+			<?php } else { ?>
+				<form action="?#comentarios" method="post">
+					<li class="you compose clear">
+						<div>
+							<span class="autor">Escribe un comentario</span>
+						</div>
+						<textarea name="comment" placeholder="Escribe aquí..."></textarea>
+						<input type="submit" value="Enviar" />
+						
+						<?php if ($user->isDelegado) { ?>
+							<p class="info no-print">Los comentarios de los delegados NO son anónimos.</p>
+						<?php } else { ?>
+							<p class="info no-print">El autor del comentario es anónimo. Solo lo verá el delegado encargado.</p>
+						<?php } ?>
+					</li>
+				</form>
+			<?php } ?>
 
 		</ul>
 

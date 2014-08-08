@@ -58,11 +58,6 @@ header a {
   outline: none;
   text-decoration: none;
 }
-mail p.first {
-  font-size: 1.5em;
-  color: #006191;
-  text-align: center;
-}
 .main {
   margin: 50px auto;
 }
@@ -113,6 +108,19 @@ mail p.first {
   background: #97BDF6;
   border: 2px solid #006191;
   color: #000;
+  position: relative;
+}
+.main ul#pisados li#group:before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  margin: 2px;
+  background: #97BDF6;
+  border: 2px solid #006191;
+  z-index: -10;
 }
 .main ul#pisados li p {
   margin: 0;
@@ -133,10 +141,10 @@ mail p.first {
   font-weight: bold;
   background: #006191;
   color: #EDEFF2;
-  width: 10%;
+  width: 15%;
 }
 .main ul#pisados li p.id-titulacion span.titulacion {
-  width: 90%;
+  width: 85%;
   text-align: center;
   overflow: hidden;
   white-space: nowrap;
@@ -265,6 +273,10 @@ mail p.first {
 .main #panel .pisados {
   margin-bottom: 50px;
 }
+.main #view ul#pisados,
+.main #create ul#pisados {
+  margin: 20px 0;
+}
 .main #view article#informe,
 .main #create article#informe,
 .main #view article#comentarios,
@@ -274,20 +286,26 @@ mail p.first {
 .main #view article#informe,
 .main #create article#informe,
 .main #view article#dpersonales,
-.main #create article#dpersonales {
+.main #create article#dpersonales,
+.main #view article#listPisados,
+.main #create article#listPisados {
   margin-bottom: 15px;
 }
 .main #view article#informe ul,
 .main #create article#informe ul,
 .main #view article#dpersonales ul,
-.main #create article#dpersonales ul {
+.main #create article#dpersonales ul,
+.main #view article#listPisados ul,
+.main #create article#listPisados ul {
   padding: 0;
   list-style: none;
 }
 .main #view article#informe ul li,
 .main #create article#informe ul li,
 .main #view article#dpersonales ul li,
-.main #create article#dpersonales ul li {
+.main #create article#dpersonales ul li,
+.main #view article#listPisados ul li,
+.main #create article#listPisados ul li {
   margin: 5px 0;
   box-sizing: border-box;
   display: inline-block;
@@ -297,14 +315,18 @@ mail p.first {
 .main #view article#informe ul li#texto,
 .main #create article#informe ul li#texto,
 .main #view article#dpersonales ul li#texto,
-.main #create article#dpersonales ul li#texto {
+.main #create article#dpersonales ul li#texto,
+.main #view article#listPisados ul li#texto,
+.main #create article#listPisados ul li#texto {
   width: 100%;
   margin-top: 20px;
 }
 .main #view article#informe ul span,
 .main #create article#informe ul span,
 .main #view article#dpersonales ul span,
-.main #create article#dpersonales ul span {
+.main #create article#dpersonales ul span,
+.main #view article#listPisados ul span,
+.main #create article#listPisados ul span {
   font-weight: bold;
   text-transform: uppercase;
   min-width: 130px;
@@ -314,10 +336,14 @@ mail p.first {
 .main #create article#informe ul p,
 .main #view article#dpersonales ul p,
 .main #create article#dpersonales ul p,
+.main #view article#listPisados ul p,
+.main #create article#listPisados ul p,
 .main #view article#informe ul textarea,
 .main #create article#informe ul textarea,
 .main #view article#dpersonales ul textarea,
-.main #create article#dpersonales ul textarea {
+.main #create article#dpersonales ul textarea,
+.main #view article#listPisados ul textarea,
+.main #create article#listPisados ul textarea {
   margin: 10px auto;
   width: 90%;
   resize: vertical;
@@ -327,7 +353,9 @@ mail p.first {
 .main #view article#informe ul p,
 .main #create article#informe ul p,
 .main #view article#dpersonales ul p,
-.main #create article#dpersonales ul p {
+.main #create article#dpersonales ul p,
+.main #view article#listPisados ul p,
+.main #create article#listPisados ul p {
   text-align: justify;
 }
 footer {
