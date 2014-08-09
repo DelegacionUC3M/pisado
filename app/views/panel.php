@@ -45,7 +45,9 @@
 		if ($user->isDelegado) { ?>
 
 			<h2 class="clear">Delegación
-				<a href="?" id="agrupar">Agrupar</a>
+				<?php if ($user->isDelegadoTitulacion() || $user->isDelegadoEscuela()) { ?>
+					<a href="?" id="agrupar">Agrupar</a>
+				<?php } ?>
 			</h2>
 			
 			<ul id="pisados">
