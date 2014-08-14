@@ -57,7 +57,7 @@ class DBDelegados {
 	}
 
 	public static function getTitulaciones() {
-		return array( array('id_titulacion' => 1, 'nombre' => 'Grado en Ingeniería Informática'), array('id_titulacion' => 2, 'nombre' => 'Grado en Ingeniería BIomédica') );
+		return array( array('id_titulacion' => 1, 'nombre' => 'Grado en Ingeniería Informática'), array('id_titulacion' => 2, 'nombre' => 'Grado en Ingeniería Biomédica') );
 	}
 
 }
