@@ -7,7 +7,7 @@
 		<p class="error"><?php echo isset($error) ? $error : '' ?></p>
 		
 		<form action="?<?php if (isset($_GET['url'])) {echo 'url='.$_GET['url'];} ?>" method="post">
-			<input type="text" name="nia" id="nia" placeholder="Usuario" />
+			<input type="text" name="nia" id="nia" placeholder="NIA" />
 			<input type="password" id="password" name="password" placeholder="Contraseña" />
 
 			<input type="submit" value="Entrar" />

@@ -82,6 +82,12 @@ html {
 a {
 	outline: none;
 	text-decoration: none;
+	color: @blue;
+	// border-bottom: 1px solid @blue;
+
+	&:active, &:visited {
+		color: @blue;
+	}
 }
 
 .wrapper {
@@ -137,6 +143,10 @@ header {
 			border-radius: 5px;
 			border: 1px solid @blue-light;
 			color: #006191;
+
+			&.logout {
+				border: none;
+			}
 		}
 	}
 }
@@ -385,6 +395,14 @@ header {
 		background-size: cover;
 		color: #fff;
 		text-align: center;
+		// display: table;
+		// height: 80vh;
+		// width: 100%;
+
+		// div.wrapper {
+		// 	display: table-cell;
+		// 	vertical-align: middle;
+		// }
 
 		h2, h3 {
 			border-bottom: none;
@@ -393,17 +411,21 @@ header {
 
 		h2 {
 			font-size: 2em;
-			margin: 30px 0;
+			margin: 0 0 30px;
 		}
 
-		p, ul {
+		p {
+			margin: 15px 0;
+		}
+
+		ul {
 			margin: 0;
 			padding: 0;
 		}
 	}
 
 	#inicio {
-		padding: 50px 0 70px;
+		padding: 70px 0;
 
 		li {
 			list-style: none;
@@ -419,7 +441,7 @@ header {
 	}
 
 	#login {
-		padding: 50px 0;
+		padding: 70px 0;
 
 		p.error {
 			color: red;
@@ -559,6 +581,7 @@ footer {
 
 	span {
 		max-width: 500px;
+		text-align: left;
 	}
 }
 

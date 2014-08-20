@@ -67,6 +67,11 @@ html {
 a {
   outline: none;
   text-decoration: none;
+  color: #006394;
+}
+a:active,
+a:visited {
+  color: #006394;
 }
 .wrapper {
   max-width: 960px;
@@ -126,6 +131,9 @@ header #user a {
   border-radius: 5px;
   border: 1px solid #bad4e2;
   color: #006191;
+}
+header #user a.logout {
+  border: none;
 }
 .main h2 {
   color: #006191;
@@ -341,17 +349,19 @@ header #user a {
 .main #inicio h2,
 .main #login h2 {
   font-size: 2em;
-  margin: 30px 0;
+  margin: 0 0 30px;
 }
 .main #inicio p,
-.main #login p,
+.main #login p {
+  margin: 15px 0;
+}
 .main #inicio ul,
 .main #login ul {
   margin: 0;
   padding: 0;
 }
 .main #inicio {
-  padding: 50px 0 70px;
+  padding: 70px 0;
 }
 .main #inicio li {
   list-style: none;
@@ -364,7 +374,7 @@ header #user a {
   text-align: justify;
 }
 .main #login {
-  padding: 50px 0;
+  padding: 70px 0;
 }
 .main #login p.error {
   color: red;
@@ -518,6 +528,7 @@ footer span {
 }
 footer span {
   max-width: 500px;
+  text-align: left;
 }
 @media print {
   body {
