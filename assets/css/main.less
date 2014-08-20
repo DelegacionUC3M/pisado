@@ -1,6 +1,87 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,500,700);
+
+@font-face {
+	font-family: 'icomoon';
+	src:url('fonts/pisado.eot?-xuph9k');
+	src:url('fonts/pisado.eot?#iefix-xuph9k') format('embedded-opentype'),
+		url('fonts/pisado.woff?-xuph9k') format('woff'),
+		url('fonts/pisado.ttf?-xuph9k') format('truetype'),
+		url('fonts/pisado.svg?-xuph9k#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-print:before {
+	content: "\31";
+}
+.icon-pisado:before {
+	content: "\64";
+}
+.icon-fill:before {
+	content: "\32";
+}
+.icon-agroup:before {
+	content: "\33";
+}
+.icon-map:before {
+	content: "\34";
+}
+.icon-clock:before {
+	content: "\35";
+}
+.icon-comment:before {
+	content: "\36";
+}
+.icon-user:before {
+	content: "\37";
+}
+.icon-signin:before {
+	content: "\38";
+}
+.icon-signout:before {
+	content: "\39";
+}
+.icon-back:before {
+	content: "\61";
+}
+.icon-facebook:before {
+	content: "\62";
+}
+.icon-twitter:before {
+	content: "\63";
+}
+
+@blue: #006394;
+@blue-light: #bad4e2;
+@grey: #2b2b2b;
+@grey-form: #747373;
+@grey-light: #e3e3e3;
+@grey-back: #e1e1e1;
+
+
 html {
-	font-family: "Trebuchet MS", Helvetica, Arial, Sans-serif;
+	font-family: 'Roboto', sans-serif;
 	background: #EDEFF2;
+	color: @grey;
+}
+
+a {
+	outline: none;
+	text-decoration: none;
 }
 
 .wrapper {
@@ -13,55 +94,54 @@ html {
 }
 
 input[type="text"], input[type="password"], textarea, select {
-	border: 1px solid #a0a0a0;
+	border: 1px solid @grey-light;
 	padding: 4px 6px;
-	border-radius: 3px;
+	border-radius: 4px;
 	outline: 0;
+	color: @grey-form;
 
 	&:hover, &:focus {
-		border: 1px solid #006191;
+		border: 1px solid @grey-form;
 	}
 }
 
+h1, h2, h3 {
+	font-weight: 300;
+}
+
 header {
-	background: #97bdf6;
-	padding: 15px 0;
-	border-bottom: 5px solid #006191;
+	background: #fff;
+	padding: 19px 0;
 
 	h1 {
-		margin: 5px 0 0;
 		font-size: 2.7em;
-		color: #006191;
+		color: @blue;
+		margin: 0;
+		display: inline-block;
+		vertical-align: middle;
 	}
 
 	img {
-		margin: 5px 0;
-	}
-
-	#right {
-		float: right;
-		text-align: right;
+		margin-left: 15px;
+		display: inline-block;
+		vertical-align: middle;
 	}
 
 	#user {
+		float: right;
 		font-size: 0.95em;
+		margin-top: 15px;
+
 		a {
+			padding: 8px 23px;
+			border-radius: 5px;
+			border: 1px solid @blue-light;
 			color: #006191;
-
-			&:hover {
-				text-decoration: underline;
-			}
 		}
-	}
-
-	a {
-		outline: none;
-		text-decoration: none;
 	}
 }
 
 .main {
-	margin: 50px auto;
 
 	h2 {
 		color: #006191;
@@ -300,21 +380,85 @@ header {
 		}
 	}
 
-	#inicio {
+	#inicio, #login {
+		background: linear-gradient(rgba(0, 97, 145, 0.65),rgba(0, 97, 145, 0.65) ), url('/pisado/assets/img/bg.jpg') center; 
+		background-size: cover;
+		color: #fff;
+		text-align: center;
+
 		h2, h3 {
 			border-bottom: none;
+			color: #fff;
+		}
+
+		h2 {
+			font-size: 2em;
+			margin: 30px 0;
+		}
+
+		p, ul {
+			margin: 0;
+			padding: 0;
+		}
+	}
+
+	#inicio {
+		padding: 50px 0 70px;
+
+		li {
+			list-style: none;
+			display: inline-block;
+			width: 50%;
+			padding: 0 30px;
+			box-sizing: border-box;
+
+			p { 
+				text-align: justify;
+			}
 		}
 	}
 
 	#login {
-		label {
-			width: 150px;
-			display: inline-block;
-		}
+		padding: 50px 0;
 
 		p.error {
 			color: red;
 			font-weight: bold;
+		}
+
+		form {
+			margin: 20px 0;
+		}
+
+		input[type="text"], input[type="password"] {
+			display: block;
+			margin: 0 auto;
+			width: 250px;
+			padding: 10px 15px;
+			background: #cddde5;
+			border-color: #145573;
+
+			&:hover {
+				border-color:  #145573;
+			}
+		}
+
+		input[type="text"] {
+			border-radius: 5px 5px 0 0;
+			border-bottom: none;
+		}
+
+		input[type="password"] {
+			border-top: 1px solid  #9fadb1;
+			border-radius: 0 0 5px 5px;
+
+			&:hover {
+				border-top:  1px solid  #9fadb1;
+			}
+		}
+
+		input[type="submit"] {
+			margin-top: 30px;
 		}
 	}
 
@@ -383,15 +527,38 @@ header {
 }
 
 footer {
-	font-size: 0.8em;
+	font-size: 0.9em;
+	background: #fff;
+	box-shadow: 0 0 6px 0 @grey;
+	padding: 15px 0;
 
-	.wrapper {
-		border-top: 1px solid #a6b0be;
+	#rsociales {
+		margin: 20px 0;	
+		text-align: center;
+	}
+
+	#copy {
+		border-top: 1px solid @grey-light;
+		text-align: center;
 		padding: 20px 0;
 	}
 
-	p {
-		margin: 3px 0;
+	h2 {
+		margin: 0;
+		color: @blue;
+	}
+
+	i {
+		margin: 0 5px 0 15px; 
+	}
+
+	i, a, span {	
+		display: inline-block;
+		vertical-align: top;
+	}
+
+	span {
+		max-width: 500px;
 	}
 }
 

@@ -1,4 +1,4 @@
-<section id="panel">
+<section id="panel" class="wrapper">
 
 	<article class="pisados">
 		<h2 class="clear">Mis PISADOS

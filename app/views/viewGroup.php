@@ -1,4 +1,4 @@
-<section id="view">
+<section id="view" class="wrapper">
 
 	<h2 class="clear">Grupo PISADO #G<?= $group->id ?>
 			<a href="/pisado/">Volver a mis PISADO</a>

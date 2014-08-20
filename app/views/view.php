@@ -1,4 +1,4 @@
-<section id="view">
+<section id="view" class="wrapper">
 
 	<h2 class="clear">PISADO #<?= $pisado->id ?>
 			<?php if ($pisado->id_group != 0) { ?>
