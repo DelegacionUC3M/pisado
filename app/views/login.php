@@ -1,17 +1,17 @@
 <section id="login">
-	<h2>Entrar a PISADO</h2>
-	<p>Está intentando acceder a un área protegida. Introduzca su usuario y contraseña:</p>
-	<form action="?<?php if (isset($_GET['url'])) {echo 'url='.$_GET['url'];} ?>" method="post">
-		
+
+	<div class="wrapper">
+		<h2>Entrar a PISADO</h2>
+		<p>Está intentando acceder a un área protegida. </br> Introduzca su usuario y contraseña:</p>
+
 		<p class="error"><?php echo isset($error) ? $error : '' ?></p>
-
-		<p><label for="nia">Usuario:</label>
-				<input type="text" name="nia" id="nia" placeholder="Usuario" /></p>
 		
-		<p><label for="password">Contraseña:</label>
-				<input type="password" id="password" name="password" placeholder="Contraseña" /></p>
+		<form action="?<?php if (isset($_GET['url'])) {echo 'url='.$_GET['url'];} ?>" method="post">
+			<input type="text" name="nia" id="nia" placeholder="Usuario" />
+			<input type="password" id="password" name="password" placeholder="Contraseña" />
 
-		<input type="submit" value="Entrar" />
-	</form>
+			<input type="submit" value="Entrar" />
+		</form>
+	</div>
 
 </section>

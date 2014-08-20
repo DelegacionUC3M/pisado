@@ -19,9 +19,6 @@ $(function() {
 	$('section#panel a#agrupar').on('click', function(e) {
 		e.preventDefault();
 
-		var elms = $(this).parent().parent().find('ul#pisados li');
-
-
 	})
 
 })

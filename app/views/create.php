@@ -1,4 +1,4 @@
-<section id="create">
+<section id="create" class="wrapper">
 
 	<h2 class="clear">Crear un PISADO
 		<a href="/pisado/">Volver a mis PISADO</a>
