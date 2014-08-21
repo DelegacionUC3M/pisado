@@ -10,12 +10,12 @@
 		 para ver de que se trata. Los datos del pisado en el cual se ha comentado se muestran a continuacion:</p>
 
 		<h>P.I.S.A.D.O.</h>
-		<ol>
-			<li><b>Titulacion</b>: '.$pisado->getNameTitulacion().'</li>
-			<li><b>Asignatura</b>: '.$pisado->asignatura.'</li>
-  			<li><b>Curso</b>: '.$pisado->curso.'</li>
-  			<li><b>Grupo</b>: '.$pisado->grupo.'</li>
-		</ol>
+		<ul>
+			<li><b>Titulacion</b>: <?php echo $pisado->getNameTitulacion() ?></li>
+			<li><b>Asignatura</b>: <?php echo $pisado->asignatura ?></li>
+  			<li><b>Curso</b>: <?php echo $pisado->curso ?>º</li>
+  			<li><b>Grupo</b>: <?php echo $pisado->grupo ?></li>
+		</ul>
 
 		<p>Si desea ver el pisado ahora mismo est&aacute; disponible en
 		 <a href="https://delegacion.uc3m.es/pisado/pisado/view/<?php echo $pisado->id ?>">P.I.S.A.D.O.</a>
