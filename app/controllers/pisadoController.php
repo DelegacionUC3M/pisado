@@ -95,9 +95,9 @@ class pisadoController extends Controller {
 						if (!$comentario->save()) {
 							$data['error'] = 'Ha ocurrido un error al guardar el comentario. Inténtelo de nuevo.';
 						} else {
-							$cuerpo = $this->render_email('Comentario',array('pisado' => "pisado"));
+							$cuerpo = $this->render_email('Comentario',array('pisado' => $pisado));
 							$destinatarios = array();
-							$destinatarios[] = $pisado->nia;
+							$destinatarios[] = $pisado->email;
 							$this->send('¡Tienes un nuevo comentario en un P.I.S.A.D.O.!',$destinatarios,$cuerpo);
 						}
 					}
