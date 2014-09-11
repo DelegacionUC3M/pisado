@@ -65,17 +65,16 @@
 	content: "\63";
 }
 
-@blue: #006394;
-@blue-light: #bad4e2;
+@blue: #066394;
+@blue-light: #bad5e2;
 @grey: #2b2b2b;
-@grey-form: #747373;
 @grey-light: #e3e3e3;
 @grey-back: #e1e1e1;
 
 
 html {
 	font-family: 'Roboto', sans-serif;
-	background: #EDEFF2;
+	background: #e1e1e1;
 	color: @grey;
 }
 
@@ -100,15 +99,55 @@ a {
 }
 
 input[type="text"], input[type="password"], textarea, select {
-	border: 1px solid @grey-light;
 	padding: 4px 6px;
 	border-radius: 4px;
-	outline: 0;
-	color: @grey-form;
+	background: #f6f6f6;
+	border: 1px solid #c4c4c4;
+	color: #555454;
 
 	&:hover, &:focus {
-		border: 1px solid @grey-form;
+		border: 1px solid #555454;
 	}
+}
+
+input, button {
+	outline: 0;
+	font-weight: 500;
+	font-family: 'Roboto', sans-serif;
+}
+
+button, a.button {
+	display: block;
+	background: @blue;
+	color: #fff;
+	position: relative;
+	border-radius: 5px;
+	padding: 8px;
+	text-decoration: none;
+
+	&:before {
+		content: ' ';
+		display: block;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		margin: -5px -8px;
+		border-radius: 5px;
+		background: #004a6f;
+		z-index: -10;
+		transition: all 0.4s;
+	}
+
+	i {
+		margin: 0 3px;
+	}
+
+	&:active {
+		&:before {
+			margin: -7px -8px;
+		}
+	}
+
 }
 
 h1, h2, h3 {
@@ -154,21 +193,9 @@ header {
 .main {
 
 	h2 {
-		color: #006191;
-		border-bottom: 1px solid #006191;
-
 		a {
 			float: right;
-			display: block;
-			background: #006191;
-			color: #EDEFF2;
-			font-weight: bold;
-			padding: 8px;
-			border-radius: 4px;
-			text-decoration: none;
-			font-size: 12px;
-			margin-bottom: 5px;
-			margin-left: 5px;
+			font-size: 0.65em;
 		}
 	}
 
@@ -196,17 +223,29 @@ header {
 		margin: 0;
 		padding: 0;
 		list-style: none;
+		width: 110%;
+		margin-left: -5%;
+
+		a > li {
+			margin-right: -4px;
+
+			&:last-child {
+				margin-right: 0;
+			}
+		}
 
 		li {
 			display: inline-block;
-			width: 20%;
-			border-radius: 4px;
-			margin: 5px;
+			width: 22%;
+			border-radius: 5px;
+			margin: 8px 2%;
 			box-sizing: border-box;
-			background: #97BDF6;
-			border: 2px solid #006191;
+			background: #fff;
+			box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.65);
 			color: #000;
 			position: relative;
+			box-sizing: border-box;
+			padding: 6px;
 
 			&#group {
 				&:before {
@@ -215,63 +254,47 @@ header {
 					position: absolute;
 					width: 100%;
 					height: 100%;
-					border-radius: 4px;
-					margin: 2px;
-					background: #97BDF6;
-					border: 2px solid #006191;
+					border-radius: 5px;
+					box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.65);
 					z-index: -10;
 				}
 			}
 
 			p {
-				margin: 0;
-				padding: 4px;
+				margin: 3px 0;
 
-				&.id-titulacion {
-					font-size: 0.7em;
-					padding: 0 ;
-
-					span {
-						display: inline-block;
-						vertical-align: top;
-						padding: 4px;
-						box-sizing: border-box;
-						height: 20px;
-
-						&.id {
-							font-weight: bold;
-							background: #006191;
-							color: #EDEFF2;
-							width: 15%;
-						}
-
-						&.titulacion {
-							width: 85%;
-							text-align: center;
-							overflow: hidden;
-							white-space: nowrap;
-							text-overflow: ellipsis;
-						}
-
-					}
-				}
-
-				&.asignatura {
-					font-weight: bold;
-					background: #006191;
-					color: #EDEFF2;
-					height: 2.1em;
+				&.id-asignatura {
+					font-weight: 300;
+					font-size: 1.1em;
+					color: @blue;
 					overflow: hidden;
 					white-space: nowrap;
 					text-overflow: ellipsis;
-				}
-
-				&.curso, &.date {
-					text-align: right;
+					height: 50px;
 
 					span {
-						float: left;
-						font-weight: bold;
+
+						&.id {
+							font-weight: bold;
+						}
+					}
+				}
+
+				&.titulacion {
+					font-size: 0.8em;
+				}
+
+				&.curso-date {
+					font-size: 0.8em;
+
+					span {
+						&.curso {
+							font-weight: bold;
+						}
+
+						&.date {
+							float: right;
+						}
 					}
 				}
 			}
@@ -391,7 +414,7 @@ header {
 	}
 
 	#inicio, #login {
-		background: linear-gradient(rgba(0, 97, 145, 0.65),rgba(0, 97, 145, 0.65) ), url('/pisado/assets/img/bg.jpg') center; 
+		background: linear-gradient(rgba(0, 97, 145, 0.75),rgba(0, 97, 145, 0.75) ), url('/pisado/assets/img/bg.jpg') center; 
 		background-size: cover;
 		color: #fff;
 		text-align: center;
@@ -425,7 +448,7 @@ header {
 	}
 
 	#inicio {
-		padding: 70px 0;
+		padding: 80px 0;
 
 		li {
 			list-style: none;
@@ -441,10 +464,10 @@ header {
 	}
 
 	#login {
-		padding: 70px 0;
+		padding: 90px 0;
 
 		p.error {
-			color: red;
+			color: rgba(159, 0, 0, 1);
 			font-weight: bold;
 		}
 
@@ -452,35 +475,38 @@ header {
 			margin: 20px 0;
 		}
 
+		form.error {
+			input[type="text"], input[type="password"] {
+				border-color: rgba(128, 0, 0, 0.75) !important;
+			}
+		}
+
 		input[type="text"], input[type="password"] {
 			display: block;
 			margin: 0 auto;
-			width: 250px;
-			padding: 10px 15px;
-			background: #cddde5;
-			border-color: #145573;
-
-			&:hover {
-				border-color:  #145573;
-			}
+			width: 300px;
+			padding: 12px 15px;
+			background: rgba(255, 255, 255, 0.8);
+			border-color: rgba(0, 0, 0, 0.55);
+			box-sizing: border-box;
 		}
 
 		input[type="text"] {
 			border-radius: 5px 5px 0 0;
-			border-bottom: none;
 		}
 
 		input[type="password"] {
-			border-top: 1px solid  #9fadb1;
 			border-radius: 0 0 5px 5px;
-
-			&:hover {
-				border-top:  1px solid  #9fadb1;
-			}
+			border-top: none;
 		}
 
-		input[type="submit"] {
-			margin-top: 30px;
+		button {
+			width: 300px;
+			box-sizing: border-box;
+			padding:  12px 15px;
+			border: 1px solid rgba(0, 0, 0, 0.55);
+			text-shadow: -1px 0 4px rgba(0, 0, 0, 0.55);
+			margin: 30px auto 0;
 		}
 	}
 
@@ -488,8 +514,6 @@ header {
 
 		.pisados {
 			margin-bottom: 50px;
-
-			
 		}
 	}
 

@@ -2,7 +2,7 @@
 
 	<article class="pisados">
 		<h2 class="clear">Mis PISADOS
-			<a href="pisado/create">Rellenar un PISADO</a>
+			<a class="button" href="pisado/create"><i class="icon-fill"></i>Rellenar un PISADO</a>
 		</h2>
 
 
@@ -13,20 +13,18 @@
 			foreach ($pisados as $pisado) {
 				if (is_a($pisado,'Pisado')) {
 					?>
-						<a href="/pisado/pisado/view/<?= $pisado->id ?>"><li id="pisado">
-								<p class="id-titulacion"><span class="id">#<?= $pisado->id ?></span><span class="titulacion"><?= $pisado->getNameTitulacion() ?></span> </p>
-								<p class="asignatura"><?= $pisado->asignatura ?></p>
-								<p class="curso"> <span>Curso</span> <?= $pisado->curso.'º' ?></p>
-								<p class="date"> <span>Fecha</span> <?= date('j/m/y' ,strtotime($pisado->date)) ?></p>
-							</li></a>
+						<a href="/pisado/pisado/view/<?= $pisado->id ?>"><li id="pisado">	
+								<p class="id-asignatura"><span class="id">#<?= $pisado->id ?></span> <?= $pisado->asignatura ?></p>
+								<p class="titulacion"><?= $pisado->getNameTitulacion() ?> </p>
+								<p class="curso-date"> <span class="curso">Curso <?= $pisado->curso.'º' ?></span> <span class="date"><i class="icon-clock"></i> <?= date('j/m/y' ,strtotime($pisado->date)) ?></span> </p>
+						</li></a>
 					<?php
 				} else {
 					?>
 						<a href="/pisado/group/view/<?= $pisado->id ?>"><li id="group">
-								<p class="id-titulacion"><span class="id">#G<?= $pisado->id ?></span><span class="titulacion"><?= $pisado->getNameTitulacion() ?></span> </p>
-								<p class="asignatura"><?= $pisado->subject ?></p>
-								<p class="curso"> <span>Curso</span> <?= $pisado->curso.'º' ?></p>
-								<p class="date"> <span>Fecha</span> <?= date('j/m/y' ,strtotime($pisado->date)) ?></p>
+								<p class="id-asignatura"><span class="id">#<?= $pisado->id ?></span> <?= $pisado->subject ?></p>
+								<p class="titulacion"><?= $pisado->getNameTitulacion() ?> </p>
+								<p class="curso-date"> <span class="curso">Curso <?= $pisado->curso.'º' ?></span> <span class="date"><i class="icon-clock"></i> <?= date('j/m/y' ,strtotime($pisado->date)) ?></span> </p>
 							</li></a>
 					<?php
 				}
@@ -46,7 +44,7 @@
 
 			<h2 class="clear">Delegación
 				<?php if ($user->isDelegadoTitulacion() || $user->isDelegadoEscuela()) { ?>
-					<a href="?" id="agrupar">Agrupar</a>
+					<a class="button" href="?" id="agrupar"> <i class="icon-agroup"></i> Agrupar PISADOS</a>
 				<?php } ?>
 			</h2>
 			
@@ -57,23 +55,21 @@
 				foreach ($otros as $pisado) {
 					if (is_a($pisado,'Pisado')) {
 						?>
-							<a href="/pisado/pisado/view/<?= $pisado->id ?>"><li id="pisado">
-									<p class="id-titulacion"><span class="id">#<?= $pisado->id ?></span><span class="titulacion"><?= $pisado->getNameTitulacion() ?></span> </p>
-									<p class="asignatura"><?= $pisado->asignatura ?></p>
-									<p class="curso"> <span>Curso</span> <?= $pisado->curso.'º' ?></p>
-									<p class="date"> <span>Fecha</span> <?= date('j/m/y' ,strtotime($pisado->date)) ?></p>
-								</li></a>
+							<a href="/pisado/pisado/view/<?= $pisado->id ?>"><li id="pisado">	
+									<p class="id-asignatura"><span class="id">#<?= $pisado->id ?></span> <?= $pisado->asignatura ?></p>
+									<p class="titulacion"><?= $pisado->getNameTitulacion() ?> </p>
+									<p class="curso-date"> <span class="curso">Curso <?= $pisado->curso.'º' ?></span> <span class="date"><i class="icon-clock"></i> <?= date('j/m/y' ,strtotime($pisado->date)) ?></span> </p>
+							</li></a>
 						<?php
 					} else {
 						?>
 							<a href="/pisado/group/view/<?= $pisado->id ?>"><li id="group">
-									<p class="id-titulacion"><span class="id">#G<?= $pisado->id ?></span><span class="titulacion"><?= $pisado->getNameTitulacion() ?></span> </p>
-									<p class="asignatura"><?= $pisado->subject ?></p>
-									<p class="curso"> <span>Curso</span> <?= $pisado->curso.'º' ?></p>
-									<p class="date"> <span>Fecha</span> <?= date('j/m/y' ,strtotime($pisado->date)) ?></p>
+									<p class="id-asignatura"><span class="id">#<?= $pisado->id ?></span> <?= $pisado->subject ?></p>
+									<p class="titulacion"><?= $pisado->getNameTitulacion() ?> </p>
+									<p class="curso-date"> <span class="curso">Curso <?= $pisado->curso.'º' ?></span> <span class="date"><i class="icon-clock"></i> <?= date('j/m/y' ,strtotime($pisado->date)) ?></span> </p>
 								</li></a>
 						<?php
-					}	
+					}
 				}
 			} else {
 				echo '<p class="info">Aun no se ha rellenado ningún pisado...</p>';
