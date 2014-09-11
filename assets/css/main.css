@@ -61,17 +61,17 @@
 }
 html {
   font-family: 'Roboto', sans-serif;
-  background: #EDEFF2;
+  background: #e1e1e1;
   color: #2b2b2b;
 }
 a {
   outline: none;
   text-decoration: none;
-  color: #006394;
+  color: #066394;
 }
 a:active,
 a:visited {
-  color: #006394;
+  color: #066394;
 }
 .wrapper {
   max-width: 960px;
@@ -84,11 +84,11 @@ input[type="text"],
 input[type="password"],
 textarea,
 select {
-  border: 1px solid #e3e3e3;
   padding: 4px 6px;
   border-radius: 4px;
-  outline: 0;
-  color: #747373;
+  background: #f6f6f6;
+  border: 1px solid #c4c4c4;
+  color: #555454;
 }
 input[type="text"]:hover,
 input[type="password"]:hover,
@@ -98,7 +98,44 @@ input[type="text"]:focus,
 input[type="password"]:focus,
 textarea:focus,
 select:focus {
-  border: 1px solid #747373;
+  border: 1px solid #555454;
+}
+input,
+button {
+  outline: 0;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+}
+button,
+a.button {
+  display: block;
+  background: #066394;
+  color: #fff;
+  position: relative;
+  border-radius: 5px;
+  padding: 8px;
+  text-decoration: none;
+}
+button:before,
+a.button:before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: -5px -8px;
+  border-radius: 5px;
+  background: #004a6f;
+  z-index: -10;
+  transition: all 0.4s;
+}
+button i,
+a.button i {
+  margin: 0 3px;
+}
+button:active:before,
+a.button:active:before {
+  margin: -7px -8px;
 }
 h1,
 h2,
@@ -111,7 +148,7 @@ header {
 }
 header h1 {
   font-size: 2.7em;
-  color: #006394;
+  color: #066394;
   margin: 0;
   display: inline-block;
   vertical-align: middle;
@@ -129,28 +166,15 @@ header #user {
 header #user a {
   padding: 8px 23px;
   border-radius: 5px;
-  border: 1px solid #bad4e2;
+  border: 1px solid #bad5e2;
   color: #006191;
 }
 header #user a.logout {
   border: none;
 }
-.main h2 {
-  color: #006191;
-  border-bottom: 1px solid #006191;
-}
 .main h2 a {
   float: right;
-  display: block;
-  background: #006191;
-  color: #EDEFF2;
-  font-weight: bold;
-  padding: 8px;
-  border-radius: 4px;
-  text-decoration: none;
-  font-size: 12px;
-  margin-bottom: 5px;
-  margin-left: 5px;
+  font-size: 0.65em;
 }
 .main h3 {
   text-align: center;
@@ -172,17 +196,26 @@ header #user a.logout {
   margin: 0;
   padding: 0;
   list-style: none;
+  width: 110%;
+  margin-left: -5%;
+}
+.main ul#pisados a > li {
+  margin-right: -4px;
+}
+.main ul#pisados a > li:last-child {
+  margin-right: 0;
 }
 .main ul#pisados li {
   display: inline-block;
-  width: 20%;
-  border-radius: 4px;
-  margin: 5px;
-  box-sizing: border-box;
-  background: #97BDF6;
-  border: 2px solid #006191;
+  width: 22%;
+  border-radius: 5px;
+  margin: 8px 2%;
+  background: #fff;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.65);
   color: #000;
   position: relative;
+  box-sizing: border-box;
+  padding: 6px;
 }
 .main ul#pisados li#group:before {
   content: ' ';
@@ -190,57 +223,36 @@ header #user a.logout {
   position: absolute;
   width: 100%;
   height: 100%;
-  border-radius: 4px;
-  margin: 2px;
-  background: #97BDF6;
-  border: 2px solid #006191;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.65);
   z-index: -10;
 }
 .main ul#pisados li p {
-  margin: 0;
-  padding: 4px;
+  margin: 3px 0;
 }
-.main ul#pisados li p.id-titulacion {
-  font-size: 0.7em;
-  padding: 0 ;
-}
-.main ul#pisados li p.id-titulacion span {
-  display: inline-block;
-  vertical-align: top;
-  padding: 4px;
-  box-sizing: border-box;
-  height: 20px;
-}
-.main ul#pisados li p.id-titulacion span.id {
-  font-weight: bold;
-  background: #006191;
-  color: #EDEFF2;
-  width: 15%;
-}
-.main ul#pisados li p.id-titulacion span.titulacion {
-  width: 85%;
-  text-align: center;
+.main ul#pisados li p.id-asignatura {
+  font-weight: 300;
+  font-size: 1.1em;
+  color: #066394;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  height: 50px;
 }
-.main ul#pisados li p.asignatura {
+.main ul#pisados li p.id-asignatura span.id {
   font-weight: bold;
-  background: #006191;
-  color: #EDEFF2;
-  height: 2.1em;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 }
-.main ul#pisados li p.curso,
-.main ul#pisados li p.date {
-  text-align: right;
+.main ul#pisados li p.titulacion {
+  font-size: 0.8em;
 }
-.main ul#pisados li p.curso span,
-.main ul#pisados li p.date span {
-  float: left;
+.main ul#pisados li p.curso-date {
+  font-size: 0.8em;
+}
+.main ul#pisados li p.curso-date span.curso {
   font-weight: bold;
+}
+.main ul#pisados li p.curso-date span.date {
+  float: right;
 }
 .main ul#comentarios {
   margin: 0 auto;
@@ -334,7 +346,7 @@ header #user a.logout {
 }
 .main #inicio,
 .main #login {
-  background: linear-gradient(rgba(0, 97, 145, 0.65), rgba(0, 97, 145, 0.65)), url('/pisado/assets/img/bg.jpg') center;
+  background: linear-gradient(rgba(0, 97, 145, 0.75), rgba(0, 97, 145, 0.75)), url('/pisado/assets/img/bg.jpg') center;
   background-size: cover;
   color: #fff;
   text-align: center;
@@ -361,7 +373,7 @@ header #user a.logout {
   padding: 0;
 }
 .main #inicio {
-  padding: 70px 0;
+  padding: 80px 0;
 }
 .main #inicio li {
   list-style: none;
@@ -374,41 +386,43 @@ header #user a.logout {
   text-align: justify;
 }
 .main #login {
-  padding: 70px 0;
+  padding: 90px 0;
 }
 .main #login p.error {
-  color: red;
+  color: #9f0000;
   font-weight: bold;
 }
 .main #login form {
   margin: 20px 0;
 }
+.main #login form.error input[type="text"],
+.main #login form.error input[type="password"] {
+  border-color: rgba(128, 0, 0, 0.75) !important;
+}
 .main #login input[type="text"],
 .main #login input[type="password"] {
   display: block;
   margin: 0 auto;
-  width: 250px;
-  padding: 10px 15px;
-  background: #cddde5;
-  border-color: #145573;
-}
-.main #login input[type="text"]:hover,
-.main #login input[type="password"]:hover {
-  border-color: #145573;
+  width: 300px;
+  padding: 12px 15px;
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(0, 0, 0, 0.55);
+  box-sizing: border-box;
 }
 .main #login input[type="text"] {
   border-radius: 5px 5px 0 0;
-  border-bottom: none;
 }
 .main #login input[type="password"] {
-  border-top: 1px solid  #9fadb1;
   border-radius: 0 0 5px 5px;
+  border-top: none;
 }
-.main #login input[type="password"]:hover {
-  border-top: 1px solid  #9fadb1;
-}
-.main #login input[type="submit"] {
-  margin-top: 30px;
+.main #login button {
+  width: 300px;
+  box-sizing: border-box;
+  padding: 12px 15px;
+  border: 1px solid rgba(0, 0, 0, 0.55);
+  text-shadow: -1px 0 4px rgba(0, 0, 0, 0.55);
+  margin: 30px auto 0;
 }
 .main #panel .pisados {
   margin-bottom: 50px;
@@ -515,7 +529,7 @@ footer #copy {
 }
 footer h2 {
   margin: 0;
-  color: #006394;
+  color: #066394;
 }
 footer i {
   margin: 0 5px 0 15px;
