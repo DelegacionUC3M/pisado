@@ -9,7 +9,7 @@
 		<p class="first">Tienes un comentario sin leer en uno de tus pisados. Revisa cuando puedas la aplicacion
 		 para ver de que se trata. Los datos del pisado en el cual se ha comentado se muestran a continuacion:</p>
 
-		<h>P.I.S.A.D.O.</h>
+		<h>PISADO</h>
 		<ul>
 			<li><b>Titulacion</b>: <?php echo $pisado->getNameTitulacion() ?></li>
 			<li><b>Asignatura</b>: <?php echo $pisado->asignatura ?></li>
