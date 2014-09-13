@@ -10,6 +10,7 @@
 
         <link rel="stylesheet" href="/pisado/assets/css/normalize.min.css">
         <link rel="stylesheet" href="/pisado/assets/css/main.css">
+        <script src="/pisado/assets/js/vendor/prefixfree.min.js"></script>
 
         <script src="/pisado/assets/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
