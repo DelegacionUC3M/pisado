@@ -214,6 +214,10 @@ header {
 			margin: 10px auto;
 			font-weight: bold;
 		}
+
+		&.hide {
+			display: none;
+		}
 	}
 
 	ul#pisados {
@@ -239,6 +243,18 @@ header {
 			box-sizing: border-box;
 			padding: 6px;
 			color: @grey;
+
+			&.vibrate {
+				animation: vibrate 0.4s infinite;
+
+				&:hover {
+					background: @blue-light;
+				}
+			}
+
+			&.selected {
+				background: @blue-light;
+			}
 
 			&#group {
 				&:before {
@@ -654,4 +670,24 @@ footer {
 			}
 		}
 	}
+}
+
+@keyframes vibrate {
+
+	0% {
+		transform: rotate(0);
+	}
+
+	25% {
+		transform: rotate(-1.5deg);
+	}
+
+	50% {
+		transform: rotate(0);
+	}
+
+	75% {
+		transform: rotate(1.5deg);
+	}
+
 }

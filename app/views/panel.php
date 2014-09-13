@@ -37,16 +37,18 @@
 		</ul>
 	</article>
 
-	<article class="pisados">
-		<?php
+	<?php
+	if ($user->isDelegado) { ?>
 
-		if ($user->isDelegado) { ?>
+	<article class="pisados delegacion">
 
 			<h2 class="clear">Delegación
 				<?php if ($user->isDelegadoTitulacion() || $user->isDelegadoEscuela()) { ?>
-					<a class="button icon-agroup" href="?" id="agrupar">Agrupar PISADOS</a>
+					<a class="button icon-agroup" href="?" id="agrupar" data-active="false">Agrupar PISADOS</a>
 				<?php } ?>
 			</h2>
+
+			<p class="info error hide">Solo se pueden agrupar PISADOs del mismo curso y titulación.</p>
 			
 			<ul id="pisados">
 			<?php
@@ -55,7 +57,7 @@
 				foreach ($otros as $pisado) {
 					if (is_a($pisado,'Pisado')) {
 						?>
-							<a href="/pisado/pisado/view/<?= $pisado->id ?>"><li id="pisado">	
+							<a href="/pisado/pisado/view/<?= $pisado->id ?>"><li id="pisado" data-titulacion="<?= $pisado->id_titulacion ?>" data-curso="<?= $pisado->curso ?>" data-id="<?= $pisado->id ?>">	
 									<p class="id-asignatura"><span class="id">#<?= $pisado->id ?></span> <?= $pisado->asignatura ?></p>
 									<p class="titulacion"><?= $pisado->getNameTitulacion() ?> </p>
 									<p class="curso-date"> <span class="curso">Curso <?= $pisado->curso.'º' ?></span> <span class="date icon-clock"> <?= date('j/m/y' ,strtotime($pisado->date)) ?></span> </p>
@@ -63,7 +65,7 @@
 						<?php
 					} else {
 						?>
-							<a href="/pisado/group/view/<?= $pisado->id ?>"><li id="group">
+							<a href="/pisado/group/view/<?= $pisado->id ?>"><li id="group" data-titulacion="<?= $pisado->id_titulacion ?>" data-curso="<?= $pisado->curso ?>" data-id="<?= $pisado->id ?>">
 									<p class="id-asignatura"><span class="id">#G<?= $pisado->id ?></span> <?= $pisado->subject ?></p>
 									<p class="titulacion"><?= $pisado->getNameTitulacion() ?> </p>
 									<p class="curso-date"> <span class="curso">Curso <?= $pisado->curso.'º' ?></span> <span class="date icon-clock"> <?= date('j/m/y' ,strtotime($pisado->date)) ?></span> </p>
@@ -77,9 +79,8 @@
 			?>
 
 			</ul>
-
-		<?php } ?>
-
 	</article>
+	
+	<?php } ?>
 
 </section>

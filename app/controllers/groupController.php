@@ -62,4 +62,23 @@ class groupController extends Controller {
 		}
 	}
 
+	function group() {
+		$this->security();
+
+		if ($_SESSION['user']->isDelegadoTitulacion() || $_SESSION['user']->isDelegadoEscuela()) {
+			$pisados = isset($_POST['pisado']) ? $_POST['pisado'] : null;
+			$groups = isset($_POST['group']) ? $_POST['group'] : null;
+
+			if (count($groups) == 1) {
+
+			} else if (count($groups) > 1) {
+
+			} else {
+
+			}
+		}
+
+		header('Location: /pisado/inicio');
+	}
+
 }

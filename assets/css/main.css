@@ -195,6 +195,9 @@ header #user a.logout {
   margin: 10px auto;
   font-weight: bold;
 }
+.main p.info.hide {
+  display: none;
+}
 .main ul#pisados {
   margin: 0 auto;
   padding: 0;
@@ -216,6 +219,15 @@ header #user a.logout {
   box-sizing: border-box;
   padding: 6px;
   color: #2b2b2b;
+}
+.main ul#pisados li.vibrate {
+  animation: vibrate 0.4s infinite;
+}
+.main ul#pisados li.vibrate:hover {
+  background: #bad5e2;
+}
+.main ul#pisados li.selected {
+  background: #bad5e2;
 }
 .main ul#pisados li#group:before {
   content: ' ';
@@ -601,5 +613,19 @@ footer span {
   }
   ul#comentarios li.compose {
     display: none;
+  }
+}
+@keyframes vibrate {
+  0% {
+    transform: rotate(0);
+  }
+  25% {
+    transform: rotate(-1.5deg);
+  }
+  50% {
+    transform: rotate(0);
+  }
+  75% {
+    transform: rotate(1.5deg);
   }
 }
