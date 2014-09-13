@@ -22,7 +22,7 @@
 				} else {
 					?>
 						<a href="/pisado/group/view/<?= $pisado->id ?>"><li id="group">
-								<p class="id-asignatura"><span class="id">#<?= $pisado->id ?></span> <?= $pisado->subject ?></p>
+								<p class="id-asignatura"><span class="id">#G<?= $pisado->id ?></span> <?= $pisado->subject ?></p>
 								<p class="titulacion"><?= $pisado->getNameTitulacion() ?> </p>
 								<p class="curso-date"> <span class="curso">Curso <?= $pisado->curso.'º' ?></span> <span class="date icon-clock"> <?= date('j/m/y' ,strtotime($pisado->date)) ?></span> </p>
 							</li></a>
@@ -64,7 +64,7 @@
 					} else {
 						?>
 							<a href="/pisado/group/view/<?= $pisado->id ?>"><li id="group">
-									<p class="id-asignatura"><span class="id">#<?= $pisado->id ?></span> <?= $pisado->subject ?></p>
+									<p class="id-asignatura"><span class="id">#G<?= $pisado->id ?></span> <?= $pisado->subject ?></p>
 									<p class="titulacion"><?= $pisado->getNameTitulacion() ?> </p>
 									<p class="curso-date"> <span class="curso">Curso <?= $pisado->curso.'º' ?></span> <span class="date icon-clock"> <?= date('j/m/y' ,strtotime($pisado->date)) ?></span> </p>
 								</li></a>

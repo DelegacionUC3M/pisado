@@ -112,7 +112,7 @@ input[type="text"], input[type="password"], textarea, select {
 	}
 }
 
-input, button, select {
+input, button, select, textarea {
 	outline: 0;
 	font-family: 'Roboto', sans-serif;
 }
@@ -235,10 +235,10 @@ header {
 			box-sizing: border-box;
 			background: #fff;
 			box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.65);
-			color: #000;
 			position: relative;
 			box-sizing: border-box;
 			padding: 6px;
+			color: @grey;
 
 			&#group {
 				&:before {
@@ -298,69 +298,30 @@ header {
 		margin: 0 auto;
 		padding: 0;
 		list-style: none;
-		width: 85%;
+		width: 80%;
 
 		li {
 			display: block;
-			background: #e1e4e9;
-			border: 1px solid #006191;
+			background: #fff;
 			width: 75%;
-			margin: 0 auto 15px;
-			border-radius: 4px;
+			margin: 0 auto 20px;
+			border-radius: 5px;
 			margin-right: 1%;
+			box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.35);
+			padding: 12px;
+			box-sizing: border-box;
+			font-weight: 400;
 
 			&.you {
 				margin-left: 1%; 
 			}
 
 			&.delegacion {
-			//	border: 1px solid #f09937;
-
-				div {
-					background: #f09937;
-				}
+				background: #b0cedd;
 			}
 
-			&.compose {
-				margin-top: 50px;
-				box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
-				transition: all 0.4s;
-
-				&:hover {
-					box-shadow: 0 0 10px 0 rgba(0,0,0,0.7);
-				}
-
-				textarea {
-					padding: 10px 6px;
-					margin: 0;
-					text-align: justify;
-					width: 100%;
-					display: block;
-					box-sizing: border-box;
-					resize: none;
-					background: transparent;
-					border: none;
-				}
-
-				input[type="submit"] {
-					float: right;
-					background: #006191;
-					color: #fff;
-					border: none;
-					font-weight: bold;
-					padding: 6px;
-					border-radius: 4px 0 0 0;
-				}
-
-				p.info {
-					padding-bottom: 0;
-				}
-			}
-
-			div {
-				background: #006191;
-				color: #fff;
-				padding: 6px;
+			div.author {
+				margin-bottom: 8px; 
 
 				span {
 					display: inline-block;
@@ -369,18 +330,70 @@ header {
 
 					&.autor {
 						font-weight: bold;
+						color: @grey;
 					}
 
 					&.date {
 						text-align: right;
+						color: #616060;
 					}
 				}
 			}
 
 			p {
-				padding: 10px 6px;
 				margin: 0;
-				text-align: justify;
+			}
+
+			&.compose {
+				padding: 0;
+				box-shadow: none;
+				margin: 50px auto;
+				border: 1px solid #C4C4C4;
+
+				textarea {
+					padding: 10px;
+					margin: 0;
+					text-align: justify;
+					width: 100%;
+					display: block;
+					box-sizing: border-box;
+					resize: none;
+					background: transparent;
+					border: none;
+					font-weight: 400;
+				}
+
+				div {
+					button, p {
+						display: inline-block;
+						vertical-align: top;
+						box-sizing: border-box;
+						border-top: 1px solid #C4C4C4;
+					}
+
+					button {
+						border: none !important;
+						font-weight: bold;
+						border-radius: 0 0 5px 0;
+						width: 25%;
+						padding: 11px 11px 12px;
+						transition: none;
+
+						&:active {
+							margin-top: 0;
+						}
+					}
+
+					p {
+						margin: 0;
+						margin-right: -4px;
+						background: #f3f3f3;
+						border-radius: 0 0 0 5px;
+						width: 75%;
+						border-right: 1px solid #C4C4C4;
+						padding: 9px;
+					}
+				}
 			}
 		}
 	}
@@ -566,6 +579,10 @@ footer {
 	#rsociales {
 		margin: 20px 0;	
 		text-align: center;
+
+		a {
+			border-bottom: solid 1px @blue-light;
+		}
 	}
 
 	#copy {
