@@ -69,16 +69,16 @@ class groupController extends Controller {
 			$pisados = isset($_POST['pisado']) ? $_POST['pisado'] : null;
 			$groups = isset($_POST['group']) ? $_POST['group'] : null;
 
-			if (count($groups) == 1) {
+			if (count($groups) == 1) { // meter todos a ese grupo
 
-			} else if (count($groups) > 1) {
+			} else if (count($groups) > 1) { // unificar todos y grupos en nuevo con name, borrar otros
 
-			} else {
+			} else { // nuevo con name
 
 			}
 		}
 
-		header('Location: /pisado/inicio');
+	//	header('Location: /pisado/inicio');
 	}
 
 }

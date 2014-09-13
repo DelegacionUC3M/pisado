@@ -48,7 +48,7 @@
 				<?php } ?>
 			</h2>
 
-			<p class="info error hide">Solo se pueden agrupar PISADOs del mismo curso y titulación.</p>
+			<p class="info error hide">Has de seleccionar al menos dos PISADOS y solo se pueden agrupar PISADOs del mismo curso y titulación.</p>
 			
 			<ul id="pisados">
 			<?php

@@ -441,6 +441,10 @@ header #user a.logout {
 .main #panel .pisados {
   margin-bottom: 50px;
 }
+.main #panel .delegacion h2 input {
+  float: right;
+  font-size: 0.55em;
+}
 .main #view article#informe,
 .main #create article#informe,
 .main #view article#dpersonales,
