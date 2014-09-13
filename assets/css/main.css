@@ -104,7 +104,8 @@ select:focus {
 }
 input,
 button,
-select {
+select,
+textarea {
   outline: 0;
   font-family: 'Roboto', sans-serif;
 }
@@ -211,10 +212,10 @@ header #user a.logout {
   margin: 10px 1.5%;
   background: #fff;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.65);
-  color: #000;
   position: relative;
   box-sizing: border-box;
   padding: 6px;
+  color: #2b2b2b;
 }
 .main ul#pisados li#group:before {
   content: ' ';
@@ -257,33 +258,53 @@ header #user a.logout {
   margin: 0 auto;
   padding: 0;
   list-style: none;
-  width: 85%;
+  width: 80%;
 }
 .main ul#comentarios li {
   display: block;
-  background: #e1e4e9;
-  border: 1px solid #006191;
+  background: #fff;
   width: 75%;
-  margin: 0 auto 15px;
-  border-radius: 4px;
+  margin: 0 auto 20px;
+  border-radius: 5px;
   margin-right: 1%;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.35);
+  padding: 12px;
+  box-sizing: border-box;
+  font-weight: 400;
 }
 .main ul#comentarios li.you {
   margin-left: 1%;
 }
-.main ul#comentarios li.delegacion div {
-  background: #f09937;
+.main ul#comentarios li.delegacion {
+  background: #b0cedd;
+}
+.main ul#comentarios li div.author {
+  margin-bottom: 8px;
+}
+.main ul#comentarios li div.author span {
+  display: inline-block;
+  width: 50%;
+  vertical-align: top;
+}
+.main ul#comentarios li div.author span.autor {
+  font-weight: bold;
+  color: #2b2b2b;
+}
+.main ul#comentarios li div.author span.date {
+  text-align: right;
+  color: #616060;
+}
+.main ul#comentarios li p {
+  margin: 0;
 }
 .main ul#comentarios li.compose {
-  margin-top: 50px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
-  transition: all 0.4s;
-}
-.main ul#comentarios li.compose:hover {
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.7);
+  padding: 0;
+  box-shadow: none;
+  margin: 50px auto;
+  border: 1px solid #C4C4C4;
 }
 .main ul#comentarios li.compose textarea {
-  padding: 10px 6px;
+  padding: 10px;
   margin: 0;
   text-align: justify;
   width: 100%;
@@ -292,39 +313,34 @@ header #user a.logout {
   resize: none;
   background: transparent;
   border: none;
+  font-weight: 400;
 }
-.main ul#comentarios li.compose input[type="submit"] {
-  float: right;
-  background: #006191;
-  color: #fff;
-  border: none;
-  font-weight: bold;
-  padding: 6px;
-  border-radius: 4px 0 0 0;
-}
-.main ul#comentarios li.compose p.info {
-  padding-bottom: 0;
-}
-.main ul#comentarios li div {
-  background: #006191;
-  color: #fff;
-  padding: 6px;
-}
-.main ul#comentarios li div span {
+.main ul#comentarios li.compose div button,
+.main ul#comentarios li.compose div p {
   display: inline-block;
-  width: 50%;
   vertical-align: top;
+  box-sizing: border-box;
+  border-top: 1px solid #C4C4C4;
 }
-.main ul#comentarios li div span.autor {
+.main ul#comentarios li.compose div button {
+  border: none !important;
   font-weight: bold;
+  border-radius: 0 0 5px 0;
+  width: 25%;
+  padding: 11px 11px 12px;
+  transition: none;
 }
-.main ul#comentarios li div span.date {
-  text-align: right;
+.main ul#comentarios li.compose div button:active {
+  margin-top: 0;
 }
-.main ul#comentarios li p {
-  padding: 10px 6px;
+.main ul#comentarios li.compose div p {
   margin: 0;
-  text-align: justify;
+  margin-right: -4px;
+  background: #f3f3f3;
+  border-radius: 0 0 0 5px;
+  width: 75%;
+  border-right: 1px solid #C4C4C4;
+  padding: 9px;
 }
 .main #inicio,
 .main #login {
@@ -525,6 +541,9 @@ footer {
 footer #rsociales {
   margin: 20px 0;
   text-align: center;
+}
+footer #rsociales a {
+  border-bottom: solid 1px #bad5e2;
 }
 footer #copy {
   border-top: 1px solid #e3e3e3;

@@ -53,10 +53,10 @@
 					}
 
 				?> <li class="<?= $class ?>">
-						<div>
+						<div class="author">
 							<span class="autor">
 								<?= $autor ?>
-							</span><span class="date"><?= date('j/m/y H:i' ,strtotime($comentario->date)) ?></span>
+							</span><span class="date icon-clock"> <?= date('j/m/y H:i' ,strtotime($comentario->date)) ?></span>
 						</div>
 						<p><?= $comentario->text ?></p>
 					</li>
@@ -64,18 +64,17 @@
 			?>
 
 			<form action="?#comentarios" method="post">
-				<li class="you compose clear">
-					<div>
-						<span class="autor">Escribe un comentario</span>
-					</div>
+				<li class="compose clear">
 					<textarea name="comment" placeholder="Escribe aquí..."></textarea>
-					<input type="submit" value="Enviar" />
-					
-					<?php if ($user->isDelegado) { ?>
-						<p class="info no-print">Los comentarios de los delegados NO son anónimos.</p>
-					<?php } else { ?>
-						<p class="info no-print">El autor del comentario es anónimo. Solo lo verá el delegado encargado.</p>
-					<?php } ?>
+
+					<div>
+						<?php if ($user->isDelegado) { ?>
+							<p>Los comentarios de los delegados NO son anónimos.</p>
+						<?php } else { ?>
+							<p>El autor del comentario es anónimo. Solo lo verá el delegado encargado.</p>
+						<?php } ?>
+						<button type="submit" class="icon-comment">Comentar</button>
+					</div>
 				</li>
 			</form>
 
