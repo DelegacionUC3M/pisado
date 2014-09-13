@@ -1,15 +1,13 @@
 <section id="view" class="wrapper">
 
 	<h2 class="clear">Grupo PISADO #G<?= $group->id ?>
-			<a href="/pisado/">Volver a mis PISADO</a>
+			<a href="/pisado/" class="button icon-back">Volver a mis PISADO</a>
 		</h2>
 
 	<article id="dpersonales">
-		<h3>PISADOs del grupo</h3>
-
 		<ul>
-			<li id="subject"> <span>Asunto</span> <?= $group->subject ?> </li><li id="n"> <span>Nº de PISADOs</span> <?= count($group->pisados) ?> </li>
-			<li id="titulacion"> <span>Titulacion</span> <?= $group->getNameTitulacion() ?> </li><li id="curso"> <span>Curso</span> <?= $group->curso.'º' ?> </li>
+			<li id="subject" class="w60"> <span>Asunto</span> <?= $group->subject ?> </li><li id="n" class="w40"> <span>Nº de PISADOs</span> <?= count($group->pisados) ?> </li>
+			<li id="titulacion" class="w60"> <span>Titulacion</span> <?= $group->getNameTitulacion() ?> </li><li id="curso" class="w40"> <span>Curso</span> <?= $group->curso.'º' ?> </li>
 		</ul>
 
 	</article>
@@ -18,12 +16,11 @@
 		<?php
 			foreach ($group->pisados as $pisado) {
 				?>
-					<a href="/pisado/pisado/view/<?= $pisado->id ?>"><li id="pisado">
-							<p class="id-titulacion"><span class="id">#<?= $pisado->id ?></span><span class="titulacion"><?= $pisado->getNameTitulacion() ?></span> </p>
-							<p class="asignatura"><?= $pisado->asignatura ?></p>
-							<p class="curso"> <span>Curso</span> <?= $pisado->curso.'º' ?></p>
-							<p class="date"> <span>Fecha</span> <?= date('j/m/y' ,strtotime($pisado->date)) ?></p>
-						</li></a>
+					<a href="/pisado/pisado/view/<?= $pisado->id ?>"><li id="pisado">	
+						<p class="id-asignatura"><span class="id">#<?= $pisado->id ?></span> <?= $pisado->asignatura ?></p>
+						<p class="titulacion"><?= $pisado->getNameTitulacion() ?> </p>
+						<p class="curso-date"> <span class="curso">Curso <?= $pisado->curso.'º' ?></span> <span class="date icon-clock"> <?= date('j/m/y' ,strtotime($pisado->date)) ?></span> </p>
+					</li></a>
 				<?php
 			}
 		?>
@@ -33,9 +30,9 @@
 		<h3>Comentarios</h3>
 
 		<?php if(isset($data['error']))  { ?>
-			<article id="aviso">
-				<span class="error"> <?= $data['error'] ?> </span>
-			</article>
+			<p class="info error">
+				<?= $data['error'] ?>
+			</p>
 		<?php } ?>
 
 		<ul id="comentarios">

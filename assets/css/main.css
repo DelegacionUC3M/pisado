@@ -168,9 +168,14 @@ header #user a {
 header #user a.logout {
   border: none;
 }
+.main h2 {
+  font-size: 1.7em;
+  max-height: 38px;
+}
 .main h2 a {
   float: right;
-  font-size: 0.65em;
+  font-size: 0.55em;
+  margin-left: 10px;
 }
 .main h3 {
   text-align: center;
@@ -190,7 +195,7 @@ header #user a.logout {
   font-weight: bold;
 }
 .main ul#pisados {
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   list-style: none;
   width: 110%;
@@ -506,6 +511,11 @@ header #user a.logout {
 .main #create article#listPisados ul p {
   text-align: justify;
 }
+.main #view ul#pisados,
+.main #create ul#pisados {
+  width: 100%;
+  margin-left: 0;
+}
 footer {
   font-size: 0.9em;
   background: #fff;
@@ -541,17 +551,22 @@ footer span {
 @media print {
   body {
     font-size: 12px;
+    background: #fff;
+    color: #000;
   }
-  .print {
-    display: inline-block;
+  header {
+    border-bottom: 1px #066394 solid;
+  }
+  header img {
+    float: right;
   }
   .no-print {
     display: none;
   }
   header #user,
-  h2,
+  h2 a,
   footer {
-    display: none;
+    display: none !important;
   }
   ul#comentarios li {
     margin: 4px auto !important;
