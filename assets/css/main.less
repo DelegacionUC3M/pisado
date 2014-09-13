@@ -11,7 +11,7 @@
 	font-style: normal;
 }
 
-[class^="icon-"], [class*=" icon-"] {
+[class^="icon-"]:before, [class*=" icon-"]:before {
 	font-family: 'icomoon';
 	speak: none;
 	font-style: normal;
@@ -99,20 +99,21 @@ a {
 }
 
 input[type="text"], input[type="password"], textarea, select {
-	padding: 4px 6px;
-	border-radius: 4px;
+	padding: 6px 8px;
+	border-radius: 5px;
 	background: #f6f6f6;
 	border: 1px solid #c4c4c4;
 	color: #555454;
+	transition: all 0.4s;
+	font-weight: 300;
 
 	&:hover, &:focus {
 		border: 1px solid #555454;
 	}
 }
 
-input, button {
+input, button, select {
 	outline: 0;
-	font-weight: 500;
 	font-family: 'Roboto', sans-serif;
 }
 
@@ -122,30 +123,22 @@ button, a.button {
 	color: #fff;
 	position: relative;
 	border-radius: 5px;
-	padding: 8px;
+	padding: 10px;
 	text-decoration: none;
-
-	&:before {
-		content: ' ';
-		display: block;
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		margin: -5px -8px;
-		border-radius: 5px;
-		background: #004a6f;
-		z-index: -10;
-		transition: all 0.4s;
-	}
-
-	i {
-		margin: 0 3px;
-	}
+	border: none; 
+	border-bottom: 2px solid #004a6f;
+	transition: all 0.4s;
+	font-family: 'Roboto', sans-serif;
+	line-height: 1;
+	font-weight: 400;
 
 	&:active {
-		&:before {
-			margin: -7px -8px;
-		}
+		margin-top: 2px;
+		border-bottom: 0px;
+	}
+
+	&:before {
+		margin-right: 10px;
 	}
 
 }
@@ -201,21 +194,21 @@ header {
 
 	h3 {
 		text-align: center;
-		color: #006191;
 		font-size: 1.6em;
 	}
 
-	p {
-		&.info {
-			font-style: italic;
-			font-size: 0.8em;
-			margin: 2px 0;
-		}
-		&.text {
-			border: 1px solid #a0a0a0;
-			padding: 4px 6px;
-			border-radius: 3px;
-			outline: 0;
+	p.info {
+		background: #fedeb2;
+		border: 1px solid #c4c4c4;
+		border-radius: 5px;
+		font-size: 0.8em;
+		padding: 10px 15px;
+
+		&.error {
+			background: #FEB2B2;
+			width: 90%;
+			margin: 10px auto;
+			font-weight: bold;
 		}
 	}
 
@@ -226,19 +219,15 @@ header {
 		width: 110%;
 		margin-left: -5%;
 
-		a > li {
+		a {
 			margin-right: -4px;
-
-			&:last-child {
-				margin-right: 0;
-			}
 		}
 
 		li {
 			display: inline-block;
 			width: 22%;
 			border-radius: 5px;
-			margin: 8px 2%;
+			margin: 10px 1.5%;
 			box-sizing: border-box;
 			background: #fff;
 			box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.65);
@@ -392,29 +381,8 @@ header {
 		}
 	}
 
-	#aviso {
-		text-align: center;
-		display: block;
-		background: #97bdf6;
-		font-weight: bold;
-		padding: 8px;
-		border-radius: 4px;
-		text-decoration: none;
-		font-size: 12px;
-		margin-bottom: 5px;
-		
-		span {
-			&.error {
-				color: #B40404;
-			}
-			&.verify {
-				color: #088A08;
-			}
-		}
-	}
-
 	#inicio, #login {
-		background: linear-gradient(rgba(0, 97, 145, 0.75),rgba(0, 97, 145, 0.75) ), url('/pisado/assets/img/bg.jpg') center; 
+		background: linear-gradient(rgba(0, 97, 145, 0.68),rgba(0, 97, 145, 0.68) ), url('/pisado/assets/img/bg.jpg') center; 
 		background-size: cover;
 		color: #fff;
 		text-align: center;
@@ -467,7 +435,7 @@ header {
 		padding: 90px 0;
 
 		p.error {
-			color: rgba(159, 0, 0, 1);
+			color: #FF2F2F;
 			font-weight: bold;
 		}
 
@@ -504,9 +472,14 @@ header {
 			width: 300px;
 			box-sizing: border-box;
 			padding:  12px 15px;
-			border: 1px solid rgba(0, 0, 0, 0.55);
 			text-shadow: -1px 0 4px rgba(0, 0, 0, 0.55);
 			margin: 30px auto 0;
+			box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.45);
+			border-width: 3px;
+
+			&:active {
+				margin-top: 33px;
+			}
 		}
 	}
 
@@ -518,17 +491,10 @@ header {
 	}
 
 	#view, #create {
-
-		ul#pisados {
-			margin: 20px 0;
-		}
-
-		article#informe, article#comentarios {
-			border-top: 1px dashed #a6b0be;
-		}
 		
 		article#informe, article#dpersonales, article#listPisados {
-			margin-bottom: 15px;
+			width: 90%;
+			margin: 0 auto 20px;
 
 			ul {
 				padding: 0;
@@ -539,17 +505,27 @@ header {
 					box-sizing: border-box;
 					display: inline-block;
 					vertical-align: top;
-					width: 50%;
+
+					&.w60 {
+						width: 60%;
+					}
+
+					&.w40 {
+						width: 40%;
+
+						input {
+							max-width: 100px;
+						}
+					}
 
 					&#texto {
 						width: 100%;
-						margin-top: 20px;
+						margin-top: 25px;
 					}
 				}
 
 				span {
 					font-weight: bold;
-					text-transform: uppercase;
 					min-width: 130px;
 					display: inline-block;
 				}

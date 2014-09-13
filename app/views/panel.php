@@ -2,7 +2,7 @@
 
 	<article class="pisados">
 		<h2 class="clear">Mis PISADOS
-			<a class="button" href="pisado/create"><i class="icon-fill"></i>Rellenar un PISADO</a>
+			<a class="button icon-fill" href="pisado/create">Rellenar un PISADO</a>
 		</h2>
 
 
@@ -44,7 +44,7 @@
 
 			<h2 class="clear">Delegación
 				<?php if ($user->isDelegadoTitulacion() || $user->isDelegadoEscuela()) { ?>
-					<a class="button" href="?" id="agrupar"> <i class="icon-agroup"></i> Agrupar PISADOS</a>
+					<a class="button icon-agroup" href="?" id="agrupar">Agrupar PISADOS</a>
 				<?php } ?>
 			</h2>
 			
