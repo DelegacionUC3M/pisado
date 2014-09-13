@@ -59,51 +59,52 @@ $(function() {
 			})
 		} else {
 			var pisados = $('.delegacion #pisados li.selected');
-			var form = $('<form>', {
-				action: '/pisado/group/group',
-				method: 'POST'
-			});
-			var formData = new FormData( form );
-
-			pisados.filter('#pisado').each(function() {
-				form.append($('<input>', {
-					name: 'pisado[]',
-					value: $(this).data('id'),
-					type: 'text'
-				}))				
-			});
-
-			pisados.filter('#group').each(function() {
-				form.append($('<input>', {
-					name: 'group[]',
-					value: $(this).data('id'),
-					type: 'text'
-				}))	
-			})
-
-			if (pisados.filter('#group').length != 1) {
-				var name = $('<input>', {
-					type: 'text',
-					placeholder: 'Nombre del grupo',
-					name: 'name'
+			if ( pisados.length > 1 ) {
+				var form = $('<form>', {
+					action: '/pisado/group/group',
+					method: 'POST'
 				});
-				var submit = $('<button>', {
-					value: 'Agrupar'
+				var formData = new FormData( form );
+
+				pisados.filter('#pisado').each(function() {
+					form.append($('<input>', {
+						name: 'pisado[]',
+						value: $(this).data('id'),
+						type: 'text'
+					}))				
 				});
 
-				$(this).parent().append('<div>'+name+' '+submit+'</div>');
-				$(this).hide();
-
-				submit.on('click', function(e) {
-					e.preventDefault();
-
-					form.append(name);
-					form.submit();
+				pisados.filter('#group').each(function() {
+					form.append($('<input>', {
+						name: 'group[]',
+						value: $(this).data('id'),
+						type: 'text'
+					}))	
 				})
-			} else {
-				form.submit();
-			}
 
+				if (pisados.filter('#group').length != 1) {
+					var name = $('<input>', {
+						type: 'text',
+						placeholder: 'Nombre del grupo',
+						name: 'name'
+					});
+
+					$(this).parent().append(name);
+					$(this).html('Agrupar');
+
+					$(this).off('click');
+					$(this).on('click', function(e) {
+						e.preventDefault();
+
+						form.append(name);
+						form.submit();
+					})
+				} else {
+					form.submit();
+				}
+			} else {
+				$('.delegacion p.info.hide').slideDown();
+			}
 		}
 	})
 
