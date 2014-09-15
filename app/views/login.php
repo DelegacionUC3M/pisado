@@ -1,5 +1,3 @@
-<section id="login">
-
 	<div class="wrapper">
 		<h2>Entrar a PISADO</h2>
 		<p>Está intentando acceder a un área protegida. </br> Introduzca su usuario y contraseña:</p>
@@ -13,5 +11,3 @@
 			<button type="submit" value="Entrar">Entrar</button>
 		</form>
 	</div>
-
-</section>

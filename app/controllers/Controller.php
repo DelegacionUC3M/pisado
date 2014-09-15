@@ -24,6 +24,10 @@ class Controller {
 		$title = isset($title) ? $title : 'PISADO - Delegación UC3M';
 		$user = isset($_SESSION['user']) ? $_SESSION['user'] : NULL;
 
+		if ($view == 'inicio' || $view == 'login') {
+			$section = $view;
+		}
+
 		include ABSPATH . 'app/views/header.php';
 		include ABSPATH . 'app/views/' . $view . '.php';
 		include ABSPATH . 'app/views/footer.php';
