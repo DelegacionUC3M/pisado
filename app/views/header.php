@@ -37,4 +37,4 @@
             </div>
         </header>
 
-        <div class="main">
+        <div class="main <?php echo isset($section) ? $section : '' ?> ">

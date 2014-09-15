@@ -149,6 +149,7 @@ h1, h2, h3 {
 
 header {
 	background: #fff;
+	border-bottom: 1px solid #ccc;
 	padding: 19px 0;
 
 	h1 {
@@ -183,7 +184,15 @@ header {
 	}
 }
 
+
+html, body {
+	height: 100%;
+}
+
 .main {
+	min-height: 500px;
+	min-height: 60vh;
+	min-height: ~"calc(100% - 93px - 194px)";
 
 	h2 {
 		font-size: 1.7em;
@@ -414,19 +423,20 @@ header {
 		}
 	}
 
-	#inicio, #login {
-		background: linear-gradient(rgba(0, 97, 145, 0.68),rgba(0, 97, 145, 0.68) ), url('/pisado/assets/img/bg.jpg') center; 
+	&.inicio, &.login {
+		background: linear-gradient(rgba(0, 97, 145, 0.5),rgba(0, 97, 145, 0.5) ), url('/apps/taquillas/images/back.jpg') center; 
 		background-size: cover;
 		color: #fff;
 		text-align: center;
-		// display: table;
-		// height: 80vh;
-		// width: 100%;
+		box-sizing: border-box;
+		display: table;
+		width: 100%;
+		border-collapse: separate;
 
-		// div.wrapper {
-		// 	display: table-cell;
-		// 	vertical-align: middle;
-		// }
+		& > div {
+			display: table-cell;
+			vertical-align: middle;
+		}
 
 		h2, h3 {
 			border-bottom: none;
@@ -448,8 +458,8 @@ header {
 		}
 	}
 
-	#inicio {
-		padding: 80px 0;
+	&.inicio {
+  		border-spacing: 0 65px;
 
 		li {
 			list-style: none;
@@ -464,8 +474,8 @@ header {
 		}
 	}
 
-	#login {
-		padding: 90px 0;
+	&.login {
+  		border-spacing: 0 80px;
 
 		p.error {
 			color: #FF2F2F;
