@@ -8,7 +8,7 @@
                     <i class="icon-facebook"></i><a href="https://www.facebook.com/delegacioneps?fref=ts" target="_blank">EPS</a> 
                     <a href="https://www.facebook.com/delegacion.estudiantesccssjj" target="_blank">CCSSJJ</a>   
                     <i class="icon-twitter"></i><a href="https://twitter.com/DelegacionEPS" target="_blank">EPS</a> 
-                    <a href="https://twitter.com/delegageuc3m" target="_blank">CCSSJJ</a> 
+                    <a href="https://twitter.com/DELECCSSJJ" target="_blank">CCSSJJ</a> 
                     <a href="https://twitter.com/delegahcd" target="_blank">HHDC</a> 
                     <a href="https://twitter.com/DelePostUC3M" target="_blank">Postgrado</a>
                     <i class="icon-map"></i><span>1.0.H01 (Leganes) 2.0.01 (Getafe, CCSSJJ) 17.1.03-B (Getafe, HHDC) 2.1.20 (Colmenarejo) 11.0.15 (Getafe, Postgrado) </span>
