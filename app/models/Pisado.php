@@ -8,6 +8,7 @@ class Pisado {
 	public $autor;
 	public $date;
 	public $id_titulacion;
+	public $id_group;
 	public $asignatura;
 	public $curso;
 	public $grupo;
@@ -118,7 +119,18 @@ class Pisado {
 
 	public function save() {
 		$db = new DB;
-		return $db->run('INSERT INTO pisado (nia,email,date,autor,id_titulacion,curso,asignatura,grupo,profesor,texto) VALUES (?,?,NOW(),?,?,?,?,?,?,?)', array($this->nia,$this->email,$this->autor,$this->id_titulacion,$this->curso,$this->asignatura,$this->grupo,$this->profesor,$this->texto));
+		$query = $db->run('INSERT INTO pisado (nia,email,date,autor,id_titulacion,curso,asignatura,grupo,profesor,texto,id_group) VALUES (?,?,NOW(),?,?,?,?,?,?,?,?)', array($this->nia,$this->email,$this->autor,$this->id_titulacion,$this->curso,$this->asignatura,$this->grupo,$this->profesor,$this->texto,$this->id_group));
+		if ($query) {
+			$this->id = $db->lastId();
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public function update() {
+		$db = new DB;
+		return $db->run('UPDATE pisado SET id_group=? WHERE id='.$this->id, array($this->id_group));
 	}
 
 	public function getNameTitulacion() {

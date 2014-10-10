@@ -25,7 +25,7 @@ class groupController extends Controller {
 						$comentario->id_group = $group->id;
 						$comentario->nia = $_SESSION['user']->nia;
 						$comentario->text = htmlspecialchars($_POST['comment']);
-						if ($_SESSION['user']->isDelegado && $pisado->nia != $_SESSION['user']->nia) {
+						if ($_SESSION['user']->isDelegado) {
 							if ($_SESSION['user']->isDelegadoCurso()) {
 								$cargo = 'Delegado de Curso';
 							} else if ($_SESSION['user']->isDelegadoTitulacion()) {
@@ -41,10 +41,10 @@ class groupController extends Controller {
 						if (!$comentario->save()) {
 							$data['error'] = 'Ha ocurrido un error al guardar el comentario. Inténtelo de nuevo.';
 						} else {
-							$cuerpo = $this->render_email('Comentario',array('pisado' => "pisado"));
-							$destinatarios = array();
-							$destinatarios[] = $group->nia;
-							$this->send('¡Tienes un nuevo comentario en un P.I.S.A.D.O.!',$destinatarios,$cuerpo);
+							// $cuerpo = $this->render_email('Comentario',array('pisado' => "pisado"));
+							// $destinatarios = array();
+							// $destinatarios[] = $group->nia;
+							// $this->send('¡Tienes un nuevo comentario en un PISADO!',$destinatarios,$cuerpo);
 						}
 					}
 				}
@@ -61,24 +61,4 @@ class groupController extends Controller {
 			$this->render_error(404);
 		}
 	}
-
-	function group() {
-		$this->security();
-
-		if ($_SESSION['user']->isDelegadoTitulacion() || $_SESSION['user']->isDelegadoEscuela()) {
-			$pisados = isset($_POST['pisado']) ? $_POST['pisado'] : null;
-			$groups = isset($_POST['group']) ? $_POST['group'] : null;
-
-			if (count($groups) == 1) { // meter todos a ese grupo
-
-			} else if (count($groups) > 1) { // unificar todos y grupos en nuevo con name, borrar otros
-
-			} else { // nuevo con name
-
-			}
-		}
-
-	//	header('Location: /pisado/inicio');
-	}
-
 }
