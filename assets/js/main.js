@@ -61,10 +61,9 @@ $(function() {
 			var pisados = $('.delegacion #pisados li.selected');
 			if ( pisados.length > 1 ) {
 				var form = $('<form>', {
-					action: '/pisado/group/group',
+					action: '?#delegacion',
 					method: 'POST'
 				});
-				var formData = new FormData( form );
 
 				pisados.filter('#pisado').each(function() {
 					form.append($('<input>', {

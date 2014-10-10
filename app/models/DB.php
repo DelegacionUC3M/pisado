@@ -37,4 +37,9 @@ class DB {
 		return $this->stmt->rowCount();
 	}
 
+	// Get the ID of the last insert query
+	public function lastId() {
+		return $this->db->lastInsertId();
+	}
+
 }

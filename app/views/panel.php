@@ -40,13 +40,19 @@
 	<?php
 	if ($user->isDelegado) { ?>
 
-	<article class="pisados delegacion">
+	<article class="pisados delegacion" id="delegacion">
 
 			<h2 class="clear">Delegación
 				<?php if ($user->isDelegadoTitulacion() || $user->isDelegadoEscuela()) { ?>
 					<a class="button icon-agroup" href="?" id="agrupar" data-active="false">Agrupar PISADOS</a>
 				<?php } ?>
 			</h2>
+
+			<?php if(isset($data['error']))  { ?>
+				<p class="info error">
+					<?= $data['error'] ?>
+				</p>
+			<?php } ?>
 
 			<p class="info error hide">Has de seleccionar al menos dos PISADOS y solo se pueden agrupar PISADOs del mismo curso y titulación.</p>
 			

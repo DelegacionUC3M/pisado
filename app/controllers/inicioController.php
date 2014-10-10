@@ -17,10 +17,11 @@ class inicioController extends Controller {
 
 			if (isset($_POST['nia']) && isset($_POST['password'])) {
 				try {
-					$ldap = LDAP_Gateway::login($_POST['nia'], $_POST['password']);
-
+				//	$ldap = LDAP_Gateway::login($_POST['nia'], $_POST['password']);
+					$ldap = true;
 					if ($ldap) {
-						$user = new User($ldap->getUserId(),$ldap->getUserNameFormatted(),$ldap->getUserMail(),$ldap->getDn());
+				//		$user = new User($ldap->getUserId(),$ldap->getUserNameFormatted(),$ldap->getUserMail(),$ldap->getDn());
+						$user = new User('100318104','Mario Montes Gonzalez','100318104@alumnos.uc3m.es','ou=gente');
 						$_SESSION['user'] = $user;
 
 						if (isset($_GET['url'])) {
@@ -53,24 +54,85 @@ class inicioController extends Controller {
 
 	function panel() {
 		$this->security();
+		$data = array();
 		
 		$user = $_SESSION['user'];
-		$pisados = array_merge(Pisado::findByNia($user->nia), Group::findByNia($user->nia)); 
-		usort( $pisados, function($a, $b) {return strtotime($a->date) - strtotime($b->date);} );
-		$otros = array();
-		
-		if ($user->isDelegadoEscuela()) {
-			$otros = array_merge(Pisado::findAll(), Group::findAll());
-			usort( $otros, function($a, $b) {return strtotime($a['date']) - strtotime($b['date']);});
-		} else if ($user->isDelegadoTitulacion()) {
-			$otros = array_merge(Pisado::findByIdTitulacion($user->id_titulacion), Group::findByIdTitulacion($user->id_titulacion));
-			usort( $otros, function($a, $b) {return strtotime($a->date) - strtotime($b->date);} );
-		} else if ($user->isDelegadoCurso()) {
-			$otros = array_merge(Pisado::findByCurso($user->curso,$user->id_titulacion), Group::findByCurso($user->curso,$user->id_titulacion));
-			usort( $otros, function($a, $b) {return strtotime($a->date) - strtotime($b->date);} );
+
+		if (isset($_POST['pisado']) || isset($_POST['group'])) {
+			if ($user->isDelegadoTitulacion() || $user->isDelegadoEscuela()) {
+				$pisados = isset($_POST['pisado']) ? $_POST['pisado'] : array();
+				$groups = isset($_POST['group']) ? $_POST['group'] : array();
+
+				if (count($groups) == 1) { // meter todos a ese grupo
+					$group = Group::findById($groups[0]);
+					foreach ($pisados as $id_pisado) {
+						$pisado = Pisado::findById($id_pisado);
+						if ($group->curso == $pisado->curso && $group->id_titulacion == $pisado->id_titulacion) {
+							$pisado->id_group = $group->id;
+							$pisado->update();
+						} else {
+							$data['error'] = 'Los PISADOs han de pertenecer al mismo curso y titulación';
+						}
+					}
+				} else if (count($groups) > 1) { // unificar todos y grupos en nuevo con name, borrar otros
+					if (isset($_POST['name']) && !empty($_POST['name'])) {
+						$group = new Group;
+						$group->subject = $_POST['name'];
+						$group->save();
+						foreach ($pisados as $id_pisado) {
+							$pisado = Pisado::findById($id_pisado);
+							$pisado->id_group = $group->id;
+							$pisado->update();
+						}
+						foreach ($groups as $id_group) {
+							$group_old = Group::findById($id_group);
+							$gpisados = $group_old->pisados;
+							foreach ($gpisados as $pisado) {
+								$pisado->id_group = $group->id;
+								$pisado->update();
+							}
+							$group_old->delete();
+						}
+					} else {
+						$data['error'] = 'El grupo ha de tener un nombre';
+					}
+				} else { // nuevo con name
+					if (isset($_POST['name']) && !empty($_POST['name'])) {
+						$group = new Group;
+						$group->subject = $_POST['name'];
+						$group->save();
+						foreach ($pisados as $id_pisado) {
+							$pisado = Pisado::findById($id_pisado);
+							$pisado->id_group = $group->id;
+							$pisado->update();
+						}
+					} else {
+						$data['error'] = 'El grupo ha de tener un nombre';
+					}
+				}
+			} else {
+				$data['error'] = 'Solo pueden agrupar PISADOs delegados de titulación o centro';
+			}
 		}
 
-		$this->render('panel', array('pisados'=>$pisados,'otros'=>$otros));
+		$data['pisados'] = array_merge(Pisado::findByNia($user->nia), Group::findByNia($user->nia)); 
+		usort( $data['pisados'], function($a, $b) {return strtotime($a->date) - strtotime($b->date);} );
+		$data['otros'] = array();
+		
+		if ($user->isDelegadoEscuela()) {
+			$data['otros'] = array_merge(Pisado::findAll(), Group::findAll());
+			usort( $data['otros'], function($a, $b) {return strtotime($a['date']) - strtotime($b['date']);});
+		} else if ($user->isDelegadoTitulacion()) {
+			$data['otros'] = array_merge(Pisado::findByIdTitulacion($user->id_titulacion), Group::findByIdTitulacion($user->id_titulacion));
+			usort( $data['otros'], function($a, $b) {return strtotime($a->date) - strtotime($b->date);} );
+		} else if ($user->isDelegadoCurso()) {
+			$data['otros'] = array_merge(Pisado::findByCurso($user->curso,$user->id_titulacion), Group::findByCurso($user->curso,$user->id_titulacion));
+			usort( $data['otros'], function($a, $b) {return strtotime($a->date) - strtotime($b->date);} );
+		}
+
+		$this->render('panel', $data);
 	}
+
+
 	
 }

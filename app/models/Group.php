@@ -98,7 +98,18 @@ class Group {
 
 	public function save() {
 		$db = new DB;
-		return $db->run('INSERT INTO group (subject,date) VALUES (?,NOW())', array($this->subject));
+		$query = $db->run('INSERT INTO `group` (subject,date) VALUES (?,NOW())', array($this->subject));
+		if ($query) {
+			$this->id = $db->lastId();
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public function delete() {
+		$db = new DB;
+		return $db->run('DELETE FROM `group` WHERE `id`='.$this->id);
 	}
 
 	public function getNameTitulacion() {
