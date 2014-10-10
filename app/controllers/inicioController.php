@@ -17,11 +17,11 @@ class inicioController extends Controller {
 
 			if (isset($_POST['nia']) && isset($_POST['password'])) {
 				try {
-				//	$ldap = LDAP_Gateway::login($_POST['nia'], $_POST['password']);
-					$ldap = true;
+					$ldap = LDAP_Gateway::login($_POST['nia'], $_POST['password']);
+
 					if ($ldap) {
-				//		$user = new User($ldap->getUserId(),$ldap->getUserNameFormatted(),$ldap->getUserMail(),$ldap->getDn());
-						$user = new User('100318104','Mario Montes Gonzalez','100318104@alumnos.uc3m.es','ou=gente');
+						$user = new User($ldap->getUserId(),$ldap->getUserNameFormatted(),$ldap->getUserMail(),$ldap->getDn());
+				//		$user = new User('100318104','Mario Montes Gonzalez','100318104@alumnos.uc3m.es','ou=gente');
 						$_SESSION['user'] = $user;
 
 						if (isset($_GET['url'])) {

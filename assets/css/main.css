@@ -663,3 +663,8 @@ footer span {
     width: 30% !important;
   }
 }
+@media (max-width: 470px) {
+  ul#pisados li {
+    width: 47% !important;
+  }
+}
