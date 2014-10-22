@@ -16,7 +16,7 @@ class Pisado {
 	public $texto;
 
 	public static function findById($id) {
-		$db = new DB;
+		$db = new DB(SQL_DB_PISADO);
 		$db->run('SELECT * FROM pisado WHERE id=?', array($id));
 
 		if ($db->count() > 0) {
@@ -33,7 +33,7 @@ class Pisado {
 	}
 
 	public static function findByNia($nia) {
-		$db = new DB;
+		$db = new DB(SQL_DB_PISADO);
 		$db->run('SELECT * FROM pisado WHERE nia=? AND id_group=0 ORDER BY date', array($nia));
 		$data = $db->data();
 
@@ -50,7 +50,7 @@ class Pisado {
 	}
 
 	public static function findByIdTitulacion($id_titulacion) {
-		$db = new DB;
+		$db = new DB(SQL_DB_PISADO);
 		$db->run('SELECT * FROM pisado WHERE id_titulacion=? AND id_group=0 ORDER BY date', array($id_titulacion));
 		$data = $db->data();
 
@@ -67,7 +67,7 @@ class Pisado {
 	}
 
 	public static function findByIdGroup($id_group) {
-		$db = new DB;
+		$db = new DB(SQL_DB_PISADO);
 		$db->run('SELECT * FROM pisado WHERE id_group=? ORDER BY date', array($id_group));
 		$data = $db->data();
 
@@ -84,7 +84,7 @@ class Pisado {
 	}
 
 	public static function findByCurso($curso,$id_titulacion) {
-		$db = new DB;
+		$db = new DB(SQL_DB_PISADO);
 		$db->run('SELECT * FROM pisado WHERE curso=? AND id_titulacion=? AND id_group=0 ORDER BY date', array($curso,$id_titulacion));
 		$data = $db->data();
 
@@ -101,7 +101,7 @@ class Pisado {
 	}
 
 	public static function findAll() {
-		$db = new DB;
+		$db = new DB(SQL_DB_PISADO);
 		$db->run('SELECT * FROM pisado WHERE id_group=0 ORDER BY id_titulacion,date');
 		$data = $db->data();
 
@@ -118,7 +118,7 @@ class Pisado {
 	}
 
 	public function save() {
-		$db = new DB;
+		$db = new DB(SQL_DB_PISADO);
 		$query = $db->run('INSERT INTO pisado (nia,email,date,autor,id_titulacion,curso,asignatura,grupo,profesor,texto,id_group) VALUES (?,?,NOW(),?,?,?,?,?,?,?,?)', array($this->nia,$this->email,$this->autor,$this->id_titulacion,$this->curso,$this->asignatura,$this->grupo,$this->profesor,$this->texto,$this->id_group));
 		if ($query) {
 			$this->id = $db->lastId();
@@ -129,7 +129,7 @@ class Pisado {
 	}
 
 	public function update() {
-		$db = new DB;
+		$db = new DB(SQL_DB_PISADO);
 		return $db->run('UPDATE pisado SET id_group=? WHERE id='.$this->id, array($this->id_group));
 	}
 

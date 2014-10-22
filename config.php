@@ -19,7 +19,8 @@ date_default_timezone_set('Europe/Madrid');
 
 /* SQL Parameters */
 define('SQL_HOST', 'localhost');
-define('SQL_DB', 'pisado');
+define('SQL_DB_PISADO', 'pisado');
+define('SQL_DB_DELEGADOS', 'delegados');
 define('SQL_PASSWD', 'pisado');
 define('SQL_USER', 'pisado');
 define('SQL_PORT', 3306);
