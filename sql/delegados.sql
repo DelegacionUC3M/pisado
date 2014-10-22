@@ -1,6 +1,7 @@
 -- MySQL dump 10.13  Distrib 5.5.38, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: delegados
+-- No phpmyadmin
 -- ------------------------------------------------------
 -- Server version	5.5.38-0+wheezy1
 
