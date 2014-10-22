@@ -6,14 +6,14 @@ class DBDelegados {
 	 * Get nombre of titulacion
 	 */
 	public static function findByIdTitulacion($id) {
-	//	$db = new DB(SQL_DB_DELEGADOS);
-	//	$db->run();
+		$db = new DB(SQL_DB_DELEGADOS);
+		$db->run();
 
-	//	if ($db->count() == 1) {
+		if ($db->count() == 1) {
 			return 'Grado en Ingeniería Informática';
-	//	} else {
-	//		return null;
-	//	}
+		} else {
+			return null;
+		}
 
 	}
 
