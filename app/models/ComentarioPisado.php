@@ -8,7 +8,7 @@ class ComentarioPisado {
 	public $text;
 
 	public static function findByIdpisado($id_pis) {
-		$db = new DB;
+		$db = new DB(SQL_DB_PISADO);
 		$db->run('SELECT * FROM comentario_pisado WHERE id_pisado=? ORDER BY date',array($id_pis));
 		$data = $db->data();
 
@@ -28,7 +28,7 @@ class ComentarioPisado {
 	}
 
 	public function save() {
-		$db = new DB;
+		$db = new DB(SQL_DB_PISADO);
 		return $db->run('INSERT INTO comentario_pisado (id_pisado, nia, nombre, date, text) VALUES (?, ?, ?, NOW(), ?)', array($this->id_pisado, $this->nia, $this->nombre, $this->text));
 	}
 }

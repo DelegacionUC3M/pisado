@@ -10,7 +10,7 @@ class Group {
 	public $pisados;
 
 	public static function findById($id) {
-		$db = new DB;
+		$db = new DB(SQL_DB_PISADO);
 		$db->run('SELECT A.*, id_titulacion, curso FROM `group` A LEFT JOIN pisado B ON A.id = B.id_group WHERE A.id=? GROUP BY A.id ORDER BY A.date', array($id));
 
 		if ($db->count() > 0) {
@@ -29,7 +29,7 @@ class Group {
 	}
 
 	public static function findByNia($nia) {
-		$db = new DB;
+		$db = new DB(SQL_DB_PISADO);
 		$db->run('SELECT A.*, id_titulacion, curso FROM `group` A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.nia=? GROUP BY A.id ORDER BY A.date', array($nia));
 		$data = $db->data();
 
@@ -46,7 +46,7 @@ class Group {
 	}
 
 	public static function findByIdTitulacion($id_titulacion) {
-		$db = new DB;
+		$db = new DB(SQL_DB_PISADO);
 		$db->run('SELECT A.*, id_titulacion, curso FROM `group` A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.id_titulacion=? GROUP BY A.id ORDER BY A.date', array($id_titulacion));
 		$data = $db->data();
 
@@ -63,7 +63,7 @@ class Group {
 	}
 
 	public static function findByCurso($curso,$id_titulacion) {
-		$db = new DB;
+		$db = new DB(SQL_DB_PISADO);
 		$db->run('SELECT A.*, id_titulacion, curso FROM `group` A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.curso=? AND B.id_titulacion=? GROUP BY A.id ORDER BY A.date', array($curso,$id_titulacion));
 		$data = $db->data();
 
@@ -80,7 +80,7 @@ class Group {
 	}
 
 	public static function findAll() {
-		$db = new DB;
+		$db = new DB(SQL_DB_PISADO);
 		$db->run('SELECT A.*, id_titulacion, curso FROM `group` A LEFT JOIN pisado B ON A.id = B.id_group GROUP BY A.id ORDER BY A.date');
 		$data = $db->data();
 
@@ -97,7 +97,7 @@ class Group {
 	}
 
 	public function save() {
-		$db = new DB;
+		$db = new DB(SQL_DB_PISADO);
 		$query = $db->run('INSERT INTO `group` (subject,date) VALUES (?,NOW())', array($this->subject));
 		if ($query) {
 			$this->id = $db->lastId();
@@ -108,7 +108,7 @@ class Group {
 	}
 
 	public function delete() {
-		$db = new DB;
+		$db = new DB(SQL_DB_PISADO);
 		return $db->run('DELETE FROM `group` WHERE `id`='.$this->id);
 	}
 

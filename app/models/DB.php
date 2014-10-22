@@ -5,12 +5,13 @@ class DB {
 	private $host   =  SQL_HOST;
 	private $user   =  SQL_USER;
 	private $pass   =  SQL_PASSWD;
-	private $dbs    =  SQL_DB;
+	private $dbs;
 
 	private $db;
 	private $stmt;
 
-	function __construct() {
+	function __construct($sql_db) {
+		$this->dbs = $sql_db;
 		$this->db = new PDO('mysql:host='.$this->host.';dbname='.$this->dbs.';charset=utf8', $this->user, $this->pass);
 		$this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$this->db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
