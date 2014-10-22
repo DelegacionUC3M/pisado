@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 22-10-2014 a las 19:38:34
+-- Tiempo de generación: 22-10-2014 a las 21:26:06
 -- Versión del servidor: 5.5.37-0ubuntu0.13.10.1
 -- Versión de PHP: 5.5.3-1ubuntu2.6
 
@@ -19,6 +19,51 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `pisado`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comentario_group`
+--
+
+CREATE TABLE IF NOT EXISTS `comentario_group` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_group` int(11) NOT NULL,
+  `nia` int(9) NOT NULL,
+  `nombre` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `date` datetime NOT NULL,
+  `text` text COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comentario_pisado`
+--
+
+CREATE TABLE IF NOT EXISTS `comentario_pisado` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_pisado` int(11) NOT NULL,
+  `nia` int(9) NOT NULL,
+  `nombre` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `date` datetime NOT NULL,
+  `text` text COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=15 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `group`
+--
+
+CREATE TABLE IF NOT EXISTS `group` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `subject` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `date` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
 
 -- --------------------------------------------------------
 
