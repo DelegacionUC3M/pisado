@@ -23,6 +23,7 @@ class pisadoController extends Controller {
 			$pisado->grupo = (int) $_POST['grupo'];
 			$pisado->profesor = htmlspecialchars($_POST['profesor']);
 			$pisado->texto = htmlspecialchars($_POST['texto']);
+			$pisado->id_group = 0;
 
 			if(!empty($_POST['titulacion']) && !empty($_POST['asignatura']) && !empty($_POST['curso'])
 				&& !empty($_POST['grupo']) && !empty($_POST['texto'])) {

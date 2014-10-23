@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `pisado` (
   `grupo` int(11) NOT NULL,
   `profesor` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
   `texto` text COLLATE utf8_unicode_ci NOT NULL,
-  `id_group` int(11) DEFAULT NULL,
+  `id_group` int(11) DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
 
