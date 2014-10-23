@@ -24,12 +24,13 @@
 
                 <div id="user">
                     <?php if ($user) { ?>
-                        <span>Hola, <?= $user->name; ?> </span>
+                        <span>Hola, <?= $user->name; ?></span>
                         <a class="logout" href="/pisado/inicio/logout">Salir</a>
                     <?php } else { ?>
                         <a href="/pisado/inicio/login">Entrar</a>
                     <?php } ?>
                 </div>
+
 
                 <a href="/pisado/inicio"> <h1>PISADO</h1> </a>
                 <a href="http://delegacion.uc3m.es" target="_blank"> <img src="/pisado/assets/img/delegacion.png" /> </a>

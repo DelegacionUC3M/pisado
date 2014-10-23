@@ -1,6 +1,7 @@
 <section id="panel" class="wrapper">
 
 	<article class="pisados">
+
 		<h2 class="clear">Mis PISADOS
 			<a class="button icon-fill" href="pisado/create">Rellenar un PISADO</a>
 		</h2>
@@ -41,7 +42,6 @@
 	if ($user->isDelegado) { ?>
 
 	<article class="pisados delegacion" id="delegacion">
-
 			<h2 class="clear">Delegación
 				<?php if ($user->isDelegadoTitulacion() || $user->isDelegadoEscuela()) { ?>
 					<a class="button icon-agroup" href="?" id="agrupar" data-active="false">Agrupar PISADOS</a>
