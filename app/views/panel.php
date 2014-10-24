@@ -8,7 +8,7 @@
 
 		<ul id="pisados">
 		<?php
-		<?php var_dump($user); ?>
+		var_dump($user);
 
 		if (count($pisados) > 0) {
 			foreach ($pisados as $pisado) {
