@@ -11,7 +11,7 @@ class DBDelegados {
 		$db->run('SELECT nombre FROM titulaciones WHERE id_titulacion = ?', array($id));
 		$data = $db->data();
 		if ($db->count() == 1) {
-			return $data['nombre'];
+			return $data[0]['nombre'];
 		} else {
 			return null;
 		}
@@ -28,7 +28,7 @@ class DBDelegados {
 		$data = $db->data();
 
 		if ($db->count() == 1) {
-			return $data['id_titulacion'];
+			return $data[0]['id_titulacion'];
 		} else {
 			return null;
 		}
@@ -46,7 +46,7 @@ class DBDelegados {
 					FROM delegados LEFT JOIN personas ON personas.id = delegados.id where personas.nia = ?;', array($nia));
 		$data = $db->data();
 
-		if($data['del_escuela'] != 0) {
+		if($data[0]['del_escuela'] != 0) {
 			$rol = ROL_DELEGADO_ESCUELA;
 		} else if($data['del_titulacion'] != 0) {
 			$rol = ROL_DELEGADO_TITULACION;
@@ -54,10 +54,8 @@ class DBDelegados {
 			$rol = ROL_DELEGADO_CURSO;
 		}
 
-		$data['titulacion'] = 'caca de la vaca';
-
 		if ($db->count() == 1) {
-			return array('id_titulacion' => $data['id_titulacion'], 'rol' => $rol, 'curso' => $data['curso']);
+			return array('id_titulacion' => $data[0]['id_titulacion'], 'rol' => $rol, 'curso' => $data[0]['curso']);
 		} else {
 			return null;
 		}
@@ -85,8 +83,8 @@ class DBDelegados {
 				WHERE personas.id_titulacion = ? AND delegados.del_titulacion = 1;', array($id_titulacion));
 		$data = $db->data();
 
-		return array( array('nombre' => $data['nombre'] . $data['apellido1'],
-							'email' => $data['nia'] . '@alumnos.uc3m.es') );
+		return array( array('nombre' => $data[0]['nombre'] . $data[0]['apellido1'],
+							'email' => $data[0]['nia'] . '@alumnos.uc3m.es') );
 	}
 
 	public static function getTitulaciones() {

@@ -1,7 +1,6 @@
 <section id="panel" class="wrapper">
 
 	<article class="pisados">
-		<?php var_dump($user); ?>
 		<h2 class="clear">Mis PISADOS
 			<a class="button icon-fill" href="pisado/create">Rellenar un PISADO</a>
 		</h2>
