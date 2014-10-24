@@ -4,11 +4,11 @@
 		<h2 class="clear">Mis PISADOS
 			<a class="button icon-fill" href="pisado/create">Rellenar un PISADO</a>
 		</h2>
-		<?php var_dump($user); ?>
 
 
 		<ul id="pisados">
 		<?php
+		<?php var_dump($user); ?>
 
 		if (count($pisados) > 0) {
 			foreach ($pisados as $pisado) {
