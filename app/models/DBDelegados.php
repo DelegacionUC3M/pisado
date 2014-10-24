@@ -48,7 +48,7 @@ class DBDelegados {
 
 		if($data[0]['del_escuela'] != 0) {
 			$rol = ROL_DELEGADO_ESCUELA;
-		} else if($data['del_titulacion'] != 0) {
+		} else if($data[0]['del_titulacion'] != 0) {
 			$rol = ROL_DELEGADO_TITULACION;
 		} else {	//Faltan los casos especiales en que alguien que no es delegado ejerce como tal.
 			$rol = ROL_DELEGADO_CURSO;
