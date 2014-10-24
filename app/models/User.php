@@ -19,7 +19,7 @@ class User {
 		$this->email = $email;
 
 		$delegado = DBDelegados::findDelegado($this->nia);
-		
+		DBDelegados::findByNameTitulacion($titulacion);
 		if ($delegado) {
 			$this->isDelegado = true;
 			$this->id_titulacion = $delegado['id_titulacion'];
@@ -27,8 +27,8 @@ class User {
 			$this->curso = $delegado['curso'];
 		} else {
 			$dn = explode(',', $dn);
-        	$titulacion = str_replace("ou=",'',$dn[1]);
-        	$titulacion = ucwords(strtolower($titulacion));
+        		$titulacion = str_replace("ou=",'',$dn[1]);
+        		$titulacion = ucwords(strtolower($titulacion));
         	
 			$this->isDelegado = false;
 			$this->id_titulacion = DBDelegados::findByNameTitulacion($titulacion);
