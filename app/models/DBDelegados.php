@@ -26,6 +26,9 @@ class DBDelegados {
 		$db = new DB(SQL_DB_DELEGADOS);
 		$db->run('SELECT id_titulacion FROM titulaciones WHERE nombre = ?', array($nombre));
 		$data = $db->data();
+		
+		print_r($nombre);
+		print_r($data);
 
 		if ($db->count() == 1) {
 			return $data['id_titulacion'];
