@@ -50,8 +50,10 @@ class DBDelegados {
 			$rol = ROL_DELEGADO_ESCUELA;
 		} else if($data[0]['del_titulacion'] != 0) {
 			$rol = ROL_DELEGADO_TITULACION;
-		} else {	//Faltan los casos especiales en que alguien que no es delegado ejerce como tal.
+		} else if($data[0]['del_curso'] != 0) {	//Faltan los casos especiales en que alguien que no es delegado ejerce como tal.
 			$rol = ROL_DELEGADO_CURSO;
+		} else {
+			$rol = null;
 		}
 
 		if ($db->count() == 1) {
