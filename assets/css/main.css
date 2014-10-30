@@ -514,6 +514,9 @@ body {
 .main #view article#listPisados ul li.w60 select,
 .main #create article#listPisados ul li.w60 select {
   max-width: 300px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .main #view article#informe ul li.w40,
 .main #create article#informe ul li.w40,
@@ -536,6 +539,9 @@ body {
 .main #view article#listPisados ul li.w40 select,
 .main #create article#listPisados ul li.w40 select {
   max-width: 100px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .main #view article#informe ul li#texto,
 .main #create article#informe ul li#texto,
