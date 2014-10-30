@@ -1,78 +1,678 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300,500,700);
-@font-face{font-family:'icomoon';src:url('fonts/pisado.eot?-xuph9k');src:url('fonts/pisado.eot?#iefix-xuph9k') format('embedded-opentype'),url('fonts/pisado.woff?-xuph9k') format('woff'),url('fonts/pisado.ttf?-xuph9k') format('truetype'),url('fonts/pisado.svg?-xuph9k#icomoon') format('svg');font-weight:normal;font-style:normal}[class^="icon-"]:before,[class*=" icon-"]:before{font-family:'icomoon';speak:none;font-style:normal;font-weight:normal;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
-.icon-print:before{content:"\31"}
-.icon-pisado:before{content:"\64"}
-.icon-fill:before{content:"\32"}
-.icon-agroup:before{content:"\33"}
-.icon-map:before{content:"\34"}
-.icon-clock:before{content:"\35"}
-.icon-comment:before{content:"\36"}
-.icon-user:before{content:"\37"}
-.icon-signin:before{content:"\38"}
-.icon-signout:before{content:"\39"}
-.icon-back:before{content:"\61"}
-.icon-facebook:before{content:"\62"}
-.icon-twitter:before{content:"\63"}
-html{font-family:'Roboto',sans-serif;background:#e1e1e1;color:#2b2b2b}
-a{outline:none;text-decoration:none;color:#066394}a:active,a:visited{color:#066394}
-.wrapper{max-width:960px;margin:0 auto}
-.print{display:none}
-input[type="text"],input[type="password"],textarea,select{padding:6px 8px;border-radius:5px;background:#f6f6f6;border:1px solid #c4c4c4;color:#555454;transition:all .4s;font-weight:300}input[type="text"]:hover,input[type="password"]:hover,textarea:hover,select:hover,input[type="text"]:focus,input[type="password"]:focus,textarea:focus,select:focus{border:1px solid #555454}
-input,button,select,textarea{outline:0;font-family:'Roboto',sans-serif}
-button,a.button{display:block;background:#066394;color:#fff;position:relative;border-radius:5px;padding:10px;text-decoration:none;border:none;border-bottom:2px solid #004a6f;transition:all .4s;font-family:'Roboto',sans-serif;line-height:1;font-weight:400}button:active,a.button:active{margin-top:2px;border-bottom:0}
-button:before,a.button:before{margin-right:10px}
-h1,h2,h3{font-weight:300}
-header{background:#fff;border-bottom:1px solid #ccc;padding:19px 0}header h1{font-size:2.7em;color:#066394;margin:0;display:inline-block;vertical-align:middle}
-header img{margin-left:15px;display:inline-block;vertical-align:middle}
-header #user{float:right;font-size:.95em;margin-top:15px}header #user a{padding:8px 23px;border-radius:5px;border:1px solid #bad5e2;color:#006191}header #user a.logout{border:none}
-html,body{height:100%}
-.main{min-height:500px;min-height:60vh;min-height:calc(100% - 93px - 194px)}.main h2{font-size:1.7em;max-height:38px}.main h2 a{float:right;font-size:.55em;margin-left:10px}
-.main h3{text-align:center;font-size:1.6em}
-.main p.info{background:#fedeb2;border:1px solid #c4c4c4;border-radius:5px;font-size:.8em;padding:10px 15px}.main p.info.error{background:#feb2b2;width:90%;margin:10px auto;font-weight:bold}
-.main p.info.hide{display:none}
-.main ul#pisados{margin:0 auto;padding:0;list-style:none;width:110%;margin-left:-5%}.main ul#pisados a{margin-right:-4px}
-.main ul#pisados li{display:inline-block;width:22%;border-radius:5px;margin:10px 1.5%;background:#fff;box-shadow:0 0 5px 0 rgba(0,0,0,0.65);position:relative;box-sizing:border-box;padding:6px;color:#2b2b2b}.main ul#pisados li.vibrate{animation:vibrate .4s infinite}.main ul#pisados li.vibrate:hover{background:#bad5e2}
-.main ul#pisados li.selected{background:#bad5e2}
-.main ul#pisados li#group:before{content:' ';display:block;position:absolute;width:100%;height:100%;border-radius:5px;box-shadow:0 0 5px 0 rgba(0,0,0,0.65);z-index:-10}
-.main ul#pisados li p{margin:3px 0}.main ul#pisados li p.id-asignatura{font-weight:300;font-size:1.1em;color:#066394;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;height:50px}.main ul#pisados li p.id-asignatura span.id{font-weight:bold}
-.main ul#pisados li p.titulacion{font-size:.8em}
-.main ul#pisados li p.curso-date{font-size:.8em}.main ul#pisados li p.curso-date span.curso{font-weight:bold}
-.main ul#pisados li p.curso-date span.date{float:right}
-.main ul#comentarios{margin:0 auto;padding:0;list-style:none;width:80%}.main ul#comentarios li{display:block;background:#fff;width:75%;margin:0 auto 20px;border-radius:5px;margin-right:1%;box-shadow:0 0 6px 0 rgba(0,0,0,0.35);padding:12px;box-sizing:border-box;font-weight:400}.main ul#comentarios li.you{margin-left:1%}
-.main ul#comentarios li.delegacion{background:#b0cedd}
-.main ul#comentarios li div.author{margin-bottom:8px}.main ul#comentarios li div.author span{display:inline-block;width:50%;vertical-align:top}.main ul#comentarios li div.author span.autor{font-weight:bold;color:#2b2b2b}
-.main ul#comentarios li div.author span.date{text-align:right;color:#616060}
-.main ul#comentarios li p{margin:0}
-.main ul#comentarios li.compose{padding:0;box-shadow:none;margin:50px auto;border:1px solid #c4c4c4}.main ul#comentarios li.compose textarea{padding:10px;margin:0;text-align:justify;width:100%;display:block;box-sizing:border-box;resize:none;background:transparent;border:none;font-weight:400}
-.main ul#comentarios li.compose div button,.main ul#comentarios li.compose div p{display:inline-block;vertical-align:top;box-sizing:border-box;border-top:1px solid #c4c4c4}
-.main ul#comentarios li.compose div button{border:none !important;font-weight:bold;border-radius:0 0 5px 0;width:25%;padding:11px 11px 12px;transition:none}.main ul#comentarios li.compose div button:active{margin-top:0}
-.main ul#comentarios li.compose div p{margin:0;margin-right:-4px;background:#f3f3f3;border-radius:0 0 0 5px;width:75%;border-right:1px solid #c4c4c4;padding:9px}
-.main.inicio,.main.login{background:linear-gradient(rgba(0,97,145,0.5), rgba(0,97,145,0.5)),url('/pisado/assets/img/bg.jpg') center;background-size:cover;color:#fff;text-align:center;box-sizing:border-box;display:table;width:100%;border-collapse:separate}.main.inicio>div,.main.login>div{display:table-cell;vertical-align:middle}
-.main.inicio h2,.main.login h2,.main.inicio h3,.main.login h3{border-bottom:none;color:#fff}
-.main.inicio h2,.main.login h2{font-size:2em;margin:0 0 30px}
-.main.inicio p,.main.login p{margin:15px 0}
-.main.inicio ul,.main.login ul{margin:0;padding:0}
-.main.inicio{border-spacing:0 65px}.main.inicio li{list-style:none;display:inline-block;width:50%;padding:0 30px;box-sizing:border-box}.main.inicio li p{text-align:justify}
-.main.login{border-spacing:0 80px}.main.login p.error{color:#ff2f2f;font-weight:bold}
-.main.login form{margin:20px 0}
-.main.login form.error input[type="text"],.main.login form.error input[type="password"]{border-color:rgba(128,0,0,0.75) !important}
-.main.login input[type="text"],.main.login input[type="password"]{display:block;margin:0 auto;width:300px;padding:12px 15px;background:rgba(255,255,255,0.8);border-color:rgba(0,0,0,0.55);box-sizing:border-box}
-.main.login input[type="text"]{border-radius:5px 5px 0 0}
-.main.login input[type="password"]{border-radius:0 0 5px 5px;border-top:none}
-.main.login button{width:300px;box-sizing:border-box;padding:12px 15px;text-shadow:-1px 0 4px rgba(0,0,0,0.55);margin:30px auto 0;box-shadow:0 0 0 1px rgba(0,0,0,0.45);border-width:3px}.main.login button:active{margin-top:33px}
-.main #panel .pisados{margin-bottom:50px}
-.main #panel .delegacion h2 input{float:right;font-size:.55em}
-.main #view article#informe,.main #create article#informe,.main #view article#dpersonales,.main #create article#dpersonales,.main #view article#listPisados,.main #create article#listPisados{width:90%;margin:0 auto 20px}.main #view article#informe ul,.main #create article#informe ul,.main #view article#dpersonales ul,.main #create article#dpersonales ul,.main #view article#listPisados ul,.main #create article#listPisados ul{padding:0;list-style:none}.main #view article#informe ul li,.main #create article#informe ul li,.main #view article#dpersonales ul li,.main #create article#dpersonales ul li,.main #view article#listPisados ul li,.main #create article#listPisados ul li{margin:5px 0;box-sizing:border-box;display:inline-block;vertical-align:top}.main #view article#informe ul li.w60,.main #create article#informe ul li.w60,.main #view article#dpersonales ul li.w60,.main #create article#dpersonales ul li.w60,.main #view article#listPisados ul li.w60,.main #create article#listPisados ul li.w60{width:60%}
-.main #view article#informe ul li.w40,.main #create article#informe ul li.w40,.main #view article#dpersonales ul li.w40,.main #create article#dpersonales ul li.w40,.main #view article#listPisados ul li.w40,.main #create article#listPisados ul li.w40{width:40%}.main #view article#informe ul li.w40 input,.main #create article#informe ul li.w40 input,.main #view article#dpersonales ul li.w40 input,.main #create article#dpersonales ul li.w40 input,.main #view article#listPisados ul li.w40 input,.main #create article#listPisados ul li.w40 input{max-width:100px}
-.main #view article#informe ul li#texto,.main #create article#informe ul li#texto,.main #view article#dpersonales ul li#texto,.main #create article#dpersonales ul li#texto,.main #view article#listPisados ul li#texto,.main #create article#listPisados ul li#texto{width:100%;margin-top:25px}
-.main #view article#informe ul span,.main #create article#informe ul span,.main #view article#dpersonales ul span,.main #create article#dpersonales ul span,.main #view article#listPisados ul span,.main #create article#listPisados ul span{font-weight:bold;min-width:130px;display:inline-block}
-.main #view article#informe ul p,.main #create article#informe ul p,.main #view article#dpersonales ul p,.main #create article#dpersonales ul p,.main #view article#listPisados ul p,.main #create article#listPisados ul p,.main #view article#informe ul textarea,.main #create article#informe ul textarea,.main #view article#dpersonales ul textarea,.main #create article#dpersonales ul textarea,.main #view article#listPisados ul textarea,.main #create article#listPisados ul textarea{margin:10px auto;width:90%;resize:vertical;line-height:1.45em;display:block}
-.main #view article#informe ul p,.main #create article#informe ul p,.main #view article#dpersonales ul p,.main #create article#dpersonales ul p,.main #view article#listPisados ul p,.main #create article#listPisados ul p{text-align:justify}
-.main #view ul#pisados,.main #create ul#pisados{width:100%;margin-left:0}
-footer{font-size:.9em;background:#fff;box-shadow:0 0 6px 0 #2b2b2b;padding:15px 0}footer #rsociales{margin:20px 0;text-align:center}footer #rsociales a{border-bottom:solid 1px #bad5e2}
-footer #copy{border-top:1px solid #e3e3e3;text-align:center;padding:20px 0}
-footer h2{margin:0;color:#066394}
-footer i{margin:0 5px 0 15px}
-footer i,footer a,footer span{display:inline-block;vertical-align:top}
-footer span{max-width:500px;text-align:left}
-@media print{body{font-size:12px;background:#fff;color:#000} header{border-bottom:1px #066394 solid} header img{float:right} .no-print{display:none} header #user,h2 a,footer{display:none !important} ul#comentarios li{margin:4px auto !important;width:100%;border-top:1px solid #a6b0be !important;border-left:none !important;border-right:none !important;border-bottom:none !important;border-radius:0 !important}ul#comentarios li div{border-bottom:1px dashed #a6b0be !important} ul#comentarios li.compose{display:none}}@keyframes vibrate{0%{transform:rotate(0)} 25%{transform:rotate(-1.5deg)} 50%{transform:rotate(0)} 75%{transform:rotate(1.5deg)}}@media (max-width:1060px){ul#pisados{width:100% !important;margin-left:0 !important}}@media (max-width:670px){ul#pisados li{width:30% !important}}@media (max-width:470px){ul#pisados li{width:47% !important}}
+@font-face {
+  font-family: 'icomoon';
+  src: url('fonts/pisado.eot?-xuph9k');
+  src: url('fonts/pisado.eot?#iefix-xuph9k') format('embedded-opentype'), url('fonts/pisado.woff?-xuph9k') format('woff'), url('fonts/pisado.ttf?-xuph9k') format('truetype'), url('fonts/pisado.svg?-xuph9k#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-print:before {
+  content: "\31";
+}
+.icon-pisado:before {
+  content: "\64";
+}
+.icon-fill:before {
+  content: "\32";
+}
+.icon-agroup:before {
+  content: "\33";
+}
+.icon-map:before {
+  content: "\34";
+}
+.icon-clock:before {
+  content: "\35";
+}
+.icon-comment:before {
+  content: "\36";
+}
+.icon-user:before {
+  content: "\37";
+}
+.icon-signin:before {
+  content: "\38";
+}
+.icon-signout:before {
+  content: "\39";
+}
+.icon-back:before {
+  content: "\61";
+}
+.icon-facebook:before {
+  content: "\62";
+}
+.icon-twitter:before {
+  content: "\63";
+}
+html {
+  font-family: 'Roboto', sans-serif;
+  background: #e1e1e1;
+  color: #2b2b2b;
+}
+a {
+  outline: none;
+  text-decoration: none;
+  color: #066394;
+}
+a:active,
+a:visited {
+  color: #066394;
+}
+.wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+}
+.print {
+  display: none;
+}
+input[type="text"],
+input[type="password"],
+textarea,
+select {
+  padding: 6px 8px;
+  border-radius: 5px;
+  background: #f6f6f6;
+  border: 1px solid #c4c4c4;
+  color: #555454;
+  transition: all 0.4s;
+  font-weight: 300;
+}
+input[type="text"]:hover,
+input[type="password"]:hover,
+textarea:hover,
+select:hover,
+input[type="text"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+  border: 1px solid #555454;
+}
+input,
+button,
+select,
+textarea {
+  outline: 0;
+  font-family: 'Roboto', sans-serif;
+}
+button,
+a.button {
+  display: block;
+  background: #066394;
+  color: #fff;
+  position: relative;
+  border-radius: 5px;
+  padding: 10px;
+  text-decoration: none;
+  border: none;
+  border-bottom: 2px solid #004a6f;
+  transition: all 0.4s;
+  font-family: 'Roboto', sans-serif;
+  line-height: 1;
+  font-weight: 400;
+}
+button:active,
+a.button:active {
+  margin-top: 2px;
+  border-bottom: 0px;
+}
+button:before,
+a.button:before {
+  margin-right: 10px;
+}
+h1,
+h2,
+h3 {
+  font-weight: 300;
+}
+header {
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+  padding: 19px 0;
+}
+header h1 {
+  font-size: 2.7em;
+  color: #066394;
+  margin: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+header img {
+  margin-left: 15px;
+  display: inline-block;
+  vertical-align: middle;
+}
+header #user {
+  float: right;
+  font-size: 0.95em;
+  margin-top: 15px;
+}
+header #user a {
+  padding: 8px 23px;
+  border-radius: 5px;
+  border: 1px solid #bad5e2;
+  color: #006191;
+}
+header #user a.logout {
+  border: none;
+}
+html,
+body {
+  height: 100%;
+}
+.main {
+  min-height: 500px;
+  min-height: 60vh;
+  min-height: calc(100% - 93px - 194px);
+}
+.main h2 {
+  font-size: 1.7em;
+  max-height: 38px;
+}
+.main h2 a {
+  float: right;
+  font-size: 0.55em;
+  margin-left: 10px;
+}
+.main h3 {
+  text-align: center;
+  font-size: 1.6em;
+}
+.main p.info {
+  background: #fedeb2;
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  font-size: 0.8em;
+  padding: 10px 15px;
+}
+.main p.info.error {
+  background: #FEB2B2;
+  width: 90%;
+  margin: 10px auto;
+  font-weight: bold;
+}
+.main p.info.hide {
+  display: none;
+}
+.main ul#pisados {
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  width: 110%;
+  margin-left: -5%;
+}
+.main ul#pisados a {
+  margin-right: -4px;
+}
+.main ul#pisados li {
+  display: inline-block;
+  width: 22%;
+  border-radius: 5px;
+  margin: 10px 1.5%;
+  background: #fff;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.65);
+  position: relative;
+  box-sizing: border-box;
+  padding: 6px;
+  color: #2b2b2b;
+}
+.main ul#pisados li.vibrate {
+  animation: vibrate 0.4s infinite;
+}
+.main ul#pisados li.vibrate:hover {
+  background: #bad5e2;
+}
+.main ul#pisados li.selected {
+  background: #bad5e2;
+}
+.main ul#pisados li#group:before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.65);
+  z-index: -10;
+}
+.main ul#pisados li p {
+  margin: 3px 0;
+}
+.main ul#pisados li p.id-asignatura {
+  font-weight: 300;
+  font-size: 1.1em;
+  color: #066394;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  height: 50px;
+}
+.main ul#pisados li p.id-asignatura span.id {
+  font-weight: bold;
+}
+.main ul#pisados li p.titulacion {
+  font-size: 0.8em;
+}
+.main ul#pisados li p.curso-date {
+  font-size: 0.8em;
+}
+.main ul#pisados li p.curso-date span.curso {
+  font-weight: bold;
+}
+.main ul#pisados li p.curso-date span.date {
+  float: right;
+}
+.main ul#comentarios {
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  width: 80%;
+}
+.main ul#comentarios li {
+  display: block;
+  background: #fff;
+  width: 75%;
+  margin: 0 auto 20px;
+  border-radius: 5px;
+  margin-right: 1%;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.35);
+  padding: 12px;
+  box-sizing: border-box;
+  font-weight: 400;
+}
+.main ul#comentarios li.you {
+  margin-left: 1%;
+}
+.main ul#comentarios li.delegacion {
+  background: #b0cedd;
+}
+.main ul#comentarios li div.author {
+  margin-bottom: 8px;
+}
+.main ul#comentarios li div.author span {
+  display: inline-block;
+  width: 50%;
+  vertical-align: top;
+}
+.main ul#comentarios li div.author span.autor {
+  font-weight: bold;
+  color: #2b2b2b;
+}
+.main ul#comentarios li div.author span.date {
+  text-align: right;
+  color: #616060;
+}
+.main ul#comentarios li p {
+  margin: 0;
+}
+.main ul#comentarios li.compose {
+  padding: 0;
+  box-shadow: none;
+  margin: 50px auto;
+  border: 1px solid #C4C4C4;
+}
+.main ul#comentarios li.compose textarea {
+  padding: 10px;
+  margin: 0;
+  text-align: justify;
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+  resize: none;
+  background: transparent;
+  border: none;
+  font-weight: 400;
+}
+.main ul#comentarios li.compose div button,
+.main ul#comentarios li.compose div p {
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+  border-top: 1px solid #C4C4C4;
+}
+.main ul#comentarios li.compose div button {
+  border: none !important;
+  font-weight: bold;
+  border-radius: 0 0 5px 0;
+  width: 25%;
+  padding: 11px 11px 12px;
+  transition: none;
+}
+.main ul#comentarios li.compose div button:active {
+  margin-top: 0;
+}
+.main ul#comentarios li.compose div p {
+  margin: 0;
+  margin-right: -4px;
+  background: #f3f3f3;
+  border-radius: 0 0 0 5px;
+  width: 75%;
+  border-right: 1px solid #C4C4C4;
+  padding: 9px;
+}
+.main.inicio,
+.main.login {
+  background: linear-gradient(rgba(0, 97, 145, 0.5), rgba(0, 97, 145, 0.5)), url('/pisado/assets/img/bg.jpg') center;
+  background-size: cover;
+  color: #fff;
+  text-align: center;
+  box-sizing: border-box;
+  display: table;
+  width: 100%;
+  border-collapse: separate;
+}
+.main.inicio > div,
+.main.login > div {
+  display: table-cell;
+  vertical-align: middle;
+}
+.main.inicio h2,
+.main.login h2,
+.main.inicio h3,
+.main.login h3 {
+  border-bottom: none;
+  color: #fff;
+}
+.main.inicio h2,
+.main.login h2 {
+  font-size: 2em;
+  margin: 0 0 30px;
+}
+.main.inicio p,
+.main.login p {
+  margin: 15px 0;
+}
+.main.inicio ul,
+.main.login ul {
+  margin: 0;
+  padding: 0;
+}
+.main.inicio {
+  border-spacing: 0 65px;
+}
+.main.inicio li {
+  list-style: none;
+  display: inline-block;
+  width: 50%;
+  padding: 0 30px;
+  box-sizing: border-box;
+}
+.main.inicio li p {
+  text-align: justify;
+}
+.main.login {
+  border-spacing: 0 80px;
+}
+.main.login p.error {
+  color: #FF2F2F;
+  font-weight: bold;
+}
+.main.login form {
+  margin: 20px 0;
+}
+.main.login form.error input[type="text"],
+.main.login form.error input[type="password"] {
+  border-color: rgba(128, 0, 0, 0.75) !important;
+}
+.main.login input[type="text"],
+.main.login input[type="password"] {
+  display: block;
+  margin: 0 auto;
+  width: 300px;
+  padding: 12px 15px;
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(0, 0, 0, 0.55);
+  box-sizing: border-box;
+}
+.main.login input[type="text"] {
+  border-radius: 5px 5px 0 0;
+}
+.main.login input[type="password"] {
+  border-radius: 0 0 5px 5px;
+  border-top: none;
+}
+.main.login button {
+  width: 300px;
+  box-sizing: border-box;
+  padding: 12px 15px;
+  text-shadow: -1px 0 4px rgba(0, 0, 0, 0.55);
+  margin: 30px auto 0;
+  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.45);
+  border-width: 3px;
+}
+.main.login button:active {
+  margin-top: 33px;
+}
+.main #panel .pisados {
+  margin-bottom: 50px;
+}
+.main #panel .delegacion h2 input {
+  float: right;
+  font-size: 0.55em;
+}
+.main #view article#informe,
+.main #create article#informe,
+.main #view article#dpersonales,
+.main #create article#dpersonales,
+.main #view article#listPisados,
+.main #create article#listPisados {
+  width: 90%;
+  margin: 0 auto 20px;
+}
+.main #view article#informe ul,
+.main #create article#informe ul,
+.main #view article#dpersonales ul,
+.main #create article#dpersonales ul,
+.main #view article#listPisados ul,
+.main #create article#listPisados ul {
+  padding: 0;
+  list-style: none;
+}
+.main #view article#informe ul li,
+.main #create article#informe ul li,
+.main #view article#dpersonales ul li,
+.main #create article#dpersonales ul li,
+.main #view article#listPisados ul li,
+.main #create article#listPisados ul li {
+  margin: 5px 0;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: top;
+}
+.main #view article#informe ul li.w60,
+.main #create article#informe ul li.w60,
+.main #view article#dpersonales ul li.w60,
+.main #create article#dpersonales ul li.w60,
+.main #view article#listPisados ul li.w60,
+.main #create article#listPisados ul li.w60 {
+  width: 60%;
+}
+.main #view article#informe ul li.w60 input,
+.main #create article#informe ul li.w60 input,
+.main #view article#dpersonales ul li.w60 input,
+.main #create article#dpersonales ul li.w60 input,
+.main #view article#listPisados ul li.w60 input,
+.main #create article#listPisados ul li.w60 input {
+  max-width: 300px;
+}
+.main #view article#informe ul li.w40,
+.main #create article#informe ul li.w40,
+.main #view article#dpersonales ul li.w40,
+.main #create article#dpersonales ul li.w40,
+.main #view article#listPisados ul li.w40,
+.main #create article#listPisados ul li.w40 {
+  width: 40%;
+}
+.main #view article#informe ul li.w40 input,
+.main #create article#informe ul li.w40 input,
+.main #view article#dpersonales ul li.w40 input,
+.main #create article#dpersonales ul li.w40 input,
+.main #view article#listPisados ul li.w40 input,
+.main #create article#listPisados ul li.w40 input {
+  max-width: 100px;
+}
+.main #view article#informe ul li#texto,
+.main #create article#informe ul li#texto,
+.main #view article#dpersonales ul li#texto,
+.main #create article#dpersonales ul li#texto,
+.main #view article#listPisados ul li#texto,
+.main #create article#listPisados ul li#texto {
+  width: 100%;
+  margin-top: 25px;
+}
+.main #view article#informe ul span,
+.main #create article#informe ul span,
+.main #view article#dpersonales ul span,
+.main #create article#dpersonales ul span,
+.main #view article#listPisados ul span,
+.main #create article#listPisados ul span {
+  font-weight: bold;
+  min-width: 130px;
+  display: inline-block;
+}
+.main #view article#informe ul p,
+.main #create article#informe ul p,
+.main #view article#dpersonales ul p,
+.main #create article#dpersonales ul p,
+.main #view article#listPisados ul p,
+.main #create article#listPisados ul p,
+.main #view article#informe ul textarea,
+.main #create article#informe ul textarea,
+.main #view article#dpersonales ul textarea,
+.main #create article#dpersonales ul textarea,
+.main #view article#listPisados ul textarea,
+.main #create article#listPisados ul textarea {
+  margin: 10px auto;
+  width: 90%;
+  resize: vertical;
+  line-height: 1.45em;
+  display: block;
+}
+.main #view article#informe ul p,
+.main #create article#informe ul p,
+.main #view article#dpersonales ul p,
+.main #create article#dpersonales ul p,
+.main #view article#listPisados ul p,
+.main #create article#listPisados ul p {
+  text-align: justify;
+}
+.main #view ul#pisados,
+.main #create ul#pisados {
+  width: 100%;
+  margin-left: 0;
+}
+footer {
+  font-size: 0.9em;
+  background: #fff;
+  box-shadow: 0 0 6px 0 #2b2b2b;
+  padding: 15px 0;
+}
+footer #rsociales {
+  margin: 20px 0;
+  text-align: center;
+}
+footer #rsociales a {
+  border-bottom: solid 1px #bad5e2;
+}
+footer #copy {
+  border-top: 1px solid #e3e3e3;
+  text-align: center;
+  padding: 20px 0;
+}
+footer h2 {
+  margin: 0;
+  color: #066394;
+}
+footer i {
+  margin: 0 5px 0 15px;
+}
+footer i,
+footer a,
+footer span {
+  display: inline-block;
+  vertical-align: top;
+}
+footer span {
+  max-width: 500px;
+  text-align: left;
+}
+@media print {
+  body {
+    font-size: 12px;
+    background: #fff;
+    color: #000;
+  }
+  header {
+    border-bottom: 1px #066394 solid;
+  }
+  header img {
+    float: right;
+  }
+  .no-print {
+    display: none;
+  }
+  header #user,
+  h2 a,
+  footer {
+    display: none !important;
+  }
+  ul#comentarios li {
+    margin: 4px auto !important;
+    width: 100%;
+    border-top: 1px solid #a6b0be !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: none !important;
+    border-radius: 0 !important;
+  }
+  ul#comentarios li div {
+    border-bottom: 1px dashed #a6b0be !important;
+  }
+  ul#comentarios li.compose {
+    display: none;
+  }
+}
+@keyframes vibrate {
+  0% {
+    transform: rotate(0);
+  }
+  25% {
+    transform: rotate(-1.5deg);
+  }
+  50% {
+    transform: rotate(0);
+  }
+  75% {
+    transform: rotate(1.5deg);
+  }
+}
+@media (max-width: 1060px) {
+  ul#pisados {
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+}
+@media (max-width: 670px) {
+  ul#pisados li {
+    width: 30% !important;
+  }
+}
+@media (max-width: 470px) {
+  ul#pisados li {
+    width: 47% !important;
+  }
+}
