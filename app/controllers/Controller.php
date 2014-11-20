@@ -74,7 +74,7 @@ class Controller {
 	      	'Reply-To: delegest@gmail.com' . "\r\n";
 	    $cabeceras .= 'BCC: ';
 	    foreach ($destinatarios as $destinatario) {
-	    	$cabeceras .= $destinatario . "\r\n";
+	    	$cabeceras .= $destinatario['nia'] . "@alumnos.uc3m.es" . "\r\n";
 	    }
 
 		mail(NULL , $titulo, $cuerpo, $cabeceras);

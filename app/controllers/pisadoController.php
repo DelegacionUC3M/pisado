@@ -34,11 +34,10 @@ class pisadoController extends Controller {
 						$destinatarios = array($pisado->email);
 						$this->send('¡Has creado un nuevo PISADO!', $destinatarios, $cuerpo);
 
-					/*	$cuerpo = $this->render_email('Pisado', array('pisado' => $pisado));
-						$destinatarios = $this->getDelegados();
+						$cuerpo = $this->render_email('Pisado', array('pisado' => $pisado));
+						$destinatarios = DBDelegados::getDelegadosCurso($pisado->id_titulacion,$pisado->curso);
+						$destinatarios[] = DBDelegados::getDelegadosTitulacion($pisado->id_titulacion);
 						$this->send('¡Hay un nuevo P.I.S.A.D.O. para ti!', $destinatarios, $cuerpo);
-					//No implementar hasta la base de datos de delegados.
-					*/
 
 					//	$data['verify'] = 'El registro del pisado se ha realizado con exito';
 					//	$this->sendmail($pisado->nia);
@@ -108,7 +107,8 @@ class pisadoController extends Controller {
 				$data['pisado'] = $pisado;
 				$data['comentarios'] = $comentarios;
 				$data['id'] = $pisado->id;
-				$data['delegado'] = DBDelegados::findDelegadosTitulacion($pisado->id_titulacion)[0];
+				$data['delegado'] = DBDelegados::findDelegadosTitulacion($pisado->id_titulacion);
+				$data['delegado'] = $data['delegado']['nia'] . '@alumnos.uc3m.es';
 
 				$this->render('view', $data);
 			} else {
