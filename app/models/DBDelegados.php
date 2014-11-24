@@ -87,7 +87,7 @@ class DBDelegados {
 
 		return isset($data) ? $data[0] : null;
 		//return array( array('nombre' => $data[0]['nombre'] . " " . $data[0]['apellido1'],
-							'email' => $data[0]['nia'] . '@alumnos.uc3m.es') );
+		//					'email' => $data[0]['nia'] . '@alumnos.uc3m.es') );
 	}
 
 	public static function getTitulaciones() {
