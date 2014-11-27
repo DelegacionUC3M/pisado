@@ -35,8 +35,8 @@ class pisadoController extends Controller {
 						$this->send('¡Has creado un nuevo PISADO!', $destinatarios, $cuerpo);
 
 						$cuerpo = $this->render_email('Pisado', array('pisado' => $pisado));
-						$destinatarios = DBDelegados::getDelegadosCurso($pisado->id_titulacion,$pisado->curso);
-						$destinatarios[] = DBDelegados::getDelegadosTitulacion($pisado->id_titulacion);
+						$destinatarios = DBDelegados::findDelegadosCurso($pisado->id_titulacion,$pisado->curso);
+						$destinatarios[] = DBDelegados::findDelegadosTitulacion($pisado->id_titulacion);
 						$this->send('¡Hay un nuevo P.I.S.A.D.O. para ti!', $destinatarios, $cuerpo);
 
 						header('Location: /pisado/inicio'); die();
