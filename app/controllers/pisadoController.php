@@ -107,6 +107,7 @@ class pisadoController extends Controller {
 				$delegadoTitulacion = DBDelegados::findDelegadosTitulacion($pisado->id_titulacion);
 				$data['delegado']['email'] = $delegadoTitulacion['nia'] . '@alumnos.uc3m.es';
 				$data['delegado']['nombre'] = $delegadoTitulacion['nombre'] . $delegadoTitulacion['apellido1'];
+				$data['delegado'] = $delegadoTitulacion;
 
 				$this->render('view', $data);
 			} else {
