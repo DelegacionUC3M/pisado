@@ -18,7 +18,7 @@
 			<li id="email" class="w60"><span>Correo</span> <?= $pisado->email ?></li>
 		</ul>
 		<p class="info">Estos datos se guardan como metodo de contacto unicamente y no serán accesibles por el profesor
-			ni por el destinatario de esta queja, solo por los delegados encargados: <b><?= $delegado['nombre'] ?> (<a href="mailto:<?= $delegado['email'] ?>"><?= $delegado['email'] ?></a>)</b>.</p>
+			ni por el destinatario de esta queja, solo por los delegados encargados: <b><?= $delegado[0]['nombre'] ?> (<a href="mailto:<?= $delegado['email'] ?>"><?= $delegado[0]['email'] ?></a>)</b>.</p>
 		<?php } else { ?>
 			<p class="info">El PISADO es anónimo. Los datos personales solo son accesibles por el delegado encargado como metodo de contacto. Si necesitas más información ponte en contacto con <b><?= $delegado['nombre'] ?> (<a href="mailto:<?= $delegado['email'] ?>"><?= $delegado['email'] ?></a>)</b>. </p>
 		<?php } ?>
