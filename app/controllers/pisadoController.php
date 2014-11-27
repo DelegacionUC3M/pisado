@@ -34,15 +34,11 @@ class pisadoController extends Controller {
 						$destinatarios = array($pisado->email);
 						$this->send('¡Has creado un nuevo PISADO!', $destinatarios, $cuerpo);
 
-					/*	$cuerpo = $this->render_email('Pisado', array('pisado' => $pisado));
+						$cuerpo = $this->render_email('Pisado', array('pisado' => $pisado));
 						$destinatarios = DBDelegados::getDelegadosCurso($pisado->id_titulacion,$pisado->curso);
 						$destinatarios[] = DBDelegados::getDelegadosTitulacion($pisado->id_titulacion);
 						$this->send('¡Hay un nuevo P.I.S.A.D.O. para ti!', $destinatarios, $cuerpo);
-*/
-					//	$data['verify'] = 'El registro del pisado se ha realizado con exito';
-					//	$this->sendmail($pisado->nia);
-					//	$destinatarios = User::findDestinatarios($pisado->curso, $pisado->id_titulacion);
-					//	$this->sendmailPisado($destinatarios, $pisado);
+
 						header('Location: /pisado/inicio'); die();
 					} else {
 						$data['error'] = 'Ha ocurrido un error con la base de datos. Inténtelo de nuevo.';

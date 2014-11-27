@@ -85,9 +85,7 @@ class DBDelegados {
 				WHERE personas.id_titulacion = ? AND delegados.del_titulacion = 1;', array($id_titulacion));
 		$data = $db->data();
 
-		return isset($data) ? $data[0] : null;
-		//return array( array('nombre' => $data[0]['nombre'] . " " . $data[0]['apellido1'],
-		//					'email' => $data[0]['nia'] . '@alumnos.uc3m.es') );
+		return isset($data) ? $data : null;
 	}
 
 	public static function getTitulaciones() {

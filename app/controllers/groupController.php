@@ -41,10 +41,10 @@ class groupController extends Controller {
 						if (!$comentario->save()) {
 							$data['error'] = 'Ha ocurrido un error al guardar el comentario. Inténtelo de nuevo.';
 						} else {
-							// $cuerpo = $this->render_email('Comentario',array('pisado' => "pisado"));
-							// $destinatarios = array();
-							// $destinatarios[] = $group->nia;
-							// $this->send('¡Tienes un nuevo comentario en un PISADO!',$destinatarios,$cuerpo);
+							$cuerpo = $this->render_email('Comentario',array('pisado' => "pisado"));
+							$destinatarios = array();
+							$destinatarios[] = $group->nia;
+							$this->send('¡Tienes un nuevo comentario en un PISADO!',$destinatarios,$cuerpo);
 						}
 					}
 				}
