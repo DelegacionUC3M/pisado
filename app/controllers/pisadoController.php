@@ -31,7 +31,7 @@ class pisadoController extends Controller {
 
 					if($pisado->save()) {
 						$cuerpo = $this->render_email('CreateU', array('pisado' => $pisado));
-						$destinatarios = array($pisado->email);
+						$destinatarios = array('nia' => $pisado->nia);
 						$this->send('¡Has creado un nuevo PISADO!', $destinatarios, $cuerpo);
 
 						$cuerpo = $this->render_email('Pisado', array('pisado' => $pisado));
