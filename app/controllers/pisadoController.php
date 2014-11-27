@@ -68,7 +68,7 @@ class pisadoController extends Controller {
 		$data = array();
 
 		if ($pisado) {
-			if (($pisado->nia == $_SESSION['user']->nia) || (($pisado->id_titulacion == $_SESSION['user']->id_titulacion) && $_SESSION['user']->isDelegadoCurso()) || ($_SESSION['user']->isDelegadoEscuela()) ) {//dentro de view hay que controlar que no muestre los datos.
+			if (($pisado->nia == $_SESSION['user']->nia) || (($pisado->id_titulacion == $_SESSION['user']->id_titulacion) && $_SESSION['user']->isDelegadoCurso()) || ($_SESSION['user']->isDelegadoCentro()) ) {//dentro de view hay que controlar que no muestre los datos.
 
 				if (isset($_POST['comment'])) {
 					if (empty($_POST['comment'])) {
@@ -85,7 +85,7 @@ class pisadoController extends Controller {
 							} else if ($_SESSION['user']->isDelegadoTitulacion()) {
 								$cargo = 'Delegado de Titulación';
 							} else {
-								$cargo = 'Delegado de Escuela';
+								$cargo = 'Delegado de Centro';
 							}
 							$comentario->nombre = $_SESSION['user']->name.' ('.$cargo.')';
 						} else {

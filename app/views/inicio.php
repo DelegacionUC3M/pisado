@@ -1,5 +1,5 @@
 <div>
-<div class="wrapper">
+	<div class="wrapper">
 
 		<h2>¿Qué es un PISADO?</h2>
 		<p>PISADO es Parte Informativo sobre la Actividad Docente</p>

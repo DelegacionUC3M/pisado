@@ -58,7 +58,7 @@ class inicioController extends Controller {
 		$user = $_SESSION['user'];
 
 		if (isset($_POST['pisado']) || isset($_POST['group'])) {
-			if ($user->isDelegadoTitulacion() || $user->isDelegadoEscuela()) {
+			if ($user->isDelegadoTitulacion() || $user->isDelegadoCentro()) {
 				$pisados = isset($_POST['pisado']) ? $_POST['pisado'] : array();
 				$groups = isset($_POST['group']) ? $_POST['group'] : array();
 
@@ -118,7 +118,7 @@ class inicioController extends Controller {
 		usort( $data['pisados'], function($a, $b) {return strtotime($a->date) - strtotime($b->date);} );
 		$data['otros'] = array();
 		
-		if ($user->isDelegadoEscuela()) {
+		if ($user->isDelegadoCentro()) {
 			$data['otros'] = array_merge(Pisado::findAll(), Group::findAll());
 			usort( $data['otros'], function($a, $b) {return strtotime($a->date) - strtotime($b->date);});
 		} else if ($user->isDelegadoTitulacion()) {

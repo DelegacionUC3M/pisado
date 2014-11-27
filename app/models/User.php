@@ -47,8 +47,8 @@ class User {
 		return $destinatarios;
 	}
 
-	public function isDelegadoEscuela() {
-		return $this->rol >= ROL_DELEGADO_ESCUELA;
+	public function isDelegadoCentro() {
+		return $this->rol >= ROL_DELEGADO_CENTRO;
 	}
 
 	public function isDelegadoTitulacion() {

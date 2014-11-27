@@ -12,7 +12,7 @@
 	<article id="dpersonales">
 		<h3>Datos personales</h3>
 	
-		<?php if (($user->nia == $pisado->nia) || ($user->isDelegadoEscuela()) || ($user->isDelegadoTitulacion()) ) { ?>
+		<?php if (($user->nia == $pisado->nia) || ($user->isDelegadoCentro()) || ($user->isDelegadoTitulacion()) ) { ?>
 		<ul>
 			<li id="nombre" class="w60"> <span>Nombre</span> <?= $pisado->autor ?>  </li><li id="nia" class="w40"><span>NIA</span> <?= $pisado->nia ?></li>
 			<li id="email" class="w60"><span>Correo</span> <?= $pisado->email ?></li>
@@ -29,7 +29,7 @@
 		<h3>Informe del Alumno</h3>
 
 		<ul>
-			<li id="titulacion" class="w60"> <span>Titulacion</span> <?= $pisado->getNameTitulacion() ?> </li><li id="curso" class="w40"> <span>Curso</span> <?= $pisado->curso.'º' ?> </li>
+			<li id="titulacion" class="w60"> <span>Titulación</span> <?= $pisado->getNameTitulacion() ?> </li><li id="curso" class="w40"> <span>Curso</span> <?= $pisado->curso.'º' ?> </li>
 			<li id="asignatura" class="w60"> <span>Asignatura</span> <?= $pisado->asignatura ?> </li><li id="grupo" class="w40"> <span>Grupo</span> <?= $pisado->grupo ?> </li>
 			<li id="profesor" class="w60"> <span>Profesor</span> <?= $pisado->profesor ?> </li><li id="date" class="w40"> <span>Fecha</span> <?= date('j/m/y' ,strtotime($pisado->date)) ?> </li>
 
@@ -60,7 +60,7 @@
 					} else if (!empty($comentario->nombre)) {
 						$class .= 'delegacion ';
 						$autor = $comentario->nombre;
-					} else if ($user->isDelegadoEscuela() || $user->isDelegadoTitulacion()) {
+					} else if ($user->isDelegadoCentro() || $user->isDelegadoTitulacion()) {
 						$autor = $comentario->nia;
 					} else {
 						$autor = 'Alumno';

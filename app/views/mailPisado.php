@@ -6,20 +6,19 @@
         <link rel="stylesheet" href="/pisado/assets/css/main.css">
     </head>
     <body>
-		<p class="first">Tienes un P.I.S.A.D.O. sin leer. Revisa cuando puedas la aplicacion para ver de que se
+		<p class="first">Tienes un PISADO sin leer. Revisa cuando puedas la aplicacion para ver de qué se
 		 trata. Los datos previos del pisado se muestran a continuacion:</p>
 
-		<h>P.I.S.A.D.O.</h>
+		<h>PISADO</h>
 		<ul>
-			<li><b>Titulacion</b>: <?php echo $pisado->getNameTitulacion() ?></li>
-			<li><b>Asignatura</b>: <?php echo $pisado->asignatura ?></li>
-  			<li><b>Curso</b>: <?php echo $pisado->curso ?>º</li>
-  			<li><b>Grupo</b>: <?php echo $pisado->grupo ?></li>
+			<li><b>Titulacion</b> <?php echo $pisado->getNameTitulacion() ?></li>
+			<li><b>Asignatura</b> <?php echo $pisado->asignatura ?></li>
+  			<li><b>Curso</b> <?php echo $pisado->curso ?>º</li>
+  			<li><b>Grupo</b> <?php echo $pisado->grupo ?></li>
 		</ul>
 
-		<p>Si desea ver el pisado ahora mismo est&aacute; disponible en
-		 <a href="https://delegacion.uc3m.es/pisado/pisado/view/<?php echo $pisado->id ?>">P.I.S.A.D.O.</a>
-		, en el apartado "Mis pisados".
+		<p>Si desea ver el pisado pulsa en
+		 <a href="https://delegacion.uc3m.es/pisado/pisado/view/<?php echo $pisado->id ?>">PISADO</a>.
 		</p>
 		
 		<p>Este correo se ha generado automaticamente, por favor no lo respondas. Si deseas ponerte en contacto con 

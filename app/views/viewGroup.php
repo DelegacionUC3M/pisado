@@ -46,7 +46,7 @@
 					} else if (!empty($comentario->nombre)) {
 						$class .= 'delegacion ';
 						$autor = $comentario->nombre;
-					} else if ($user->isDelegadoEscuela() || $user->isDelegadoTitulacion()) {
+					} else if ($user->isDelegadoCentro() || $user->isDelegadoTitulacion()) {
 						$autor = $comentario->nia;
 					} else {
 						$autor = 'Alumno #'.array_search($comentario->nia, $group->getOwners());
