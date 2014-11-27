@@ -10,7 +10,7 @@
 		</h2>
 
 	<article id="dpersonales">
-		<h3>Datos personales</h3>
+		<h3>Datos personales <?php var_dump($delegado); ?></h3>
 	
 		<?php if (($user->nia == $pisado->nia) || ($user->isDelegadoCentro()) || ($user->isDelegadoTitulacion()) ) { ?>
 		<ul>
