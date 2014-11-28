@@ -9,6 +9,8 @@ define('ROL_DELEGADO_TITULACION', 50);
 define('ROL_DELEGADO_CENTRO', 100);
 
 /* Centros */
+define('CCSSJJ', 1);
+define('EPS', 2);
 
 // LDAP Parameters
 define('LDAP_HOST', 'ldaps://ldap.uc3m.es');

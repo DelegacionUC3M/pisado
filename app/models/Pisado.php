@@ -117,6 +117,23 @@ class Pisado {
 		return $pisados;
 	}
 
+	public static function findByCentro($centro) { // A falta de testeo
+		$db = new DB(SQL_DB_PISADO);
+		$db->run('SELECT A.* FROM pisado A LEFT JOIN `delegados`.`titulaciones` B ON A.id_titulacion = B.id WHERE B.centro=? ORDER BY A.id_titulacion, A.date ', array($centro));
+		$data = $db->data();
+
+		$pisados = array();
+		foreach($data as $row){
+			$pisado = new Pisado;
+			foreach($row as $key => $value){
+	        	$pisado->{$key} = $value;
+	        }
+	        $pisados[] = $pisado;
+    	}
+
+		return $pisados;
+	}
+
 	public function save() {
 		$db = new DB(SQL_DB_PISADO);
 		$query = $db->run('INSERT INTO pisado (nia,email,date,autor,id_titulacion,curso,asignatura,grupo,profesor,texto,id_group) VALUES (?,?,NOW(),?,?,?,?,?,?,?,0)', array($this->nia,$this->email,$this->autor,$this->id_titulacion,$this->curso,$this->asignatura,$this->grupo,$this->profesor,$this->texto));
