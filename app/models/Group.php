@@ -79,9 +79,27 @@ class Group {
 		return $groups;
 	}
 
-	public static function findAll() {
+	// DEPRECATED
+	// public static function findAll() {
+	// 	$db = new DB(SQL_DB_PISADO);
+	// 	$db->run('SELECT A.*, id_titulacion, curso FROM `group` A LEFT JOIN pisado B ON A.id = B.id_group GROUP BY A.id ORDER BY A.date');
+	// 	$data = $db->data();
+
+	// 	$groups = array();
+	// 	foreach($data as $row){
+	// 		$group = new Group;
+	// 		foreach($row as $key => $value){
+	//         	$group->{$key} = $value;
+	//         }
+	//         $groups[] = $group;
+ 	//    }
+
+	// 	return $groups;
+	// }
+
+	public static function findByCentro($centro) {
 		$db = new DB(SQL_DB_PISADO);
-		$db->run('SELECT A.*, id_titulacion, curso FROM `group` A LEFT JOIN pisado B ON A.id = B.id_group GROUP BY A.id ORDER BY A.date');
+		$db->run('SELECT A.*, B.id_titulacion, B.curso FROM `group` A LEFT JOIN pisado B ON A.id = B.id_group INNER JOIN delegados.titulaciones C ON B.id_titulacion = C.id_titulacion WHERE C.id_centro = ? GROUP BY A.id ORDER BY A.date', array($centro) );
 		$data = $db->data();
 
 		$groups = array();

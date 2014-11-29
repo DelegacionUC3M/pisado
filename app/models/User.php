@@ -12,6 +12,7 @@ class User {
 	public $id_titulacion;
 	public $curso = null;
 	public $rol = null;
+	public $centro = null;
 
 	public function __construct($nia,$name,$email,$dn) {
 		$this->nia = $nia;
@@ -32,6 +33,7 @@ class User {
         	
 			$this->isDelegado = false;
 			$this->id_titulacion = DBDelegados::findByNameTitulacion($titulacion);
+			$this->centro = DBDelegados::getCentroByIdTitulacion($this->id_titulacion);
 		}
 
 	}

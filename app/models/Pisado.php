@@ -100,26 +100,27 @@ class Pisado {
 		return $pisados;
 	}
 
-	public static function findAll() {
+	// DEPRECATED
+	// public static function findAll() {
+	// 	$db = new DB(SQL_DB_PISADO);
+	// 	$db->run('SELECT * FROM pisado WHERE id_group=0 ORDER BY id_titulacion,date');
+	// 	$data = $db->data();
+
+	// 	$pisados = array();
+	// 	foreach($data as $row){
+	// 		$pisado = new Pisado;
+	// 		foreach($row as $key => $value){
+	//         	$pisado->{$key} = $value;
+	//         }
+	//         $pisados[] = $pisado;
+ 	// 	}
+
+	// 	return $pisados;
+	// }
+
+	public static function findByCentro($centro) {
 		$db = new DB(SQL_DB_PISADO);
-		$db->run('SELECT * FROM pisado WHERE id_group=0 ORDER BY id_titulacion,date');
-		$data = $db->data();
-
-		$pisados = array();
-		foreach($data as $row){
-			$pisado = new Pisado;
-			foreach($row as $key => $value){
-	        	$pisado->{$key} = $value;
-	        }
-	        $pisados[] = $pisado;
-    	}
-
-		return $pisados;
-	}
-
-	public static function findByCentro($centro) { // A falta de testeo
-		$db = new DB(SQL_DB_PISADO);
-		$db->run('SELECT A.* FROM pisado A LEFT JOIN `delegados`.`titulaciones` B ON A.id_titulacion = B.id WHERE B.centro=? ORDER BY A.id_titulacion, A.date ', array($centro));
+		$db->run('SELECT A.* FROM pisado A INNER JOIN delegados.titulaciones B ON A.id_titulacion = B.id_titulacion WHERE B.id_centro = ? ORDER BY A.id_titulacion, A.date ', array($centro));
 		$data = $db->data();
 
 		$pisados = array();
