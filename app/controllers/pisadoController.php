@@ -36,8 +36,11 @@ class pisadoController extends Controller {
 
 						$cuerpo = $this->render_email('Pisado', array('pisado' => $pisado));
 						$destinatarios = DBDelegados::findDelegadosCurso($pisado->id_titulacion,$pisado->curso);
-						$destinatarios[] = DBDelegados::findDelegadosTitulacion($pisado->id_titulacion);
-						$this->send('¡Hay un nuevo P.I.S.A.D.O. para ti!', $destinatarios, $cuerpo);
+						$delegadosTit = DBDelegados::findDelegadosTitulacion($pisado->id_titulacion);
+						foreach ($delegadosTit as $delegado) {
+							$destinatarios[] = $delegado;
+						}
+						$this->send('¡Hay un nuevo PISADO para ti!', $destinatarios, $cuerpo);
 
 						header('Location: /pisado/inicio'); die();
 					} else {
@@ -92,9 +95,13 @@ class pisadoController extends Controller {
 							$data['error'] = 'Ha ocurrido un error al guardar el comentario. Inténtelo de nuevo.';
 						} else {
 							$cuerpo = $this->render_email('Comentario',array('pisado' => $pisado));
-							$destinatarios = array();
-							$destinatarios[] = $pisado->email;
-							$this->send('¡Tienes un nuevo comentario en un P.I.S.A.D.O.!',$destinatarios,$cuerpo);
+							$destinatarios = DBDelegados::findDelegadosCurso($pisado->id_titulacion,$pisado->curso);
+							$delegadosTit = DBDelegados::findDelegadosTitulacion($pisado->id_titulacion);
+							foreach ($delegadosTit as $delegado) {
+								$destinatarios[] = $delegado;
+							}
+							$destinatarios[] = $pisado->nia;
+							$this->send('¡Tienes un nuevo comentario en un PISADO!',$destinatarios,$cuerpo);
 						}
 					}
 				}
@@ -103,7 +110,6 @@ class pisadoController extends Controller {
 				$data['pisado'] = $pisado;
 				$data['comentarios'] = $comentarios;
 				$data['id'] = $pisado->id;
-				//$data['delegado'] = DBDelegados::findDelegadosTitulacion($pisado->id_titulacion);
 				$delegadoTitulacion = DBDelegados::findDelegadosTitulacion($pisado->id_titulacion);
 				foreach ($delegadoTitulacion as $delegado) {
 					$data['delegado'][] = array('email' => $delegado['nia'] . '@alumnos.uc3m.es', 'nombre' => $delegado['nombre'] . ' ' . $delegado['apellido1']);
