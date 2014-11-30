@@ -26,6 +26,7 @@ class User {
 			$this->id_titulacion = $delegado['id_titulacion'];
 			$this->rol = $delegado['rol'];
 			$this->curso = $delegado['curso'];
+			$this->centro = DBDelegados::getCentroByIdTitulacion($this->id_titulacion);
 		} else {
 			$dn = explode(',', $dn);
         		$titulacion = str_replace("ou=",'',$dn[1]);
@@ -33,7 +34,6 @@ class User {
         	
 			$this->isDelegado = false;
 			$this->id_titulacion = DBDelegados::findByNameTitulacion($titulacion);
-			$this->centro = DBDelegados::getCentroByIdTitulacion($this->id_titulacion);
 		}
 
 	}

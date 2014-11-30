@@ -117,7 +117,6 @@ class inicioController extends Controller {
 		$data['pisados'] = array_merge(Pisado::findByNia($user->nia), Group::findByNia($user->nia)); 
 		usort( $data['pisados'], function($a, $b) {return strtotime($a->date) - strtotime($b->date);} );
 		$data['otros'] = array();
-		print_r($user);
 		if ($user->isDelegadoCentro()) {
 			$data['otros'] = array_merge(Pisado::findByCentro($user->centro), Group::findByCentro($user->centro));
 			usort( $data['otros'], function($a, $b) {return strtotime($a->date) - strtotime($b->date);});
