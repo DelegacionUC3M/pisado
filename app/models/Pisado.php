@@ -85,6 +85,7 @@ class Pisado {
 
 	public static function findByCurso($curso,$id_titulacion) {
 		$db = new DB(SQL_DB_PISADO);
+		print_r($curso, $id_titulacion);
 		$db->run('SELECT * FROM pisado WHERE curso=? AND id_titulacion=? AND id_group=0 ORDER BY date', array($curso,$id_titulacion));
 		$data = $db->data();
 
