@@ -48,7 +48,7 @@ class groupController extends Controller {
 								$destinatarios[] = $delegado;
 							}
 							$destinatarios[] = $pisado->nia;
-							$this->send('¡Tienes un nuevo comentario en un PISADO!',$destinatarios,$cuerpo);*/
+							$this->send('¡Tienes un nuevo comentario en un PISADO!',$destinatarios,$cuerpo);
 						}
 					}
 				}
