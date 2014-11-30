@@ -124,10 +124,10 @@ class inicioController extends Controller {
 		} else if ($user->isDelegadoTitulacion()) {
 			$data['otros'] = array_merge(Pisado::findByIdTitulacion($user->id_titulacion), Group::findByIdTitulacion($user->id_titulacion));
 			usort( $data['otros'], function($a, $b) {return strtotime($a->date) - strtotime($b->date);} );
+			print_r($user);
 		} else if ($user->isDelegadoCurso()) {
 			$data['otros'] = array_merge(Pisado::findByCurso($user->curso,$user->id_titulacion), Group::findByCurso($user->curso,$user->id_titulacion));
 			usort( $data['otros'], function($a, $b) {return strtotime($a->date) - strtotime($b->date);} );
-			print_r($user);
 		}
 
 		$this->render('panel', $data);
