@@ -40,6 +40,7 @@ class DBDelegados {
 	 * @return $data is an integer or null
 	 */
 	public static function getCentroByIdTitulacion($id_titulacion) {
+		print_r($id_titulacion);
 		$db = new DB(SQL_DB_DELEGADOS);
 		$db->run('SELECT id_centro FROM titulaciones WHERE id_titulacion = ?', array($id_titulacion));
 		$data = $db->data();
