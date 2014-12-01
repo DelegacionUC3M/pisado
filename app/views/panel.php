@@ -47,7 +47,6 @@
 			</h2>
 
 			<article id="filtros">
-				<span>Filtros</span>
 				<select name="titulacion" <?php echo $user->isDelegadoCentro() ? '' : 'disabled' ?> >
 					<option value="0">Titulación</option>
 					<?php
