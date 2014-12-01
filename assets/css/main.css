@@ -467,6 +467,7 @@ body {
 }
 .main #panel #filtros select {
   max-width: 300px;
+  margin: 0 5px;
 }
 .main #view article#informe,
 .main #create article#informe,
