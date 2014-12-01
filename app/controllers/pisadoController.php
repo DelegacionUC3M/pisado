@@ -30,7 +30,7 @@ class pisadoController extends Controller {
 				if(is_numeric($_POST['grupo'])) {	
 
 					if($pisado->save()) {
-						$destinatarios = array();
+						/*$destinatarios = array();
 						$cuerpo = $this->render_email('CreateU', array('pisado' => $pisado));
 						$destinatarios[] = array('nia' => $pisado->nia);
 						$this->send('¡Has creado un nuevo PISADO!', $destinatarios, $cuerpo);
@@ -41,7 +41,7 @@ class pisadoController extends Controller {
 						foreach ($delegadosTit as $delegado) {
 							$destinatarios[] = $delegado;
 						}
-						$this->send('¡Hay un nuevo PISADO para ti!', $destinatarios, $cuerpo);
+						$this->send('¡Hay un nuevo PISADO para ti!', $destinatarios, $cuerpo);*/
 
 						header('Location: /pisado/inicio'); die();
 					} else {
@@ -95,14 +95,14 @@ class pisadoController extends Controller {
 						if (!$comentario->save()) {
 							$data['error'] = 'Ha ocurrido un error al guardar el comentario. Inténtelo de nuevo.';
 						} else {
-							$cuerpo = $this->render_email('Comentario',array('pisado' => $pisado));
+							/*$cuerpo = $this->render_email('Comentario',array('pisado' => $pisado));
 							$destinatarios = DBDelegados::findDelegadosCurso($pisado->id_titulacion,$pisado->curso);
 							$delegadosTit = DBDelegados::findDelegadosTitulacion($pisado->id_titulacion);
 							foreach ($delegadosTit as $delegado) {
 								$destinatarios[] = $delegado;
 							}
 							$destinatarios[] = array('nia' => $pisado->nia);
-							$this->send('¡Tienes un nuevo comentario en un PISADO!',$destinatarios,$cuerpo);
+							$this->send('¡Tienes un nuevo comentario en un PISADO!',$destinatarios,$cuerpo);*/
 						}
 					}
 				}
