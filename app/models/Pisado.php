@@ -34,7 +34,7 @@ class Pisado {
 
 	public static function findByNia($nia) {
 		$db = new DB(SQL_DB_PISADO);
-		$db->run('SELECT * FROM pisado WHERE nia=? AND id_group=0 ORDER BY date DESC', array($nia));
+		$db->run('SELECT * FROM pisado WHERE nia=? AND id_group=0 ORDER BY date ASC', array($nia));
 		$data = $db->data();
 
 		$pisados = array();
@@ -51,7 +51,7 @@ class Pisado {
 
 	public static function findByIdTitulacion($id_titulacion) {
 		$db = new DB(SQL_DB_PISADO);
-		$db->run('SELECT * FROM pisado WHERE id_titulacion=? AND id_group=0 ORDER BY date DESC', array($id_titulacion));
+		$db->run('SELECT * FROM pisado WHERE id_titulacion=? AND id_group=0 ORDER BY date ASC', array($id_titulacion));
 		$data = $db->data();
 
 		$pisados = array();
@@ -68,7 +68,7 @@ class Pisado {
 
 	public static function findByIdGroup($id_group) {
 		$db = new DB(SQL_DB_PISADO);
-		$db->run('SELECT * FROM pisado WHERE id_group=? ORDER BY date DESC', array($id_group));
+		$db->run('SELECT * FROM pisado WHERE id_group=? ORDER BY date ASC', array($id_group));
 		$data = $db->data();
 
 		$pisados = array();
@@ -85,7 +85,7 @@ class Pisado {
 
 	public static function findByCurso($curso,$id_titulacion) {
 		$db = new DB(SQL_DB_PISADO);
-		$db->run('SELECT * FROM pisado WHERE curso=? AND id_titulacion=? AND id_group=0 ORDER BY date DESC', array($curso,$id_titulacion));
+		$db->run('SELECT * FROM pisado WHERE curso=? AND id_titulacion=? AND id_group=0 ORDER BY date ASC', array($curso,$id_titulacion));
 		$data = $db->data();
 
 		$pisados = array();
@@ -120,7 +120,7 @@ class Pisado {
 
 	public static function findByCentro($centro) {
 		$db = new DB(SQL_DB_PISADO);
-		$db->run('SELECT A.* FROM pisado A INNER JOIN delegados.titulaciones B ON A.id_titulacion = B.id_titulacion WHERE B.id_centro = ? ORDER BY A.date DESC', array($centro));
+		$db->run('SELECT A.* FROM pisado A INNER JOIN delegados.titulaciones B ON A.id_titulacion = B.id_titulacion WHERE B.id_centro = ? ORDER BY A.date ASC', array($centro));
 		$data = $db->data();
 
 		$pisados = array();
