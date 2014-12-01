@@ -30,8 +30,9 @@ class pisadoController extends Controller {
 				if(is_numeric($_POST['grupo'])) {	
 
 					if($pisado->save()) {
+						$destinatarios = array();
 						$cuerpo = $this->render_email('CreateU', array('pisado' => $pisado));
-						$destinatarios = array('nia' => $pisado->nia);
+						$destinatarios[] = array('nia' => $pisado->nia);
 						$this->send('¡Has creado un nuevo PISADO!', $destinatarios, $cuerpo);
 
 						$cuerpo = $this->render_email('Pisado', array('pisado' => $pisado));
@@ -79,12 +80,12 @@ class pisadoController extends Controller {
 						$comentario->nia = $_SESSION['user']->nia;
 						$comentario->text = htmlspecialchars($_POST['comment']);
 						if ($_SESSION['user']->isDelegado && $pisado->nia != $_SESSION['user']->nia) {
-							if ($_SESSION['user']->isDelegadoCurso()) {
-								$cargo = 'Delegado de Curso';
+							if ($_SESSION['user']->isDelegadoCentro()) {
+								$cargo = 'Delegado de Centro';
 							} else if ($_SESSION['user']->isDelegadoTitulacion()) {
 								$cargo = 'Delegado de Titulación';
 							} else {
-								$cargo = 'Delegado de Centro';
+								$cargo = 'Delegado de Curso';
 							}
 							$comentario->nombre = $_SESSION['user']->name.' ('.$cargo.')';
 						} else {

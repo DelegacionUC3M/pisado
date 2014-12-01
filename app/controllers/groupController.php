@@ -26,12 +26,12 @@ class groupController extends Controller {
 						$comentario->nia = $_SESSION['user']->nia;
 						$comentario->text = htmlspecialchars($_POST['comment']);
 						if ($_SESSION['user']->isDelegado) {
-							if ($_SESSION['user']->isDelegadoCurso()) {
-								$cargo = 'Delegado de Curso';
+							if ($_SESSION['user']->isDelegadoCentro()) {
+								$cargo = 'Delegado de Centro';
 							} else if ($_SESSION['user']->isDelegadoTitulacion()) {
 								$cargo = 'Delegado de Titulación';
 							} else {
-								$cargo = 'Delegado de Centro';
+								$cargo = 'Delegado de Curso';
 							}
 							$comentario->nombre = $_SESSION['user']->name.' ('.$cargo.')';
 						} else {
