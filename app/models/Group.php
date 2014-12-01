@@ -30,7 +30,7 @@ class Group {
 
 	public static function findByNia($nia) {
 		$db = new DB(SQL_DB_PISADO);
-		$db->run('SELECT A.*, id_titulacion, curso FROM `group` A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.nia=? GROUP BY A.id ORDER BY A.date', array($nia));
+		$db->run('SELECT A.*, id_titulacion, curso FROM `group` A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.nia=? GROUP BY A.id ORDER BY A.date DESC', array($nia));
 		$data = $db->data();
 
 		$groups = array();
@@ -47,7 +47,7 @@ class Group {
 
 	public static function findByIdTitulacion($id_titulacion) {
 		$db = new DB(SQL_DB_PISADO);
-		$db->run('SELECT A.*, id_titulacion, curso FROM `group` A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.id_titulacion=? GROUP BY A.id ORDER BY A.date', array($id_titulacion));
+		$db->run('SELECT A.*, id_titulacion, curso FROM `group` A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.id_titulacion=? GROUP BY A.id ORDER BY A.date DESC', array($id_titulacion));
 		$data = $db->data();
 
 		$groups = array();
@@ -64,7 +64,7 @@ class Group {
 
 	public static function findByCurso($curso,$id_titulacion) {
 		$db = new DB(SQL_DB_PISADO);
-		$db->run('SELECT A.*, id_titulacion, curso FROM `group` A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.curso=? AND B.id_titulacion=? GROUP BY A.id ORDER BY A.date', array($curso,$id_titulacion));
+		$db->run('SELECT A.*, id_titulacion, curso FROM `group` A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.curso=? AND B.id_titulacion=? GROUP BY A.id ORDER BY A.date DESC', array($curso,$id_titulacion));
 		$data = $db->data();
 
 		$groups = array();
@@ -99,7 +99,7 @@ class Group {
 
 	public static function findByCentro($centro) {
 		$db = new DB(SQL_DB_PISADO);
-		$db->run('SELECT A.*, B.id_titulacion, B.curso FROM `group` A LEFT JOIN pisado B ON A.id = B.id_group INNER JOIN delegados.titulaciones C ON B.id_titulacion = C.id_titulacion WHERE C.id_centro = ? GROUP BY A.id ORDER BY A.date', array($centro) );
+		$db->run('SELECT A.*, B.id_titulacion, B.curso FROM `group` A LEFT JOIN pisado B ON A.id = B.id_group INNER JOIN delegados.titulaciones C ON B.id_titulacion = C.id_titulacion WHERE C.id_centro = ? GROUP BY A.id ORDER BY A.date DESC', array($centro) );
 		$data = $db->data();
 
 		$groups = array();
