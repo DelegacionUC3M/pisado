@@ -65,7 +65,7 @@ html {
   color: #2b2b2b;
 }
 a {
-  outline: none;
+  outline: none !important;
   text-decoration: none;
   color: #066394;
 }
