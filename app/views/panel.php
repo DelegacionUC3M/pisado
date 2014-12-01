@@ -46,6 +46,25 @@
 				<?php } ?>
 			</h2>
 
+			<h3>Filtros</h3>
+			<select name="titulacion" <?php echo $user->isDelegadoCentro() ? '' : 'disabled' ?> >
+				<option value="0">Selecciona titulación</option>
+				<?php
+						foreach (DBDelegados::getTitulaciones() as $titulacion) {
+							$selected = '';
+							if (!$user->isDelegadoCentro() && $user->id_titulacion == $titulacion['id_titulacion']) {
+								$selected = 'selected';
+							}
+							echo '<option '.$selected.' value="'.$titulacion['id_titulacion'].'">'.$titulacion['nombre'].'</option>';
+						}
+				?>
+			</select><select name="curso" <?php echo ($user->isDelegadoCentro() && $user->isDelegadoTitulacion()) ? '' : 'disabled' ?>>
+				<option <?php if (!$user->isDelegadoCentro() && !$user->isDelegadoTitulacion() && $user->curso == '1') {echo 'selected';}?> value="1">1º</option>
+				<option <?php if (!$user->isDelegadoCentro() && !$user->isDelegadoTitulacion() && $user->curso == '2') {echo 'selected';}?> value="2">2º</option>
+				<option <?php if (!$user->isDelegadoCentro() && !$user->isDelegadoTitulacion() && $user->curso == '3') {echo 'selected';}?> value="3">3º</option>
+				<option <?php if (!$user->isDelegadoCentro() && !$user->isDelegadoTitulacion() && $user->curso == '4') {echo 'selected';}?> value="4">4º</option>
+			</select>
+
 			<?php if(isset($data['error']))  { ?>
 				<p class="info error">
 					<?= $data['error'] ?>
