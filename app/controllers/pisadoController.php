@@ -100,7 +100,7 @@ class pisadoController extends Controller {
 							foreach ($delegadosTit as $delegado) {
 								$destinatarios[] = $delegado;
 							}
-							$destinatarios[] = $pisado->nia;
+							$destinatarios[] = array('nia' => $pisado->nia);
 							$this->send('¡Tienes un nuevo comentario en un PISADO!',$destinatarios,$cuerpo);
 						}
 					}
