@@ -41,7 +41,7 @@ class groupController extends Controller {
 						if (!$comentario->save()) {
 							$data['error'] = 'Ha ocurrido un error al guardar el comentario. Inténtelo de nuevo.';
 						} else {
-							$cuerpo = $this->render_email('Comentario',array('pisado' => "pisado"));
+							$cuerpo = $this->render_email('Comentario',array('pisado' => $pisado));
 							$destinatarios = DBDelegados::findDelegadosCurso($pisado->id_titulacion,$pisado->curso);
 							$delegadosTit = DBDelegados::findDelegadosTitulacion($pisado->id_titulacion);
 							foreach ($delegadosTit as $delegado) {
