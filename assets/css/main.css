@@ -465,6 +465,9 @@ body {
   float: right;
   font-size: 0.55em;
 }
+.main #panel #filtros select {
+  max-width: 300px;
+}
 .main #view article#informe,
 .main #create article#informe,
 .main #view article#dpersonales,
