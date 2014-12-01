@@ -41,14 +41,14 @@ class groupController extends Controller {
 						if (!$comentario->save()) {
 							$data['error'] = 'Ha ocurrido un error al guardar el comentario. Inténtelo de nuevo.';
 						} else {
-							// $cuerpo = $this->render_email('Comentario',array('pisado' => $pisado));
-							// $destinatarios = DBDelegados::findDelegadosCurso($pisado->id_titulacion,$pisado->curso);
-							// $delegadosTit = DBDelegados::findDelegadosTitulacion($pisado->id_titulacion);
-							// foreach ($delegadosTit as $delegado) {
-							// 	$destinatarios[] = $delegado;
-							// }
-							// $destinatarios[] = $pisado->nia;
-							// $this->send('¡Tienes un nuevo comentario en un PISADO!',$destinatarios,$cuerpo);
+							$cuerpo = $this->render_email('ComentarioGroup',array('group' => $group));
+							$destinatarios = DBDelegados::findDelegadosCurso($pisado->id_titulacion,$pisado->curso);
+							$delegadosTit = DBDelegados::findDelegadosTitulacion($pisado->id_titulacion);
+							foreach ($delegadosTit as $delegado) {
+								$destinatarios[] = $delegado;
+							}
+							$destinatarios[] = array('nia' => $pisado->nia);
+							$this->send('¡Tienes un nuevo comentario en un grupo de PISADOs!',$destinatarios,$cuerpo);
 						}
 					}
 				}
