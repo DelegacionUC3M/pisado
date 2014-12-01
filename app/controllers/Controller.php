@@ -76,7 +76,7 @@ class Controller {
 	    foreach ($destinatarios as $destinatario) {
 	    	$cabeceras .= $destinatario['nia'] . "@alumnos.uc3m.es" . "\r\n";
 	    }
-	    $cabeceras .= "\r\n"
+	    $cabeceras .= "\r\n";
 
 		mail(NULL , $titulo, $cuerpo, $cabeceras);
 	}
