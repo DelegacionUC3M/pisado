@@ -119,13 +119,13 @@ class inicioController extends Controller {
 		$data['otros'] = array();
 		if ($user->isDelegadoCentro()) {
 			$data['otros'] = array_merge(Pisado::findByCentro($user->centro), Group::findByCentro($user->centro));
-			usort( $data['otros'], function($a, $b) {return strtotime($a->date) - strtotime($b->date);});
+			usort( $data['otros'], function($a, $b) {return  - strtotime($a->date) + strtotime($b->date);});
 		} else if ($user->isDelegadoTitulacion()) {
 			$data['otros'] = array_merge(Pisado::findByIdTitulacion($user->id_titulacion), Group::findByIdTitulacion($user->id_titulacion));
-			usort( $data['otros'], function($a, $b) {return strtotime($a->date) - strtotime($b->date);} );
+			usort( $data['otros'], function($a, $b) {return  - strtotime($a->date) + strtotime($b->date);} );
 		} else if ($user->isDelegadoCurso()) {
 			$data['otros'] = array_merge(Pisado::findByCurso($user->curso,$user->id_titulacion), Group::findByCurso($user->curso,$user->id_titulacion));
-			usort( $data['otros'], function($a, $b) {return strtotime($a->date) - strtotime($b->date);} );
+			usort( $data['otros'], function($a, $b) {return  - strtotime($a->date) + strtotime($b->date);} );
 		}
 
 		$this->render('panel', $data);
