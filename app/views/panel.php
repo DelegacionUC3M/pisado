@@ -46,7 +46,7 @@
 				<?php } ?>
 			</h2>
 
-			<article id="filtros">
+		<!--	<article id="filtros">
 				<select name="titulacion" <?php echo $user->isDelegadoCentro() ? '' : 'disabled' ?> >
 					<option value="0">Titulación</option>
 					<?php
@@ -65,7 +65,7 @@
 					<option <?php if (!$user->isDelegadoCentro() && !$user->isDelegadoTitulacion() && $user->curso == '3') {echo 'selected';}?> value="3">3º</option>
 					<option <?php if (!$user->isDelegadoCentro() && !$user->isDelegadoTitulacion() && $user->curso == '4') {echo 'selected';}?> value="4">4º</option>
 				</select>
-			</article>
+			</article> -->
 
 			<?php if(isset($data['error']))  { ?>
 				<p class="info error">
