@@ -120,7 +120,7 @@ class Pisado {
 
 	public static function findByCentro($centro) {
 		$db = new DB(SQL_DB_PISADO);
-		$db->run('SELECT A.* FROM pisado A INNER JOIN delegados.titulaciones B ON A.id_titulacion = B.id_titulacion WHERE B.id_centro = ? ORDER BY A.id_titulacion, A.date ', array($centro));
+		$db->run('SELECT A.* FROM pisado A INNER JOIN delegados.titulaciones B ON A.id_titulacion = B.id_titulacion WHERE B.id_centro = ? ORDER BY A.date ', array($centro));
 		$data = $db->data();
 
 		$pisados = array();
