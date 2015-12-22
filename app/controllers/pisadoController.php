@@ -164,7 +164,7 @@ class pisadoController extends Controller {
 				foreach ($delegadoTitulacion as $delegado) {
 					$data['delegado'][] = array('email' => $delegado['nia'] . '@alumnos.uc3m.es', 'nombre' => $delegado['nombre'] . ' ' . $delegado['apellido1']);
 				}
-				$data['archive'] = Archive::findByIdpisado($pisado->id);
+				$data['archive'] = Archive::findByPisado($pisado->id);
 
 
 				$this->render('view', $data);
