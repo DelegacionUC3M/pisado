@@ -30,7 +30,6 @@ class Archive {
 	public static function findByPisado($pisado_id) {
 		$db = new DB(SQL_DB_PISADO);
 		$db->run('SELECT id, id_pisado, `date` FROM `archive` WHERE id_pisado = ?', array($pisado_id));
-		$data = $db->data();
 
         if ($db->count() > 0) {
 			$archive = new Archive;
