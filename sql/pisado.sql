@@ -68,6 +68,19 @@ CREATE TABLE IF NOT EXISTS `group` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `archive`
+--
+
+CREATE TABLE IF NOT EXISTS `archive` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_pisado` int(11) UNIQUE NOT NULL,
+  `date` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `pisado`
 --
 

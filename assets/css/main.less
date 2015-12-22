@@ -1,68 +1,75 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300,500,700);
 
 @font-face {
-	font-family: 'icomoon';
-	src:url('fonts/pisado.eot?-xuph9k');
-	src:url('fonts/pisado.eot?#iefix-xuph9k') format('embedded-opentype'),
-		url('fonts/pisado.woff?-xuph9k') format('woff'),
-		url('fonts/pisado.ttf?-xuph9k') format('truetype'),
-		url('fonts/pisado.svg?-xuph9k#icomoon') format('svg');
-	font-weight: normal;
-	font-style: normal;
+    font-family: 'icomoon';
+    src:    url('fonts/icomoon.eot?uicmwk');
+    src:    url('fonts/icomoon.eot?uicmwk#iefix') format('embedded-opentype'),
+        url('fonts/icomoon.ttf?uicmwk') format('truetype'),
+        url('fonts/icomoon.woff?uicmwk') format('woff'),
+        url('fonts/icomoon.svg?uicmwk#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
 
-[class^="icon-"]:before, [class*=" icon-"]:before {
-	font-family: 'icomoon';
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
 
-	/* Better Font Rendering =========== */
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-print:before {
-	content: "\31";
-}
-.icon-pisado:before {
-	content: "\64";
+.icon-newspaper:before {
+    content: "\e900";
 }
 .icon-fill:before {
-	content: "\32";
+    content: "\e901";
 }
 .icon-agroup:before {
-	content: "\33";
+    content: "\e902";
 }
 .icon-map:before {
-	content: "\34";
+    content: "\e903";
 }
 .icon-clock:before {
-	content: "\35";
+    content: "\e904";
+}
+.icon-print:before {
+    content: "\e905";
+}
+.icon-archive:before {
+    content: "\e906";
+}
+.icon-unarchive:before {
+    content: "\e907";
 }
 .icon-comment:before {
-	content: "\36";
+    content: "\e90d";
 }
 .icon-user:before {
-	content: "\37";
+    content: "\e908";
 }
-.icon-signin:before {
-	content: "\38";
+.icon-key2:before {
+    content: "\e909";
 }
-.icon-signout:before {
-	content: "\39";
+.icon-enter:before {
+    content: "\e90a";
 }
 .icon-back:before {
-	content: "\61";
+    content: "\e90e";
 }
 .icon-facebook:before {
-	content: "\62";
+    content: "\e90b";
 }
 .icon-twitter:before {
-	content: "\63";
+    content: "\e90c";
 }
 
 @blue: #066394;
@@ -125,7 +132,7 @@ button, a.button {
 	border-radius: 5px;
 	padding: 10px;
 	text-decoration: none;
-	border: none; 
+	border: none;
 	border-bottom: 2px solid #004a6f;
 	transition: all 0.4s;
 	font-family: 'Roboto', sans-serif;
@@ -339,7 +346,7 @@ html, body {
 			font-weight: 400;
 
 			&.you {
-				margin-left: 1%; 
+				margin-left: 1%;
 			}
 
 			&.delegacion {
@@ -347,7 +354,7 @@ html, body {
 			}
 
 			div.author {
-				margin-bottom: 8px; 
+				margin-bottom: 8px;
 
 				span {
 					display: inline-block;
@@ -425,7 +432,7 @@ html, body {
 	}
 
 	&.inicio, &.login {
-		background: linear-gradient(rgba(0, 97, 145, 0.5),rgba(0, 97, 145, 0.5) ), url('/pisado/assets/img/bg.jpg') center; 
+		background: linear-gradient(rgba(0, 97, 145, 0.5),rgba(0, 97, 145, 0.5) ), url('/pisado/assets/img/bg.jpg') center;
 		background-size: cover;
 		color: #fff;
 		text-align: center;
@@ -469,7 +476,7 @@ html, body {
 			padding: 0 30px;
 			box-sizing: border-box;
 
-			p { 
+			p {
 				text-align: justify;
 			}
 		}
@@ -536,7 +543,7 @@ html, body {
 		.delegacion h2 {
 			input {
 				float: right;
-				font-size: 0.55em;	
+				font-size: 0.55em;
 			}
 		}
 
@@ -550,8 +557,8 @@ html, body {
 
 	#view, #create {
 
-		
-		
+
+
 		article#informe, article#dpersonales, article#listPisados {
 			width: 90%;
 			margin: 0 auto 20px;
@@ -630,7 +637,7 @@ footer {
 	padding: 15px 0;
 
 	#rsociales {
-		margin: 20px 0;	
+		margin: 20px 0;
 		text-align: center;
 
 		a {
@@ -650,10 +657,10 @@ footer {
 	}
 
 	i {
-		margin: 0 5px 0 15px; 
+		margin: 0 5px 0 15px;
 	}
 
-	i, a, span {	
+	i, a, span {
 		display: inline-block;
 		vertical-align: top;
 	}
@@ -731,7 +738,7 @@ footer {
 
 
 @media (max-width: 1060px) {
-	
+
 	ul#pisados {
 		width: 100% !important;
 		margin-left: 0 !important;
@@ -740,7 +747,7 @@ footer {
 }
 
 @media (max-width: 670px) {
-	
+
 	ul#pisados li {
 		width: 30% !important;
 	}
@@ -748,7 +755,7 @@ footer {
 }
 
 @media (max-width: 470px) {
-	
+
 	ul#pisados li {
 		width: 47% !important;
 	}

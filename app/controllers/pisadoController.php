@@ -1,7 +1,7 @@
 <?php
 
 class pisadoController extends Controller {
-	
+
 	function create() {
 		$this->security();
 		$data = array();
@@ -27,7 +27,7 @@ class pisadoController extends Controller {
 
 			if(!empty($_POST['titulacion']) && !empty($_POST['asignatura']) && !empty($_POST['curso'])
 				&& !empty($_POST['grupo']) && !empty($_POST['texto'])) {
-				if(is_numeric($_POST['grupo'])) {	
+				if(is_numeric($_POST['grupo'])) {
 
 					if($pisado->save()) {
 						/*$destinatarios = array();
@@ -57,6 +57,55 @@ class pisadoController extends Controller {
 			$this->render('create', $data);
 		} else {
 			$this->render('create', $data);
+		}
+	}
+
+	function close() {
+		$this->security();
+
+		$id = (int) $_GET['id'];
+		$pisado = Pisado::findById($id);
+		$data = array();
+
+		if ($pisado) {
+			if (($pisado->nia == $_SESSION['user']->nia) || (($pisado->id_titulacion == $_SESSION['user']->id_titulacion) && $_SESSION['user']->isDelegadoCurso()) || ($_SESSION['user']->isDelegadoCentro()) ) {
+				$archive = new Archive;
+				$archive->pisado = $pisado;
+				if($archive->save()) {
+					render('view', $data);
+				} else {
+					$data['archive_error'] = 'No se ha podido archivar este pisado';
+					render('view', $data);
+				}
+			} else {
+				$this->render_error(401);
+			}
+		} else {
+			$this->render_error(404);
+		}
+	}
+
+	function open() {
+		$this->security();
+
+		$id = (int) $_GET['id'];
+		$pisado = Pisado::findById($id);
+		$data = array();
+
+		if ($pisado) {
+			if (($pisado->nia == $_SESSION['user']->nia) || (($pisado->id_titulacion == $_SESSION['user']->id_titulacion) && $_SESSION['user']->isDelegadoCurso()) || ($_SESSION['user']->isDelegadoCentro()) ) {
+				$archive = Archive::findByPisado($pisado->id);
+				if(isset($archive) && $archive->delete()) {
+					render('view', $data);
+				} else {
+					$data['archive_error'] = 'No se ha podido archivar este pisado';
+					render('view', $data);
+				}
+			} else {
+				$this->render_error(401);
+			}
+		} else {
+			$this->render_error(404);
 		}
 	}
 
@@ -115,7 +164,8 @@ class pisadoController extends Controller {
 				foreach ($delegadoTitulacion as $delegado) {
 					$data['delegado'][] = array('email' => $delegado['nia'] . '@alumnos.uc3m.es', 'nombre' => $delegado['nombre'] . ' ' . $delegado['apellido1']);
 				}
-				
+				$data['archive'] = Archive::findByIdpisado($pisado->id);
+
 
 				$this->render('view', $data);
 			} else {

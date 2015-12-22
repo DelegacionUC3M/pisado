@@ -1,24 +1,38 @@
 <section id="view" class="wrapper">
 
 	<h2 class="clear">PISADO #<?= $pisado->id ?>
+			<?php if(!is_null($archive)) { ?>
+				<p>[Archivado]</p>
+			<?php } ?>
 			<?php if ($pisado->id_group != 0) { ?>
 				<a href="/pisado/group/view/<?= $pisado->id_group ?>" class="button icon-back">Volver al grupo</a>
 			<?php } else { ?>
 				<a href="/pisado/" class="button icon-back">Volver a mis PISADO</a>
 			<?php } ?>
 			<a href="#" id="print" class="button icon-print">Imprimir</a>
+			<?php if(!is_null($archive)) { ?>
+				<a href="/pisado/pisado/open/<?php echo $pisado->id ?>" id="close" class="button icon-unarchive">Reabrir</a>
+			<?php } else {?>
+				<a href="/pisado/pisado/close/<?php echo $pisado->id ?>" id="close" class="button icon-archive">Archivar</a>
+			<?php } ?>
 		</h2>
+
+		<?php if(isset($archive_error))  { ?>
+			<p class="info error">
+				<?= $archive_error ?>
+			</p>
+		<?php } ?>
 
 	<article id="dpersonales">
 		<h3>Datos personales</h3>
-	
+
 		<?php if (($user->nia == $pisado->nia) || ($user->isDelegadoCentro()) || ($user->isDelegadoTitulacion()) ) { ?>
 		<ul>
 			<li id="nombre" class="w60"> <span>Nombre</span> <?= $pisado->autor ?>  </li><li id="nia" class="w40"><span>NIA</span> <?= $pisado->nia ?></li>
 			<li id="email" class="w60"><span>Correo</span> <?= $pisado->email ?></li>
 		</ul>
 		<p class="info">Estos datos se guardan como metodo de contacto unicamente y no serán accesibles por el profesor
-			ni por el destinatario de esta queja, solo por los delegados encargados: 
+			ni por el destinatario de esta queja, solo por los delegados encargados:
 			<?php foreach ($delegado as $delegadoTit) { ?> <b><?= $delegadoTit['nombre'] ?> (<a href="mailto:<?= $delegadoTit['email'] ?>"><?= $delegadoTit['email'] ?></a>)</b><?php } ?>.</p>
 		<?php } else { ?>
 			<p class="info">El PISADO es anónimo. Los datos personales solo son accesibles por el delegado encargado como metodo de contacto. Si necesitas más información ponte en contacto con <b><?= $delegado['nombre'] ?> (<a href="mailto:<?= $delegado['email'] ?>"><?= $delegado['email'] ?></a>)</b>. </p>
@@ -36,21 +50,21 @@
 
 			<li id="texto"> <span>El alumno expone</span> <p><?= $pisado->texto ?></p> </li>
 		</ul>
-	</article>			
+	</article>
 
 	<article id="comentarios" <?php if (count($comentarios) == 0) {echo 'class="no-print"';} ?> >
 		<h3>Comentarios</h3>
 
-		<?php if(isset($data['error']))  { ?>
+		<?php if(isset($error))  { ?>
 			<p class="info error">
-				<?= $data['error'] ?>
+				<?= $error ?>
 			</p>
 		<?php } ?>
 
 		<ul id="comentarios">
 			<?php
 
-				foreach ($comentarios as $comentario) { 
+				foreach ($comentarios as $comentario) {
 					$class = '';
 					if ($comentario->nia == $user->nia) {
 						$class .= 'you ';
@@ -77,7 +91,7 @@
 					</li>
 				<?php }
 
-				if ($pisado->id_group != 0) { 
+				if ($pisado->id_group != 0) {
 			?>
 
 				<p class="info">El PISADO pertenece a un grupo, solo puedes comentar en el grupo.</p>
