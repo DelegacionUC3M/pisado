@@ -72,10 +72,10 @@ class pisadoController extends Controller {
 				$archive = new Archive;
 				$archive->pisado = $pisado;
 				if($archive->save()) {
-					$this->render('panel', $data);
+					header('Location: /pisado/inicio/');
 				} else {
 					$data['archive_error'] = 'No se ha podido archivar este pisado';
-					$this->render('panel', $data);
+					$this->render('view', $data);
 				}
 			} else {
 				$this->render_error(401);
@@ -96,10 +96,10 @@ class pisadoController extends Controller {
 			if (($pisado->nia == $_SESSION['user']->nia) || (($pisado->id_titulacion == $_SESSION['user']->id_titulacion) && $_SESSION['user']->isDelegadoCurso()) || ($_SESSION['user']->isDelegadoCentro()) ) {
 				$archive = Archive::findByPisado($pisado->id);
 				if(isset($archive) && $archive->delete()) {
-					$this->render('panel', $data);
+					header('Location: /pisado/inicio/');
 				} else {
 					$data['archive_error'] = 'No se ha podido archivar este pisado';
-					$this->render('panel', $data);
+					$this->render('view', $data);
 				}
 			} else {
 				$this->render_error(401);
