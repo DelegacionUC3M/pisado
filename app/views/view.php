@@ -2,7 +2,7 @@
 
 	<h2 class="clear">PISADO #<?= $pisado->id ?>
 			<?php if(!is_null($archive)) { ?>
-				<p>[Archivado]</p>
+				[Archivado]
 			<?php } ?>
 			<?php if ($pisado->id_group != 0) { ?>
 				<a href="/pisado/group/view/<?= $pisado->id_group ?>" class="button icon-back">Volver al grupo</a>
