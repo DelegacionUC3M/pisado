@@ -1,11 +1,11 @@
 <section id="view" class="wrapper">
 
 	<h2 class="clear">Grupo PISADO #G<?= $group->id ?>
-			<?php if(!is_null($archive)) { ?>
+			<?php if($archive) { ?>
 				[Archivado]
 			<?php } ?>
 			<a href="/pisado/" class="button icon-back">Volver a mis PISADO</a>
-			<?php if(!is_null($archive)) { ?>
+			<?php if($archive) { ?>
 				<a href="/pisado/group/open/<?php echo $group->id ?>" id="close" class="button icon-unarchive">Restaurar</a>
 			<?php } else {?>
 				<a href="/pisado/group/close/<?php echo $group->id ?>" id="close" class="button icon-archive">Archivar</a>

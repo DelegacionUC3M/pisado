@@ -1,7 +1,7 @@
 <section id="view" class="wrapper">
 
 	<h2 class="clear">PISADO #<?= $pisado->id ?>
-			<?php if(!is_null($archive)) { ?>
+			<?php if($archive) { ?>
 				[Archivado]
 			<?php } ?>
 			<?php if ($pisado->id_group != 0) { ?>
@@ -10,7 +10,7 @@
 				<a href="/pisado/" class="button icon-back">Volver a mis PISADO</a>
 			<?php } ?>
 			<a href="#" id="print" class="button icon-print">Imprimir</a>
-			<?php if(!is_null($archive)) { ?>
+			<?php if($archive) { ?>
 				<a href="/pisado/pisado/open/<?php echo $pisado->id ?>" id="close" class="button icon-unarchive">Restaurar</a>
 			<?php } else {?>
 				<a href="/pisado/pisado/close/<?php echo $pisado->id ?>" id="close" class="button icon-archive">Archivar</a>
