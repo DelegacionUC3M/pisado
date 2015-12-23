@@ -114,6 +114,7 @@ class groupController extends Controller {
 				$comentarios = ComentarioGroup::findByIdGroup($group->id);
 				$data['group'] = $group;
 				$data['comentarios'] = $comentarios;
+				$data['archive'] = Archive::findByPisado($pisado->id);
 
 				$this->render('viewGroup', $data);
 			} else {
