@@ -17,11 +17,7 @@ class Pisado {
 
 	public static function findById($id) {
 		$db = new DB(SQL_DB_PISADO);
-		if ($archive) {
 			$db->run('SELECT pisado.* FROM pisado WHERE pisado.id=?', array($id));
-		} else {
-			$db->run('SELECT pisado.* FROM pisado WHERE pisado.id=?', array($id));
-		}
 
 		if ($db->count() > 0) {
 			$pisado = new Pisado;
