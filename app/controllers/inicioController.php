@@ -131,7 +131,7 @@ class inicioController extends Controller {
 		$this->render('panel', $data);
 	}
 
-	function archive() {
+	function archivo() {
 		$this->security();
 		$data = array();
 

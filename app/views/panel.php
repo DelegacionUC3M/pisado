@@ -12,7 +12,7 @@
 			foreach ($pisados as $pisado) {
 				if (is_a($pisado,'Pisado')) {
 					?>
-						<a href="/pisado/pisado/view/<?= $pisado->id ?>"><li id="pisado">	
+						<a href="/pisado/pisado/view/<?= $pisado->id ?>"><li id="pisado">
 								<p class="id-asignatura"><span class="id">#<?= $pisado->id ?></span> <?= $pisado->asignatura ?></p>
 								<p class="titulacion"><?= $pisado->getNameTitulacion() ?> </p>
 								<p class="curso-date"> <span class="curso">Curso <?= $pisado->curso.'º' ?></span> <span class="date icon-clock"> <?= date('j/m/y' ,strtotime($pisado->date)) ?></span> </p>
@@ -43,6 +43,7 @@
 			<h2 class="clear">Delegación
 				<?php if ($user->isDelegadoTitulacion() || $user->isDelegadoCentro()) { ?>
 					<a class="button icon-agroup" href="?" id="agrupar" data-active="false">Agrupar PISADOS</a>
+					<a class="button icon-drawer" href="/pisado/inicio/arcivo">Ver archivados</a>
 				<?php } ?>
 			</h2>
 
@@ -74,7 +75,7 @@
 			<?php } ?>
 
 			<p class="info error hide">Has de seleccionar al menos dos PISADOS y solo se pueden agrupar PISADOs del mismo curso y titulación.</p>
-			
+
 			<ul id="pisados">
 			<?php
 
@@ -82,7 +83,7 @@
 				foreach ($otros as $pisado) {
 					if (is_a($pisado,'Pisado')) {
 						?>
-							<a href="/pisado/pisado/view/<?= $pisado->id ?>"><li id="pisado" data-titulacion="<?= $pisado->id_titulacion ?>" data-curso="<?= $pisado->curso ?>" data-id="<?= $pisado->id ?>">	
+							<a href="/pisado/pisado/view/<?= $pisado->id ?>"><li id="pisado" data-titulacion="<?= $pisado->id_titulacion ?>" data-curso="<?= $pisado->curso ?>" data-id="<?= $pisado->id ?>">
 									<p class="id-asignatura"><span class="id">#<?= $pisado->id ?></span> <?= $pisado->asignatura ?></p>
 									<p class="titulacion"><?= $pisado->getNameTitulacion() ?> </p>
 									<p class="curso-date"> <span class="curso">Curso <?= $pisado->curso.'º' ?></span> <span class="date icon-clock"> <?= date('j/m/y' ,strtotime($pisado->date)) ?></span> </p>
@@ -105,7 +106,7 @@
 
 			</ul>
 	</article>
-	
+
 	<?php } ?>
 
 </section>
