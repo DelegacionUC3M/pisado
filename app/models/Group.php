@@ -153,9 +153,9 @@ class Group {
 	}
 
 	public function isClose() {
-		$pisado = Pisado::findByIdGroup($group->id,true);
+		$pisado = Pisado::findByIdGroup($this->id,true);
 
-		return count($pisado)==count($group->pisado);
+		return count($pisado)==count($this->pisado);
 	}
 
 }
