@@ -54,7 +54,7 @@ class inicioController extends Controller {
 	function panel() {
 		$this->security();
 		$data = array();
-		
+
 		$user = $_SESSION['user'];
 
 		if (isset($_POST['pisado']) || isset($_POST['group'])) {
@@ -114,7 +114,7 @@ class inicioController extends Controller {
 			}
 		}
 
-		$data['pisados'] = array_merge(Pisado::findByNia($user->nia), Group::findByNia($user->nia)); 
+		$data['pisados'] = array_merge(Pisado::findByNia($user->nia), Group::findByNia($user->nia));
 		usort( $data['pisados'], function($a, $b) {return strtotime($a->date) - strtotime($b->date);} );
 		$data['otros'] = array();
 		if ($user->isDelegadoCentro()) {
@@ -131,6 +131,30 @@ class inicioController extends Controller {
 		$this->render('panel', $data);
 	}
 
+	function archivePanel() {
+		$this->security();
+		$data = array();
 
-	
+		$user = $_SESSION['user'];
+
+		if($user->isDelegadoCurso()) {
+			if ($user->isDelegadoCentro()) {
+				$data['otros'] = array_merge(Pisado::findByCentro($user->centro,true), Group::findByCentro($user->centro,false,true));
+				usort( $data['otros'], function($a, $b) {return  - strtotime($a->date) + strtotime($b->date);});
+			} else if ($user->isDelegadoTitulacion()) {
+				$data['otros'] = array_merge(Pisado::findByIdTitulacion($user->id_titulacion,true), Group::findByIdTitulacion($user->id_titulacion,false,true));
+				usort( $data['otros'], function($a, $b) {return  - strtotime($a->date) + strtotime($b->date);} );
+			} else if ($user->isDelegadoCurso()) {
+				$data['otros'] = array_merge(Pisado::findByCurso($user->curso,$user->id_titulacion,true), Group::findByCurso($user->curso,$user->id_titulacion,false,true));
+				usort( $data['otros'], function($a, $b) {return  - strtotime($a->date) + strtotime($b->date);} );
+			}
+
+			$this->render('panel', $data);
+		}else {
+			$this->render_error(401);
+		}
+	}
+
+
+
 }
