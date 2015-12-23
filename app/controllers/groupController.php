@@ -40,7 +40,7 @@ class groupController extends Controller {
 		$this->security();
 
 		$id = (isset($_GET['id'])) ? (int) $_GET['id'] : false;
-		$group = Group::findById($id);
+		$group = Group::findById($id,true);
 		$data = array();
 
 		if ($groups) {

@@ -20,7 +20,7 @@ class Group {
 	        	$group->{$key} = $value;
 	    	}
 
-	    	$group->pisados = Pisado::findByIdGroup($group->id);
+	    	$group->pisados = Pisado::findByIdGroup($group->id,true);
 
 	    	return $group;
 		} else {
