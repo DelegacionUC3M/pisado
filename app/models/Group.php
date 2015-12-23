@@ -28,7 +28,7 @@ class Group {
 		}
 	}
 
-	public static function findByNia($nia) {
+	public static function findByNia($nia, $all = false) {
 		$db = new DB(SQL_DB_PISADO);
 		$db->run('SELECT A.*, id_titulacion, curso FROM `group` A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.nia=? GROUP BY A.id ORDER BY A.date DESC', array($nia));
 		$data = $db->data();
@@ -39,13 +39,15 @@ class Group {
 			foreach($row as $key => $value){
 	        	$group->{$key} = $value;
 	        }
-	        $groups[] = $group;
+			if(!$group->isClose() || $all) {
+				$groups[] = $group;
+			}
     	}
 
 		return $groups;
 	}
 
-	public static function findByIdTitulacion($id_titulacion) {
+	public static function findByIdTitulacion($id_titulacion, $all = false) {
 		$db = new DB(SQL_DB_PISADO);
 		$db->run('SELECT A.*, id_titulacion, curso FROM `group` A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.id_titulacion=? GROUP BY A.id ORDER BY A.date DESC', array($id_titulacion));
 		$data = $db->data();
@@ -56,13 +58,15 @@ class Group {
 			foreach($row as $key => $value){
 	        	$group->{$key} = $value;
 	        }
-	        $groups[] = $group;
+			if(!$group->isClose() || $all) {
+				$groups[] = $group;
+			}
     	}
 
 		return $groups;
 	}
 
-	public static function findByCurso($curso,$id_titulacion) {
+	public static function findByCurso($curso, $id_titulacion, $all = false) {
 		$db = new DB(SQL_DB_PISADO);
 		$db->run('SELECT A.*, id_titulacion, curso FROM `group` A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.curso=? AND B.id_titulacion=? GROUP BY A.id ORDER BY A.date DESC', array($curso,$id_titulacion));
 		$data = $db->data();
@@ -73,7 +77,9 @@ class Group {
 			foreach($row as $key => $value){
 	        	$group->{$key} = $value;
 	        }
-	        $groups[] = $group;
+			if(!$group->isClose() || $all) {
+				$groups[] = $group;
+			}
     	}
 
 		return $groups;
@@ -97,7 +103,7 @@ class Group {
 	// 	return $groups;
 	// }
 
-	public static function findByCentro($centro) {
+	public static function findByCentro($centro, $all = false) {
 		$db = new DB(SQL_DB_PISADO);
 		$db->run('SELECT A.*, B.id_titulacion, B.curso FROM `group` A LEFT JOIN pisado B ON A.id = B.id_group INNER JOIN delegados.titulaciones C ON B.id_titulacion = C.id_titulacion WHERE C.id_centro = ? GROUP BY A.id ORDER BY A.date DESC', array($centro) );
 		$data = $db->data();
@@ -108,7 +114,9 @@ class Group {
 			foreach($row as $key => $value){
 	        	$group->{$key} = $value;
 	        }
-	        $groups[] = $group;
+			if(!$group->isClose() || $all) {
+				$groups[] = $group;
+			}
     	}
 
 		return $groups;
@@ -142,6 +150,12 @@ class Group {
 		}
 
 		return $owners;
+	}
+
+	public function isClose() {
+		$pisado = Pisado::findByIdGroup($group->id,true);
+
+		return count($pisado)==count($group->pisado);
 	}
 
 }
