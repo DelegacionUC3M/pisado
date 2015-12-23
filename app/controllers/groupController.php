@@ -10,12 +10,12 @@ class groupController extends Controller {
 		$this->security();
 
 		$id = (isset($_GET['id'])) ? (int) $_GET['id'] : false;
-		$pisados = Pisado::findByIdGroup($id);
+		$group = Group::findById($id);
 		$data = array();
 
-		if ($pisados) {
+		if ($group) {
 			if (in_array($_SESSION['user']->nia, $group->getOwners()) || (($group->id_titulacion == $_SESSION['user']->id_titulacion) && $_SESSION['user']->isDelegadoCurso()) || ($_SESSION['user']->isDelegadoCentro()) ) {
-				foreach ($pisados as $pisado) {
+				foreach ($group->pisados as $pisado) {
 					$archive = new Archive;
 					$archive->pisado = $pisado;
 					if(!$archive->save()) {
@@ -40,12 +40,12 @@ class groupController extends Controller {
 		$this->security();
 
 		$id = (isset($_GET['id'])) ? (int) $_GET['id'] : false;
-		$pisados = Pisado::findByIdGroup($id, true);
+		$group = Group::findById($id);
 		$data = array();
 
-		if ($pisados) {
+		if ($groups) {
 			if (in_array($_SESSION['user']->nia, $group->getOwners()) || (($group->id_titulacion == $_SESSION['user']->id_titulacion) && $_SESSION['user']->isDelegadoCurso()) || ($_SESSION['user']->isDelegadoCentro()) ) {
-				foreach ($pisados as $pisado) {
+				foreach ($group->pisados as $pisado) {
 					$archive = Archive::findByPisado($pisado->id);
 					if(!isset($archive) || !$archive->delete()) {
 						$data['archive_error'] = 'No se ha podido archivar un pisado';
