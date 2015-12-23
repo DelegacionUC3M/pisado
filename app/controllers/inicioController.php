@@ -131,7 +131,7 @@ class inicioController extends Controller {
 		$this->render('panel', $data);
 	}
 
-	function archivePanel() {
+	function archive() {
 		$this->security();
 		$data = array();
 
@@ -149,7 +149,7 @@ class inicioController extends Controller {
 				usort( $data['otros'], function($a, $b) {return  - strtotime($a->date) + strtotime($b->date);} );
 			}
 
-			$this->render('panel', $data);
+			$this->render('archivePanel', $data);
 		}else {
 			$this->render_error(401);
 		}
