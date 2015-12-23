@@ -153,9 +153,12 @@ class Group {
 	}
 
 	public function isClose() {
-		$pisado = Pisado::findByIdGroup($this->id,true);
 
-		return count($pisado)==count($this->pisados);
+
+		$db = new DB(SQL_DB_PISADO);
+		$db->run('SELECT * FROM pisado LEFT JOIN archive ON pisado.id = archive.id_pisado WHERE archive.id IS NULL AND pisado.id_group=?', array($id));
+
+		return $db->count() == 0;
 	}
 
 }
