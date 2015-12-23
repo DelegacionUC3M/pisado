@@ -122,6 +122,13 @@ class Group {
 		return $groups;
 	}
 
+	public static function isClose($id_group) {
+		$db = new DB(SQL_DB_PISADO);
+		$db->run('SELECT * FROM pisado LEFT JOIN archive ON pisado.id = archive.id_pisado WHERE archive.id IS NULL AND pisado.id_group=?', array($id_group));
+
+		return $db->count() == 0;
+	}
+
 	public function save() {
 		$db = new DB(SQL_DB_PISADO);
 		$query = $db->run('INSERT INTO `group` (subject,date) VALUES (?,NOW())', array($this->subject));
@@ -150,15 +157,6 @@ class Group {
 		}
 
 		return $owners;
-	}
-
-	public function isClose() {
-
-
-		$db = new DB(SQL_DB_PISADO);
-		$db->run('SELECT * FROM pisado LEFT JOIN archive ON pisado.id = archive.id_pisado WHERE archive.id IS NULL AND pisado.id_group=?', array($id));
-
-		return $db->count() == 0;
 	}
 
 }
