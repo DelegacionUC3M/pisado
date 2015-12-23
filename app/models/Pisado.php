@@ -15,12 +15,12 @@ class Pisado {
 	public $profesor;
 	public $texto;
 
-	public static function findById($id, $archive = false) {
+	public static function findById($id) {
 		$db = new DB(SQL_DB_PISADO);
 		if ($archive) {
-			$db->run('SELECT pisado.* FROM pisado LEFT JOIN archive ON pisado.id = archive.id_pisado WHERE archive.id IS NOT NULL AND pisado.id=?', array($id));
+			$db->run('SELECT pisado.* FROM pisado WHERE pisado.id=?', array($id));
 		} else {
-			$db->run('SELECT pisado.* FROM pisado LEFT JOIN archive ON pisado.id = archive.id_pisado WHERE archive.id IS NULL AND pisado.id=?', array($id));
+			$db->run('SELECT pisado.* FROM pisado WHERE pisado.id=?', array($id));
 		}
 
 		if ($db->count() > 0) {
