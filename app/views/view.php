@@ -11,7 +11,7 @@
 			<?php } ?>
 			<a href="#" id="print" class="button icon-print">Imprimir</a>
 			<?php if(!is_null($archive)) { ?>
-				<a href="/pisado/pisado/open/<?php echo $pisado->id ?>" id="close" class="button icon-unarchive">Reabrir</a>
+				<a href="/pisado/pisado/open/<?php echo $pisado->id ?>" id="close" class="button icon-unarchive">Restaurar</a>
 			<?php } else {?>
 				<a href="/pisado/pisado/close/<?php echo $pisado->id ?>" id="close" class="button icon-archive">Archivar</a>
 			<?php } ?>

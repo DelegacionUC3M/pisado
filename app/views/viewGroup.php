@@ -1,8 +1,22 @@
 <section id="view" class="wrapper">
 
 	<h2 class="clear">Grupo PISADO #G<?= $group->id ?>
+			<?php if(!is_null($archive)) { ?>
+				[Archivado]
+			<?php } ?>
 			<a href="/pisado/" class="button icon-back">Volver a mis PISADO</a>
+			<?php if(!is_null($archive)) { ?>
+				<a href="/pisado/group/open/<?php echo $group->id ?>" id="close" class="button icon-unarchive">Restaurar</a>
+			<?php } else {?>
+				<a href="/pisado/group/close/<?php echo $group->id ?>" id="close" class="button icon-archive">Archivar</a>
+			<?php } ?>
 		</h2>
+
+		<?php if(isset($archive_error))  { ?>
+			<p class="info error">
+				<?= $archive_error ?>
+			</p>
+		<?php } ?>
 
 	<article id="dpersonales">
 		<ul>
@@ -16,7 +30,7 @@
 		<?php
 			foreach ($group->pisados as $pisado) {
 				?>
-					<a href="/pisado/pisado/view/<?= $pisado->id ?>"><li id="pisado">	
+					<a href="/pisado/pisado/view/<?= $pisado->id ?>"><li id="pisado">
 						<p class="id-asignatura"><span class="id">#<?= $pisado->id ?></span> <?= $pisado->asignatura ?></p>
 						<p class="titulacion"><?= $pisado->getNameTitulacion() ?> </p>
 						<p class="curso-date"> <span class="curso">Curso <?= $pisado->curso.'º' ?></span> <span class="date icon-clock"> <?= date('j/m/y' ,strtotime($pisado->date)) ?></span> </p>
@@ -38,7 +52,7 @@
 		<ul id="comentarios">
 			<?php
 
-				foreach ($comentarios as $comentario) { 
+				foreach ($comentarios as $comentario) {
 					$class = '';
 					if ($comentario->nia == $user->nia) {
 						$class .= 'you ';

@@ -1,9 +1,67 @@
 <?php
 
 class groupController extends Controller {
-	
+
 	function create() {
-		
+
+	}
+
+	function close() {
+		$this->security();
+
+		$id = (isset($_GET['id'])) ? (int) $_GET['id'] : false;
+		$pisados = Pisado::findByIdGroup($id);
+		$data = array();
+
+		if ($pisados) {
+			if (in_array($_SESSION['user']->nia, $group->getOwners()) || (($group->id_titulacion == $_SESSION['user']->id_titulacion) && $_SESSION['user']->isDelegadoCurso()) || ($_SESSION['user']->isDelegadoCentro()) ) {
+				foreach ($pisados as $pisado) {
+					$archive = new Archive;
+					$archive->pisado = $pisado;
+					if(!$archive->save()) {
+						$data['archive_error'] = 'No se ha podido archivar un pisado';
+						$this->render('viewGroup', $data);
+					}
+				}
+				if (isset($data['archive_error'])) {
+					$this->render('viewGroup', $data);
+				} else {
+					header('Location: /pisado/inicio/');
+				}
+			} else {
+				$this->render_error(401);
+			}
+		} else {
+			$this->render_error(404);
+		}
+	}
+
+	function open() {
+		$this->security();
+
+		$id = (isset($_GET['id'])) ? (int) $_GET['id'] : false;
+		$pisados = Pisado::findByIdGroup($id, true);
+		$data = array();
+
+		if ($pisados) {
+			if (in_array($_SESSION['user']->nia, $group->getOwners()) || (($group->id_titulacion == $_SESSION['user']->id_titulacion) && $_SESSION['user']->isDelegadoCurso()) || ($_SESSION['user']->isDelegadoCentro()) ) {
+				foreach ($pisados as $pisado) {
+					$archive = Archive::findByPisado($pisado->id);
+					if(!isset($archive) || !$archive->delete()) {
+						$data['archive_error'] = 'No se ha podido archivar un pisado';
+					}
+				}
+				if (isset($data['archive_error'])) {
+					$this->render('viewGroup', $data);
+				} else {
+					header('Location: /pisado/inicio/');
+				}
+			} else {
+				$this->render_error(401);
+			}
+		} else {
+			$this->render_error(404);
+		}
 	}
 
 	function view() {
