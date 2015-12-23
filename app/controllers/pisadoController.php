@@ -63,7 +63,7 @@ class pisadoController extends Controller {
 	function close() {
 		$this->security();
 
-		$id = (int) $_GET['id'];
+		$id = (isset($_GET['id'])) ? (int) $_GET['id'] : false;
 		$pisado = Pisado::findById($id);
 		$data = array();
 
@@ -88,7 +88,7 @@ class pisadoController extends Controller {
 	function open() {
 		$this->security();
 
-		$id = (int) $_GET['id'];
+		$id = (isset($_GET['id'])) ? (int) $_GET['id'] : false;
 		$pisado = Pisado::findById($id);
 		$data = array();
 
