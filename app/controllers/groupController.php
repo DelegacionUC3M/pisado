@@ -43,7 +43,7 @@ class groupController extends Controller {
 		$group = Group::findById($id,true);
 		$data = array();
 
-		if ($groups) {
+		if ($group) {
 			if (in_array($_SESSION['user']->nia, $group->getOwners()) || (($group->id_titulacion == $_SESSION['user']->id_titulacion) && $_SESSION['user']->isDelegadoCurso()) || ($_SESSION['user']->isDelegadoCentro()) ) {
 				foreach ($group->pisados as $pisado) {
 					$archive = Archive::findByPisado($pisado->id);

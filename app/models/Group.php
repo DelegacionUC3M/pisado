@@ -9,7 +9,7 @@ class Group {
 	public $curso;
 	public $pisados;
 
-	public static function findById($id) {
+	public static function findById($id,$archive=false) {
 		$db = new DB(SQL_DB_PISADO);
 		$db->run('SELECT A.*, id_titulacion, curso FROM `group` A LEFT JOIN pisado B ON A.id = B.id_group WHERE A.id=? GROUP BY A.id ORDER BY A.date', array($id));
 
@@ -20,7 +20,7 @@ class Group {
 	        	$group->{$key} = $value;
 	    	}
 
-	    	$group->pisados = Pisado::findByIdGroup($group->id,true);
+	    	$group->pisados = Pisado::findByIdGroup($group->id,$archive);
 
 	    	return $group;
 		} else {
