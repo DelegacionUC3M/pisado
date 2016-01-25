@@ -109,7 +109,7 @@ class Group {
 
 	public static function findByCentro($centro, $all = false, $archive = false) {
 		$db = new DB(SQL_DB_PISADO);
-		$db->run('SELECT A.*, B.id_titulacion, B.curso FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group INNER JOIN delegados.titulaciones C ON B.id_titulacion = C.id_titulacion WHERE C.id_centro = ? GROUP BY A.id ORDER BY A.date DESC', array($centro) );
+		$db->run('SELECT A.*, B.id_titulacion, B.curso FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group GROUP BY A.id ORDER BY A.date DESC');
 		$data = $db->data();
 
 		$groups = array();
