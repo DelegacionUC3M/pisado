@@ -5,7 +5,7 @@ CREATE TABLE comentario_group (
   nombre varchar(50) NOT NULL,
   date date NOT NULL,
   text text NOT NULL,
-  FOREIGN KEY (id_group) REFERENCES group (id) ON DELETE CASCADE ON UPDATE CASCADE
+  FOREIGN KEY (id_group) REFERENCES "group" (id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE comentario_pisado (
@@ -18,7 +18,7 @@ CREATE TABLE comentario_pisado (
   FOREIGN KEY (id_pisado) REFERENCES pisado (id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-CREATE TABLE group (
+CREATE TABLE "group" (
   id serial PRIMARY KEY,
   subject varchar(50) NOT NULL,
   date date NOT NULL
@@ -44,5 +44,5 @@ CREATE TABLE pisado (
   profesor varchar(40) NOT NULL,
   texto text NOT NULL,
   id_group bigint,
-  FOREIGN KEY (id_group) REFERENCES group (id)
+  FOREIGN KEY (id_group) REFERENCES "group" (id)
 );
