@@ -11,7 +11,7 @@ class Group {
 
 	public static function findById($id,$archive=false) {
 		$db = new DB(SQL_DB_PISADO);
-		$db->run('SELECT A.*, id_titulacion, curso FROM `group` A LEFT JOIN pisado B ON A.id = B.id_group WHERE A.id=? GROUP BY A.id ORDER BY A.date', array($id));
+		$db->run('SELECT A.*, id_titulacion, curso FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group WHERE A.id=? GROUP BY A.id ORDER BY A.date', array($id));
 
 		if ($db->count() > 0) {
 			$group = new Group;
@@ -30,7 +30,7 @@ class Group {
 
 	public static function findByNia($nia, $all = false) {
 		$db = new DB(SQL_DB_PISADO);
-		$db->run('SELECT A.*, id_titulacion, curso FROM `group` A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.nia=? GROUP BY A.id ORDER BY A.date DESC', array($nia));
+		$db->run('SELECT A.*, id_titulacion, curso FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.nia=? GROUP BY A.id ORDER BY A.date DESC', array($nia));
 		$data = $db->data();
 
 		$groups = array();
@@ -49,7 +49,7 @@ class Group {
 
 	public static function findByIdTitulacion($id_titulacion, $all = false, $archive = false) {
 		$db = new DB(SQL_DB_PISADO);
-		$db->run('SELECT A.*, id_titulacion, curso FROM `group` A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.id_titulacion=? GROUP BY A.id ORDER BY A.date DESC', array($id_titulacion));
+		$db->run('SELECT A.*, id_titulacion, curso FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.id_titulacion=? GROUP BY A.id ORDER BY A.date DESC', array($id_titulacion));
 		$data = $db->data();
 
 		$groups = array();
@@ -70,7 +70,7 @@ class Group {
 
 	public static function findByCurso($curso, $id_titulacion, $all = false, $archive = false) {
 		$db = new DB(SQL_DB_PISADO);
-		$db->run('SELECT A.*, id_titulacion, curso FROM `group` A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.curso=? AND B.id_titulacion=? GROUP BY A.id ORDER BY A.date DESC', array($curso,$id_titulacion));
+		$db->run('SELECT A.*, id_titulacion, curso FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.curso=? AND B.id_titulacion=? GROUP BY A.id ORDER BY A.date DESC', array($curso,$id_titulacion));
 		$data = $db->data();
 
 		$groups = array();
@@ -92,7 +92,7 @@ class Group {
 	// DEPRECATED
 	// public static function findAll() {
 	// 	$db = new DB(SQL_DB_PISADO);
-	// 	$db->run('SELECT A.*, id_titulacion, curso FROM `group` A LEFT JOIN pisado B ON A.id = B.id_group GROUP BY A.id ORDER BY A.date');
+	// 	$db->run('SELECT A.*, id_titulacion, curso FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group GROUP BY A.id ORDER BY A.date');
 	// 	$data = $db->data();
 
 	// 	$groups = array();
@@ -109,7 +109,7 @@ class Group {
 
 	public static function findByCentro($centro, $all = false, $archive = false) {
 		$db = new DB(SQL_DB_PISADO);
-		$db->run('SELECT A.*, B.id_titulacion, B.curso FROM `group` A LEFT JOIN pisado B ON A.id = B.id_group INNER JOIN delegados.titulaciones C ON B.id_titulacion = C.id_titulacion WHERE C.id_centro = ? GROUP BY A.id ORDER BY A.date DESC', array($centro) );
+		$db->run('SELECT A.*, B.id_titulacion, B.curso FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group INNER JOIN delegados.titulaciones C ON B.id_titulacion = C.id_titulacion WHERE C.id_centro = ? GROUP BY A.id ORDER BY A.date DESC', array($centro) );
 		$data = $db->data();
 
 		$groups = array();
@@ -137,7 +137,7 @@ class Group {
 
 	public function save() {
 		$db = new DB(SQL_DB_PISADO);
-		$query = $db->run('INSERT INTO `group` (subject,date) VALUES (?,NOW())', array($this->subject));
+		$query = $db->run('INSERT INTO "group" (subject,date) VALUES (?,NOW())', array($this->subject));
 		if ($query) {
 			$this->id = $db->lastId();
 			return true;
@@ -148,7 +148,7 @@ class Group {
 
 	public function delete() {
 		$db = new DB(SQL_DB_PISADO);
-		return $db->run('DELETE FROM `group` WHERE `id`='.$this->id);
+		return $db->run('DELETE FROM "group" WHERE "id"='.$this->id);
 	}
 
 	public function getNameTitulacion() {
