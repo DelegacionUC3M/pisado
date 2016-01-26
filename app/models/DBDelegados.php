@@ -76,7 +76,7 @@ class DBDelegados {
 		} else if($delTitulacion[0] != null) {
 			$rol = ROL_DELEGADO_TITULACION;
 		} else if($delCurso[0] != null) {	//Faltan los casos especiales en que alguien que no es delegado ejerce como tal.
-			$rol = ROL_DELEGADO_CURSO
+			$rol = ROL_DELEGADO_CURSO;
 		} else {
 			$rol = null;
 		}
