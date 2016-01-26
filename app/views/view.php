@@ -33,7 +33,7 @@
 		</ul>
 		<p class="info">Estos datos se guardan como metodo de contacto unicamente y no serán accesibles por el profesor
 			ni por el destinatario de esta queja, solo por los delegados encargados:
-			<?php foreach ($delegado as $delegadoTit) { ?> <b><?= $delegadoTit['nombre'] ?> (<a href="mailto:<?= $delegadoTit['email'] ?>"><?= $delegadoTit['email'] ?></a>)</b><?php } ?>.</p>
+			<?php if(isset($delegado)) { foreach ($delegado as $delegadoTit) { ?> <b><?= $delegadoTit['nombre'] ?> (<a href="mailto:<?= $delegadoTit['email'] ?>"><?= $delegadoTit['email'] ?></a>)</b><?php } }?>.</p>
 		<?php } else { ?>
 			<p class="info">El PISADO es anónimo. Los datos personales solo son accesibles por el delegado encargado como metodo de contacto. Si necesitas más información ponte en contacto con <b><?= $delegado['nombre'] ?> (<a href="mailto:<?= $delegado['email'] ?>"><?= $delegado['email'] ?></a>)</b>. </p>
 		<?php } ?>
