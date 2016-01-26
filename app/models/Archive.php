@@ -8,7 +8,7 @@ class Archive {
 
 	public static function findById($id) {
 		$db = new DB(SQL_DB_PISADO);
-		$db->run('SELECT id, id_pisado, `date` FROM `archive` WHERE id = ?', array($id));
+		$db->run('SELECT id, id_pisado, "date" FROM "archive" WHERE id = ?', array($id));
 
 		if ($db->count() > 0) {
 			$archive = new Archive;
@@ -29,7 +29,7 @@ class Archive {
 
 	public static function findByPisado($pisado_id) {
 		$db = new DB(SQL_DB_PISADO);
-		$db->run('SELECT id, id_pisado, `date` FROM `archive` WHERE id_pisado = ?', array($pisado_id));
+		$db->run('SELECT id, id_pisado, "date" FROM "archive" WHERE id_pisado = ?', array($pisado_id));
 
         if ($db->count() > 0) {
 			$archive = new Archive;
@@ -50,7 +50,7 @@ class Archive {
 
 	public static function findByDate($date) {
 		$db = new DB(SQL_DB_PISADO);
-		$db->run('SELECT id, id_pisado, `date` FROM `archive` WHERE date = ?', array($date));
+		$db->run('SELECT id, id_pisado, "date" FROM "archive" WHERE date = ?', array($date));
 		$data = $db->data();
 
 		$archives = array();
@@ -71,7 +71,7 @@ class Archive {
 
 	public function save() {
 		$db = new DB(SQL_DB_PISADO);
-		$query = $db->run('INSERT INTO `archive` (id_pisado,date) VALUES (?,NOW())', array($this->pisado->id));
+		$query = $db->run('INSERT INTO "archive" (id_pisado,date) VALUES (?,NOW())', array($this->pisado->id));
 		if ($query) {
 			$this->id = $db->lastId();
 			return true;
@@ -82,7 +82,7 @@ class Archive {
 
 	public function delete() {
 		$db = new DB(SQL_DB_PISADO);
-		return $db->run('DELETE FROM `archive` WHERE `id`= ?', array($this->id));
+		return $db->run('DELETE FROM "archive" WHERE "id"= ?', array($this->id));
 	}
 
 }
