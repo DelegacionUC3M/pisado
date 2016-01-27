@@ -19,8 +19,8 @@ class User {
 		$this->name = $name;
 		$this->email = $email;
 
-		$delegado = DBDelegados::findDelegado(100316890);
-
+		$delegado = DBDelegados::findDelegado($this->nia);
+		var_dump($delegado);
 		if ($delegado['rol'] != null) {
 			$this->isDelegado = true;
 			$this->id_titulacion = $delegado['id_titulacion'];
