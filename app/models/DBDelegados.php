@@ -59,6 +59,7 @@ class DBDelegados {
 	 */
 	public static function findDelegado($nia) {
 		$db = new DB(SQL_DB_DELEGADOS);
+		print_r($nia);
 		$db->run('SELECT id, id_titulacion, curso FROM personas WHERE nia = ?;', array($nia));
 		$data = $db->data();
 		//get delegadoCurso
@@ -72,7 +73,7 @@ class DBDelegados {
 		$delTitulacion = $db->data();
 		print_r($delCentro);
 		print_r($delTitulacion);
-		print_r($delCurs);
+		print_r($delCurso);
 		die();
 		if($delCentro[0] != null) {
 			$rol = ROL_DELEGADO_CENTRO;	
