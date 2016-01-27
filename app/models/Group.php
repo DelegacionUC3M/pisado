@@ -140,6 +140,7 @@ class Group {
 		$query = $db->run('INSERT INTO "group" (subject,date) VALUES (?,NOW())', array($this->subject));
 		if ($query) {
 			$this->id = $db->lastId();
+			print_r($db->lastId());
 			return true;
 		} else {
 			return false;
@@ -148,7 +149,7 @@ class Group {
 
 	public function delete() {
 		$db = new DB(SQL_DB_PISADO);
-		return $db->run('DELETE FROM "group" WHERE "id"='.$this->id);
+		return $db->run('DELETE FROM "group" WHERE "id"=?', array($this->id));
 	}
 
 	public function getNameTitulacion() {
