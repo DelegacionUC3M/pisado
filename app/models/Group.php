@@ -140,7 +140,6 @@ class Group {
 		$query = $db->run('INSERT INTO "group" (subject,date) VALUES (?,NOW())', array($this->subject));
 		if ($query) {
 			$this->id = $db->lastId();
-			print_r($db->lastId());
 			return true;
 		} else {
 			return false;
