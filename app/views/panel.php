@@ -37,6 +37,7 @@
 	</article>
 
 	<?php
+	var_dump($user);
 	if ($user->isDelegado) { ?>
 
 	<article class="pisados delegacion" id="delegacion">
@@ -95,7 +96,7 @@
 									<p class="id-asignatura"><span class="id">#G<?= $pisado->id ?></span> <?= $pisado->subject ?></p>
 									<p class="titulacion"><?= $pisado->getNameTitulacion() ?> </p>
 									<p class="curso-date"> <span class="curso">Curso <?= $pisado->curso.'º' ?></span> <span class="date icon-clock"> <?= date('j/m/y' ,strtotime($pisado->date)) ?></span> </p>
-								</li></a>
+							</li></a>
 						<?php
 					}
 				}
