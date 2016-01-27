@@ -21,7 +21,6 @@ class User {
 
 		$delegado = DBDelegados::findDelegado($this->nia);
 		var_dump($delegado);
-		die();
 		if ($delegado['rol'] != null) {
 			$this->isDelegado = true;
 			$this->id_titulacion = $delegado['id_titulacion'];
