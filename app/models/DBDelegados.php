@@ -71,9 +71,6 @@ class DBDelegados {
 		//get delegadoTitulacion
 		$db->run('SELECT id FROM delegadosTitulacion WHERE id = ?;', array($data[0]['id']));
 		$delTitulacion = $db->data();
-		print_r($delCentro);
-		print_r($delTitulacion);
-		print_r($delCurso);
 		
 		if($delCentro[0] != null) {
 			$rol = ROL_DELEGADO_CENTRO;	
@@ -84,9 +81,9 @@ class DBDelegados {
 		} else {
 			$rol = null;
 		}
-		print_r($rol);
 		die();
 		if ($db->count() == 1) {
+			print_r('ola k ase');
 			return array('id_titulacion' => $data[0]['id_titulacion'], 'rol' => $rol, 'curso' => $data[0]['curso']);
 		} else {
 			return null;
