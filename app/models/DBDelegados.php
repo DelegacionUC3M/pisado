@@ -81,12 +81,8 @@ class DBDelegados {
 			$rol = null;
 		}
 		if (isset($data)) {
-			print_r('ola k ase');
-			die();
 			return array('id_titulacion' => $data[0]['id_titulacion'], 'rol' => $rol, 'curso' => $data[0]['curso']);
 		} else {
-			print_r('ola k ase22');
-			die();
 			return null;
 		}
 	}
