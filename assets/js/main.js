@@ -60,6 +60,7 @@ $(function() {
 		} else {
 			console.log('ola k ase');
 			var pisados = $('.delegacion #pisados li.selected');
+			console.log(pisados);
 			if ( pisados.length > 1 ) {
 				var form = $('<form>', {
 					action: '?#delegacion',
