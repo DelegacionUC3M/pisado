@@ -70,9 +70,9 @@ class DBDelegados {
 		//get delegadoTitulacion
 		$db->run('SELECT id FROM delegadosTitulacion WHERE id = ?;', array($data[0]['id']));
 		$delTitulacion = $db->data();
-		var_dump($delCentro);
-		var_dump($delTitulacion);
-		var_dump($delCurs);
+		print_r($delCentro);
+		print_r($delTitulacion);
+		print_r($delCurs);
 		if($delCentro[0] != null) {
 			$rol = ROL_DELEGADO_CENTRO;	
 		} else if($delTitulacion[0] != null) {
