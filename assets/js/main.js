@@ -66,6 +66,7 @@ $(function() {
 				});
 
 				pisados.filter('#pisado').each(function() {
+					console.log($(this).data('id'));
 					form.append($('<input>', {
 						name: 'pisado[]',
 						value: $(this).data('id'),
