@@ -70,7 +70,7 @@ class Group {
 
 	public static function findByCurso($curso, $id_titulacion, $all = false, $archive = false) {
 		$db = new DB(SQL_DB_PISADO);
-		$db->run('SELECT "group".*, id_titulacion, curso FROM "group" LEFT JOIN pisado ON "group".id = pisado.id_group WHERE B.curso=? AND pisado.id_titulacion=? GROUP BY "group".id ORDER BY "group".date DESC', array($curso,$id_titulacion));
+		$db->run('SELECT "group".*, id_titulacion, curso FROM "group" LEFT JOIN pisado ON "group".id = pisado.id_group WHERE pisado.curso=? AND pisado.id_titulacion=? GROUP BY "group".id ORDER BY "group".date DESC', array($curso,$id_titulacion));
 		$data = $db->data();
 
 		$groups = array();
@@ -109,7 +109,7 @@ class Group {
 
 	public static function findByCentro($centro, $all = false, $archive = false) {
 		$db = new DB(SQL_DB_PISADO);
-		$db->run('SELECT "group".*, MAX(B.id_titulacion), MAX(B.curso) FROM "group" LEFT JOIN pisado ON "group".id = pisado.id_group GROUP BY "group".id ORDER BY "group".date DESC');
+		$db->run('SELECT "group".*, MAX(pisado.id_titulacion), MAX(pisado.curso) FROM "group" LEFT JOIN pisado ON "group".id = pisado.id_group GROUP BY "group".id ORDER BY "group".date DESC');
 		$data = $db->data();
 
 		$groups = array();
