@@ -82,6 +82,7 @@ class DBDelegados {
 		}
 		if ($db->count() == 1) {
 			print_r('ola k ase');
+			die();
 			return array('id_titulacion' => $data[0]['id_titulacion'], 'rol' => $rol, 'curso' => $data[0]['curso']);
 		} else {
 			return null;
