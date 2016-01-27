@@ -59,8 +59,6 @@ class inicioController extends Controller {
 
 		if (isset($_POST['pisado']) || isset($_POST['group'])) {
 			var_dump($_POST['pisado']);
-			var_dump($_POST['group']);
-			die();
 			if ($user->isDelegadoTitulacion() || $user->isDelegadoCentro()) {
 				$pisados = isset($_POST['pisado']) ? $_POST['pisado'] : array();
 				$groups = isset($_POST['group']) ? $_POST['group'] : array();
@@ -103,6 +101,8 @@ class inicioController extends Controller {
 						$group = new Group;
 						$group->subject = $_POST['name'];
 						$group->save();
+						var_dump($pisados);
+						die();
 						foreach ($pisados as $id_pisado) {
 							$pisado = Pisado::findById($id_pisado);
 							$pisado->id_group = $group->id;
