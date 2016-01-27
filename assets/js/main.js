@@ -58,6 +58,7 @@ $(function() {
 				})
 			})
 		} else {
+			console.log('ola k ase');
 			var pisados = $('.delegacion #pisados li.selected');
 			if ( pisados.length > 1 ) {
 				var form = $('<form>', {
@@ -66,7 +67,6 @@ $(function() {
 				});
 
 				pisados.filter('#pisado').each(function() {
-					console.log($(this).data('id'));
 					form.append($('<input>', {
 						name: 'pisado[]',
 						value: $(this).data('id'),
@@ -75,7 +75,6 @@ $(function() {
 				});
 
 				pisados.filter('#group').each(function() {
-					console.log($(this).data('id'));
 					form.append($('<input>', {
 						name: 'group[]',
 						value: $(this).data('id'),
