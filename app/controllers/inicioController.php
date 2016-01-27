@@ -103,7 +103,7 @@ class inicioController extends Controller {
 						$group->save();
 						foreach ($pisados as $id_pisado) {
 							$pisado = Pisado::findById($id_pisado);
-							var_dump($pisado);
+							var_dump($group);
 							die();
 							$pisado->id_group = $group->id;
 							$pisado->update();
