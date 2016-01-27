@@ -101,10 +101,10 @@ class inicioController extends Controller {
 						$group = new Group;
 						$group->subject = $_POST['name'];
 						$group->save();
-						var_dump($pisados);
-						die();
 						foreach ($pisados as $id_pisado) {
 							$pisado = Pisado::findById($id_pisado);
+							var_dump($pisado);
+							die();
 							$pisado->id_group = $group->id;
 							$pisado->update();
 						}
