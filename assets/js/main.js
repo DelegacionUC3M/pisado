@@ -67,7 +67,7 @@ $(function() {
 
 				pisados.filter('#pisado').each(function() {
 					form.append($('<input>', {
-						name: 'pisado',
+						name: 'pisado[]',
 						value: $(this).data('id'),
 						type: 'text'
 					}))				
@@ -75,7 +75,7 @@ $(function() {
 
 				pisados.filter('#group').each(function() {
 					form.append($('<input>', {
-						name: 'group',
+						name: 'group[]',
 						value: $(this).data('id'),
 						type: 'text'
 					}))	
