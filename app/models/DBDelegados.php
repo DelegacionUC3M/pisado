@@ -74,7 +74,7 @@ class DBDelegados {
 		print_r($delCentro);
 		print_r($delTitulacion);
 		print_r($delCurso);
-		die();
+		
 		if($delCentro[0] != null) {
 			$rol = ROL_DELEGADO_CENTRO;	
 		} else if($delTitulacion[0] != null) {
@@ -84,7 +84,8 @@ class DBDelegados {
 		} else {
 			$rol = null;
 		}
-
+		print_r($rol);
+		die();
 		if ($db->count() == 1) {
 			return array('id_titulacion' => $data[0]['id_titulacion'], 'rol' => $rol, 'curso' => $data[0]['curso']);
 		} else {
