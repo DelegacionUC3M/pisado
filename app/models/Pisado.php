@@ -170,7 +170,7 @@ class Pisado {
 
 	public function update() {
 		$db = new DB(SQL_DB_PISADO);
-		return $db->run('UPDATE pisado SET id_group=? WHERE id='.$this->id, array($this->id_group));
+		return $db->run('UPDATE pisado SET id_group=? WHERE id=?', array($this->id_group,$this->id));
 	}
 
 	public function getNameTitulacion() {
