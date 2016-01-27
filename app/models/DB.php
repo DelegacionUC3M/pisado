@@ -41,7 +41,7 @@ class DB {
 
 	// Get the ID of the last insert query
 	public function lastId() {
-		return $this->db->lastInsertId();
+		return $this->db->lastInsertId('id');
 	}
 
 }
