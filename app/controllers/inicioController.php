@@ -64,6 +64,8 @@ class inicioController extends Controller {
 
 				if (count($groups) == 1) { // meter todos a ese grupo
 					$group = Group::findById($groups[0]);
+					var_dump($pisados);
+					die();
 					foreach ($pisados as $id_pisado) {
 						$pisado = Pisado::findById($id_pisado);
 						if ($group->curso == $pisado->curso && $group->id_titulacion == $pisado->id_titulacion) {
@@ -78,8 +80,6 @@ class inicioController extends Controller {
 						$group = new Group;
 						$group->subject = $_POST['name'];
 						$group->save();
-						var_dump($pisados);
-						die();
 						foreach ($pisados as $id_pisado) {
 							$pisado = Pisado::findById($id_pisado);
 							$pisado->id_group = $group->id;
