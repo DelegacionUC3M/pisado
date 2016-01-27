@@ -11,7 +11,7 @@ class Group {
 
 	public static function findById($id,$archive=false) {
 		$db = new DB(SQL_DB_PISADO);
-		$db->run('SELECT A.*, id_titulacion, curso FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group WHERE A.id=? ORDER BY A.date', array($id));
+		$db->run('SELECT A.*, MAX(id_titulacion), MAX(curso) FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group WHERE A.id=? GROUP BY A.id ORDER BY A.date', array($id));
 
 		if ($db->count() > 0) {
 			$group = new Group;
@@ -49,7 +49,7 @@ class Group {
 
 	public static function findByIdTitulacion($id_titulacion, $all = false, $archive = false) {
 		$db = new DB(SQL_DB_PISADO);
-		$db->run('SELECT A.*, id_titulacion, curso FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.id_titulacion=? ORDER BY A.date DESC', array($id_titulacion));
+		$db->run('SELECT A.*, MAX(id_titulacion), MAX(curso) FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.id_titulacion=? GROUP BY A.id ORDER BY A.date DESC', array($id_titulacion));
 		$data = $db->data();
 
 		$groups = array();
@@ -70,7 +70,7 @@ class Group {
 
 	public static function findByCurso($curso, $id_titulacion, $all = false, $archive = false) {
 		$db = new DB(SQL_DB_PISADO);
-		$db->run('SELECT A.*, id_titulacion, curso FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.curso=? AND B.id_titulacion=? ORDER BY A.date DESC', array($curso,$id_titulacion));
+		$db->run('SELECT A.*, MAX(id_titulacion), MAX(curso) FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.curso=? AND B.id_titulacion=? GROUP BY A.id ORDER BY A.date DESC', array($curso,$id_titulacion));
 		$data = $db->data();
 
 		$groups = array();
@@ -109,7 +109,7 @@ class Group {
 
 	public static function findByCentro($centro, $all = false, $archive = false) {
 		$db = new DB(SQL_DB_PISADO);
-		$db->run('SELECT A.*, MAX(B.id_titulacion), MAX(B.curso) FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group GROUP BY B.id ORDER BY A.date DESC');
+		$db->run('SELECT A.*, MAX(B.id_titulacion), MAX(B.curso) FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group GROUP BY A.id ORDER BY A.date DESC');
 		$data = $db->data();
 
 		$groups = array();
