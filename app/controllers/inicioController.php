@@ -61,7 +61,8 @@ class inicioController extends Controller {
 			if ($user->isDelegadoTitulacion() || $user->isDelegadoCentro()) {
 				$pisados = isset($_POST['pisado']) ? $_POST['pisado'] : array();
 				$groups = isset($_POST['group']) ? $_POST['group'] : array();
-
+				var_dump($pisados);
+				var_dump($groups);
 				if (count($groups) == 1) { // meter todos a ese grupo
 					$group = Group::findById($groups[0]);
 					foreach ($pisados as $id_pisado) {
