@@ -49,7 +49,7 @@ class Group {
 
 	public static function findByIdTitulacion($id_titulacion, $all = false, $archive = false) {
 		$db = new DB(SQL_DB_PISADO);
-		$db->run('SELECT A.*, id_titulacion, curso FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.id_titulacion=? GROUP BY B.id ORDER BY A.date DESC', array($id_titulacion));
+		$db->run('SELECT A.*, id_titulacion, curso FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.id_titulacion=? GROUP BY id ORDER BY A.date DESC', array($id_titulacion));
 		$data = $db->data();
 
 		$groups = array();
@@ -70,7 +70,7 @@ class Group {
 
 	public static function findByCurso($curso, $id_titulacion, $all = false, $archive = false) {
 		$db = new DB(SQL_DB_PISADO);
-		$db->run('SELECT A.*, id_titulacion, curso FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.curso=? AND B.id_titulacion=? GROUP BY B.id ORDER BY A.date DESC', array($curso,$id_titulacion));
+		$db->run('SELECT A.*, id_titulacion, curso FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.curso=? AND B.id_titulacion=? GROUP BY id ORDER BY A.date DESC', array($curso,$id_titulacion));
 		$data = $db->data();
 
 		$groups = array();
