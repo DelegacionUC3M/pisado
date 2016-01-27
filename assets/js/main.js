@@ -74,9 +74,9 @@ $(function() {
 				});
 
 				pisados.filter('#group').each(function() {
+					console.log($(this).data('id'));
 					form.append($('<input>', {
 						name: 'group[]',
-						console.log($(this).data('id'));
 						value: $(this).data('id'),
 						type: 'text'
 					}))	
