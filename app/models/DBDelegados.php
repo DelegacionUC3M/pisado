@@ -73,6 +73,7 @@ class DBDelegados {
 		print_r($delCentro);
 		print_r($delTitulacion);
 		print_r($delCurs);
+		die();
 		if($delCentro[0] != null) {
 			$rol = ROL_DELEGADO_CENTRO;	
 		} else if($delTitulacion[0] != null) {
