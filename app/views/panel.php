@@ -37,7 +37,6 @@
 	</article>
 
 	<?php
-	var_dump($user);
 	if ($user->isDelegado) { ?>
 
 	<article class="pisados delegacion" id="delegacion">
