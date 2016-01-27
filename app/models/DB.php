@@ -24,7 +24,7 @@ class DB {
 		try {
 			return $this->stmt->execute($data);
 		} catch(PDOException $e) {
-			print_r('ola'.$e);
+			print_r($e);
 			return false;
 		}
 	}
