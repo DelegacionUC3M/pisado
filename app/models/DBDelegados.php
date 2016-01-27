@@ -59,7 +59,6 @@ class DBDelegados {
 	 */
 	public static function findDelegado($nia) {
 		$db = new DB(SQL_DB_DELEGADOS);
-		print_r($nia);
 		$db->run('SELECT id, id_titulacion, curso FROM personas WHERE nia = ?;', array($nia));
 		$data = $db->data();
 		//get delegadoCurso
@@ -72,16 +71,15 @@ class DBDelegados {
 		$db->run('SELECT id FROM delegadosTitulacion WHERE id = ?;', array($data[0]['id']));
 		$delTitulacion = $db->data();
 		
-		if($delCentro[0] != null) {
+		if(isset($delCentro[0])) {
 			$rol = ROL_DELEGADO_CENTRO;	
-		} else if($delTitulacion[0] != null) {
+		} else if(isset($delTitulacion[0])) {
 			$rol = ROL_DELEGADO_TITULACION;
-		} else if($delCurso[0] != null) {	//Faltan los casos especiales en que alguien que no es delegado ejerce como tal.
+		} else if(isset($delCurso[0])) {	//Faltan los casos especiales en que alguien que no es delegado ejerce como tal.
 			$rol = ROL_DELEGADO_CURSO;
 		} else {
 			$rol = null;
 		}
-		die();
 		if ($db->count() == 1) {
 			print_r('ola k ase');
 			return array('id_titulacion' => $data[0]['id_titulacion'], 'rol' => $rol, 'curso' => $data[0]['curso']);
