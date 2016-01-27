@@ -11,7 +11,7 @@ class Group {
 
 	public static function findById($id,$archive=false) {
 		$db = new DB(SQL_DB_PISADO);
-		$db->run('SELECT "group".*, id_titulacion, curso FROM "group" LEFT JOIN pisado ON "group".id = pisado.id_group WHERE "group".id=? GROUP BY "group".id ORDER BY "group".date', array($id));
+		$db->run('SELECT A.*, id_titulacion, curso FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group WHERE A.id=? GROUP BY A.id ORDER BY A.date', array($id));
 
 		if ($db->count() > 0) {
 			$group = new Group;
@@ -30,7 +30,7 @@ class Group {
 
 	public static function findByNia($nia, $all = false) {
 		$db = new DB(SQL_DB_PISADO);
-		$db->run('SELECT "group".*, MAX(id_titulacion), MAX(curso) FROM "group" LEFT JOIN pisado ON "group".id = pisado.id_group WHERE pisado.nia=? GROUP BY "group".id ORDER BY "group".date DESC', array($nia));
+		$db->run('SELECT A.*, MAX(id_titulacion), MAX(curso) FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.nia=? GROUP BY A.id ORDER BY A.date DESC', array($nia));
 		$data = $db->data();
 
 		$groups = array();
@@ -49,7 +49,7 @@ class Group {
 
 	public static function findByIdTitulacion($id_titulacion, $all = false, $archive = false) {
 		$db = new DB(SQL_DB_PISADO);
-		$db->run('SELECT "group".*, id_titulacion, curso FROM "group" LEFT JOIN pisado ON "group".id = pisado.id_group WHERE pisado.id_titulacion=? GROUP BY "group".id ORDER BY "group".date DESC', array($id_titulacion));
+		$db->run('SELECT A.*, id_titulacion, curso FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.id_titulacion=? GROUP BY A.id ORDER BY A.date DESC', array($id_titulacion));
 		$data = $db->data();
 
 		$groups = array();
@@ -70,7 +70,7 @@ class Group {
 
 	public static function findByCurso($curso, $id_titulacion, $all = false, $archive = false) {
 		$db = new DB(SQL_DB_PISADO);
-		$db->run('SELECT "group".*, id_titulacion, curso FROM "group" LEFT JOIN pisado ON "group".id = pisado.id_group WHERE pisado.curso=? AND pisado.id_titulacion=? GROUP BY "group".id ORDER BY "group".date DESC', array($curso,$id_titulacion));
+		$db->run('SELECT A.*, id_titulacion, curso FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.curso=? AND B.id_titulacion=? GROUP BY A.id ORDER BY A.date DESC', array($curso,$id_titulacion));
 		$data = $db->data();
 
 		$groups = array();
@@ -92,7 +92,7 @@ class Group {
 	// DEPRECATED
 	// public static function findAll() {
 	// 	$db = new DB(SQL_DB_PISADO);
-	// 	$db->run('SELECT "group".*, id_titulacion, curso FROM "group" A LEFT JOIN pisado ON "group".id = pisado.id_group GROUP BY "group".id ORDER BY "group".date');
+	// 	$db->run('SELECT A.*, id_titulacion, curso FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group GROUP BY A.id ORDER BY A.date');
 	// 	$data = $db->data();
 
 	// 	$groups = array();
@@ -109,7 +109,7 @@ class Group {
 
 	public static function findByCentro($centro, $all = false, $archive = false) {
 		$db = new DB(SQL_DB_PISADO);
-		$db->run('SELECT "group".*, MAX(pisado.id_titulacion), MAX(pisado.curso) FROM "group" LEFT JOIN pisado ON "group".id = pisado.id_group GROUP BY "group".id ORDER BY "group".date DESC');
+		$db->run('SELECT A.*, MAX(B.id_titulacion), MAX(B.curso) FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group GROUP BY A.id ORDER BY A.date DESC');
 		$data = $db->data();
 
 		$groups = array();
