@@ -19,6 +19,7 @@
 						</li></a>
 					<?php
 				} else {
+					var_dump($pisado);
 					?>
 						<a href="/pisado/group/view/<?= $pisado->id ?>"><li id="group">
 								<p class="id-asignatura"><span class="id">#G<?= $pisado->id ?></span> <?= $pisado->subject ?></p>
