@@ -66,8 +66,6 @@ class groupController extends Controller {
 
 	function view() {
 		$this->security();
-		var_dump($_GET);
-		die();
 		$id = (int) $_GET['id'];
 		if (isset($_GET['archived'])) {
 			$group = Group::findById($id, true);
