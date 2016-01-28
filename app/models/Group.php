@@ -12,17 +12,14 @@ class Group {
 	public static function findById($id,$archive=false) {
 		$db = new DB(SQL_DB_PISADO);
 		$db->run('SELECT A.*, MAX(id_titulacion) id_titulacion, MAX(curso) curso FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group WHERE A.id=? GROUP BY A.id ORDER BY A.date', array($id));
-		print_r($db->count());
 
 		if ($db->count() > 0) {
 			$group = new Group;
 			$data = $db->data();
-			var_dump($data);
-			
 			foreach ($data[0] as $key => $value){
 	        	$group->{$key} = $value;
 	    	}
-
+	    	var_dump($group);
 	    	$group->pisados = Pisado::findByIdGroup($group->id,$archive);
 
 	    	return $group;
