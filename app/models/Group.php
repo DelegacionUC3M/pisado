@@ -52,12 +52,13 @@ class Group {
 		$data = $db->data();
 
 		$groups = array();
-		print_r(Group::isClose($group->id));
+		
 		foreach($data as $row){
 			$group = new Group;
 			foreach($row as $key => $value){
 	        	$group->{$key} = $value;
 	        }
+	        print_r(Group::isClose($group->id));
 			if ($archive && Group::isClose($group->id)) {
 				$groups[] = $group;
 			} else if(!Group::isClose($group->id) || $all) {
@@ -75,12 +76,13 @@ class Group {
 		$data = $db->data();
 
 		$groups = array();
-		print_r(Group::isClose($group->id));
+		
 		foreach($data as $row){
 			$group = new Group;
 			foreach($row as $key => $value){
 	        	$group->{$key} = $value;
 	        }
+	        print_r(Group::isClose($group->id));
 			if ($archive && Group::isClose($group->id)) {
 				$groups[] = $group;
 			} else if(!Group::isClose($group->id) || $all) {
@@ -117,12 +119,13 @@ class Group {
 		$data = $db->data();
 
 		$groups = array();
-		print_r(Group::isClose($group->id));
+
 		foreach($data as $row){
 			$group = new Group;
 			foreach($row as $key => $value){
 	        	$group->{$key} = $value;
 	        }
+	        print_r(Group::isClose($group->id));
 			if ($archive && Group::isClose($group->id)) {
 				$groups[] = $group;
 			} else if(!Group::isClose($group->id) || $all) {
