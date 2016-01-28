@@ -63,8 +63,11 @@ class Group {
 				$groups[] = $group;
 			}
     	}
+    	print_r('grup');
     	var_dump(isset($groups));
+    	print_r('empty');
     	var_dump(!empty($groups[0]->pisados));
+    	print_r('both');
     	var_dump(isset($groups) && !empty($groups[0]->pisados));
 		if (isset($groups) && !empty($groups[0]->pisados)) { return $groups; }
     	else { return array(); }
@@ -87,8 +90,11 @@ class Group {
 				$groups[] = $group;
 			}
     	}
+    	print_r('grup');
     	var_dump(isset($groups));
+    	print_r('empty');
     	var_dump(!empty($groups[0]->pisados));
+    	print_r('both');
     	var_dump(isset($groups) && !empty($groups[0]->pisados));
     	if (isset($groups) && !empty($groups[0]->pisados)) { return $groups; }
     	else { return array(); }
@@ -130,8 +136,11 @@ class Group {
 				$groups[] = $group;
 			}
     	}
+    	print_r('grup');
     	var_dump(isset($groups));
+    	print_r('empty');
     	var_dump(!empty($groups[0]->pisados));
+    	print_r('both');
     	var_dump(isset($groups) && !empty($groups[0]->pisados));
 		if (isset($groups) && !empty($groups[0]->pisados)) { return $groups; }
     	else { return array(); }
