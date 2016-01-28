@@ -66,7 +66,8 @@ class groupController extends Controller {
 
 	function view() {
 		$this->security();
-
+		var_dump($_GET);
+		die();
 		$id = (int) $_GET['id'];
 		$group = Group::findById($id);
 		$data = array();
