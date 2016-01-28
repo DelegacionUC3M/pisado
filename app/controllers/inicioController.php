@@ -117,9 +117,9 @@ class inicioController extends Controller {
 		$data['pisados'] = array_merge(Pisado::findByNia($user->nia), Group::findByNia($user->nia));
 		usort( $data['pisados'], function($a, $b) {return strtotime($a->date) - strtotime($b->date);} );
 		$data['otros'] = array();
-		var_dump(Group::findByCentro($user->centro));
-		var_dump(Group::findByIdTitulacion($user->id_titulacion));
-		var_dump(Group::findByCurso($user->curso,$user->id_titulacion));
+		Group::findByCentro($user->centro);
+		Group::findByIdTitulacion($user->id_titulacion);
+		Group::findByCurso($user->curso,$user->id_titulacion);
 		die();
 		if ($user->isDelegadoCentro()) {
 			$data['otros'] = array_merge(Pisado::findByCentro($user->centro), Group::findByCentro($user->centro));
