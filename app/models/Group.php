@@ -63,7 +63,7 @@ class Group {
 				$groups[] = $group;
 			}
     	}
-    	print_r($groups->pisados);
+    	print_r($groups['pisados']);
 		if (!empty($groups->pisados)) { return $groups; }
     	else { return array(); }
 	}
@@ -85,7 +85,7 @@ class Group {
 				$groups[] = $group;
 			}
     	}
-    	print_r($groups->pisados);
+    	print_r($groups['pisados']);
     	if (!empty($groups->pisados)) { return $groups; }
     	else { return array(); }
 		
@@ -126,7 +126,7 @@ class Group {
 				$groups[] = $group;
 			}
     	}
-    	print_r($groups->pisados);
+    	print_r($groups['pisados']);
 		if (!empty($groups->pisados)) { return $groups; }
     	else { return array(); }
 	}
