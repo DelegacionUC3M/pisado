@@ -52,6 +52,7 @@ class Group {
 		$data = $db->data();
 
 		$groups = array();
+		print_r(Group::isClose($group->id));
 		foreach($data as $row){
 			$group = new Group;
 			foreach($row as $key => $value){
@@ -63,12 +64,7 @@ class Group {
 				$groups[] = $group;
 			}
     	}
-    	print_r('grup');
-    	var_dump(isset($groups));
-    	print_r('empty');
-    	var_dump(!empty($groups[0]->pisados));
-    	print_r('both');
-    	var_dump(isset($groups) && !empty($groups[0]->pisados));
+    	
 		if (isset($groups) && !empty($groups[0]->pisados)) { return $groups; }
     	else { return array(); }
 	}
@@ -79,6 +75,7 @@ class Group {
 		$data = $db->data();
 
 		$groups = array();
+		print_r(Group::isClose($group->id));
 		foreach($data as $row){
 			$group = new Group;
 			foreach($row as $key => $value){
@@ -90,12 +87,7 @@ class Group {
 				$groups[] = $group;
 			}
     	}
-    	print_r('grup');
-    	var_dump(isset($groups));
-    	print_r('empty');
-    	var_dump(!empty($groups[0]->pisados));
-    	print_r('both');
-    	var_dump(isset($groups) && !empty($groups[0]->pisados));
+
     	if (isset($groups) && !empty($groups[0]->pisados)) { return $groups; }
     	else { return array(); }
 		
@@ -125,6 +117,7 @@ class Group {
 		$data = $db->data();
 
 		$groups = array();
+		print_r(Group::isClose($group->id));
 		foreach($data as $row){
 			$group = new Group;
 			foreach($row as $key => $value){
@@ -136,12 +129,7 @@ class Group {
 				$groups[] = $group;
 			}
     	}
-    	print_r('grup');
-    	var_dump(isset($groups));
-    	print_r('empty');
-    	var_dump(!empty($groups[0]->pisados));
-    	print_r('both');
-    	var_dump(isset($groups) && !empty($groups[0]->pisados));
+
 		if (isset($groups) && !empty($groups[0]->pisados)) { return $groups; }
     	else { return array(); }
 	}
