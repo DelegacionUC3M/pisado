@@ -12,7 +12,7 @@ class Group {
 	public static function findById($id,$archive=false) {
 		$db = new DB(SQL_DB_PISADO);
 		$db->run('SELECT A.*, MAX(id_titulacion) id_titulacion, MAX(curso) curso FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group WHERE A.id=? GROUP BY A.id ORDER BY A.date', array($id));
-		
+
 		if ($db->count() > 0) {
 			$group = new Group;
 			$data = $db->data();
@@ -32,7 +32,7 @@ class Group {
 		$db = new DB(SQL_DB_PISADO);
 		$db->run('SELECT A.*, MAX(id_titulacion) id_titulacion, MAX(curso) curso FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.nia=? GROUP BY A.id ORDER BY A.date DESC', array($nia));
 		$data = $db->data();
-		
+
 		$groups = array();
 		foreach($data as $row){
 			$group = new Group;
@@ -51,7 +51,7 @@ class Group {
 		$db = new DB(SQL_DB_PISADO);
 		$db->run('SELECT A.*, MAX(id_titulacion) id_titulacion, MAX(curso) curso FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.id_titulacion=? GROUP BY A.id ORDER BY A.date DESC', array($id_titulacion));
 		$data = $db->data();
-		
+
 		$groups = array();
 		foreach($data as $row){
 			$group = new Group;
@@ -72,7 +72,7 @@ class Group {
 		$db = new DB(SQL_DB_PISADO);
 		$db->run('SELECT A.*, MAX(id_titulacion) id_titulacion, MAX(curso) curso FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.curso=? AND B.id_titulacion=? GROUP BY A.id ORDER BY A.date DESC', array($curso,$id_titulacion));
 		$data = $db->data();
-		
+
 		$groups = array();
 		foreach($data as $row){
 			$group = new Group;
@@ -111,7 +111,7 @@ class Group {
 		$db = new DB(SQL_DB_PISADO);
 		$db->run('SELECT A.*, MAX(B.id_titulacion) id_titulacion, MAX(B.curso) curso FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group GROUP BY A.id ORDER BY A.date DESC');
 		$data = $db->data();
-		
+
 		$groups = array();
 		foreach($data as $row){
 			$group = new Group;
@@ -130,7 +130,7 @@ class Group {
 
 	public static function isClose($id_group) {
 		$db = new DB(SQL_DB_PISADO);
-		$db->run('SELECT * FROM pisado LEFT JOIN archive ON pisado.id = archive.id_pisado WHERE archive.id IS NULL AND pisado.id_group=?', array($id_group));
+		$db->run('SELECT * FROM pisado LEFT JOIN archive ON pisado.id = archive.id_pisado WHERE /*archive.id IS NULL AND*/ pisado.id_group=?', array($id_group));
 
 		return $db->count() == 0;
 	}
