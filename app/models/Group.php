@@ -63,7 +63,7 @@ class Group {
 				$groups[] = $group;
 			}
     	}
-		if (!empty($groups[0]->pisados)) { return $groups; }
+		if (isset($groups) && !empty($groups[0]->pisados)) { return $groups; }
     	else { return array(); }
 	}
 
@@ -84,8 +84,7 @@ class Group {
 				$groups[] = $group;
 			}
     	}
-    	var_dump($groups);
-    	if (!empty($groups[0]->pisados)) { return $groups; }
+    	if (isset($groups) && !empty($groups[0]->pisados)) { return $groups; }
     	else { return array(); }
 		
 	}
@@ -125,7 +124,7 @@ class Group {
 				$groups[] = $group;
 			}
     	}
-		if (!empty($groups[0]->pisados)) { return $groups; }
+		if (isset($groups) && !empty($groups[0]->pisados)) { return $groups; }
     	else { return array(); }
 	}
 
