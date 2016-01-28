@@ -69,6 +69,8 @@ class groupController extends Controller {
 
 		$id = (int) $_GET['id'];
 		$group = Group::findById($id);
+		var_dump($group);
+		die();
 		$data = array();
 
 		if ($group) {
