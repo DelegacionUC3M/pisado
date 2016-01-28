@@ -40,8 +40,8 @@ class DB {
 	}
 
 	// Get the ID of the last insert query
-	public function lastId() {
-		return $this->db->lastInsertId('id');
+	public function lastId($tabla) {
+		return $this->db->lastInsertId($tabla.'_id_seq');
 	}
 
 }

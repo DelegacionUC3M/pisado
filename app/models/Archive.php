@@ -73,7 +73,7 @@ class Archive {
 		$db = new DB(SQL_DB_PISADO);
 		$query = $db->run('INSERT INTO "archive" (id_pisado,date) VALUES (?,NOW())', array($this->pisado->id));
 		if ($query) {
-			$this->id = $db->lastId();
+			$this->id = $db->lastId("archive");
 			return true;
 		} else {
 			return false;
