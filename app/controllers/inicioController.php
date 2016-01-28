@@ -138,10 +138,6 @@ class inicioController extends Controller {
 		$user = $_SESSION['user'];
 
 		if($user->isDelegadoCurso()) {
-			var_dump(Group::findByCentro($user->centro,false,true));
-			var_dump(Group::findByIdTitulacion($user->id_titulacion,false,true));
-			var_dump(Group::findByCurso($user->curso,$user->id_titulacion,false,true));
-			die();
 			if ($user->isDelegadoCentro()) {
 				$data['otros'] = array_merge(Pisado::findByCentro($user->centro,true), Group::findByCentro($user->centro,false,true));
 				usort( $data['otros'], function($a, $b) {return  - strtotime($a->date) + strtotime($b->date);});
