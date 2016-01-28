@@ -138,10 +138,9 @@ class Group {
 	public function save() {
 		$db = new DB(SQL_DB_PISADO);
 		$query = $db->run('INSERT INTO "group" (subject,date) VALUES (?,NOW())', array($this->subject));
-		var_dump($db->lastId('group'));
 		if ($query) {
 			$this->id = $db->lastId('group');
-			print_r('id2'.$db->lastId('group'));
+			print_r('id2'.$this->id);
 			die();
 			return $this->id;
 		} else {
