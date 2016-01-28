@@ -19,7 +19,7 @@ class Group {
 			foreach ($data[0] as $key => $value){
 	        	$group->{$key} = $value;
 	    	}
-	    	var_dump($group);
+	    	var_dump(Pisado::findByIdGroup($group->id,$archive));
 	    	$group->pisados = Pisado::findByIdGroup($group->id,$archive);
 
 	    	return $group;
