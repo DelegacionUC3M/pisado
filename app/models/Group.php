@@ -12,7 +12,7 @@ class Group {
 	public static function findById($id,$archive=false) {
 		$db = new DB(SQL_DB_PISADO);
 		$db->run('SELECT A.*, MAX(id_titulacion) id_titulacion, MAX(curso) curso FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group WHERE A.id=? GROUP BY A.id ORDER BY A.date', array($id));
-		
+
 		if ($db->count() > 0) {
 			$group = new Group;
 			$data = $db->data();
@@ -32,13 +32,15 @@ class Group {
 		$db = new DB(SQL_DB_PISADO);
 		$db->run('SELECT A.*, MAX(id_titulacion) id_titulacion, MAX(curso) curso FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.nia=? GROUP BY A.id ORDER BY A.date DESC', array($nia));
 		$data = $db->data();
-		
+
 		$groups = array();
 		foreach($data as $row){
 			$group = new Group;
 			foreach($row as $key => $value){
 	        	$group->{$key} = $value;
 	        }
+	        print_r(Group::isClose($group->id));
+	        die();
 			if(!Group::isClose($group->id) || $all) {
 				$groups[] = $group;
 			}
@@ -51,13 +53,15 @@ class Group {
 		$db = new DB(SQL_DB_PISADO);
 		$db->run('SELECT A.*, MAX(id_titulacion) id_titulacion, MAX(curso) curso FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.id_titulacion=? GROUP BY A.id ORDER BY A.date DESC', array($id_titulacion));
 		$data = $db->data();
-		
+
 		$groups = array();
 		foreach($data as $row){
 			$group = new Group;
 			foreach($row as $key => $value){
 	        	$group->{$key} = $value;
 	        }
+	        print_r(Group::isClose($group->id));
+	        die();
 			if ($archive && Group::isClose($group->id)) {
 				$groups[] = $group;
 			} else if(!Group::isClose($group->id) || $all) {
@@ -72,13 +76,15 @@ class Group {
 		$db = new DB(SQL_DB_PISADO);
 		$db->run('SELECT A.*, MAX(id_titulacion) id_titulacion, MAX(curso) curso FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.curso=? AND B.id_titulacion=? GROUP BY A.id ORDER BY A.date DESC', array($curso,$id_titulacion));
 		$data = $db->data();
-		
+
 		$groups = array();
 		foreach($data as $row){
 			$group = new Group;
 			foreach($row as $key => $value){
 	        	$group->{$key} = $value;
 	        }
+	        print_r(Group::isClose($group->id));
+	        die();
 			if ($archive && Group::isClose($group->id)) {
 				$groups[] = $group;
 			} else if(!Group::isClose($group->id) || $all) {
@@ -111,13 +117,15 @@ class Group {
 		$db = new DB(SQL_DB_PISADO);
 		$db->run('SELECT A.*, MAX(B.id_titulacion) id_titulacion, MAX(B.curso) curso FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group GROUP BY A.id ORDER BY A.date DESC');
 		$data = $db->data();
-		
+
 		$groups = array();
 		foreach($data as $row){
 			$group = new Group;
 			foreach($row as $key => $value){
 	        	$group->{$key} = $value;
 	        }
+	        print_r(Group::isClose($group->id));
+	        die();
 			if ($archive && Group::isClose($group->id)) {
 				$groups[] = $group;
 			} else if(!Group::isClose($group->id) || $all) {
