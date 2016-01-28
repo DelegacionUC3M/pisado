@@ -78,10 +78,7 @@
 
 			<ul id="pisados">
 			<?php
-
 			if (count($otros) > 0) {
-				var_dump($otros);
-				die();
 				foreach ($otros as $pisado) {
 					if (is_a($pisado,'Pisado')) {
 						?>
