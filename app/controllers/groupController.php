@@ -72,7 +72,7 @@ class groupController extends Controller {
 		$data = array();
 
 		if ($group) {
-			if (in_array($_SESSION['user']->nia, $group->getOwners()) || (($group->id_titulacion == $_SESSION['user']->id_titulacion) && $_SESSION['user']->isDelegadoCurso()) || ($_SESSION['user']->isDelegadoCentro()) ) { //dentro de view hay que controlar que no muestre los datos.
+			if (in_array($_SESSION['user']->nia, $group->getOwners()) || (($group->id_titulacion == $_SESSION['user']->id_titulacion) && $_SESSION['user']->isDelegadoCurso()) || ($_SESSION['user']->isDelegadoCentro() || $_SESSION['user']->isDelegadoTitulacion()) ) { //dentro de view hay que controlar que no muestre los datos.
 
 				if (isset($_POST['comment'])) {
 					if (empty($_POST['comment'])) {
