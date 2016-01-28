@@ -32,7 +32,7 @@ class Group {
 
 	public static function findByNia($nia, $all = false) {
 		$db = new DB(SQL_DB_PISADO);
-		$db->run('SELECT A.*, MAX(id_titulacion), MAX(curso) FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.nia=? GROUP BY A.id ORDER BY A.date DESC', array($nia));
+		$db->run('SELECT A.*, MAX(id_titulacion) id_titulacion, MAX(curso) curso FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.nia=? GROUP BY A.id ORDER BY A.date DESC', array($nia));
 		$data = $db->data();
 		print_r('findNia');
 		var_dump($data);
