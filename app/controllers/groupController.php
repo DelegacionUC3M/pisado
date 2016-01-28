@@ -69,7 +69,11 @@ class groupController extends Controller {
 		var_dump($_GET);
 		die();
 		$id = (int) $_GET['id'];
-		$group = Group::findById($id);
+		if (isset($_GET['archived'])) {
+			$group = Group::findById($id, true);
+		} else {
+			$group = Group::findById($id);
+		}
 		$data = array();
 
 		if ($group) {
