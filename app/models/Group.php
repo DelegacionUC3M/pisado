@@ -64,7 +64,7 @@ class Group {
 			}
     	}
 
-		if (isset($groups->pisados)) { return $groups; }
+		if ($groups->pisados != null) { return $groups; }
     	else { return null; }
 	}
 
@@ -85,7 +85,7 @@ class Group {
 				$groups[] = $group;
 			}
     	}
-    	if (isset($groups->pisados)) { return $groups; }
+    	if ($groups->pisados != null) { return $groups; }
     	else { return null; }
 		
 	}
@@ -126,7 +126,7 @@ class Group {
 			}
     	}
 
-		if (isset($groups->pisados)) { return $groups; }
+		if ($groups->pisados != null) { return $groups; }
     	else { return null; }
 	}
 
