@@ -65,7 +65,7 @@ class Group {
     	}
 
 		if ($groups->pisados != null) { return $groups; }
-    	else { return null; }
+    	else { return array(); }
 	}
 
 	public static function findByCurso($curso, $id_titulacion, $all = false, $archive = false) {
@@ -86,7 +86,7 @@ class Group {
 			}
     	}
     	if ($groups->pisados != null) { return $groups; }
-    	else { return null; }
+    	else { return array(); }
 		
 	}
 
@@ -127,7 +127,7 @@ class Group {
     	}
 
 		if ($groups->pisados != null) { return $groups; }
-    	else { return null; }
+    	else { return array(); }
 	}
 
 	public static function isClose($id_group) {
