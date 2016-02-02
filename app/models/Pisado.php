@@ -63,7 +63,6 @@ class Pisado {
 			$db->run('SELECT pisado.* FROM pisado LEFT JOIN archive ON pisado.id = archive.id_pisado WHERE archive.id IS NULL AND pisado.id_titulacion=? AND pisado.id_group IS NULL ORDER BY pisado.date DESC', array($id_titulacion));
 		}
 		$data = $db->data();
-		var_dump($data);
 		$pisados = array();
 		foreach($data as $row){
 			$pisado = new Pisado;
