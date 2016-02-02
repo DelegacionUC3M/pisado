@@ -140,7 +140,8 @@ class Group {
 	public static function isClose($id_group) {
 		$db = new DB(SQL_DB_PISADO);
 		$db->run('SELECT * FROM pisado LEFT JOIN archive ON pisado.id = archive.id_pisado WHERE archive.id IS NULL AND pisado.id_group=?', array($id_group));
-
+		$data = $db->data();
+		var_dump($data);
 		return $db->count() == 0;
 	}
 
