@@ -35,7 +35,7 @@ class Pisado {
 	public static function findByNia($nia, $archive = false) {
 		$db = new DB(SQL_DB_PISADO);
 		if ($archive) {
-			$db->run('SELECT pisado.* FROM pisado LEFT JOIN archive ON pisado.id = archive.id_pisado WHERE archive.id IS NOT NULL AND pisado.nia=? AND pisado.id_group IS NOT NULL ORDER BY pisado.date DESC', array($nia));
+			$db->run('SELECT pisado.* FROM pisado LEFT JOIN archive ON pisado.id = archive.id_pisado WHERE archive.id IS NOT NULL AND pisado.nia=? AND pisado.id_group IS NULL ORDER BY pisado.date DESC', array($nia));
 		} else {
 			$db->run('SELECT pisado.* FROM pisado LEFT JOIN archive ON pisado.id = archive.id_pisado WHERE archive.id IS NULL AND pisado.nia=? AND pisado.id_group IS NULL ORDER BY pisado.date DESC', array($nia));
 		}
@@ -57,7 +57,7 @@ class Pisado {
 		$db = new DB(SQL_DB_PISADO);
 		if ($archive) {
 			print_r('archivo');
-			$db->run('SELECT pisado.* FROM pisado LEFT JOIN archive ON pisado.id = archive.id_pisado WHERE archive.id IS NOT NULL AND pisado.id_titulacion=? AND pisado.id_group IS NOT NULL ORDER BY pisado.date DESC', array($id_titulacion));
+			$db->run('SELECT pisado.* FROM pisado LEFT JOIN archive ON pisado.id = archive.id_pisado WHERE archive.id IS NOT NULL AND pisado.id_titulacion=? AND pisado.id_group IS NULL ORDER BY pisado.date DESC', array($id_titulacion));
 		} else {
 			print_r('no archivo');
 			$db->run('SELECT pisado.* FROM pisado LEFT JOIN archive ON pisado.id = archive.id_pisado WHERE archive.id IS NULL AND pisado.id_titulacion=? AND pisado.id_group IS NULL ORDER BY pisado.date DESC', array($id_titulacion));
