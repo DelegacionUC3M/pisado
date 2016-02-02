@@ -67,8 +67,9 @@ class Group {
 			}
     	}
     	
-		if (isset($groups) && !empty($groups[0]->pisados)) { return $groups; }
-    	else { return array(); }
+		/*if (isset($groups) && !empty($groups[0]->pisados)) { return $groups; }
+    	else { return array(); }*/
+    	return $groups;
 	}
 
 	public static function findByCurso($curso, $id_titulacion, $all = false, $archive = false) {
@@ -91,9 +92,9 @@ class Group {
 			}
     	}
 
-    	if (isset($groups) && !empty($groups[0]->pisados)) { return $groups; }
-    	else { return array(); }
-		
+    	/*if (isset($groups) && !empty($groups[0]->pisados)) { return $groups; }
+    	else { return array(); }*/
+    	return $groups;
 	}
 
 	// DEPRECATED
@@ -134,8 +135,9 @@ class Group {
 			}
     	}
 
-		if (isset($groups) && !empty($groups[0]->pisados)) { return $groups; }
-    	else { return array(); }
+		/*if (isset($groups) && !empty($groups[0]->pisados)) { return $groups; }
+    	else { return array(); }*/
+    	return $groups;
 	}
 
 	public static function isClose($id_group) {
