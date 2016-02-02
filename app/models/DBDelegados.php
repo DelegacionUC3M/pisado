@@ -67,7 +67,6 @@ class DBDelegados {
 		//get delegadoCentro
 		$db->run('SELECT id FROM delegadosCentro WHERE id = ?;', array($data[0]['id']));
 		$delCentro = $db->data();
-		var_dump($delCentro);
 		//get delegadoTitulacion
 		$db->run('SELECT id FROM delegadosTitulacion WHERE id = ?;', array($data[0]['id']));
 		$delTitulacion = $db->data();
