@@ -29,8 +29,6 @@ class ComentarioGroup {
 
 	public function save() {
 		$db = new DB(SQL_DB_PISADO);
-		var_dump($this);
-		die();
 		return $db->run('INSERT INTO comentario_group (id_group, nia, nombre, date, text) VALUES (?, ?, ?, NOW(), ?)', array($this->id_group, $this->nia, $this->nombre, $this->text));
 	}
 }
