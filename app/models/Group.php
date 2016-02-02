@@ -50,7 +50,7 @@ class Group {
 		$db = new DB(SQL_DB_PISADO);
 		$db->run('SELECT A.*, MAX(id_titulacion) id_titulacion, MAX(curso) curso FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.id_titulacion=? GROUP BY A.id ORDER BY A.date DESC', array($id_titulacion));
 		$data = $db->data();
-
+		var_dump($data);
 		$groups = array();
 		
 		foreach($data as $row){
@@ -58,7 +58,7 @@ class Group {
 			foreach($row as $key => $value){
 	        	$group->{$key} = $value;
 	        }
-			if ($archive ||/*&&*/ Group::isClose($group->id)) {
+			if ($archive && Group::isClose($group->id)) {
 				$groups[] = $group;
 			} else if(!Group::isClose($group->id) || $all) {
 				$groups[] = $group;
@@ -73,7 +73,7 @@ class Group {
 		$db = new DB(SQL_DB_PISADO);
 		$db->run('SELECT A.*, MAX(id_titulacion) id_titulacion, MAX(curso) curso FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.curso=? AND B.id_titulacion=? GROUP BY A.id ORDER BY A.date DESC', array($curso,$id_titulacion));
 		$data = $db->data();
-
+		var_dump($data);
 		$groups = array();
 		
 		foreach($data as $row){
@@ -81,7 +81,7 @@ class Group {
 			foreach($row as $key => $value){
 	        	$group->{$key} = $value;
 	        }
-			if ($archive ||/*&&*/ Group::isClose($group->id)) {
+			if ($archive && Group::isClose($group->id)) {
 				$groups[] = $group;
 			} else if(!Group::isClose($group->id) || $all) {
 				$groups[] = $group;
@@ -115,7 +115,7 @@ class Group {
 		$db = new DB(SQL_DB_PISADO);
 		$db->run('SELECT A.*, MAX(B.id_titulacion) id_titulacion, MAX(B.curso) curso FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group GROUP BY A.id ORDER BY A.date DESC');
 		$data = $db->data();
-
+		var_dump($data);
 		$groups = array();
 
 		foreach($data as $row){
@@ -123,7 +123,7 @@ class Group {
 			foreach($row as $key => $value){
 	        	$group->{$key} = $value;
 	        }
-			if ($archive ||/*&&*/ Group::isClose($group->id)) {
+			if ($archive && Group::isClose($group->id)) {
 				$groups[] = $group;
 			} else if(!Group::isClose($group->id) || $all) {
 				$groups[] = $group;
@@ -137,8 +137,6 @@ class Group {
 	public static function isClose($id_group) {
 		$db = new DB(SQL_DB_PISADO);
 		$db->run('SELECT * FROM pisado LEFT JOIN archive ON pisado.id = archive.id_pisado WHERE archive.id IS NULL AND pisado.id_group=?', array($id_group));
-		print_r($db->count());
-		var_dump($db->count() == 0);
 		return $db->count() == 0;
 	}
 
