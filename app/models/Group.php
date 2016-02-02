@@ -50,8 +50,6 @@ class Group {
 		$db = new DB(SQL_DB_PISADO);
 		$db->run('SELECT A.*, MAX(id_titulacion) id_titulacion, MAX(curso) curso FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.id_titulacion=? GROUP BY A.id ORDER BY A.date DESC', array($id_titulacion));
 		$data = $db->data();
-		print_r('titulacion');
-		//var_dump($data);
 		$groups = array();
 		
 		foreach($data as $row){
@@ -74,8 +72,6 @@ class Group {
 		$db = new DB(SQL_DB_PISADO);
 		$db->run('SELECT A.*, MAX(id_titulacion) id_titulacion, MAX(curso) curso FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.curso=? AND B.id_titulacion=? GROUP BY A.id ORDER BY A.date DESC', array($curso,$id_titulacion));
 		$data = $db->data();
-		print_r('curso');
-		var_dump($data);
 		$groups = array();
 		
 		foreach($data as $row){
@@ -115,8 +111,6 @@ class Group {
 		$db = new DB(SQL_DB_PISADO);
 		$db->run('SELECT A.*, MAX(B.id_titulacion) id_titulacion, MAX(B.curso) curso FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group GROUP BY A.id ORDER BY A.date DESC');
 		$data = $db->data();
-		print_r('centro');
-		var_dump($data);
 		$groups = array();
 
 		foreach($data as $row){

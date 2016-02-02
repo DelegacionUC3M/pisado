@@ -136,7 +136,6 @@ class inicioController extends Controller {
 		$this->security();
 		$data = array();
 		$user = $_SESSION['user'];
-		//var_dump($user);
 
 		if($user->isDelegadoCurso()) {
 			if ($user->isDelegadoCentro()) {
