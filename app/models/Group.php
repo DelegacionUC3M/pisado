@@ -57,7 +57,6 @@ class Group {
 			foreach($row as $key => $value){
 	        	$group->{$key} = $value;
 	        }
-	        var_dump($group);
 			if ($archive && Group::isClose($group->id)) {
 				$groups[] = $group;
 			} else if(!Group::isClose($group->id) || $all) {
