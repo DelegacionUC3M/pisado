@@ -56,7 +56,7 @@ class inicioController extends Controller {
 		$data = array();
 
 		$user = $_SESSION['user'];
-
+		var_dump($user);
 		if (isset($_POST['pisado']) || isset($_POST['group'])) {
 			if ($user->isDelegadoTitulacion() || $user->isDelegadoCentro()) {
 				$pisados = isset($_POST['pisado']) ? $_POST['pisado'] : array();

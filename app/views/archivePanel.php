@@ -48,7 +48,6 @@
 							</li></a>
 						<?php
 					} else {
-						var_dump($pisado);
 						?>
 							<a href="/pisado/group/view/<?= $pisado->id ?>/archived"><li id="group" data-titulacion="<?= $pisado->id_titulacion ?>" data-curso="<?= $pisado->curso ?>" data-id="<?= $pisado->id ?>">
 									<p class="id-asignatura"><span class="id">#G<?= $pisado->id ?></span> <?= $pisado->subject ?></p>
