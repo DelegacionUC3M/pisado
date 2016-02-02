@@ -58,7 +58,7 @@ class Group {
 			foreach($row as $key => $value){
 	        	$group->{$key} = $value;
 	        }
-			if ($archive && Group::isClose($group->id)) {
+			if ($archive ||/*&&*/ Group::isClose($group->id)) {
 				$groups[] = $group;
 			} else if(!Group::isClose($group->id) || $all) {
 				$groups[] = $group;
@@ -81,7 +81,7 @@ class Group {
 			foreach($row as $key => $value){
 	        	$group->{$key} = $value;
 	        }
-			if ($archive && Group::isClose($group->id)) {
+			if ($archive ||/*&&*/ Group::isClose($group->id)) {
 				$groups[] = $group;
 			} else if(!Group::isClose($group->id) || $all) {
 				$groups[] = $group;
@@ -123,7 +123,7 @@ class Group {
 			foreach($row as $key => $value){
 	        	$group->{$key} = $value;
 	        }
-			if ($archive && Group::isClose($group->id)) {
+			if ($archive ||/*&&*/ Group::isClose($group->id)) {
 				$groups[] = $group;
 			} else if(!Group::isClose($group->id) || $all) {
 				$groups[] = $group;
