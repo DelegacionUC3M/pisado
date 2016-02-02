@@ -135,20 +135,20 @@ class Pisado {
 
 	public static function findByCentro($centro, $archive = false) {
 		$db = new DB(SQL_DB_PISADO);
-		if ($archive) {
+		/*if ($archive) {
 			$db->run('SELECT pisado.* FROM pisado LEFT JOIN archive ON pisado.id = archive.id_pisado WHERE archive.id IS NOT NULL AND pisado.id_group IS NULL ORDER BY pisado.date DESC');
 		} else {
 			$db->run('SELECT pisado.* FROM pisado LEFT JOIN archive ON pisado.id = archive.id_pisado WHERE archive.id IS NULL AND pisado.id_group IS NULL ORDER BY pisado.date DESC');
-		}
-		/*if ($archive) {
+		}*/
+		if ($archive) {
 			$db->run('SELECT A.* FROM pisado A LEFT JOIN archive C ON A.id = C.id_pisado WHERE C.id IS NOT NULL AND A.id_group IS NULL ORDER BY A.date DESC');
 			//$db->run('SELECT A.* FROM pisado A INNER JOIN delegados.titulaciones B ON A.id_titulacion = B.id_titulacion LEFT JOIN archive C ON A.id = C.id_pisado WHERE C.id IS NOT NULL AND B.id_centro=? AND A.id_group IS NULL ORDER BY A.date DESC', array($centro));
 		} else {
 			$db->run('SELECT A.* FROM pisado A LEFT JOIN archive C ON A.id = C.id_pisado WHERE C.id IS NULL AND A.id_group IS NULL ORDER BY A.date DESC');
 			//$db->run('SELECT A.* FROM pisado A INNER JOIN delegados.titulaciones B ON A.id_titulacion = B.id_titulacion LEFT JOIN archive C ON A.id = C.id_pisado WHERE C.id IS NULL AND B.id_centro=? AND A.id_group IS NULL ORDER BY A.date DESC', array($centro));
-		}*/
+		}
 		$data = $db->data();
-		var_dump($data);
+		
 		$pisados = array();
 		foreach($data as $row){
 			$pisado = new Pisado;
