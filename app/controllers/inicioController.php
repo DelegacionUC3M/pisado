@@ -137,7 +137,7 @@ class inicioController extends Controller {
 		$data = array();
 
 		$user = $_SESSION['user'];
-
+		print('holaaaa');
 		if($user->isDelegadoCurso()) {
 			if ($user->isDelegadoCentro()) {
 				$data['otros'] = array_merge(Pisado::findByCentro($user->centro,true), Group::findByCentro($user->centro,false,true));
