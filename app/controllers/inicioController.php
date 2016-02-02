@@ -120,7 +120,7 @@ class inicioController extends Controller {
 		Group::findByCentro($user->centro);
 		Group::findByIdTitulacion($user->id_titulacion);
 		Group::findByCurso($user->curso,$user->id_titulacion);
-		die();
+		//die();
 		if ($user->isDelegadoCentro()) {
 			$data['otros'] = array_merge(Pisado::findByCentro($user->centro), Group::findByCentro($user->centro));
 			usort( $data['otros'], function($a, $b) {return  - strtotime($a->date) + strtotime($b->date);});
