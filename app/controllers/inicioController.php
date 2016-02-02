@@ -136,8 +136,8 @@ class inicioController extends Controller {
 		$this->security();
 		$data = array();
 		$user = $_SESSION['user'];
-		var_dump($user);
-		
+		//var_dump($user);
+
 		if($user->isDelegadoCurso()) {
 			if ($user->isDelegadoCentro()) {
 				$data['otros'] = array_merge(Pisado::findByCentro($user->centro,true), Group::findByCentro($user->centro,false,true));
