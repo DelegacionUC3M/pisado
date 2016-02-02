@@ -51,7 +51,7 @@ class Group {
 		$db->run('SELECT A.*, MAX(id_titulacion) id_titulacion, MAX(curso) curso FROM "group" A LEFT JOIN pisado B ON A.id = B.id_group WHERE B.id_titulacion=? GROUP BY A.id ORDER BY A.date DESC', array($id_titulacion));
 		$data = $db->data();
 		print_r('titulacion');
-		var_dump($data);
+		//var_dump($data);
 		$groups = array();
 		
 		foreach($data as $row){
@@ -59,6 +59,7 @@ class Group {
 			foreach($row as $key => $value){
 	        	$group->{$key} = $value;
 	        }
+	        var_dump($group);
 			if ($archive && Group::isClose($group->id)) {
 				$groups[] = $group;
 			} else if(!Group::isClose($group->id) || $all) {
