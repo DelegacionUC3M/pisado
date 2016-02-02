@@ -67,8 +67,6 @@ class Group {
 			}
     	}
     	
-		/*if (isset($groups) && !empty($groups[0]->pisados)) { return $groups; }
-    	else { return array(); }*/
     	return $groups;
 	}
 
@@ -92,8 +90,6 @@ class Group {
 			}
     	}
 
-    	/*if (isset($groups) && !empty($groups[0]->pisados)) { return $groups; }
-    	else { return array(); }*/
     	return $groups;
 	}
 
@@ -135,8 +131,6 @@ class Group {
 			}
     	}
 
-		/*if (isset($groups) && !empty($groups[0]->pisados)) { return $groups; }
-    	else { return array(); }*/
     	return $groups;
 	}
 
