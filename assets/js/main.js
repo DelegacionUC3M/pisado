@@ -61,7 +61,7 @@ $(function() {
 			var pisados = $('.delegacion #pisados li.selected');
 			if ( pisados.length > 1 ) {
 				var form = $('<form>', {
-					action: '?#delegacion',
+					action: '/pisado/inicio/panel',
 					method: 'POST'
 				});
 

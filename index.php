@@ -16,7 +16,7 @@ function __autoload($class) {
 		include ('app/views/'.$class.'.php');
 	} else if (file_exists('app/lib/'.$class.'.php')) {
 		include ('app/lib/'.$class.'.php');
-	} 
+	}
 
 	if(!class_exists($class)) {
 		Controller::error(404);
@@ -24,8 +24,17 @@ function __autoload($class) {
 	
 }
 
-$controller = (isset($_GET['c']) && !empty($_GET['c'])) ? $_GET['c'].'Controller' : 'inicioController';
-$action = (isset($_GET['a']) && !empty($_GET['a'])) ? $_GET['a'] : 'index';
+$url = explode('/', $_SERVER["REQUEST_URI"]);
+$controller = (isset($url[2]) && !empty($url[2])) ? $url[2] . 'Controller' : 'inicioController';
+$action 	= (isset($url[3]) && !empty($url[3])) ? $url[3] . 'Action' : 'indexAction';
+$_GET['id'] = (isset($url[4]) && !empty($url[4])) ? (int)explode('?',$url[4])[0] : '';
+$_GET['archived'] = (isset($url[5]) && !empty($url[5])) ? (int)explode('?',$url[5])[0] : '';
 
-$load = new $controller();
-$load->$action();
+
+if (method_exists($controller, $action)) {
+	$load = new $controller();
+	$load->$action();
+} else {
+	Controller::error(404);
+}
+

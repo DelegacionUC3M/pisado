@@ -3,7 +3,7 @@ CREATE TABLE comentario_group (
   id_group bigint NOT NULL,
   nia bigint NOT NULL,
   nombre varchar(50) NOT NULL,
-  date date NOT NULL,
+  date timestamp NOT NULL,
   text text NOT NULL,
   FOREIGN KEY (id_group) REFERENCES "group" (id) ON DELETE CASCADE ON UPDATE CASCADE
 );
@@ -13,7 +13,7 @@ CREATE TABLE comentario_pisado (
   id_pisado bigint NOT NULL,
   nia bigint NOT NULL,
   nombre varchar(50) NOT NULL,
-  date date NOT NULL,
+  date timestamp NULL,
   text text NOT NULL,
   FOREIGN KEY (id_pisado) REFERENCES pisado (id) ON DELETE CASCADE ON UPDATE CASCADE
 );
@@ -21,13 +21,13 @@ CREATE TABLE comentario_pisado (
 CREATE TABLE "group" (
   id serial PRIMARY KEY,
   subject varchar(50) NOT NULL,
-  date date NOT NULL
+  date timestamp NULL
 );
 
 CREATE TABLE archive (
   id serial PRIMARY KEY,
   id_pisado bigint UNIQUE NOT NULL,
-  date date NOT NULL,
+  date timestamp NULL,
   FOREIGN KEY (id_pisado) REFERENCES pisado (id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
@@ -36,7 +36,7 @@ CREATE TABLE pisado (
   nia bigint NOT NULL,
   email varchar(40) NOT NULL,
   autor varchar(40) NOT NULL,
-  date date NOT NULL,
+  date timestamp NULL,
   id_titulacion bigint NOT NULL,
   asignatura varchar(50) NOT NULL,
   curso smallint NOT NULL,

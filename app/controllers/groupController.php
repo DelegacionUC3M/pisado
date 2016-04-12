@@ -2,12 +2,12 @@
 
 class groupController extends Controller {
 
-	function create() {
+	function createAction() {
 
 	}
 
-	function close() {
-		$this->security();
+	function closeAction() {
+		$this->security(false);
 
 		$id = (isset($_GET['id'])) ? (int) $_GET['id'] : false;
 		$group = Group::findById($id);
@@ -26,7 +26,7 @@ class groupController extends Controller {
 				if (isset($data['archive_error'])) {
 					$this->render('viewGroup', $data);
 				} else {
-					header('Location: /pisado/inicio/');
+					header('Location: /pisado/inicio');
 				}
 			} else {
 				$this->render_error(401);
@@ -36,8 +36,8 @@ class groupController extends Controller {
 		}
 	}
 
-	function open() {
-		$this->security();
+	function openAction() {
+		$this->security(false);
 
 		$id = (isset($_GET['id'])) ? (int) $_GET['id'] : false;
 		$group = Group::findById($id,true);
@@ -54,7 +54,7 @@ class groupController extends Controller {
 				if (isset($data['archive_error'])) {
 					$this->render('viewGroup', $data);
 				} else {
-					header('Location: /pisado/inicio/');
+					header('Location: /pisado/inicio');
 				}
 			} else {
 				$this->render_error(401);
@@ -64,16 +64,16 @@ class groupController extends Controller {
 		}
 	}
 
-	function view() {
-		$this->security();
+	function viewAction() {
+		$this->security(false);
+		
 		$id = (int) $_GET['id'];
-		if (isset($_GET['archived'])) {
+		if (!empty($_GET['archived'])) {
 			$group = Group::findById($id, true);
 		} else {
 			$group = Group::findById($id);
 		}
 		$data = array();
-
 		if ($group) {
 			if (in_array($_SESSION['user']->nia, $group->getOwners()) || (($group->id_titulacion == $_SESSION['user']->id_titulacion) && $_SESSION['user']->isDelegadoCurso()) || ($_SESSION['user']->isDelegadoCentro()) ) { //dentro de view hay que controlar que no muestre los datos.
 

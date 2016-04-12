@@ -42,7 +42,7 @@
 	<article class="pisados delegacion" id="delegacion">
 			<h2 class="clear">Delegación
 				<?php if ($user->isDelegadoTitulacion() || $user->isDelegadoCentro()) { ?>
-					<a class="button icon-agroup" href="?" id="agrupar" data-active="false">Agrupar PISADOS</a>
+					<a class="button icon-agroup" href="" id="agrupar" data-active="false">Agrupar PISADOS</a>
 					<a class="button icon-drawer" href="/pisado/inicio/archivo">Ver archivados</a>
 				<?php } ?>
 			</h2>

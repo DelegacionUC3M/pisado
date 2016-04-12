@@ -2,27 +2,31 @@
 
 class inicioController extends Controller {
 
-	function index() {
+	function indexAction() {
 		if ($this->security(false)) {
-			$this->panel();
+			$this->panelAction();
 		} else {
-			$this->render('inicio');
+			header('Location: /pisado/inicio/login');
+			$this->render('inicio', array('section' => 'inicio'));
 		}
 	}
 
-	function login() {
+	function loginAction() {
 		if ($this->security(false)) {
 			header('Location: /pisado/inicio');
 		} else {
 
 			if (isset($_POST['nia']) && isset($_POST['password'])) {
 				try {
-					$ldap = LDAP_Gateway::login($_POST['nia'], $_POST['password']);
 
-					if ($ldap) {
-						$user = new User($ldap->getUserId(),$ldap->getUserNameFormatted(),$ldap->getUserMail(),$ldap->getDn());
+					$ldap = new LDAP;
+					$ldap->run('uid=' . $_POST['nia']);
+					$user = $ldap->data()[0];
+					$ldapUser = $ldap->login($user['dn'],$_POST['password']);
+
+					if ($ldapUser) {
+						$user = new User($user['uid'][0], $user['cn'][0],$user['mail'][0], $user['dn']);
 						$_SESSION['user'] = $user;
-
 						if (isset($_GET['url'])) {
 							header('Location: '.$_GET['url']);
 						} else {
@@ -30,29 +34,29 @@ class inicioController extends Controller {
 						}
 					} else {
 						$error = 'Usuario o contraseña incorrecto';
-						$this->render('login', array('error'=>$error));
+						$this->render('login', array('section'=>'login', 'error'=>$error));
 					}
 
 				} catch (Exception $e) {
 					$error = 'Ha habido un problema con la autenticación. Inténtelo de nuevo.';
-					$this->render('login', array('error'=>$error));
+					$this->render('login', array('section'=>'login', 'error'=>$error));
 				}
 			} else {
-				$this->render('login');
+				$this->render('login', array('section'=>'login'));
 			}
 
 		}
 	}
 
-	function logout() {
+	function logoutAction() {
 		session_start();
 		session_destroy();
    		session_regenerate_id(true);
 		header('Location: /pisado/inicio');
 	}
 
-	function panel() {
-		$this->security();
+	function panelAction() {
+		$this->security(false);
 		$data = array();
 
 		$user = $_SESSION['user'];
@@ -131,8 +135,8 @@ class inicioController extends Controller {
 		$this->render('panel', $data);
 	}
 
-	function archivo() {
-		$this->security();
+	function archivoAction() {
+		$this->security(false);
 		$data = array();
 		$user = $_SESSION['user'];
 

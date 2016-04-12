@@ -11,7 +11,6 @@
         <link rel="stylesheet" href="/pisado/assets/css/normalize.min.css">
         <link rel="stylesheet" href="/pisado/assets/css/main.css">
         <script src="/pisado/assets/js/vendor/prefixfree.min.js"></script>
-
         <script src="/pisado/assets/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
@@ -32,7 +31,7 @@
                 </div>
 
 
-                <a href="/pisado/inicio"> <h1>PISADO</h1> </a>
+                <a href="/pisado"> <h1>PISADO</h1> </a>
                 <a href="http://delegacion.uc3m.es" target="_blank"> <img src="/pisado/assets/img/delegacion.png" /> </a>
 
             </div>

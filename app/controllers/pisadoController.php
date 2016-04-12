@@ -2,8 +2,8 @@
 
 class pisadoController extends Controller {
 
-	function create() {
-		$this->security();
+	function createAction() {
+		$this->security(false);
 		$data = array();
 
 		$data['titulaciones'] = DBDelegados::getTitulaciones();
@@ -60,8 +60,8 @@ class pisadoController extends Controller {
 		}
 	}
 
-	function close() {
-		$this->security();
+	function closeAction() {
+		$this->security(false);
 
 		$id = (isset($_GET['id'])) ? (int) $_GET['id'] : false;
 		$pisado = Pisado::findById($id);
@@ -72,7 +72,7 @@ class pisadoController extends Controller {
 				$archive = new Archive;
 				$archive->pisado = $pisado;
 				if($archive->save()) {
-					header('Location: /pisado/inicio/');
+					header('Location: /pisado/inicio');
 				} else {
 					$data['archive_error'] = 'No se ha podido archivar este pisado';
 					$this->render('view', $data);
@@ -85,8 +85,8 @@ class pisadoController extends Controller {
 		}
 	}
 
-	function open() {
-		$this->security();
+	function openAction() {
+		$this->security(false);
 
 		$id = (isset($_GET['id'])) ? (int) $_GET['id'] : false;
 		$pisado = Pisado::findById($id);
@@ -96,7 +96,7 @@ class pisadoController extends Controller {
 			if (($pisado->nia == $_SESSION['user']->nia) || (($pisado->id_titulacion == $_SESSION['user']->id_titulacion) && $_SESSION['user']->isDelegadoCurso()) || ($_SESSION['user']->isDelegadoCentro()) ) {
 				$archive = Archive::findByPisado($pisado->id);
 				if(isset($archive) && $archive->delete()) {
-					header('Location: /pisado/inicio/');
+					header('Location: /pisado/inicio');
 				} else {
 					$data['archive_error'] = 'No se ha podido archivar este pisado';
 					$this->render('view', $data);
@@ -109,8 +109,8 @@ class pisadoController extends Controller {
 		}
 	}
 
-	function view() {
-		$this->security();
+	function viewAction() {
+		$this->security(false);
 
 		$id = (isset($_GET['id'])) ? (int) $_GET['id'] : false;
 		$pisado = Pisado::findById($id);
