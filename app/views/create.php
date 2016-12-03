@@ -29,7 +29,25 @@
 			<ul>
 				<li id="titulacion" class="w60"> <span>Titulacion</span> <select name="titulacion" >
 					<?php
-						foreach ($titulaciones as $titulacion) {$selected = ''; if ($pisado->id_titulacion == $titulacion['id_titulacion']) {$selected = 'selected';} echo '<option '.$selected.' value="'.$titulacion['id_titulacion'].'">'.$titulacion['nombre'].'</option>';}
+						foreach ($titulaciones as $titulacion) {
+                            $selected = '';
+
+                            if ($pisado->id_titulacion == $titulacion['id_study']) {
+                                $selected = 'selected';
+                            }
+
+                            $option = '<option ' . $selected . ' value="' . $titulacion['id_study'] . '">' . $titulacion['name'];
+                            
+                            if ($titulacion['id_study'] == INF_LEGA_ID) {
+                                $option .= ' (Leganes)';
+                            } else if ($titulacion['id_study'] == INF_COLME_ID) {
+                                $option .= ' (Colmenarejo)';
+                            }
+
+                            $option .= '</option>';
+
+                            echo $option;
+                        }
 					?></select></li><li id="curso" class="w40"> <span>Curso</span>
 						<select name="curso">
 							<option <?php if ($pisado->curso == '1') {echo 'selected';}?> value="1">1º</option>

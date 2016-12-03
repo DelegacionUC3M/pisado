@@ -13,10 +13,10 @@
 					<?php
 							foreach (DBDelegados::getTitulaciones() as $titulacion) {
 								$selected = '';
-								if (!$user->isDelegadoCentro() && $user->id_titulacion == $titulacion['id_titulacion']) {
+								if (!$user->isDelegadoCentro() && $user->id_titulacion == $titulacion['id_study']) {
 									$selected = 'selected';
 								}
-								echo '<option '.$selected.' value="'.$titulacion['id_titulacion'].'">'.$titulacion['nombre'].'</option>';
+								echo '<option '.$selected.' value="'.$titulacion['id_study'].'">'.$titulacion['name'].'</option>';
 							}
 					?>
 				</select><select name="curso" <?php echo ($user->isDelegadoCentro() && $user->isDelegadoTitulacion()) ? '' : 'disabled' ?>>

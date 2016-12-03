@@ -162,7 +162,7 @@ class pisadoController extends Controller {
 				$data['id'] = $pisado->id;
 				$delegadoTitulacion = DBDelegados::findDelegadosTitulacion($pisado->id_titulacion);
 				foreach ($delegadoTitulacion as $delegado) {
-					$data['delegado'][] = array('email' => $delegado['nia'] . '@alumnos.uc3m.es', 'nombre' => $delegado['nombre'] . ' ' . $delegado['apellido1']);
+					$data['delegado'][] = array('email' => $delegado['nia'] . '@alumnos.uc3m.es', 'nombre' => $delegado['name'] . ' ' . $delegado['surname']);
 				}
 				$data['archive'] = (is_null(Archive::findByPisado($pisado->id))) ? false : true;
 

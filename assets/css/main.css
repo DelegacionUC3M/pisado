@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,500,700);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500,700);
 @font-face {
   font-family: 'icomoon';
   src: url('fonts/icomoon.eot?uicmwk');
@@ -376,7 +376,7 @@ body {
 }
 .main.inicio,
 .main.login {
-  background: linear-gradient(rgba(0, 97, 145, 0.5), rgba(0, 97, 145, 0.5)), url('/pisado/assets/img/bg.jpg') center;
+  background: linear-gradient(rgba(79, 129, 189, 0.6), rgba(79, 129, 189, 0.6)), url('/pisado/assets/img/bg.jpg') center;
   background-size: cover;
   color: #fff;
   text-align: center;
