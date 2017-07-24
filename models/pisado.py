@@ -34,7 +34,7 @@ class Pisado:
             "author_nia": self.pisado.get("author_nia"),
             "author_email": self.pisado.get("author_email"),
             "author_name": self.pisado.get("author_name"),
-            "creation_date": self.pisado.get("creation_date").strftime('%Y-%m-%d %H:%M:%S'),
+            "creation_date": self.pisado.get("creation_date").strftime("%Y-%m-%d %H:%M:%S"),
             "study": self.pisado.get("study"),
             "subject": self.pisado.get("subject"),
             "course": self.pisado.get("course"),
